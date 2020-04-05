@@ -1,0 +1,616 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#"
+     xml:base="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Accountmanagement -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Accountmanagement">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Tätigkeit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Akquise -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Akquise">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projekt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Ausbildung -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Ausbildung"/>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Begrüßungsabend -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Begrüßungsabend">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Event"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Vorlesungspräsentation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Beirat -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Beirat">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Beratungsfelder -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Beratungsfelder"/>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#CRM -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#CRM">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Tätigkeit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Dachverband -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Dachverband"/>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Datei-Management -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Datei-Management">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#IT"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Digitalisierung -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Digitalisierung">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Beratungsfelder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Email -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Email">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#IT"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Event -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Event"/>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Finanzen -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Finanzen">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Ressort/Arbeitsgruppe"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#GANTT -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#GANTT"/>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Gruppe -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Gruppe"/>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Gründung -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Gründung">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Beratungsfelder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#IT -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#IT">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Ressort/Arbeitsgruppe"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#IT-Admin -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#IT-Admin">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#IT"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#IT-Support -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#IT-Support">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#IT"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Junior_Consultant -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Junior_Consultant">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Karrierestufen"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Kalender -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Kalender"/>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Karrierestufen -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Karrierestufen"/>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Kunde -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Kunde">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Person"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projekt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Kurator -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Kurator">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Marketing -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Marketing">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Beratungsfelder"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Ressort/Arbeitsgruppe"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Marktanalyse -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Marktanalyse">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Beratungsfelder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#PM-Software -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#PM-Software">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#IT"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Partner -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Partner">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Person -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Person"/>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Personal -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Personal">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Beratungsfelder"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Ressort/Arbeitsgruppe"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Phasen -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Phasen">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projekt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Pitch -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Pitch"/>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projekt -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projekt"/>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektcontroller -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektcontroller">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Karrierestufen"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projekte -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projekte">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Ressort/Arbeitsgruppe"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektleitung -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektleitung">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Tätigkeit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektmanagement -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektmanagement">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Tätigkeit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektorganisation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektorganisation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Tätigkeit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektteam -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektteam">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Gruppe"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Ressort/Arbeitsgruppe"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektverständnis -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektverständnis">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projekt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Prozesse -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Prozesse">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Beratungsfelder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Präsentation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Präsentation"/>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Rechnung -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Rechnung">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projekt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Recht -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Recht">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Ressort/Arbeitsgruppe"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Report -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Report">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projekt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Sales -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Sales">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Tätigkeit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Schatzmeister -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Schatzmeister">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Senior_Consultant -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Senior_Consultant">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Karrierestufen"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Signatur -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Signatur">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Email"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Strategie -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Strategie">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Beratungsfelder"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Studentschische_Beratung -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Studentschische_Beratung"/>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Trainee -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Trainee">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Karrierestufen"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Tätigkeit -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Tätigkeit"/>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Unternehmensberatung -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Unternehmensberatung"/>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Verein -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Verein"/>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Vorlesungspräsentation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Vorlesungspräsentation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Website -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Website">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#IT"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Zeitmessung -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Zeitmessung">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projekt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Aufgabe/Task -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Aufgabe/Task">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projekt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Berater/Consultant -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Berater/Consultant">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Marketing/Werbung -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Marketing/Werbung"/>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Ressort/Arbeitsgruppe -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Ressort/Arbeitsgruppe">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Gruppe"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Vorstand/CEO -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Vorstand/CEO">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Accountmanagement"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#CRM"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektleitung"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektmanagement"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektorganisation"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Sales"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Akquise"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Kunde"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Phasen"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektverständnis"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Rechnung"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Report"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Zeitmessung"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Aufgabe/Task"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Ausbildung"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Beratungsfelder"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Dachverband"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Event"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#GANTT"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Gruppe"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Kalender"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Karrierestufen"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Person"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Pitch"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projekt"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektmanagement"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Präsentation"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Studentschische_Beratung"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Tätigkeit"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Unternehmensberatung"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Verein"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Marketing/Werbung"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Beirat"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Kunde"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Kurator"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Partner"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Schatzmeister"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Trainee"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Berater/Consultant"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Vorstand/CEO"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Datei-Management"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Email"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#IT-Admin"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#IT-Support"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#PM-Software"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Website"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Digitalisierung"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Gründung"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Marketing"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Marktanalyse"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Personal"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Prozesse"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Strategie"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Finanzen"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#IT"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Marketing"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Personal"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projekte"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Recht"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Junior_Consultant"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Projektcontroller"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Senior_Consultant"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/felixfoertsch/ontologies/2019/8/untitled-ontology-12#Trainee"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
