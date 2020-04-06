@@ -38,7 +38,7 @@
 \KOMAoptions{bibliography=leveldown}
 
 % Table of Contents
-\setcounter{tocdepth}{\paragraphtocdepth}
+%\setcounter{tocdepth}{\paragraphtocdepth}
 
 % SubSubsection numbering
 \setcounter{secnumdepth}{5}
@@ -200,7 +200,7 @@ The main motivation of this work is documenting the domain knowledge and making 
 
 One particular use case in the intersection between knowledge management and software projects, is the creation of a tool that helps with founding new \glspl{sco} at universities where no \gls{sco} currently exists. Creating an organization without guidance is a daunting task; having a repository available, that structures and describes the elemental components of such an organization, can be a great help.
 
-\chapter{Ontologies \progressbar[filledcolor=green]{0}}
+\chapter{Student Consulting Organizations: Meta Discussion \progressbar[filledcolor=red]{0.3}}
 \begin{quote}
 	\enquote{Knowledge Representation is the field of Artificial Intelligence that focuses on the design of formalisms that are both epistemologically and computationally adequate for expressing knowledge about a particular domain.} \cite[p. XV, Preface]{baader2017introduction}
 \end{quote}
@@ -213,43 +213,6 @@ Additionally this section touches on ontology and ontology-engineering research 
 
 There are numerous definitions of the term ontology available in literature \cite[p. 4, section 1.1.2.1]{loebe2015ontological} and there is no perfectly unified understanding of the term \cite{Hesse_2014}.
 
-
-\section{Definitions \progressbar[filledcolor=green]{0}}
-
-\subsection{Ontology \progressbar[filledcolor=green]{0}}
-
-Ontologies are a way of organizing knowledge. They make it possible to structure a domain in a way, that it can be used in a technical project 
-
-\enquote{In computer science, an ontology is a conceptual model specified using some ontology language; this idea was succinctly captured by Gruber in his definition of an ontology as “an explicit specification of a conceptual- isation} \cite{baader2017introduction}
-
-\subsection{Domain \progressbar[filledcolor=green]{0}}
-
-\subsection{Classes \progressbar[filledcolor=green]{0}}
-
-\section{Types of Ontologies \progressbar[filledcolor=green]{0}}
-\subsection{Upper Ontology \progressbar[filledcolor=green]{0}}
-(GFO)
-
-\subsection{Domain Ontology \progressbar[filledcolor=green]{0}}
-Ontologies as Domain Models -> Something special?!
-
-\subsection{Content Ontology \progressbar[filledcolor=green]{0}}
-\url{http://ontologydesignpatterns.org/wiki/Category:ContentOP}
-
-\section{The Open World Assumption \progressbar[filledcolor=green]{0}}
-\section{The Unique Name Assumption \progressbar[filledcolor=green]{0}}
-\section{The Connection to other Ontologies \progressbar[filledcolor=green]{0}}
-
-\section{Ontology Representation \progressbar[filledcolor=green]{0}}
-Model-theoretical Languages, Graph-Based Systems, Frame-Based Systems, Hybrid Systems (see GFO document)
-
-Format: \url{http://www.ksl.stanford.edu/knowledge-sharing/kif/}
-
-An ontology allows the domain knowledge to grow and to be flexible. As already stated above, the core concepts of different \glspl{sco} are very similar. However, different \glspl{sco} may use different vocabulary to describe the same thing, object or process. This creates a requirement for a knowledge system: it has to be extensible and mutable.
-
--> OWL
-
-\chapter{Student Consulting Organizations: Meta Discussion \progressbar[filledcolor=red]{0.3}}
 
 \section{Methodology for the Development of the Ontology \progressbar[filledcolor=green]{0.8}}
 The primary goal of this work is the creation of a particular domain ontology. To achieve this goal, we start with the methodology that is proposed in the documentation \cite{guide-to-ontology} of the ontology editor \link{https://protege.stanford.edu}{\pn{Protégé}}---built and maintained by ontology researchers of \pn{Stanford University}. \cite{musen2015protege}
@@ -284,13 +247,13 @@ To find a starting point for data collection and identify existing ontologies, w
 \begin{mdframed}
 	\textbf{The Idea of Student Consulting Organizations}\\
 	Selecting a career is a very difficult and important choice in a young persons life. University education is closely linked to this choice and entering a specific field often requires a specific degree (\eg to become a lawyer, a student has to pass the bar exam).
-
+	
 	Most universities know this and have set up dedicated offices to offer career advice to their students. They not only help picking a fitting course of studies at the beginning of a university career, but also help the students to aim for a fitting job.
-
+	
 	Doing an internship with a company working in the field the student is interested in, is a widespread recommendation. \cite{CN} It allows for a glimpse into the profession as well as gathering work experience.
-
+	
 	\glspl{sco} offer an option to investigate a career in business consulting, as well as learning the associated skills and getting paid in the process. They offer the students a way to learn about concept like project based work---the modus operandi of consulting companies---, \eg project planning and management, as well as structuring and presentation of information.
-
+	
 	Consulting is a growing \cite{CN} and very diverse \cite{CN} field of work. Since consulting can be applied to any field of business, it is often used as a stepping stone into a career.
 \end{mdframed}
 
@@ -330,22 +293,18 @@ Starting out with the list of terms creates a first-draft/skeleton class hierarc
 
 % TODO: Minimal conceptual modeling opm principle (Model-based system engineering, page 77): minimal methodolgy is best
 
-\section{Related Work \progressbar[filledcolor=green]{0}}
+\section{Related Work and Classification}
 \label{related-work}
 Ontologies are knowledge representers
 \gls{sco} have overlap in two directions: project management and consulting
 PM is a very wide topic that basically has unlimited amount of detail -> needs abstraction
 Part of PM are in itself complex topics: time, problem analysis, ...
 
-
-
-\section{Classification of the Ontology \progressbar[filledcolor=green]{0}}
-\label{classification}
 vocab vs ontology
 
 dcterms\footnote{\texttt{dcterms} is used in the \pn{FOAF} rdf file, \texttt{dct} is used in the \pn{FOAF} documentation.}
 
-\subsection{Relevant Top-Level-Ontologies \progressbar[filledcolor=green]{0}}
+\subsection{Top-Level-Ontologies}
 - BFO %TODO: add note that BFO axioms are extensive and footnotes don't necessarily fully describe a class -> lookup needed
 - DOLCE
 - GFO
@@ -353,7 +312,7 @@ dcterms\footnote{\texttt{dcterms} is used in the \pn{FOAF} rdf file, \texttt{dct
 - BPMN  \cite{2014foisbpmn}
 
 GFO: process, roles and time
-\subsection{Relevant Upper-Domain-Ontologies \progressbar[filledcolor=green]{0}}
+\subsection{Upper-Domain-Ontologies}
 - OWL-S
 - \href{https://en.wikipedia.org/wiki/Suggested_Upper_Merged_Ontology}{SUMO}
 
@@ -364,8 +323,23 @@ External Vocabulary References]{Dan-Brickley2014FOAF-Vocabulary}
 \gls{doap} https://github.com/ewilderj/doap
 \gls{schema}: not really ideal, but useful for general concepts like Person or Organization
 
-\section{General Aspects of Ontology Development \progressbar[filledcolor=green]{0}}
+
+
+\section{Definitions}
+
+\subsection{Ontology}
+\url{http://ontologydesignpatterns.org/wiki/Category:ContentOP}
+
+Ontologies are a way of organizing knowledge. They make it possible to structure a domain in a way, that it can be used in a technical project 
+
+\enquote{In computer science, an ontology is a conceptual model specified using some ontology language; this idea was succinctly captured by Gruber in his definition of an ontology as “an explicit specification of a conceptual- isation} \cite{baader2017introduction}
+
+\subsection{Domain}
+\subsection{Classes}
+
+\section{General Aspects of Ontology Development}
 \label{general-aspects}
+
 \subsection{Keeping Things Simple \progressbar[filledcolor=red]{0.2}}
 \label{keeping-things-simple}
 Polysemy Paper \cite{arapinis2015plea}
@@ -377,7 +351,9 @@ Example: A contract is a document that captures a business agreement. The word "
 
 However, in this ontology the goal is to keep it a simple as possible, since the potential users of this ontology are not necessarily experts.
 
-\subsection{Content Completeness Problem \progressbar[filledcolor=green]{0}}
+\subsection{The Open World Assumption}
+\subsection{The Unique Name Assumption}
+\subsection{Content Completeness Problem}
 The \textit{Content Completeness Problem} states, that an ontology is incapable of containing all the concepts relevant to its users. 
 
 Developing an ontology involves thinking about the correct level of abstraction and making choices on what to focus on. 
@@ -394,7 +370,7 @@ The main goal of consulting companies is in their name: consulting. They are a s
 \subsubsection{IT and Communication Systems}
 IT systems are an essential part of modern business and there are companies where these systems are integral to everything (\eg AI companies). However, in the context of a consulting company they are mainly used to support, supplement, and optimize the already existing processes. Hence, a model of an IT system would not contribute in a meaningful way to the ontology.
 
-\subsection{Time \progressbar[filledcolor=green]{0}}
+\subsection{Time}
 \label{time}
 Implement time abstract -> only needed for processes before/after
 no absolute time
@@ -630,7 +606,7 @@ Patrons are financial and/or ideological supporters of the \gls{sco}: A financia
 	\textbf{Note:} The model says nothing about social status and political power that typically come with ranks and roles, such as being a \gls{co} or advisor, within an organization (\eg a person that holds a rank or role for a long time may still have organizational power after stepping down: \link{https://en.wikipedia.org/wiki/Éminence_grise}{Éminence grise}).
 \end{mdframed}
 
-\subsubsection{Roles in the Project Context \progressbar[filledcolor=red]{0}}
+\subsubsection{Roles in the Project Context}
 \paragraph{Project Team: Member, Leader, Controller}
 A project team in its most basic form consists of team members that are lead by a team leader. Additionally a project controller can be employed to observe and measure the progress of the project, giving feedback on the project work, and helping the team in various capacity where necessary. The controller role is usually played by a person that has gathered experience with projects and sharing them further supports the idea of \gls{sco} by furthering the learning process of the project team members.
 
@@ -738,7 +714,7 @@ Processes are a concept that heavily relies on abstraction. The right level of a
 	\item introduce a non strict ordering?
 \end{compactenum}
 
-\subsubsection{Discreet Events and Liquid Processes \progressbar[filledcolor=green]{0}}
+\subsubsection{Discreet Events and Liquid Processes}
 
 \begin{compactenum}
 \item In addition to that a distinction has to be made between \textit{discreet} events and \textit{liquid} processes. \cite[p. 447]{Russell:2010aa}
@@ -805,26 +781,26 @@ The ontology serves as an abstract description of the \gls{sco} domain. It defin
 \subsection{Who will use and maintain the ontology? \progressbar[filledcolor=green]{1}}
 The users of this ontology are the leadership of \glspl{sco} in Germany as well as the leadership of the \gls{sco} umbrella organizations. The release version coincides with the finalization and grading of this work. If the ontology sees use by the target group, it will be maintained by the author. Access will be publicly provided on a GitHub repository. It is considered a living document, hence not necessarily complete until otherwise stated. Contributions and forks will be possible via the GitHub interface.
 
-\section{Classes \progressbar[filledcolor=red]{0}}
-\subsection{Agent \progressbar[filledcolor=red]{0}}
-\subsubsection{Group \progressbar[filledcolor=red]{0}}
-\subsubsection{Organization \progressbar[filledcolor=red]{0}}
-\subsubsection{Person \progressbar[filledcolor=red]{0}}
-\paragraph{Trainee \progressbar[filledcolor=red]{0}}
-\paragraph{Junior Consultant \progressbar[filledcolor=red]{0}}
-\paragraph{Consultant \progressbar[filledcolor=red]{0}}
-\paragraph{Senior Consultant \progressbar[filledcolor=red]{0}}
+\section{Classes}
+\subsection{Agent}
+\subsubsection{Group}
+\subsubsection{Organization}
+\subsubsection{Person}
+\paragraph{Trainee}
+\paragraph{Junior Consultant}
+\paragraph{Consultant}
+\paragraph{Senior Consultant}
 
-\subsection{Document \progressbar[filledcolor=red]{0}}
+\subsection{Document}
 
-\subsection{Processes \progressbar[filledcolor=red]{0}}
+\subsection{Processes}
 
-\subsubsection{Human Resource Process \progressbar[filledcolor=red]{0}}
-\subsubsection{Project Process \progressbar[filledcolor=red]{0}}
-\subsubsection{Support Processes \progressbar[filledcolor=red]{0}}
-\subsection{Projects \progressbar[filledcolor=red]{0}}
+\subsubsection{Human Resource Process}
+\subsubsection{Project Process}
+\subsubsection{Support Processes}
+\subsection{Projects}
 
-\section{Relations \progressbar[filledcolor=red]{0}}
+\section{Relations}
 
 Syntactic decision: is/has relations
 
@@ -857,17 +833,17 @@ before/after:
 \end{compactitem}
 
 
-\chapter{Conclusion \progressbar[filledcolor=red]{0}}
-\chapter{Further Research \progressbar[filledcolor=red]{0}}
+\chapter{Conclusion}
+\chapter{Further Research}
 
 \appendix
-\chapter{Appendix \progressbar[filledcolor=red]{0}}
-\section{Term Enumeration \progressbar[filledcolor=red]{0}}
+\chapter{Appendix}
+\section{Term Enumeration}
 \label{word-cloud}
 
 \newpage
-\section{Diagrams \progressbar[filledcolor=red]{0}}
-\subsection{General Diagrams \progressbar[filledcolor=red]{0}}
+\section{Diagrams}
+\subsection{General Diagrams}
 % TODO: Add correct relation
 
 \begin{figure}[h]
@@ -884,7 +860,7 @@ before/after:
 
 
 \clearpage
-\subsection{Process Diagrams \progressbar[filledcolor=red]{0}}
+\subsection{Process Diagrams}
 \label{process-diagrams}
 \begin{figure}[h]
 	\caption{Project Process}
@@ -904,7 +880,7 @@ before/after:
 \printbibliography
 
 \newpage
-\section{Ontology Import Links \progressbar[filledcolor=red]{0}}
+\section{Ontology Import Links}
 This work lists different ontologies in the related work section. To import them into the Protégé editor, the following links can be used:
 
 \begin{asparadesc}
