@@ -16,14 +16,12 @@
 
 ## Folder Organisation
 
-- **Organisation**: Collection of files that are concerned with the organisation of the work (e.g. meeting notes, examination regulations of the University Leipzig).
+- **Organisation**: Collection of files that are concerned with the organisation of the work (e.g. thesis aplication,  examination regulations of the University Leipzig).
 - **Sources**: The read sources of the work (papers, etc.)
 - **Work**: The work itself as LaTeX source files.
 
 ## Used Tools
-- LaTeX: Typesetting system. Used Packages:
-	- Tikz/tikz-uml: LaTeX UML diagrams drawing solution.
-	- KOMA-Script: LaTeX script collection.
+- LaTeX: Typesetting system.
 - [TeXstudio](https://www.texstudio.org): LaTeX editor.
 - [Protégé](https://protege.stanford.edu): Ontology editor.
 - GitHub Actions: Continuous Integration
