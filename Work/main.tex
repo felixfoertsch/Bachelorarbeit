@@ -1,7 +1,7 @@
 % !TeX encoding = UTF-8
 % !TeX spellcheck = en_US
 
-% Document Version: v1
+% Document Version: v8
 
 %*******************************************************************************
 %* Work Configuration
@@ -38,7 +38,7 @@
 \KOMAoptions{bibliography=leveldown}
 
 % Table of Contents
-\setcounter{tocdepth}{\paragraphtocdepth}
+%\setcounter{tocdepth}{\paragraphtocdepth}
 
 % SubSubsection numbering
 \setcounter{secnumdepth}{5}
@@ -183,10 +183,10 @@ The goal of this work is the description of an abstract \gls{sco}. It extracts t
 
 \section{Deliverables \progressbar[filledcolor=green]{1}}
 The output of this work are two documents:
-\begin{compactitem}
+\begin{enumerate}
 	\item This thesis as a documentation and explanation of the ontology development process including but not limited to: methodology, background information, decisions in regards to the ontology, etc. 
 	\item The ontology document as a representation of the domain knowledge.
-\end{compactitem}
+\end{enumerate}
 
 \section{Out of Scope \progressbar[filledcolor=red]{0.1}}
 \begin{compactenum}
@@ -200,58 +200,18 @@ The main motivation of this work is documenting the domain knowledge and making 
 
 One particular use case in the intersection between knowledge management and software projects, is the creation of a tool that helps with founding new \glspl{sco} at universities where no \gls{sco} currently exists. Creating an organization without guidance is a daunting task; having a repository available, that structures and describes the elemental components of such an organization, can be a great help.
 
-\chapter{Ontologies \progressbar[filledcolor=green]{0}}
+\chapter{Student Consulting Organizations: Meta Discussion \progressbar[filledcolor=red]{0.3}}
+Ontologies have many applications in various fields. They are used in artificial intelligence research, database design and integration, semantic web, and many more. \cite[p.\,1]{Gomez-Perez:2004aa} One of these applications is knowledge representation.
+
 \begin{quote}
-	\enquote{Knowledge Representation is the field of Artificial Intelligence that focuses on the design of formalisms that are both epistemologically and computationally adequate for expressing knowledge about a particular domain.} \cite[p. XV, Preface]{baader2017introduction}
+	\enquote{Knowledge Representation is the field of Artificial Intelligence that focuses on the design of formalisms that are both epistemologically and computationally adequate for expressing knowledge about a particular domain.} \cite[p.\,XV, Preface]{baader2017introduction}
 \end{quote}
 
-This work develops one specific domain ontology.
+This work is concerned with the knowledge representation of one particular domain: \glspl{sco}. The following section describes how we approach the development of this particular ontology, define the necessary vocabulary and relations between the terms, and structurally explore the domain.
 
-Ontology development is a complex subject. To avoid ambiguity it is important to define how the terms domain and ontology are used.
+\section{Methodology for the Development of the Ontology \progressbar[filledcolor=green]{0.95}}
+% TODO: Minimal conceptual modeling opm principle (Model-based system engineering, page 77): minimal methodolgy is best
 
-Additionally this section touches on ontology and ontology-engineering research to reflect on some general challenges that occur during ontology development.
-
-There are numerous definitions of the term ontology available in literature \cite[p. 4, section 1.1.2.1]{loebe2015ontological} and there is no perfectly unified understanding of the term \cite{Hesse_2014}.
-
-
-\section{Definitions \progressbar[filledcolor=green]{0}}
-
-\subsection{Ontology \progressbar[filledcolor=green]{0}}
-
-Ontologies are a way of organizing knowledge. They make it possible to structure a domain in a way, that it can be used in a technical project 
-
-\enquote{In computer science, an ontology is a conceptual model specified using some ontology language; this idea was succinctly captured by Gruber in his definition of an ontology as “an explicit specification of a conceptual- isation} \cite{baader2017introduction}
-
-\subsection{Domain \progressbar[filledcolor=green]{0}}
-
-\subsection{Classes \progressbar[filledcolor=green]{0}}
-
-\section{Types of Ontologies \progressbar[filledcolor=green]{0}}
-\subsection{Upper Ontology \progressbar[filledcolor=green]{0}}
-(GFO)
-
-\subsection{Domain Ontology \progressbar[filledcolor=green]{0}}
-Ontologies as Domain Models -> Something special?!
-
-\subsection{Content Ontology \progressbar[filledcolor=green]{0}}
-\url{http://ontologydesignpatterns.org/wiki/Category:ContentOP}
-
-\section{The Open World Assumption \progressbar[filledcolor=green]{0}}
-\section{The Unique Name Assumption \progressbar[filledcolor=green]{0}}
-\section{The Connection to other Ontologies \progressbar[filledcolor=green]{0}}
-
-\section{Ontology Representation \progressbar[filledcolor=green]{0}}
-Model-theoretical Languages, Graph-Based Systems, Frame-Based Systems, Hybrid Systems (see GFO document)
-
-Format: \url{http://www.ksl.stanford.edu/knowledge-sharing/kif/}
-
-An ontology allows the domain knowledge to grow and to be flexible. As already stated above, the core concepts of different \glspl{sco} are very similar. However, different \glspl{sco} may use different vocabulary to describe the same thing, object or process. This creates a requirement for a knowledge system: it has to be extensible and mutable.
-
--> OWL
-
-\chapter{Student Consulting Organizations: Meta Discussion \progressbar[filledcolor=red]{0.3}}
-
-\section{Methodology for the Development of the Ontology \progressbar[filledcolor=green]{0.8}}
 The primary goal of this work is the creation of a particular domain ontology. To achieve this goal, we start with the methodology that is proposed in the documentation \cite{guide-to-ontology} of the ontology editor \link{https://protege.stanford.edu}{\pn{Protégé}}---built and maintained by ontology researchers of \pn{Stanford University}. \cite{musen2015protege}
 
 It involves the following steps:
@@ -265,7 +225,7 @@ It involves the following steps:
 	\item create instances.
 \end{compactenum}
 
-It is important to note, that even though these steps look like they should be performed sequentially, this is not the case. Instead, the ontology starts out as a draft and is refined during development \cite[Section 3, Introduction]{guide-to-ontology}, following the iterative approach, that is common for ontology development. \cite[p. 158, section 1.5.1]{stuckenschmidt2010ontologien} This quickly becomes apparent during the process of answering the suggested \pn{Competency Questions} to (1) determine the domain and scope of the ontology \cite[Section 3, Step 1]{guide-to-ontology} and taking into account (2) existing ontologies. And this also is true for steps (3) to (6). Therefore the steps are grouped together to make the overall structure of this work easier to follow.
+It is important to note, that even though these steps look like they should be performed sequentially, this is not the case. Instead, the ontology starts out as a draft and is refined during development \cite[Section 3, Introduction]{guide-to-ontology}, following the iterative approach, that is common for ontology development. \cite[p.\,158, section 1.5.1]{stuckenschmidt2010ontologien} This quickly becomes apparent during the process of answering the suggested \pn{Competency Questions} to (1) determine the domain and scope of the ontology \cite[Section 3, Step 1]{guide-to-ontology} and taking into account (2) existing ontologies. And this also is true for steps (3) to (6). Therefore the steps are grouped together to make the overall structure of this work easier to follow.
 
 The phases of the methodology are discussed in more detail in the following two sections and group the proposed steps as follows:
 
@@ -276,7 +236,7 @@ The phases of the methodology are discussed in more detail in the following two 
 
 The last step, (7) the creation of instances, is omitted in this work. It is only really relevant if the ontology is used to describe one specific \gls{sco}. \cite{CN} However, this ontology is operating on a higher level of abstraction, trying to describe a more general case.
 
-\subsection{Research Phase \progressbar[filledcolor=green]{0.9}}
+\subsection{Research Phase \progressbar[filledcolor=green]{1}}
 To our understanding, the main goal of the first part of the methodology is the creation of a foundation for the ontology. It should have a clearly defined scope and its limits should be set. Additionally the recommended reuse of other ontologies helps creating a web of linked knowledge and reduces the amount of duplicate work.
 
 To find a starting point for data collection and identify existing ontologies, we take an intuitive first look at \glspl{sco} and their driving factor:
@@ -287,14 +247,14 @@ To find a starting point for data collection and identify existing ontologies, w
 
 	Most universities know this and have set up dedicated offices to offer career advice to their students. They not only help picking a fitting course of studies at the beginning of a university career, but also help the students to aim for a fitting job.
 
-	Doing an internship with a company working in the field the student is interested in, is a widespread recommendation. \cite{CN} It allows for a glimpse into the profession as well as gathering work experience.
+	Doing an internship with a company working in the field the student is interested in, is a widespread recommendation. It allows for a glimpse into the profession as well as gathering work experience.
 
 	\glspl{sco} offer an option to investigate a career in business consulting, as well as learning the associated skills and getting paid in the process. They offer the students a way to learn about concept like project based work---the modus operandi of consulting companies---, \eg project planning and management, as well as structuring and presentation of information.
 
-	Consulting is a growing \cite{CN} and very diverse \cite{CN} field of work. Since consulting can be applied to any field of business, it is often used as a stepping stone into a career.
+	Consulting is a very diverse field of work. Since consulting can be applied to any field of business, it can be used as a stepping stone into a career.
 \end{mdframed}
 
-Observing this intuitive perspective, we can see, that \glspl{sco} are connected to other knowledge domains in various ways: They are a type of social organization and thus are driven by people and processes. Organizations and in extension their processes have actors with responsibilities ( \cite{RACI}). This is a hint that the concept of roles has to be a part of the ontology. \glspl{sco} can be generally considered a form of business and therefore business aspects have to be taken into account. The fact that they do consulting work, creates a connection into the domain of (business) consulting and the domain of projects, since consulting work is project based.
+Observing this intuitive perspective, we can see, that \glspl{sco} are connected to other knowledge domains in various ways: They are a type of social organization and thus are driven by people and processes. Organizations and in extension their processes have actors with responsibilities. This is a hint that the concept of roles might to be a part of the ontology. \glspl{sco} can be generally considered a form of business and therefore business aspects have to be taken into account. The fact that they do consulting work, creates a connection into the domain of (business) consulting and the domain of projects, since consulting work is project based.
 
 This intuitive approach generates a the starting point for the research:
 \begin{compactitem}
@@ -305,47 +265,41 @@ This intuitive approach generates a the starting point for the research:
 
 Furthermore it implies some more general research topics:
 \begin{compactitem}
-	\item Implications of other general, upper-level-, and top-level- ontologies, \eg \gls{gfo}, \gls{bfo}, \gls{gist}, .
+	\item Implications of other general, upper-level, and top-level ontologies, \eg \gls{gfo}, \gls{bfo}, \gls{gist}.
 	\item Theory of description logic and ontologies, \eg modeling of roles and processes.
 \end{compactitem}
 
-The results of the Research Phase influence all parts of this work. However, some links are evident: The identified Related Work is discussed in section \ref{related-work}. The implications of higher-level ontologies and the classification can be found in section \ref{classification}. The solutions to challenges of modeling the domain are discussed in sections \ref{general-aspects} and \ref{domain-aspects}.
+The results of this phase influence all parts of this work. However, some links are evident: The identified Related Work and the implications of higher-level ontologies as well as the classification can be found in section \ref{related-work}. The solutions to challenges of modeling the domain are discussed in sections \ref{general-aspects} and \ref{domain-aspects}.
 
-Defining the scope of the ontology is the formal step that concludes the Research Phase. This work accomplishes this by answering the Competency Questions. Since the questions can be considered a part of the ontology, they and their corresponding answers can be found as part of the ontology in section \ref{competency-questions}.
+Defining the scope of the ontology is the formal step that concludes the \textit{Research Phase}. This work accomplishes this by answering the Competency Questions. Since the questions can be considered a part of the ontology, they and their corresponding answers can be found as part of the ontology in section \ref{competency-questions}.
 
-\subsection{Analysis and Synthesis Phase \progressbar[filledcolor=green]{0.7}}
+\subsection{Analysis and Synthesis Phase \progressbar[filledcolor=green]{1}}
 \label{analysis}
 The majority of this work happens during the Analysis and Synthesis Phase. Its goal is the review, interpretation, and structuring of the collected data; ultimately generating an ontology in the target format: OWL.
 
-Based on the Protégé-methodology, the first two steps of this phase are: (3) the creation of an enumeration of terms that are important for the domain. And (4) the translation of the terms into the backbone of every ontology: the class hierarchy. Both are rooted in the results of the Research Phase and further supplemented by expert knowledge.
+Based on the Protégé-methodology, the first two steps of this phase are: (3) the creation of an enumeration of terms that are relevant for the domain. And (4) the translation of the terms into the backbone of every ontology: the class hierarchy. Both are rooted in the results of the previous phase and further supplemented by expert knowledge.
 
-At the core of this process is the conversion of available implicit knowledge into explicit knowledge. This task is generally not trivial, because the class hierarchy is a construct that already has an important relation built in: \relation{subclassOf}. This means that sub-classing already gives meaning to the terms in the hierarchy. It is therefore important to only introduce a sub-class relationship, if it is correct for the representation of the domain. This makes it mandatory to think about the connection between different terms.
+At the core of this process is the conversion of available implicit knowledge into explicit knowledge. This task is generally not trivial, because the class hierarchy is a construct that already has an semantic relation built in: \relation{subclassOf}. This means that sub-classing already gives meaning to the terms in the hierarchy. It is therefore key, to only introduce a sub-class relationship, if it is correct for the representation of the domain. This makes it mandatory to think about the connection between different terms.
 
-To help with this thought process, we introduce a creative step: We start with a brainstorming to create a domain vocabulary collection in the form of a word cloud. This word cloud can then be represented by a graph, using the terms as vertices and display association between terms (\eg connected ideas or concepts) with edges. We try to use existing vocabulary as much as possible, to prepare the links into other domains that will be done in the later stages of development. This word cloud helps to create a starting point for the more rigorous class hierarchy.
+To help with this thought process, we introduce a creative step: We start with a brainstorming to create a domain vocabulary collection in the form of a \textit{word cloud}. This simple first step involves writing down all the terms that might have something to do with the ontology. We then can transition this word cloud to a \textit{word graph}, by using the terms as vertices and implement associations between terms (\eg connected ideas or concepts) using the edges. We try to keep the word graph as simple as possible by focusing on the important connections and use existing vocabulary to prepare the links into other domains that will be done in the later stages of development.
 % TODO: formally create word cloud
 
-Starting out with the list of terms creates a first-draft/skeleton class hierarchy containing high-level classes and trivial sub-classes (\eg high-level class \textbf{Process} and all the identified processes as trivial sub-classes). Next is the organization and 
+To progress from the word graph to the more rigorous class hierarchy, we transcribe the vertices into a first-draft/skeleton class hierarchy---using the Protégé editor---, starting with the most influential concepts. These can be identified by the amount of edges connecting them to other concepts; more connections indicate higher influence. Furthermore we can identify and assign trivial sub-classes during that process, by evaluating the quality of the edge connections. Fewer connections might indicate a more direct relationship between two terms. After these steps, the draft hierarchy contains mostly high-level classes and trivial sub-classes (\eg high-level class \textbf{Process} and all the identified processes as trivial sub-classes). It can then be further modified, refined, and polished by adding clarifications, delimitations, definitions, and descriptions to all terms as well as relations within the class hierarchy. 
 
+The output of final steps is the first major version of the ontology in the form of an OWL file, which completes the \textit{Analysis and Synthesis Phase} and also the second deliverable of this work. We document our most interesting observations during that process as part of this work.
 
-
-% TODO: Minimal conceptual modeling opm principle (Model-based system engineering, page 77): minimal methodolgy is best
-
-\section{Related Work \progressbar[filledcolor=green]{0}}
+\section{Related Work and Classification}
 \label{related-work}
 Ontologies are knowledge representers
 \gls{sco} have overlap in two directions: project management and consulting
 PM is a very wide topic that basically has unlimited amount of detail -> needs abstraction
 Part of PM are in itself complex topics: time, problem analysis, ...
 
-
-
-\section{Classification of the Ontology \progressbar[filledcolor=green]{0}}
-\label{classification}
 vocab vs ontology
 
 dcterms\footnote{\texttt{dcterms} is used in the \pn{FOAF} rdf file, \texttt{dct} is used in the \pn{FOAF} documentation.}
 
-\subsection{Relevant Top-Level-Ontologies \progressbar[filledcolor=green]{0}}
+\subsection{Top-Level-Ontologies}
 - BFO %TODO: add note that BFO axioms are extensive and footnotes don't necessarily fully describe a class -> lookup needed
 - DOLCE
 - GFO
@@ -353,7 +307,7 @@ dcterms\footnote{\texttt{dcterms} is used in the \pn{FOAF} rdf file, \texttt{dct
 - BPMN  \cite{2014foisbpmn}
 
 GFO: process, roles and time
-\subsection{Relevant Upper-Domain-Ontologies \progressbar[filledcolor=green]{0}}
+\subsection{Upper-Domain-Ontologies}
 - OWL-S
 - \href{https://en.wikipedia.org/wiki/Suggested_Upper_Merged_Ontology}{SUMO}
 
@@ -364,8 +318,25 @@ External Vocabulary References]{Dan-Brickley2014FOAF-Vocabulary}
 \gls{doap} https://github.com/ewilderj/doap
 \gls{schema}: not really ideal, but useful for general concepts like Person or Organization
 
-\section{General Aspects of Ontology Development \progressbar[filledcolor=green]{0}}
+
+
+\section{Definitions}
+
+\subsection{Ontology}
+There are numerous definitions of the term ontology available in literature \cite[p.\,4, section 1.1.2.1]{loebe2015ontological} and there is no perfectly unified understanding of the term \cite{Hesse_2014}.
+
+\url{http://ontologydesignpatterns.org/wiki/Category:ContentOP}
+
+Ontologies are a way of organizing knowledge. They make it possible to structure a domain in a way, that it can be used in a technical project 
+
+\enquote{In computer science, an ontology is a conceptual model specified using some ontology language; this idea was succinctly captured by Gruber in his definition of an ontology as “an explicit specification of a conceptual- isation} \cite{baader2017introduction}
+
+\subsection{Domain}
+\subsection{Classes}
+
+\section{General Aspects of Ontology Development}
 \label{general-aspects}
+
 \subsection{Keeping Things Simple \progressbar[filledcolor=red]{0.2}}
 \label{keeping-things-simple}
 Polysemy Paper \cite{arapinis2015plea}
@@ -377,7 +348,9 @@ Example: A contract is a document that captures a business agreement. The word "
 
 However, in this ontology the goal is to keep it a simple as possible, since the potential users of this ontology are not necessarily experts.
 
-\subsection{Content Completeness Problem \progressbar[filledcolor=green]{0}}
+\subsection{The Open World Assumption}
+\subsection{The Unique Name Assumption}
+\subsection{Content Completeness Problem}
 The \textit{Content Completeness Problem} states, that an ontology is incapable of containing all the concepts relevant to its users. 
 
 Developing an ontology involves thinking about the correct level of abstraction and making choices on what to focus on. 
@@ -394,7 +367,7 @@ The main goal of consulting companies is in their name: consulting. They are a s
 \subsubsection{IT and Communication Systems}
 IT systems are an essential part of modern business and there are companies where these systems are integral to everything (\eg AI companies). However, in the context of a consulting company they are mainly used to support, supplement, and optimize the already existing processes. Hence, a model of an IT system would not contribute in a meaningful way to the ontology.
 
-\subsection{Time \progressbar[filledcolor=green]{0}}
+\subsection{Time}
 \label{time}
 Implement time abstract -> only needed for processes before/after
 no absolute time
@@ -630,7 +603,7 @@ Patrons are financial and/or ideological supporters of the \gls{sco}: A financia
 	\textbf{Note:} The model says nothing about social status and political power that typically come with ranks and roles, such as being a \gls{co} or advisor, within an organization (\eg a person that holds a rank or role for a long time may still have organizational power after stepping down: \link{https://en.wikipedia.org/wiki/Éminence_grise}{Éminence grise}).
 \end{mdframed}
 
-\subsubsection{Roles in the Project Context \progressbar[filledcolor=red]{0}}
+\subsubsection{Roles in the Project Context}
 \paragraph{Project Team: Member, Leader, Controller}
 A project team in its most basic form consists of team members that are lead by a team leader. Additionally a project controller can be employed to observe and measure the progress of the project, giving feedback on the project work, and helping the team in various capacity where necessary. The controller role is usually played by a person that has gathered experience with projects and sharing them further supports the idea of \gls{sco} by furthering the learning process of the project team members.
 
@@ -656,7 +629,7 @@ The strength of the role concept is its flexibility. A player can play multiple 
 
 
 \subsection{Processes \progressbar[filledcolor=yellow]{0.4}}
-Processes are a helpful concept when describing organizations: They are created to achieve a goal and its processes are the steps needed to reach that goal. \cite[p. 5, Definition 1.1]{Weske:2019aa} In theory, every organization can be decomposed to a sequence of single activities, which, when executed correctly and in the correct order, terminate in reaching the goal of the organization.
+Processes are a helpful concept when describing organizations: They are created to achieve a goal and its processes are the steps needed to reach that goal. \cite[p.\,5, Definition 1.1]{Weske:2019aa} In theory, every organization can be decomposed to a sequence of single activities, which, when executed correctly and in the correct order, terminate in reaching the goal of the organization.
 
 Since processes are a commonly used concept in the business world, it is not surprising, that many different methods and frameworks for modeling them have been developed. Their output often are visual representations of all workflows that make up an organization. Combining process models with goals and measurements makes them a powerful tool for optimization and quality control. For example, ISO 9001 is an industry standard that uses a process approach as the foundation of measuring quality. \cite{iso-process-approach} Because process documentation contains a lot of data about organizations, it is a valuable source for ontology development.
 
@@ -738,10 +711,10 @@ Processes are a concept that heavily relies on abstraction. The right level of a
 	\item introduce a non strict ordering?
 \end{compactenum}
 
-\subsubsection{Discreet Events and Liquid Processes \progressbar[filledcolor=green]{0}}
+\subsubsection{Discreet Events and Liquid Processes}
 
 \begin{compactenum}
-\item In addition to that a distinction has to be made between \textit{discreet} events and \textit{liquid} processes. \cite[p. 447]{Russell:2010aa}
+\item In addition to that a distinction has to be made between \textit{discreet} events and \textit{liquid} processes. \cite[p.\,447]{Russell:2010aa}
 \item Processes are an immaterial concept that is strongly connected to relations of relative time, such as \relation{before} and \relation{after}. 
 \end{compactenum}
 
@@ -805,26 +778,26 @@ The ontology serves as an abstract description of the \gls{sco} domain. It defin
 \subsection{Who will use and maintain the ontology? \progressbar[filledcolor=green]{1}}
 The users of this ontology are the leadership of \glspl{sco} in Germany as well as the leadership of the \gls{sco} umbrella organizations. The release version coincides with the finalization and grading of this work. If the ontology sees use by the target group, it will be maintained by the author. Access will be publicly provided on a GitHub repository. It is considered a living document, hence not necessarily complete until otherwise stated. Contributions and forks will be possible via the GitHub interface.
 
-\section{Classes \progressbar[filledcolor=red]{0}}
-\subsection{Agent \progressbar[filledcolor=red]{0}}
-\subsubsection{Group \progressbar[filledcolor=red]{0}}
-\subsubsection{Organization \progressbar[filledcolor=red]{0}}
-\subsubsection{Person \progressbar[filledcolor=red]{0}}
-\paragraph{Trainee \progressbar[filledcolor=red]{0}}
-\paragraph{Junior Consultant \progressbar[filledcolor=red]{0}}
-\paragraph{Consultant \progressbar[filledcolor=red]{0}}
-\paragraph{Senior Consultant \progressbar[filledcolor=red]{0}}
+\section{Classes}
+\subsection{Agent}
+\subsubsection{Group}
+\subsubsection{Organization}
+\subsubsection{Person}
+\paragraph{Trainee}
+\paragraph{Junior Consultant}
+\paragraph{Consultant}
+\paragraph{Senior Consultant}
 
-\subsection{Document \progressbar[filledcolor=red]{0}}
+\subsection{Document}
 
-\subsection{Processes \progressbar[filledcolor=red]{0}}
+\subsection{Processes}
 
-\subsubsection{Human Resource Process \progressbar[filledcolor=red]{0}}
-\subsubsection{Project Process \progressbar[filledcolor=red]{0}}
-\subsubsection{Support Processes \progressbar[filledcolor=red]{0}}
-\subsection{Projects \progressbar[filledcolor=red]{0}}
+\subsubsection{Human Resource Process}
+\subsubsection{Project Process}
+\subsubsection{Support Processes}
+\subsection{Projects}
 
-\section{Relations \progressbar[filledcolor=red]{0}}
+\section{Relations}
 
 Syntactic decision: is/has relations
 
@@ -857,17 +830,17 @@ before/after:
 \end{compactitem}
 
 
-\chapter{Conclusion \progressbar[filledcolor=red]{0}}
-\chapter{Further Research \progressbar[filledcolor=red]{0}}
+\chapter{Conclusion}
+\chapter{Further Research}
 
 \appendix
-\chapter{Appendix \progressbar[filledcolor=red]{0}}
-\section{Term Enumeration \progressbar[filledcolor=red]{0}}
+\chapter{Appendix}
+\section{Term Enumeration}
 \label{word-cloud}
 
 \newpage
-\section{Diagrams \progressbar[filledcolor=red]{0}}
-\subsection{General Diagrams \progressbar[filledcolor=red]{0}}
+\section{Diagrams}
+\subsection{General Diagrams}
 % TODO: Add correct relation
 
 \begin{figure}[h]
@@ -884,7 +857,7 @@ before/after:
 
 
 \clearpage
-\subsection{Process Diagrams \progressbar[filledcolor=red]{0}}
+\subsection{Process Diagrams}
 \label{process-diagrams}
 \begin{figure}[h]
 	\caption{Project Process}
@@ -904,7 +877,7 @@ before/after:
 \printbibliography
 
 \newpage
-\section{Ontology Import Links \progressbar[filledcolor=red]{0}}
+\section{Ontology Import Links}
 This work lists different ontologies in the related work section. To import them into the Protégé editor, the following links can be used:
 
 \begin{asparadesc}
