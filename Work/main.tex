@@ -15,16 +15,19 @@
 %*******************************************************************************
 \usepackage[english]{babel}
 \usepackage[urldate=iso]{biblatex}
-\usepackage{csquotes}
+\usepackage{xcolor} % Für Farben im Text
+\usepackage{xstring} % String-Manipulation; wird von anderen Paketen oft verwendet
+\usepackage{fontspec} % Einstellungen für Schriftarten (zB lokales Laden)
+\usepackage{csquotes} % Verwaltet Anführungsstriche
 \usepackage{hyperref} % Hyperlink-Helfer
 \usepackage{paralist} % Erlaubt verschiedene neue Listen-Umgebungen (zB inparaenum)
-\usepackage{mdframed} % Rahmen-Umgebung
+\usepackage{mdframed} % Erlaubt das einfügen von Kästen (zB Einrahmen von Anmerkungen)
 \usepackage{lscape} % Querformat-Umgebung
 \usepackage[toc, section=section, numberedsection=autolabel]{glossaries} % Glossar
 \usepackage[titletoc]{appendix}
 \usepackage{progressbar}
-\usepackage{xstring}
-\usepackage{fontspec}
+\usepackage{tikz}
+
 
 %*******************************************************************************
 %* Configuration
@@ -291,33 +294,47 @@ To progress from the word graph to the more rigorous class hierarchy, we transcr
 The output of final steps is the first major version of the ontology in the form of an OWL file, which completes the \textit{Analysis and Synthesis Phase} and also the second deliverable of this work. We document our most interesting observations during that process as part of this work.
 
 \section{Definitions}
-Humans use language---and more specifically words---to describes their surroundings, but also to describe more difficult topics like ontologies. However, the use of natural language can become a limiting factor depending on the ambiguity and complexity of concepts. Definitions are a tool for avoiding confusion that arises from un-clear use of semantics. Hence, we discuss and define some key terms that are used throughout this work to ensure a common understanding, before diving deeper into the research phase.
+Depending on the ambiguity and complexity of concepts, natural language can quickly become a limiting factor in terms of precision. Definitions are a tool for avoiding confusion that arises from these unclear semantics. In this section we define some key terms that are used throughout this work to ensure a common understanding.
 
-\subsection{Vocabulary  \progressbar[filledcolor=red]{0.3}}
-Philosophically ontologies are about describing the world.
+\subsection{Vocabulary  \progressbar[filledcolor=green]{1}}
+Commonly, the term \textit{vocabulary} is used to describe the collection of all words one specific person knows. But this already implies that one person's vocabulary can be different to someone else's. Furthermore, the word \textit{vocabulary} itself is also overloaded, as the dictionary definition (see appendix \ref{dictionary}) shows. Depending on context the described collection changes. \cite{mw-vocabulary}
 
-We use words to form ontologies, but words are a limiting factor.
+In the context of ontologies the term \textit{vocabulary} is used interchangeably with \textit{alphabet} and \textit{signature}. On an abstract level it simply describes a set of symbols. \cite[p.\,46]{loebe2015ontological} Transferred to this work, \textit{vocabulary} is the collection term for all class names (see section \ref{classes}) and relation names (see section \ref{relations}), which are mainly words from the English language in conjunction with the underscore (\enquote{\_}) as delimitation symbol. The word choices draw inspiration or are translated from the \gls{hc} process documentation and our experience with different \glspl{sco}, as well as the business world. Some of these words are not special to the domain: \textbf{Organization}, for example, is not only used in many different related ontologies, but also very common in natural language.
 
-Ontology engineers use words to describe the classes and relations that occur in an ontology and the collection of all these words form its vocabulary. In its most basic form vocabulary does not necessarily have to be structured. It simply can be a collection 
-
-The terms used in this work primarily draw inspiration from the \gls{hc} process documentation and our experience with different \glspl{sco}. However, many terms are not special to the domain: \textbf{Organization}, for example, is not only used in many different related ontologies, but also very common in natural language.
-
+To ensure adequate precision, each entry in the vocabulary has a few guaranteed properties. A \texttt{rdfs:label} to define its name in both English and German. A \texttt{rdfs:description} in English, akin to a dictionary explanation text. As well as a \texttt{rdfs:example} where examples help describing the word more clearly.
 
 \subsection{Ontology}
 There are numerous definitions of the term ontology available in literature \cite[p.\,4, section 1.1.2.1]{loebe2015ontological} and there is no perfectly unified understanding of the term \cite{Hesse_2014}.
 
-\url{http://ontologydesignpatterns.org/wiki/Category:ContentOP}
+Since this work is not a discourse about definitions, we will define our usage of the term, whilst delimiting it against other definitions.
+
 
 Ontologies are a way of organizing knowledge. They make it possible to structure a domain in a way, that it can be used in a technical project 
 
 \enquote{In computer science, an ontology is a conceptual model specified using some ontology language; this idea was succinctly captured by Gruber in his definition of an ontology as “an explicit specification of a conceptual- isation} \cite{baader2017introduction}
 
+There also exist many different types of ontologies, depending on their use case. It is not easy to exactly differenciate types from each other, since it's possible to move between levels of abstraction within one ontology. A top-level ontology does not necessary exclusively contain top-level elements. It might venture a little bit deeper to solve a specific problem.
+
+For this work, the notable types 
+
+\url{http://ontologydesignpatterns.org/wiki/Category:ContentOP}
+
+
+\subsubsection{Classes}
+\label{classes}
+The class hierarchy collects all the classes in a structured manner. It has a root element from which all classes inherit their basic property.
+
+It is the and provides the backbone of the ontology. It contains the description 
+
+\subsubsection{Properties}
+\subsubsection{Relations}
+\label{relations}
+
 \subsection{Domain}
-\subsection{Classes}
 
 \section{Related Work and Classification}
 \label{related-work}
-As already discussed previously, the \gls{sco} domain touches on various other fields. Related source material could be found in other ontologies, \gls{pm} models and concepts, organizational theory, process documentation and models, established vocabulary, and so forth. The challenge lies in identifying the most useful information and merge the input from many different sources to construct the ontology.
+As already discussed previously, the \gls{sco} domain touches on various other knowledge areas. Related source material could be found in other ontologies, \gls{pm} models and concepts, organizational theory, process documentation and models, established vocabulary, and so forth. The challenge lies in identifying the most useful information and merge the input from many different sources to construct the ontology.
 
 This is made harder by the vastness of some related fields. \gls{pm}, for example, is a central topic for our domain and it is easy to find many different books, theories, and models about it on the market. It is also an complex, overarching, and very general subject matter. Part of its domain are concepts of complex nature like time, problem analysis, and project structuring. If we were to focus too much on this aspect within our ontology, it would easily dominate it and the ultimate goal of our ontology would be  missed. It is therefore imperative to identify the correct level of abstraction and connect the related work in an adequate manner.
 
@@ -760,7 +777,7 @@ For example: German law requires every company to pay taxes on their earnings. D
 \subsubsection{Implementation of Processes in this Work \progressbar[filledcolor=red]{0.2}}
 They intuitively have a start, duration, and end. 
 
-Since the focus of the ontology is on simplicity, we decide to use a single  class \class{Process} as root for all processes in conjunction with the \relation{isProcessPartOf} relation. This method utilizes the core concepts of ontologies, classes and relations, and avoids encoding extra information in unconventional ways. To compensate for the resulting un-intuitive flat class hierarchy, we add diagrams to describe the processes and their relationships graphically (see section \ref{process-diagrams}).
+Since the focus of the ontology is on simplicity, we decide to use a single  class \class{Process} as root for all processes in conjunction with the \relation{isProcessPartOf} relation. This method utilizes the core concepts of ontologies, classes and relations, and avoids encoding extra information in unconventional ways. To compensate for the resulting un-intuitive flat class hierarchy, we add diagrams to describe the processes and their relationships graphically (see appendix \ref{process-diagrams}).
 
 %\paragraph{Intuitive Look}
 The primary goal of an \gls{sco} is teaching students project work. They reach this goal by training their members and offering them opportunities to work on real-world projects. Looking at this from a high-level process perspective, this can be boiled down to distinct steps that have to be performed by the organization:
@@ -905,6 +922,36 @@ before/after:
 \printnoidxglossaries
 
 \printbibliography
+
+\newpage
+
+\section{Dictionary Definitions}
+\label{dictionary}
+\begin{mdframed}[%
+	linewidth=1pt,%
+	frametitlerule=true,%
+	frametitlebackgroundcolor=gray!20,%
+	innertopmargin=\topskip,%
+	frametitlefont=\normalfont,%
+	frametitle={{\textbf{vocabulary}} {\scriptsize\textsc{noun \hfill Merriam-Webster}}}%
+	]
+	
+	{\small vo·​cab·​u·​lary \textit{\textcolor{teal}{plural}} vocabularies
+		\begin{compactenum}
+			\item a list or collection of words or of words and phrases usually alphabetically arranged and explained or defined : LEXICON \\
+			\textcolor{gray}{\enquote{\textit{The vocabulary for the week is posted online every Monday.}}}
+			\item 
+			\begin{compactenum}
+				\item a sum or stock of words employed by a language, group, individual, or work or in a field of knowledge \\
+				\textcolor{gray}{\enquote{\textit{a child with a large vocabulary}}, \enquote{\textit{the vocabulary of physicians}}, \enquote{\textit{a writer known for employing a rich vocabulary}}}
+				\item a list or collection of terms or codes available for use (as in an indexing system) \\
+				\textcolor{gray}{\enquote{\textit{… the oldest Sumerian cuneiform writing could not render normal prose but was a mere telegraphic shorthand, whose vocabulary was restricted to names, numerals, units of measure, words for objects counted, and a few adjectives.}} --- \textsc{Jared Diamon}}
+			\end{compactenum}
+			\item a supply of expressive techniques or devices (as of an art form) \\
+			\textcolor{gray}{\enquote{\textit{an impressive musical vocabulary}}}
+		\end{compactenum}
+	}
+\end{mdframed}
 
 \newpage
 \section{Ontology Import Links}
