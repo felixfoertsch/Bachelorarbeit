@@ -28,7 +28,6 @@
 \usepackage{progressbar}
 \usepackage{tikz}
 
-
 %*******************************************************************************
 %* Configuration
 %*******************************************************************************
@@ -81,6 +80,7 @@
 \newcommand{\Eg}{E.\,g.\ }
 \newcommand{\class}[1]{\texttt{\textbf{#1}}}
 \newcommand{\relation}[1]{\texttt{#1}}
+\newcommand{\prop}[1]{\texttt{#1}}
 \newcommand{\pn}[1]{\textit{\textbf{#1}}}
 \newcommand{\foottt}[1]{\footnote{\texttt{#1}}}
 \newcommand{\link}[2]{\href{#1}{$\hookrightarrow$#2}}
@@ -130,6 +130,9 @@
 \newacronym{pm}{PM}{Project Management}
 \newacronym{owl}{OWL}{Web Ontology Language}
 \newacronym{w3c}{W3C}{World Wide Web Consortium}
+\newacronym{rdf}{RDF}{Resource Description Framework}
+\newacronym{rdfs}{RDFS}{Resource Description Framework Schema}
+\newacronym{skos}{SKOS}{Simple Knowledge Organization System}
 
 
 %*******************************************************************************
@@ -206,7 +209,7 @@ The output of this work are two documents:
 \section{Outlook \progressbar[filledcolor=yellow]{0.5}}
 The main motivation of this work is documenting the domain knowledge and making it available to interested parties, such as the umbrella organizations, \glspl{sco}, or students. Furthermore: Creating a computer-readable ontology with this goal in mind can help advance the idea of \glspl{sco}, for example by enabling software projects.
 
-% TODO: An ontology can be helpful in this task. \cite{fitsilis2014ontologies}
+% TODO A formal ontology can be helpful in this task. \cite[p.\,252]{Jean_2007}
 
 One particular use case in the intersection between knowledge management and software projects, is the creation of a tool that helps with founding new \glspl{sco} at universities where no \gls{sco} currently exists. Creating an organization without guidance is a daunting task; having a repository available, that structures and describes the elemental components of such an organization, can be a great help.
 
@@ -289,9 +292,7 @@ The majority of this work happens during the Analysis and Synthesis Phase. Its g
 
 Based on the Protégé-methodology, the first two steps of this phase are: (3) the creation of an enumeration of terms that are relevant for the domain. And (4) the translation of the terms into the backbone of every ontology: the class hierarchy. Both are rooted in the results of the previous phase and further supplemented by expert knowledge.
 
-At the core of this process is the conversion of available implicit knowledge into explicit knowledge. This task is generally not trivial, because the class hierarchy is a construct that already has an semantic relation built in: \relation{subclassOf}. This means that sub-classing already gives meaning to the terms in the hierarchy. It is therefore key, to only introduce a sub-class relationship, if it is correct for the representation of the domain. This makes it mandatory to think about the connection between different terms.
-
-To help with this thought process, we introduce a creative step: We start with a brainstorming to create a domain vocabulary collection in the form of a \textit{word cloud}. This simple first step involves writing down all the terms that might have something to do with the ontology. We then can transition this word cloud to a \textit{word graph}, by using the terms as vertices and implement associations between terms (\eg connected ideas or concepts) using the edges. We try to keep the word graph as simple as possible by focusing on the important connections and use existing vocabulary to prepare the links into other domains that will be done in the later stages of development.
+At the core of this thought process is the conversion of available implicit knowledge into explicit knowledge. To help with it, we introduce a creative step: We start with a brainstorming to create a domain vocabulary collection in the form of a \textit{word cloud}. This simple first step involves writing down all the terms that might have something to do with the ontology. We then can transition this word cloud to a \textit{word graph}, by using the terms as vertices and implement associations between terms (\eg connected ideas or concepts) using the edges. We try to keep the word graph as simple as possible by focusing on the important connections and use existing vocabulary to prepare the links into other domains that will be done in the later stages of development.
 % TODO: formally create word cloud
 
 To progress from the word graph to the more rigorous class hierarchy, we transcribe the vertices into a first-draft/skeleton class hierarchy---using the Protégé editor---, starting with the most influential concepts. These can be identified by the amount of edges connecting them to other concepts; more connections indicate higher influence. Furthermore we can identify and assign trivial sub-classes during that process, by evaluating the quality of the edge connections. Fewer connections might indicate a more direct relationship between two terms. After these steps, the draft hierarchy contains mostly high-level classes and trivial sub-classes (\eg high-level class \textbf{Process} and all the identified processes as trivial sub-classes). It can then be further modified, refined, and polished by adding clarifications, delimitations, definitions, and descriptions to all terms as well as relations within the class hierarchy.
@@ -302,14 +303,16 @@ The output of final steps is the first major version of the ontology in the form
 Depending on the ambiguity and complexity of concepts, natural language can quickly become a limiting factor in terms of precision. Definitions are a tool to avoid confusion that arises from unclear semantics. To ensure a common understanding, this section discusses some key terms and their usage throughout this work.
 
 \subsection{Vocabulary \progressbar[filledcolor=green]{1}}
-Commonly, the term \textit{vocabulary} is used to describe the collection of all words one specific person knows. But this already implies that one person's vocabulary can be different to someone else's. Furthermore, the word \textit{vocabulary} itself is also overloaded, as the dictionary definition (see appendix \ref{dictionary}) shows. Depending on context the described collection changes. \cite{mw-vocabulary}
+Commonly, the term \textit{vocabulary} is used to describe the collection of all words one specific person knows. But this already implies that one person's vocabulary can be different to someone else's. Furthermore, the word vocabulary itself is also overloaded, as the dictionary definition (see appendix \ref{dictionary}) shows. Depending on context the described collection changes. \cite{mw-vocabulary}
 
-In the context of ontologies the term \textit{vocabulary} is used interchangeably with \textit{alphabet} and \textit{signature}. On an abstract level it simply describes a set of symbols. \cite[p.\,46]{loebe2015ontological} Transferred to this work, \textit{vocabulary} is the collection term for all class names (see section \ref{classes}) and relation names (see section \ref{relations}), which are mainly words from the English language in conjunction with the underscore (\enquote{\_}) as delimitation symbol. The word choices draw inspiration or are translated from the \gls{hc} process documentation and our experience with different \glspl{sco}, as well as the business world. Some of these words are not special to the domain: \textbf{Organization}, for example, is not only used in many different related ontologies, but also very common in natural language.
+In the context of ontologies it is used interchangeably with \textit{alphabet} and \textit{signature}. On an abstract level it simply describes a set of symbols. \cite[p.\,46]{loebe2015ontological} Transferred to this work, it is the collection term for all class (see section \ref{classes}) and object property names (see section \ref{relations}), which are mainly words from the English language in conjunction with the underscore (\enquote{\_}) as delimitation symbol. The word choices draw inspiration or are translated from the \gls{hc} process documentation and our experience with different \glspl{sco}, as well as the business world. Some of these words are not special to the domain: \textbf{Organization}, for example, is not only used in many different related ontologies, but also very common in natural language.
 
-To ensure adequate precision, each entry in the vocabulary has a few guaranteed properties. A \texttt{rdfs:label} to define its name in both English and German. A \texttt{rdfs:description} in English, akin to a dictionary explanation text. As well as a \texttt{rdfs:example} where examples help describing the word more clearly.
+To ensure adequate precision, each entry in the vocabulary has a few guaranteed properties (see section \ref{annotation-properties})
 
-\subsection{Ontology \progressbar[filledcolor=green]{1}}
-At the time of writing, an exact definition of the term ontology is hard to come by. There is no unified understanding across the sciences. \cite{Hesse_2014} Numerous authors tried defining the term as shown by Loebe \cite[p.\,4-6]{loebe2015ontological} and Gomez et al. \cite[p.\, 6--9]{Gomez-Perez:2004aa}, but to our knowledge there has not yet been a conclusive definition. Since it's not our objective to end this discourse, we will not engage in a detailed analysis. Instead, we construct a \textit{working definition} by illuminating different aspects that are important for this work's goal of representing a knowledge domain.
+\subsection{Domain Ontology \progressbar[filledcolor=green]{1}}
+The term \textit{domain} is the easy part of this definition, since it intuitively and simply refers to the knowledge area it describes. \cite[p.\,7]{loebe2015ontological} This is close to the dictionary definition (see section \ref{dictionary}), where every listed sense has a delimiting factor to it.
+
+However, at the time of writing, an exact definition of the term \textit{ontology} is hard to come by. There is no unified understanding across the sciences. \cite{Hesse_2014} Numerous authors tried defining the term as shown by Loebe \cite[p.\,4-6]{loebe2015ontological} and Gomez et al. \cite[p.\, 6--9]{Gomez-Perez:2004aa}, but to our knowledge there has not yet been a conclusive definition. Since it's not our objective to end this discourse, we will not engage in a detailed analysis. Instead, we construct a \textit{working definition} by illuminating different aspects that are important for this work's goal of representing a knowledge domain.
 
 The influential paper \cite[p.\,9]{schulz2012guideline} \cite[p.\,4]{loebe2015ontological} \textit{\enquote{A Translation Approach to Portable Ontology Specifications}} by Thomas R. Gruber---a paper that has been cited more than 19.000 times according to Google Scholar---contains the following definition:
 
@@ -329,19 +332,37 @@ This gives us two anchor points to attach it to our work:
 	\item Our ontology language of choice is \gls{owl}. It is an ontology language developed by the consensus-driven and well respected \gls{w3c}. \cite[p.\,206]{baader2017introduction} It is widely used and offers very good tooling in the ontology editor Protégé.
 \end{inparaenum}
 
-These two aspects in combination can be expressed as the term \textit{formal ontology in information systems or applied ontology}, as proposed by Loebe, which describes the form of our ontology. \cite[p.\,6]{loebe2015ontological}
 
-\subsubsection{Classes}
+
+To works further towards our secondary goal of providing an ontology that is usable for software projects, we extend our requirements to the definition for domain ontologies from Jean: 
+
+\begin{quote}
+	\enquote{A domain ontology is a formal and consensual dictionary of categories and properties of entities of a domain and the relationships that hold among them.} \cite[p.\,240]{Jean_2007}
+\end{quote}
+
+We try to achieve formality by adhering to \gls{owl} standard and using the \textit{HermiT} reasoner during development. To aim for consensus, we prepare the ontology in way so that it can be peer reviewed in the future.
+
+Breaking down the above definition and reflecting on an already existing \gls{owl} ontology (\eg \gls{fibo}) reveals two main technical components: Elements of a knowledge area and relations between these elements.  Similar to the general discussion about ontologies, there is an ongoing debate on which term best represents entities in an ontology. We are following the Protégé naming convention and are calling the former \textit{Classes} and the latter \textit{Object Properties}.
+
+\subsubsection{Classes and Class Hierarchy \progressbar[filledcolor=green]{1}}
 \label{classes}
-The class hierarchy collects all the classes in a structured manner. It has a root element from which all classes inherit their basic property.
+Classes are the most basic building blocks of an ontology. Each class tries to capture and describe an element of the knowledge domain. The name of the class creates a connection between the object within the ontology and the element it tries to describe. It is supplemented by additional information via its annotation properties (see section \ref{annotation-properties}). The classes are aggregated an structured in a meaningful way by the \textit{class hierarchy}.
 
-It is the and provides the backbone of the ontology. It contains the description
+The class hierarchy is a tree where the children of a node have the built in relation (see section \ref{relations}): \relation{subclassOf}. There typically exists a root element called \class{Thing}, which \underline{all} classes are \relation{subclassOf}. As pointed out before, this work follows the \gls{owl} standard and hence we use \class{owl:Thing} as the root element; it has no properties. The built in relation gives additional meaning to classes in the hierarchy. \relation{subclassOf} implies that a class \relation{is\_a} type of the class it sub-classes. It is therefore key, to only introduce a sub-class relationship, if it is correct for the representation of the domain.
 
-\subsubsection{Properties}
-\subsubsection{Relations}
+This has implications for our ontology. For example, it is the reason for the different structuring of \class{Agent} and \class{Process}: The former sub-domain can make use of the sub-class relation, whereas the latter cannot (see section \ref{process-subclass}).
+
+\subsubsection{Properties \progressbar[filledcolor=yellow]{0.5}}
+
+\paragraph{Object Properties (Relationships)}
 \label{relations}
+To express relationships within the knowledge area, we use object properties. The aforementioned relation \relation{subclassOf} links a child class to its parent and expresses that the child is of the same type as the parent. For example: In our ontology, the class \class{Agent} is sub-classed by \class{Person} and \class{Organization}. This implies that both \class{Person} and \class{Organization} are \class{Agents}. Everything a \class{Agent} can do, a \class{Person} or an \class{Organization} can also do.
 
-\subsection{Domain}
+\paragraph{Annotation Properties (Annotations)}
+\label{annotation-properties}
+We use annotation properties to add additional information in our domain. They are simple key-value pairs that are attached to a class or relation. The key might be defined within the scope of the ontology or may be sourced from knowledge organization conventions like \gls{rdf}, \gls{rdfs}, or \gls{skos}. The value gives additional information about a class. For example: Each class of our domain has a \prop{rdfs:label} to define its name in both English and German; a \prop{rdfs:description} in English, akin to a dictionary explanation text; as well as a \prop{rdfs:example} where examples help describing the class more clearly.
+
+
 
 \section{Related Work and Classification}
 \label{related-work}
@@ -743,7 +764,8 @@ bfp gfo contain valuable information, that can be modified and adapted for the p
 
 
 \subsubsection{Structure of the Class Hierarchy \progressbar[filledcolor=yellow]{0.6}}
-Processes need special attention when implementing them in a domain ontology, since their nature is quite different from other classes that represent physical, \eg \class{Document}, or intuitive concepts, \eg \class{Person}. As mentioned in section \ref{analysis}, the built in \relation{subclassOf} relation of the class hierarchy already carries semantic meaning, that is generally not applicable to processes. For example: a \class{Delivery\_Process} may involve a \class{Food\_Preperation\_Process} as a procedural step. However, it is easy to see and understand that a \class{Food\_Preperation\_Process} is $\underline{not}$ \relation{subclassOf} a \class{Delivery\_Process} and therefore should not inherit its properties.
+\label{process-subclass}
+Processes need special attention when implementing them in a domain ontology, since their nature is quite different from other classes that represent physical, \eg \class{Document}, or intuitive concepts, \eg \class{Person}. As mentioned in section \ref{classes}, the built in \relation{subclassOf} relation of the class hierarchy already carries semantic meaning, that is generally not applicable to processes. For example: a \class{Delivery\_Process} may involve a \class{Food\_Preperation\_Process} as a procedural step. However, it is easy to see and understand that a \class{Food\_Preperation\_Process} is $\underline{not}$ \relation{subclassOf} a \class{Delivery\_Process} and therefore should not inherit its properties.
 
 To model processes correctly, one could consider introducing a class like \class{*\_Process\_Part} (in the given example: \class{Delivery\_Process\_Part}) and use it to collect and connect sub-processes to their parent process. However, this results in many additional \textit{helper} classes in the class hierarchy, since every level of sub-processes requires another \class{*\_Process\_Part} class. This makes the class hierarchy harder to read and understand, since the process structure is encoded in these helper classes.
 
@@ -938,6 +960,46 @@ before/after:
 
 \section{Dictionary Definitions}
 \label{dictionary}
+% \textcolor{gray}{\textit{\enquote{}}}
+
+\begin{mdframed}[%
+	linewidth=1pt,%
+	frametitlerule=true,%
+	frametitlebackgroundcolor=gray!20,%
+	innertopmargin=\topskip,%
+	frametitlefont=\normalfont,%
+	frametitle={{\textbf{domain}} {\scriptsize\textsc{noun \hfill Merriam-Webster}}}%
+	]
+	
+	{\small do·​main
+			\begin{compactenum}
+				\item law
+				\begin{compactenum}
+					\item complete and absolute (see absolute sense 3) ownership of land \\
+					\textcolor{gray}{\enquote{\textit{our highways and roads have been in the domain of state and local governments— T. H. White b. 1915}}} \\
+					 — compare eminent domain
+					\item land so owned
+				\end{compactenum}
+				\item a territory over which dominion (see dominion sense 2) is exercised \\
+				\textcolor{gray}{\enquote{\textit{The forest is part of the king's domain.}}}
+				\item a region distinctively marked by some physical feature \\
+				\textcolor{gray}{\enquote{\textit{a domain of rushing streams, tall trees, and lakes}}}
+				\item a sphere (see sphere sense 4b) of knowledge, influence, or activity \\
+				\textcolor{gray}{\textit{\enquote{the domain of biblical scholarship}, \enquote{outside the domain of city police}}}
+				\item mathematics : the set of elements (see element sense 2b(3)) to which a mathematical or logical variable is limited \\
+				specifically : the set on which a function (see function entry 1 sense 5a) is defined
+				\item physics : any of the small randomly oriented regions of uniform magnetization in a ferromagnetic substance
+				\item mathematics : integral domain
+				\item biology : the highest taxonomic category in biological classification ranking above the kingdom (see kingdom sense 4b)
+				\item biochemistry : any of the three-dimensional subunits of a protein that are formed by the folding of its linear peptide chain and that together make up its tertiary (see tertiary entry 1 sense 3c) structure
+				\item computers : a subdivision of the Internet consisting of computers or sites usually with a common purpose (such as providing commercial information) and denoted in Internet addresses by a unique abbreviation (such as com for commercial sites or gov for government sites) \\
+				\textcolor{gray}{\textit{\enquote{The domain ca is used for sites located in Canada.}}} \\
+				also : domain name \\
+				\textcolor{gray}{\textit{\enquote{Our domain is Merriam-Webster.com.}}}
+		\end{compactenum}
+	}
+\end{mdframed}
+
 \begin{mdframed}[%
 	linewidth=1pt,%
 	frametitlerule=true,%
@@ -946,7 +1008,7 @@ before/after:
 	frametitlefont=\normalfont,%
 	frametitle={{\textbf{vocabulary}} {\scriptsize\textsc{noun \hfill Merriam-Webster}}}%
 	]
-
+	
 	{\small vo·​cab·​u·​lary \textit{\textcolor{teal}{plural}} vocabularies
 		\begin{compactenum}
 			\item a list or collection of words or of words and phrases usually alphabetically arranged and explained or defined : LEXICON \\
@@ -954,12 +1016,12 @@ before/after:
 			\item
 			\begin{compactenum}
 				\item a sum or stock of words employed by a language, group, individual, or work or in a field of knowledge \\
-				\textcolor{gray}{\enquote{\textit{a child with a large vocabulary}}, \enquote{\textit{the vocabulary of physicians}}, \enquote{\textit{a writer known for employing a rich vocabulary}}}
+				\textcolor{gray}{\textit{\enquote{a child with a large vocabulary}}, \enquote{the vocabulary of physicians}, \enquote{a writer known for employing a rich vocabulary}}
 				\item a list or collection of terms or codes available for use (as in an indexing system) \\
 				\textcolor{gray}{\enquote{\textit{… the oldest Sumerian cuneiform writing could not render normal prose but was a mere telegraphic shorthand, whose vocabulary was restricted to names, numerals, units of measure, words for objects counted, and a few adjectives.}} --- \textsc{Jared Diamon}}
 			\end{compactenum}
 			\item a supply of expressive techniques or devices (as of an art form) \\
-			\textcolor{gray}{\enquote{\textit{an impressive musical vocabulary}}}
+			\textcolor{gray}{\textit{\enquote{an impressive musical vocabulary}}}
 		\end{compactenum}
 	}
 \end{mdframed}
