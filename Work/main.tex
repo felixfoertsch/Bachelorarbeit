@@ -1,7 +1,7 @@
 % !TeX encoding = UTF-8
 % !TeX spellcheck = en_US
 
-% Document Version: v8
+% Document Version: v9
 
 %*******************************************************************************
 %* Work Configuration
@@ -15,16 +15,18 @@
 %*******************************************************************************
 \usepackage[english]{babel}
 \usepackage[urldate=iso]{biblatex}
-\usepackage{csquotes}
+\usepackage{xcolor} % Für Farben im Text
+\usepackage{xstring} % String-Manipulation; wird von anderen Paketen oft verwendet
+\usepackage{fontspec} % Einstellungen für Schriftarten (zB lokales Laden)
+\usepackage{csquotes} % Verwaltet Anführungsstriche
 \usepackage{hyperref} % Hyperlink-Helfer
 \usepackage{paralist} % Erlaubt verschiedene neue Listen-Umgebungen (zB inparaenum)
-\usepackage{mdframed} % Rahmen-Umgebung
+\usepackage{mdframed} % Erlaubt das einfügen von Kästen (zB Einrahmen von Anmerkungen)
 \usepackage{lscape} % Querformat-Umgebung
 \usepackage[toc, section=section, numberedsection=autolabel]{glossaries} % Glossar
 \usepackage[titletoc]{appendix}
 \usepackage{progressbar}
-\usepackage{xstring}
-\usepackage{fontspec}
+\usepackage{tikz}
 
 %*******************************************************************************
 %* Configuration
@@ -78,6 +80,7 @@
 \newcommand{\Eg}{E.\,g.\ }
 \newcommand{\class}[1]{\texttt{\textbf{#1}}}
 \newcommand{\relation}[1]{\texttt{#1}}
+\newcommand{\prop}[1]{\texttt{#1}}
 \newcommand{\pn}[1]{\textit{\textbf{#1}}}
 \newcommand{\foottt}[1]{\footnote{\texttt{#1}}}
 \newcommand{\link}[2]{\href{#1}{$\hookrightarrow$#2}}
@@ -124,6 +127,13 @@
 \newacronym{clo}{CLO}{Chief Legal Officer}
 \newacronym{coo}{COO}{Chief Operating Officer}
 \newacronym{iso}{ISO}{International Organization for Standardization}
+\newacronym{pm}{PM}{Project Management}
+\newacronym{owl}{OWL}{Web Ontology Language}
+\newacronym{w3c}{W3C}{World Wide Web Consortium}
+\newacronym{rdf}{RDF}{Resource Description Framework}
+\newacronym{rdfs}{RDFS}{Resource Description Framework Schema}
+\newacronym{skos}{SKOS}{Simple Knowledge Organization System}
+
 
 %*******************************************************************************
 %* Dokumentenanfang
@@ -174,17 +184,18 @@ But as far as we know, there hasn't yet been any effort to collect and compose t
 
 The reasons above reduce the available time for knowledge transfer and persistence and make these problems harder. Many \glspl{sco} have worked on and developed solutions to help with this problem. Some of them are informal, some formal in nature. For example: One particular organization, \link{https://hanseaticconsulting.de}{\gls{hc}}, used process methodology to document a lot of their knowledge.
 
-However, the majority of available domain documents are highly individualized and miss the necessary level of abstraction to make them directly applicable to other \glspl{sco}. But even though every \gls{sco} is organized slightly differently than the next, uses different vocabulary and each has their individual culture, they all share the idea of teaching consulting and project work to their members. Since they aim for the same goal, they are very similar at their core. 
+However, the majority of available domain documents are highly individualized and miss the necessary level of abstraction to make them directly applicable to other \glspl{sco}. But even though every \gls{sco} is organized slightly differently than the next, uses different vocabulary and each has their individual culture, they all share the idea of teaching consulting and project work to their members. Since they aim for the same goal, they are very similar at their core.
 
 Therefore we try to contribute a more general model in the form of an ontology that tries to combine the domain knowledge, vocabulary, and common concepts.
 
 \section{Goal and Scope of the Work \progressbar[filledcolor=green]{1}}
+\label{goal}
 The goal of this work is the description of an abstract \gls{sco}. It extracts the available implicit expert knowledge, links it with related work, and transforms it into explicit  knowledge by using an ontology as its vehicle. It defines common classes and relations required to describe such an organization using domain vocabulary. Additionally it provides terminology explanations, background knowledge, and links into other ontologies where it is sensible.
 
 \section{Deliverables \progressbar[filledcolor=green]{1}}
 The output of this work are two documents:
 \begin{enumerate}
-	\item This thesis as a documentation and explanation of the ontology development process including but not limited to: methodology, background information, decisions in regards to the ontology, etc. 
+	\item This thesis as a documentation and explanation of the ontology development process including but not limited to: methodology, background information, decisions in regards to the ontology, etc.
 	\item The ontology document as a representation of the domain knowledge.
 \end{enumerate}
 
@@ -197,6 +208,8 @@ The output of this work are two documents:
 
 \section{Outlook \progressbar[filledcolor=yellow]{0.5}}
 The main motivation of this work is documenting the domain knowledge and making it available to interested parties, such as the umbrella organizations, \glspl{sco}, or students. Furthermore: Creating a computer-readable ontology with this goal in mind can help advance the idea of \glspl{sco}, for example by enabling software projects.
+
+% TODO A formal ontology can be helpful in this task. \cite[p.\,252]{Jean_2007}
 
 One particular use case in the intersection between knowledge management and software projects, is the creation of a tool that helps with founding new \glspl{sco} at universities where no \gls{sco} currently exists. Creating an organization without guidance is a daunting task; having a repository available, that structures and describes the elemental components of such an organization, can be a great help.
 
@@ -212,7 +225,7 @@ This work is concerned with the knowledge representation of one particular domai
 \section{Methodology for the Development of the Ontology \progressbar[filledcolor=green]{0.95}}
 % TODO: Minimal conceptual modeling opm principle (Model-based system engineering, page 77): minimal methodolgy is best
 
-The primary goal of this work is the creation of a particular domain ontology. To achieve this goal, we start with the methodology that is proposed in the documentation \cite{guide-to-ontology} of the ontology editor \link{https://protege.stanford.edu}{\pn{Protégé}}---built and maintained by ontology researchers of \pn{Stanford University}. \cite{musen2015protege}
+The primary goal of this work (see section \ref{goal})is the creation of a particular domain ontology. To achieve it, we start with the methodology that is proposed in the documentation \cite{guide-to-ontology} of the ontology editor \link{https://protege.stanford.edu}{\pn{Protégé}}---built and maintained by ontology researchers of \pn{Stanford University}. \cite{musen2015protege}
 
 It involves the following steps:
 \begin{compactenum}[(1)]
@@ -275,64 +288,130 @@ Defining the scope of the ontology is the formal step that concludes the \textit
 
 \subsection{Analysis and Synthesis Phase \progressbar[filledcolor=green]{1}}
 \label{analysis}
-The majority of this work happens during the Analysis and Synthesis Phase. Its goal is the review, interpretation, and structuring of the collected data; ultimately generating an ontology in the target format: OWL.
+The majority of this work happens during the Analysis and Synthesis Phase. Its goal is the review, interpretation, and structuring of the collected data; ultimately generating an ontology in the target format: \gls{owl}.
 
 Based on the Protégé-methodology, the first two steps of this phase are: (3) the creation of an enumeration of terms that are relevant for the domain. And (4) the translation of the terms into the backbone of every ontology: the class hierarchy. Both are rooted in the results of the previous phase and further supplemented by expert knowledge.
 
-At the core of this process is the conversion of available implicit knowledge into explicit knowledge. This task is generally not trivial, because the class hierarchy is a construct that already has an semantic relation built in: \relation{subclassOf}. This means that sub-classing already gives meaning to the terms in the hierarchy. It is therefore key, to only introduce a sub-class relationship, if it is correct for the representation of the domain. This makes it mandatory to think about the connection between different terms.
-
-To help with this thought process, we introduce a creative step: We start with a brainstorming to create a domain vocabulary collection in the form of a \textit{word cloud}. This simple first step involves writing down all the terms that might have something to do with the ontology. We then can transition this word cloud to a \textit{word graph}, by using the terms as vertices and implement associations between terms (\eg connected ideas or concepts) using the edges. We try to keep the word graph as simple as possible by focusing on the important connections and use existing vocabulary to prepare the links into other domains that will be done in the later stages of development.
+At the core of this thought process is the conversion of available implicit knowledge into explicit knowledge. To help with it, we introduce a creative step: We start with a brainstorming to create a domain vocabulary collection in the form of a \textit{word cloud}. This simple first step involves writing down all the terms that might have something to do with the ontology. We then can transition this word cloud to a \textit{word graph}, by using the terms as vertices and implement associations between terms (\eg connected ideas or concepts) using the edges. We try to keep the word graph as simple as possible by focusing on the important connections and use existing vocabulary to prepare the links into other domains that will be done in the later stages of development.
 % TODO: formally create word cloud
 
-To progress from the word graph to the more rigorous class hierarchy, we transcribe the vertices into a first-draft/skeleton class hierarchy---using the Protégé editor---, starting with the most influential concepts. These can be identified by the amount of edges connecting them to other concepts; more connections indicate higher influence. Furthermore we can identify and assign trivial sub-classes during that process, by evaluating the quality of the edge connections. Fewer connections might indicate a more direct relationship between two terms. After these steps, the draft hierarchy contains mostly high-level classes and trivial sub-classes (\eg high-level class \textbf{Process} and all the identified processes as trivial sub-classes). It can then be further modified, refined, and polished by adding clarifications, delimitations, definitions, and descriptions to all terms as well as relations within the class hierarchy. 
+To progress from the word graph to the more rigorous class hierarchy, we transcribe the vertices into a first-draft/skeleton class hierarchy---using the Protégé editor---, starting with the most influential concepts. These can be identified by the amount of edges connecting them to other concepts; more connections indicate higher influence. Furthermore we can identify and assign trivial sub-classes during that process, by evaluating the quality of the edge connections. Fewer connections might indicate a more direct relationship between two terms. After these steps, the draft hierarchy contains mostly high-level classes and trivial sub-classes (\eg high-level class \textbf{Process} and all the identified processes as trivial sub-classes). It can then be further modified, refined, and polished by adding clarifications, delimitations, definitions, and descriptions to all terms as well as relations within the class hierarchy.
 
-The output of final steps is the first major version of the ontology in the form of an OWL file, which completes the \textit{Analysis and Synthesis Phase} and also the second deliverable of this work. We document our most interesting observations during that process as part of this work.
+The output of final steps is the first major version of the ontology in the form of an \gls{owl} file, which completes the \textit{Analysis and Synthesis Phase} and also the second deliverable of this work. We document our most interesting observations during that process as part of this work.
+
+\section{Definitions \progressbar[filledcolor=yellow]{0.66}}
+Depending on the ambiguity and complexity of concepts, natural language can quickly become a limiting factor in terms of precision. Definitions are a tool to avoid confusion that arises from unclear semantics. To ensure a common understanding, this section discusses some key terms and their usage throughout this work.
+
+\subsection{Vocabulary \progressbar[filledcolor=green]{1}}
+Commonly, the term \textit{vocabulary} is used to describe the collection of all words one specific person knows. But this already implies that one person's vocabulary can be different to someone else's. Furthermore, the word vocabulary itself is also overloaded, as the dictionary definition (see appendix \ref{dictionary}) shows. Depending on context the described collection changes. \cite{mw-vocabulary}
+
+In the context of ontologies it is used interchangeably with \textit{alphabet} and \textit{signature}. On an abstract level it simply describes a set of symbols. \cite[p.\,46]{loebe2015ontological} Transferred to this work, it is the collection term for all class (see section \ref{classes}) and object property names (see section \ref{relations}), which are mainly words from the English language in conjunction with the underscore (\enquote{\_}) as delimitation symbol. The word choices draw inspiration or are translated from the \gls{hc} process documentation and our experience with different \glspl{sco}, as well as the business world. Some of these words are not special to the domain: \textbf{Organization}, for example, is not only used in many different related ontologies, but also very common in natural language.
+
+To ensure adequate precision, each entry in the vocabulary has a few guaranteed properties (see section \ref{annotation-properties})
+
+\subsection{Domain Ontology \progressbar[filledcolor=green]{1}}
+The term \textit{domain} is the easy part of this definition, since it intuitively and simply refers to the knowledge area it describes. \cite[p.\,7]{loebe2015ontological} This is close to the dictionary definition (see section \ref{dictionary}), where every listed sense has a delimiting factor to it.
+
+However, at the time of writing, an exact definition of the term \textit{ontology} is hard to come by. There is no unified understanding across the sciences. \cite{Hesse_2014} Numerous authors tried defining the term as shown by Loebe \cite[p.\,4-6]{loebe2015ontological} and Gomez et al. \cite[p.\, 6--9]{Gomez-Perez:2004aa}, but to our knowledge there has not yet been a conclusive definition. Since it's not our objective to end this discourse, we will not engage in a detailed analysis. Instead, we construct a \textit{working definition} by illuminating different aspects that are important for this work's goal of representing a knowledge domain.
+
+The influential paper \cite[p.\,9]{schulz2012guideline} \cite[p.\,4]{loebe2015ontological} \textit{\enquote{A Translation Approach to Portable Ontology Specifications}} by Thomas R. Gruber---a paper that has been cited more than 19.000 times according to Google Scholar---contains the following definition:
+
+\begin{quote}
+	\enquote{An ontology is an explicit specification of a conceptualization.} \cite[p.\, 1]{gruber1993translation}
+\end{quote}
+
+Since it is on the more abstract sides for definitions, it is often used as a first step of narrowing down the intended meaning. Baader, for example, builds on it and proposes this slightly refined definition:
+
+\begin{quote}
+	\enquote{In computer science, an ontology is a conceptual model specified using some ontology language.} \cite[p.\,205]{baader2017introduction}
+\end{quote}
+
+This gives us two anchor points to attach it to our work:
+\begin{inparaenum}
+	\item Our ontology is a conceptual model of a \gls{sco}. We try to adhere as best as possible to the suggestions from the Good Ontology Guidelines: being formal, using explicit specifications, and being adequate for the domain it represents. \cite[p.\,10]{schulz2012guideline}
+	\item Our ontology language of choice is \gls{owl}. It is an ontology language developed by the consensus-driven and well respected \gls{w3c}. \cite[p.\,206]{baader2017introduction} It is widely used and offers very good tooling in the ontology editor Protégé.
+\end{inparaenum}
+
+
+
+To works further towards our secondary goal of providing an ontology that is usable for software projects, we extend our requirements to the definition for domain ontologies from Jean: 
+
+\begin{quote}
+	\enquote{A domain ontology is a formal and consensual dictionary of categories and properties of entities of a domain and the relationships that hold among them.} \cite[p.\,240]{Jean_2007}
+\end{quote}
+
+We try to achieve formality by adhering to \gls{owl} standard and using the \textit{HermiT} reasoner during development. To aim for consensus, we prepare the ontology in way so that it can be peer reviewed in the future.
+
+Breaking down the above definition and reflecting on an already existing \gls{owl} ontology (\eg \gls{fibo}) reveals two main technical components: Elements of a knowledge area and relations between these elements.  Similar to the general discussion about ontologies, there is an ongoing debate on which term best represents entities in an ontology. We are following the Protégé naming convention and are calling the former \textit{Classes} and the latter \textit{Object Properties}.
+
+\subsubsection{Classes and Class Hierarchy \progressbar[filledcolor=green]{1}}
+\label{classes}
+Classes are the most basic building blocks of an ontology. Each class tries to capture and describe an element of the knowledge domain. The name of the class creates a connection between the object within the ontology and the element it tries to describe. It is supplemented by additional information via its annotation properties (see section \ref{annotation-properties}). The classes are aggregated an structured in a meaningful way by the \textit{class hierarchy}.
+
+The class hierarchy is a tree where the children of a node have the built in relation (see section \ref{relations}): \relation{subclassOf}. There typically exists a root element called \class{Thing}, which \underline{all} classes are \relation{subclassOf}. As pointed out before, this work follows the \gls{owl} standard and hence we use \class{owl:Thing} as the root element; it has no properties. The built in relation gives additional meaning to classes in the hierarchy. \relation{subclassOf} implies that a class \relation{is\_a} type of the class it sub-classes. It is therefore key, to only introduce a sub-class relationship, if it is correct for the representation of the domain.
+
+This has implications for our ontology. For example, it is the reason for the different structuring of \class{Agent} and \class{Process}: The former sub-domain can make use of the sub-class relation, whereas the latter cannot (see section \ref{process-subclass}).
+
+\subsubsection{Properties \progressbar[filledcolor=yellow]{0.5}}
+
+\paragraph{Object Properties (Relationships)}
+\label{relations}
+To express relationships within the knowledge area, we use object properties. The aforementioned relation \relation{subclassOf} links a child class to its parent and expresses that the child is of the same type as the parent. For example: In our ontology, the class \class{Agent} is sub-classed by \class{Person} and \class{Organization}. This implies that both \class{Person} and \class{Organization} are \class{Agents}. Everything a \class{Agent} can do, a \class{Person} or an \class{Organization} can also do.
+
+\paragraph{Annotation Properties (Annotations)}
+\label{annotation-properties}
+We use annotation properties to add additional information in our domain. They are simple key-value pairs that are attached to a class or relation. The key might be defined within the scope of the ontology or may be sourced from knowledge organization conventions like \gls{rdf}, \gls{rdfs}, or \gls{skos}. The value gives additional information about a class. For example: Each class of our domain has a \prop{rdfs:label} to define its name in both English and German; a \prop{rdfs:description} in English, akin to a dictionary explanation text; as well as a \prop{rdfs:example} where examples help describing the class more clearly.
+
+
 
 \section{Related Work and Classification}
 \label{related-work}
-Ontologies are knowledge representers
-\gls{sco} have overlap in two directions: project management and consulting
-PM is a very wide topic that basically has unlimited amount of detail -> needs abstraction
-Part of PM are in itself complex topics: time, problem analysis, ...
+As already discussed previously, the \gls{sco} domain touches on various other knowledge areas. Related source material could be found in other ontologies, \gls{pm} models and concepts, organizational theory, process documentation and models, established vocabulary, and so forth. The challenge lies in identifying the most useful information and merge the input from many different sources to construct the ontology.
 
-vocab vs ontology
+This is made harder by the vastness of some related fields. \gls{pm}, for example, is a central topic for our domain and it is easy to find many different books, theories, and models about it on the market. It is also an complex, overarching, and very general subject matter. Part of its domain are concepts of complex nature like time, problem analysis, and project structuring. If we were to focus too much on this aspect within our ontology, it would easily dominate it and the ultimate goal of our ontology would be  missed. It is therefore imperative to identify the correct level of abstraction and connect the related work in an adequate manner.
+
+This section discusses the related work and shows how we are applying it to the \gls{sco} ontology.
+
+
 
 dcterms\footnote{\texttt{dcterms} is used in the \pn{FOAF} rdf file, \texttt{dct} is used in the \pn{FOAF} documentation.}
 
-\subsection{Top-Level-Ontologies}
-- BFO %TODO: add note that BFO axioms are extensive and footnotes don't necessarily fully describe a class -> lookup needed
-- DOLCE
-- GFO
-- GIST
-- BPMN  \cite{2014foisbpmn}
 
-GFO: process, roles and time
-\subsection{Upper-Domain-Ontologies}
-- OWL-S
-- \href{https://en.wikipedia.org/wiki/Suggested_Upper_Merged_Ontology}{SUMO}
+To reflect on this fact in the ontology, we try to merge the
+\subsection{Top-Level Ontologies \progressbar[filledcolor=red]{0.1}}
+\begin{compactenum}
+	\item What is a TLO (Definition)?
+	\item What can we use them for in this work? -> Processes, Roles, Time?
+	\item What are popular TLOs and what are their strengths and weaknesses?
+	\begin{compactenum}
+		\item BFO %TODO: add note that BFO axioms are extensive and footnotes don't necessarily fully describe a class -> lookup needed
+		\item DOLCE
+		\item GIST
+		\item BPMN  \cite{2014foisbpmn}
+		\item GFO
+	\end{compactenum}
+\end{compactenum}
 
-\gls{fibo}
-\gls{foaf} is close to schema, link to dublin core: "dct:Agent
+\subsection{Upper-Domain Ontologies}
+\begin{compactenum}
+	\item What is a UDO (Definition)?
+	\item What can we use them for in this work?
+	\item What are popular UDOs and what are their strengths and weaknesses?
+	\begin{enumerate}
+		\item OWL-S
+		\item \href{https://en.wikipedia.org/wiki/Suggested_Upper_Merged_Ontology}{SUMO}
+		\item \gls{fibo}
+		\item \gls{doap} https://github.com/ewilderj/doap
+		\item \gls{schema}: not really ideal, but useful for general concepts like Person or Organization
+		\item \gls{foaf} is close to schema, link to dublin core: "dct:Agent
+	\end{enumerate}
+\end{compactenum}
+
+
 Dublin Core's notion of Agent is much like FOAF's; Dublin Core says "A resource that acts or has the power to act.", we say "things that do stuff". As nobody has provided a counter-example of something fitting one definition but not the other, we say here that foaf:Agent stands in an 'equivalent class' relationship to dct:Agent (and vice-versa)." \cite[
 External Vocabulary References]{Dan-Brickley2014FOAF-Vocabulary}
-\gls{doap} https://github.com/ewilderj/doap
-\gls{schema}: not really ideal, but useful for general concepts like Person or Organization
 
 
-
-\section{Definitions}
-
-\subsection{Ontology}
-There are numerous definitions of the term ontology available in literature \cite[p.\,4, section 1.1.2.1]{loebe2015ontological} and there is no perfectly unified understanding of the term \cite{Hesse_2014}.
-
-\url{http://ontologydesignpatterns.org/wiki/Category:ContentOP}
-
-Ontologies are a way of organizing knowledge. They make it possible to structure a domain in a way, that it can be used in a technical project 
-
-\enquote{In computer science, an ontology is a conceptual model specified using some ontology language; this idea was succinctly captured by Gruber in his definition of an ontology as “an explicit specification of a conceptual- isation} \cite{baader2017introduction}
-
-\subsection{Domain}
-\subsection{Classes}
 
 \section{General Aspects of Ontology Development}
 \label{general-aspects}
@@ -351,9 +430,9 @@ However, in this ontology the goal is to keep it a simple as possible, since the
 \subsection{The Open World Assumption}
 \subsection{The Unique Name Assumption}
 \subsection{Content Completeness Problem}
-The \textit{Content Completeness Problem} states, that an ontology is incapable of containing all the concepts relevant to its users. 
+The \textit{Content Completeness Problem} states, that an ontology is incapable of containing all the concepts relevant to its users.
 
-Developing an ontology involves thinking about the correct level of abstraction and making choices on what to focus on. 
+Developing an ontology involves thinking about the correct level of abstraction and making choices on what to focus on.
 
 \url{https://en.wikipedia.org/wiki/Content_completeness_problem}
 As is true for any domain ontology \cite{CN}, the content completeness problem exists for this ontology as well.
@@ -390,9 +469,9 @@ Next to the general aspects of ontology development are domain specific consider
 	\item Context Switching
 \end{compactenum}
 
-The goal of ontologies is the description of one particular knowledge area. Within it the ontology engineer defines 
+The goal of ontologies is the description of one particular knowledge area. Within it the ontology engineer defines
 
-developed The context of an ontology defines 
+developed The context of an ontology defines
 
 \label{context-switches}
 We use the term \textit{context switching} in this work to describe the fact that some concepts influence instances of certain classes: They impose their context on the class. Even though individual instances are not in scope of this work, the implications of different contexts has to be taken into consideration while modeling the domain.
@@ -417,13 +496,13 @@ It is a sub-context of the \gls{oc}, since projects are considered a part of the
 
 Each project on its own has its own context with associated roles
 
-An \gls{sco} can be thought of as a central hub for multiple projects. It exists to generate the projects 
+An \gls{sco} can be thought of as a central hub for multiple projects. It exists to generate the projects
 
 \Eg a \class{Person} can be part of a project and part of the organizational structure at the same time.
 
 \Eg a \class{Person}, can exist in different contexts at the same time.
 
-The first two contexts are rooted in the nature of \glspl{sco}. On the one hand, they are organizations and as such have their internal structures, hierarchies, business ranks, etc. On the other hand they exists to provide project opportunities. 
+The first two contexts are rooted in the nature of \glspl{sco}. On the one hand, they are organizations and as such have their internal structures, hierarchies, business ranks, etc. On the other hand they exists to provide project opportunities.
 
 \subsubsection{Org-wide vs specific}
 
@@ -436,7 +515,7 @@ Since this is not a domain specific phenomenon, it is sensible to use this obser
 
 \subsubsection{General Implementation \progressbar[filledcolor=green]{1}}
 \label{human-beings-in-other-ontologies}
-Starting with the general model of human beings, \gls{foaf} is a very common choice when thinking about representing social structures. It is a well established ontology and referenced multiple times as backbone for social concepts. Its implementation and description are relatively basic: The anchor is the top-level class \class{foaf:Agent}\foottt{foaf:Agent rdfs:comment: \enquote{An agent (eg. person, group, software or physical artifact).}}, which is referred to as the class of \enquote{things that do stuff}. It is connected to the name space of the \gls{dcmt} via \relation{equivalentTo} \relation{dcterms:Agent}. It is sub-classed by 
+Starting with the general model of human beings, \gls{foaf} is a very common choice when thinking about representing social structures. It is a well established ontology and referenced multiple times as backbone for social concepts. Its implementation and description are relatively basic: The anchor is the top-level class \class{foaf:Agent}\foottt{foaf:Agent rdfs:comment: \enquote{An agent (eg. person, group, software or physical artifact).}}, which is referred to as the class of \enquote{things that do stuff}. It is connected to the name space of the \gls{dcmt} via \relation{equivalentTo} \relation{dcterms:Agent}. It is sub-classed by
 %
 \class{foaf:Group}%
 	\foottt{foaf:Group rdfs:comment: \enquote{A class of agents.}},
@@ -463,10 +542,10 @@ Starting with the general model of human beings, \gls{foaf} is a very common cho
 %
 \class{schema:Person} is considered \relation{equivalentTo} \class{foaf:Person}. This establishes a two-way link between \gls{foaf} and \gls{schema}. \class{schema:Organization} is sub-classed to accommodate for specialized forms of organizations that are relevant for the use cases schema was developed for, \eg \class{schema:Airline}, \class{schema:NGO}. A collection class like \class{foaf:Group} does not exists explicitly, but a \class{schema:Person} as well as a \class{schema:Organization} can be a \relation{memberOf} an \class{Organization}.
 
-\gls{fibo} uses very similarly named classes with a more complex description. The root class is called 
+\gls{fibo} uses very similarly named classes with a more complex description. The root class is called
 %
 \class{fibo:AutonomousAgent}%
-	\foottt{fibo-fnd-aap-agt:AutonomousAgent skos:definition: \enquote{An agent is an autonomous individual that can adapt to and interact with its environment.}}. It is sub-classed by 
+	\foottt{fibo-fnd-aap-agt:AutonomousAgent skos:definition: \enquote{An agent is an autonomous individual that can adapt to and interact with its environment.}}. It is sub-classed by
 %
 \class{fibo:Person}%
 	\foottt{fibo-fnd-aap-ppl:Person skos:definition: \enquote{a person; any member of the species homo sapiens}}, %
@@ -509,7 +588,7 @@ However, the classes are organized very differently in the hierarchy and use the
 A \class{gist:Person} is \relation{subclassOf}
 %
 \class{gist:LivingThing}%
-	\foottt{gist:LivingThing rdfs:comment: 
+	\foottt{gist:LivingThing rdfs:comment:
 		\begin{inparaenum}
 			\item \enquote{EXAMPLES: A cat, a mushroom, a tree.},
 			\item \enquote{NEGATIVE EXAMPLES: fictional life forms such as Unicorns or Mickey Mouse.},
@@ -583,7 +662,7 @@ The exact terms for the ranks, their meaning, gradation, and organizational impl
 \paragraph{Corporate Officers}
 The complete set of tasks and responsibilities for the organizations day-to-day leadership is associated with the group of people referred to as \glspl{co}. This set is typically divided into sub-sets and each sub-set is associated with a different role, to organize the work loads; and each role is played by a different person. For example: An organization may have the roles \gls{ceo}, \gls{coo}, and \gls{cfo} and each is played by a different individual.
 
-The exact set of task differs from \gls{sco} to \gls{sco} and is also dependend on the organizational form, \eg a \gls{sco} using the form of a registered association has different (legal) obligations than a \gls{sco} organized as university group. Completely specifying it is impossible on the level of abstraction this ontology operates on. In the same vein, it is impossible to define which tasks are attributed to which role, since every \gls{sco} organizes differently. Therefore we fall back on an extensible model and introduce the general class \class{Coporoate\_Officer} as \relation{subclassOf} \class{Organizational\_Role}. To play a leadership role, it is required to be a formal \class{Member} of the \gls{sco}. Hence: \class{Coporoate\_Officer} \relation{is\_played\_by} only 
+The exact set of task differs from \gls{sco} to \gls{sco} and is also dependend on the organizational form, \eg a \gls{sco} using the form of a registered association has different (legal) obligations than a \gls{sco} organized as university group. Completely specifying it is impossible on the level of abstraction this ontology operates on. In the same vein, it is impossible to define which tasks are attributed to which role, since every \gls{sco} organizes differently. Therefore we fall back on an extensible model and introduce the general class \class{Coporoate\_Officer} as \relation{subclassOf} \class{Organizational\_Role}. To play a leadership role, it is required to be a formal \class{Member} of the \gls{sco}. Hence: \class{Coporoate\_Officer} \relation{is\_played\_by} only
 (\class{Junior\_Consultant} or \class{Consultant} or \class{Senior\_Consultant}).
 
 There exists some common roles, that arise from the necessities of an \gls{sco}: There is typically a person that is formally responsible for the organization, a person that takes care of the finances, and a person that takes care of legal aspects of the project work. We differentiate between these three branches explicitly and introduce dedicated roles for each: \class{Chief\_Executive\_Officer}, \class{Chief\_Financial\_Officer}, and \class{Chief\_Legal\_Officer}.
@@ -607,7 +686,7 @@ Patrons are financial and/or ideological supporters of the \gls{sco}: A financia
 \paragraph{Project Team: Member, Leader, Controller}
 A project team in its most basic form consists of team members that are lead by a team leader. Additionally a project controller can be employed to observe and measure the progress of the project, giving feedback on the project work, and helping the team in various capacity where necessary. The controller role is usually played by a person that has gathered experience with projects and sharing them further supports the idea of \gls{sco} by furthering the learning process of the project team members.
 
-We model the \class{Project\_Team} as \relation{subclassOf} \class{Group}, since it is a collection of people that play 
+We model the \class{Project\_Team} as \relation{subclassOf} \class{Group}, since it is a collection of people that play
 
 We model \class{Project\_Team\_Member}
 
@@ -633,7 +712,7 @@ Processes are a helpful concept when describing organizations: They are created 
 
 Since processes are a commonly used concept in the business world, it is not surprising, that many different methods and frameworks for modeling them have been developed. Their output often are visual representations of all workflows that make up an organization. Combining process models with goals and measurements makes them a powerful tool for optimization and quality control. For example, ISO 9001 is an industry standard that uses a process approach as the foundation of measuring quality. \cite{iso-process-approach} Because process documentation contains a lot of data about organizations, it is a valuable source for ontology development.
 
-Widely known representations and methods include: Flowcharts, \gls{bpmn}, \gls{epc}, \gls{uml} Activity Diagrams, and \gls{opm}\footnote{Standardized as ISO~19450.}. There are also contributions rooted in ontology research, such as the \gls{bpmn} ontology (an OWL ontology for the \gls{bpmn} notation) \cite{2014foisbpmn}, the \gls{psl}\footnote{Developed by the \gls{nist} and standardized as ISO~18629.}, and processes concepts as part of \gls{gfo} or \gls{bfo}.
+Widely known representations and methods include: Flowcharts, \gls{bpmn}, \gls{epc}, \gls{uml} Activity Diagrams, and \gls{opm}\footnote{Standardized as ISO~19450.}. There are also contributions rooted in ontology research, such as the \gls{bpmn} ontology (an \gls{owl} ontology for the \gls{bpmn} notation) \cite{2014foisbpmn}, the \gls{psl}\footnote{Developed by the \gls{nist} and standardized as ISO~18629.}, and processes concepts as part of \gls{gfo} or \gls{bfo}.
 
 \subsubsection{Implementation in Related Ontologies \progressbar[filledcolor=green]{0.5}}
 % TODO: Was verfolgt die jeweilige Implementierung für ein Ziel? Irgendwie einen Schluss aus der betrachtung ziehen
@@ -685,11 +764,12 @@ bfp gfo contain valuable information, that can be modified and adapted for the p
 
 
 \subsubsection{Structure of the Class Hierarchy \progressbar[filledcolor=yellow]{0.6}}
-Processes need special attention when implementing them in a domain ontology, since their nature is quite different from other classes that represent physical, \eg \class{Document}, or intuitive concepts, \eg \class{Person}. As mentioned in section \ref{analysis}, the built in \relation{subclassOf} relation of the class hierarchy already carries semantic meaning, that is generally not applicable to processes. For example: a \class{Delivery\_Process} may involve a \class{Food\_Preperation\_Process} as a procedural step. However, it is easy to see and understand that a \class{Food\_Preperation\_Process} is $\underline{not}$ \relation{subclassOf} a \class{Delivery\_Process} and therefore should not inherit its properties.
+\label{process-subclass}
+Processes need special attention when implementing them in a domain ontology, since their nature is quite different from other classes that represent physical, \eg \class{Document}, or intuitive concepts, \eg \class{Person}. As mentioned in section \ref{classes}, the built in \relation{subclassOf} relation of the class hierarchy already carries semantic meaning, that is generally not applicable to processes. For example: a \class{Delivery\_Process} may involve a \class{Food\_Preperation\_Process} as a procedural step. However, it is easy to see and understand that a \class{Food\_Preperation\_Process} is $\underline{not}$ \relation{subclassOf} a \class{Delivery\_Process} and therefore should not inherit its properties.
 
 To model processes correctly, one could consider introducing a class like \class{*\_Process\_Part} (in the given example: \class{Delivery\_Process\_Part}) and use it to collect and connect sub-processes to their parent process. However, this results in many additional \textit{helper} classes in the class hierarchy, since every level of sub-processes requires another \class{*\_Process\_Part} class. This makes the class hierarchy harder to read and understand, since the process structure is encoded in these helper classes.
 
-Another solution is the use of a root \class{Process} class to collect all processes and the relation \relation{isProcessPartOf}\footnote{Inverse: \relation{hasProcessPart}.} to connect a sub-process to its parent process. This results in a completely flat structure of the class hierarchy: every process is directly \relation{subclassOf} \class{Process}, independent from the level of abstraction. 
+Another solution is the use of a root \class{Process} class to collect all processes and the relation \relation{isProcessPartOf}\footnote{Inverse: \relation{hasProcessPart}.} to connect a sub-process to its parent process. This results in a completely flat structure of the class hierarchy: every process is directly \relation{subclassOf} \class{Process}, independent from the level of abstraction.
 
 \subsubsection{Ordering of Processes \progressbar[filledcolor=red]{0.2}}
 Another aspect that has to be discussed is the ordering of processes.
@@ -698,13 +778,13 @@ Processes are a concept that heavily relies on abstraction. The right level of a
 
 \begin{compactenum}
 	\item It is hard to create a complete process diagram/describe a complete process
-	\item A successful process model relies on the correct 
+	\item A successful process model relies on the correct
 	\item Besides from the problem of completeness, if you go on the lowest level of abstraction ordering the steps become easier (true?!)
 	\item Trying to create a generally applicable domain ontology brings up an interesting questions in regards to process concepts: what is the correct level of abstraction and is it possible to bring certain processes in the correct order
 	\item It is therefore necessary to look at every process and its parts -- and discuss if 1) correct level of abstraction 2) can it be ordered
-	\item A parent process aggregates child process 
+	\item A parent process aggregates child process
 
-	\item When discussing the lowest level of a process Depending on the level of abstraction, 
+	\item When discussing the lowest level of a process Depending on the level of abstraction,
 	\item Indepentendt from the class hierarchy problem, another topic: The procedural information is encoded in the relation.
 	\item Processes are a sequence of action -> but not always
 	\item there should be a next\_process relation, but it's not straight forward, since there is not necessarily a strict ordering.
@@ -715,7 +795,7 @@ Processes are a concept that heavily relies on abstraction. The right level of a
 
 \begin{compactenum}
 \item In addition to that a distinction has to be made between \textit{discreet} events and \textit{liquid} processes. \cite[p.\,447]{Russell:2010aa}
-\item Processes are an immaterial concept that is strongly connected to relations of relative time, such as \relation{before} and \relation{after}. 
+\item Processes are an immaterial concept that is strongly connected to relations of relative time, such as \relation{before} and \relation{after}.
 \end{compactenum}
 
 
@@ -728,9 +808,9 @@ For example: German law requires every company to pay taxes on their earnings. D
 
 
 \subsubsection{Implementation of Processes in this Work \progressbar[filledcolor=red]{0.2}}
-They intuitively have a start, duration, and end. 
+They intuitively have a start, duration, and end.
 
-Since the focus of the ontology is on simplicity, we decide to use a single  class \class{Process} as root for all processes in conjunction with the \relation{isProcessPartOf} relation. This method utilizes the core concepts of ontologies, classes and relations, and avoids encoding extra information in unconventional ways. To compensate for the resulting un-intuitive flat class hierarchy, we add diagrams to describe the processes and their relationships graphically (see section \ref{process-diagrams}).
+Since the focus of the ontology is on simplicity, we decide to use a single  class \class{Process} as root for all processes in conjunction with the \relation{isProcessPartOf} relation. This method utilizes the core concepts of ontologies, classes and relations, and avoids encoding extra information in unconventional ways. To compensate for the resulting un-intuitive flat class hierarchy, we add diagrams to describe the processes and their relationships graphically (see appendix \ref{process-diagrams}).
 
 %\paragraph{Intuitive Look}
 The primary goal of an \gls{sco} is teaching students project work. They reach this goal by training their members and offering them opportunities to work on real-world projects. Looking at this from a high-level process perspective, this can be boiled down to distinct steps that have to be performed by the organization:
@@ -820,7 +900,7 @@ Syntactic decision: is/has relations
 \begin{compactitem}
 	\item All processes have a \textbf{next\_process} $\diamond$
 	\item \textbf{previous\_process} should be inferred?!
-	\item 
+	\item
 \end{compactitem}
 
 before/after:
@@ -875,6 +955,76 @@ before/after:
 \printnoidxglossaries
 
 \printbibliography
+
+\newpage
+
+\section{Dictionary Definitions}
+\label{dictionary}
+% \textcolor{gray}{\textit{\enquote{}}}
+
+\begin{mdframed}[%
+	linewidth=1pt,%
+	frametitlerule=true,%
+	frametitlebackgroundcolor=gray!20,%
+	innertopmargin=\topskip,%
+	frametitlefont=\normalfont,%
+	frametitle={{\textbf{domain}} {\scriptsize\textsc{noun \hfill Merriam-Webster}}}%
+	]
+	
+	{\small do·​main
+			\begin{compactenum}
+				\item law
+				\begin{compactenum}
+					\item complete and absolute (see absolute sense 3) ownership of land \\
+					\textcolor{gray}{\enquote{\textit{our highways and roads have been in the domain of state and local governments— T. H. White b. 1915}}} \\
+					 — compare eminent domain
+					\item land so owned
+				\end{compactenum}
+				\item a territory over which dominion (see dominion sense 2) is exercised \\
+				\textcolor{gray}{\enquote{\textit{The forest is part of the king's domain.}}}
+				\item a region distinctively marked by some physical feature \\
+				\textcolor{gray}{\enquote{\textit{a domain of rushing streams, tall trees, and lakes}}}
+				\item a sphere (see sphere sense 4b) of knowledge, influence, or activity \\
+				\textcolor{gray}{\textit{\enquote{the domain of biblical scholarship}, \enquote{outside the domain of city police}}}
+				\item mathematics : the set of elements (see element sense 2b(3)) to which a mathematical or logical variable is limited \\
+				specifically : the set on which a function (see function entry 1 sense 5a) is defined
+				\item physics : any of the small randomly oriented regions of uniform magnetization in a ferromagnetic substance
+				\item mathematics : integral domain
+				\item biology : the highest taxonomic category in biological classification ranking above the kingdom (see kingdom sense 4b)
+				\item biochemistry : any of the three-dimensional subunits of a protein that are formed by the folding of its linear peptide chain and that together make up its tertiary (see tertiary entry 1 sense 3c) structure
+				\item computers : a subdivision of the Internet consisting of computers or sites usually with a common purpose (such as providing commercial information) and denoted in Internet addresses by a unique abbreviation (such as com for commercial sites or gov for government sites) \\
+				\textcolor{gray}{\textit{\enquote{The domain ca is used for sites located in Canada.}}} \\
+				also : domain name \\
+				\textcolor{gray}{\textit{\enquote{Our domain is Merriam-Webster.com.}}}
+		\end{compactenum}
+	}
+\end{mdframed}
+
+\begin{mdframed}[%
+	linewidth=1pt,%
+	frametitlerule=true,%
+	frametitlebackgroundcolor=gray!20,%
+	innertopmargin=\topskip,%
+	frametitlefont=\normalfont,%
+	frametitle={{\textbf{vocabulary}} {\scriptsize\textsc{noun \hfill Merriam-Webster}}}%
+	]
+	
+	{\small vo·​cab·​u·​lary \textit{\textcolor{teal}{plural}} vocabularies
+		\begin{compactenum}
+			\item a list or collection of words or of words and phrases usually alphabetically arranged and explained or defined : LEXICON \\
+			\textcolor{gray}{\enquote{\textit{The vocabulary for the week is posted online every Monday.}}}
+			\item
+			\begin{compactenum}
+				\item a sum or stock of words employed by a language, group, individual, or work or in a field of knowledge \\
+				\textcolor{gray}{\textit{\enquote{a child with a large vocabulary}}, \enquote{the vocabulary of physicians}, \enquote{a writer known for employing a rich vocabulary}}
+				\item a list or collection of terms or codes available for use (as in an indexing system) \\
+				\textcolor{gray}{\enquote{\textit{… the oldest Sumerian cuneiform writing could not render normal prose but was a mere telegraphic shorthand, whose vocabulary was restricted to names, numerals, units of measure, words for objects counted, and a few adjectives.}} --- \textsc{Jared Diamon}}
+			\end{compactenum}
+			\item a supply of expressive techniques or devices (as of an art form) \\
+			\textcolor{gray}{\textit{\enquote{an impressive musical vocabulary}}}
+		\end{compactenum}
+	}
+\end{mdframed}
 
 \newpage
 \section{Ontology Import Links}
