@@ -1,3 +1,5 @@
+![Build PDF-Snapshot](https://github.com/felixfoertsch/Bachelorarbeit/workflows/Build%20PDF-Snapshot/badge.svg)
+
 # Bachelor Thesis by Felix Förtsch
 
 ## General Information
