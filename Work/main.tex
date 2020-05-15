@@ -735,10 +735,10 @@ The \class{Project\_Team} itself is not a role. However, it is a relevant entity
 \subsubsection{Project Controlling}
 In addition to the team, the \gls{sco} typically provides a controlling entity for the project. It observes and measures the progress of the project, gives feedback on the project work, and helps the team in various capacity where necessary. The role of the controlling entity is usually played by someone or some group---both are common in the domain---, that has gathered experience with projects in general and has specific knowledge that is useful in the project it supports. Additionally, using an experienced controlling entity helps the learning process of the team.
 
-When modeling the controlling entity, the duality of being a single person or a group has to be considered. We model \class{Project\_Controlling} as \relation{subclassOf} \class{Project\_Role}. 
+We model \class{Project\_Controlling} as \relation{subclassOf} \class{Project\_Role}. We model the players as a group of experienced members; if an organization only uses a single member to play the controlling entity, our models considers it a group of one ($n = 1$). We encode the required experience into the ranks (see section \ref{ranks}), cutting out \class{Trainee} and \class{Junior\_Consultant}. This means the role \relation{isPlayedBy only} (\class{Group} and \relation{hasMember} some (\class{Alumna} or \class{Consultant} or \class{Senior\_Consultant})).
 
 \subsubsection{Customer}
-The second party of a basic project is the \class{Customer}. The role can be played by any \class{Agent}. It represents the actor that wants to reach a goal and sets up a project with the \gls{sco} to reach it. To work on a \class{Project}, the \class{Customer} \relation{signsContract} the corresponding \class{Project\_Contract}.
+The remaining party of a basic project is the \class{Customer}. It represents the actor that wants to reach a goal and sets up a project with the \gls{sco} to reach it. Similar to other aspects in the \gls{pc}, we use a minimal approach to the role to accommodate for the required flexibility. We model it as \relation{subclassOf} \class{Project\_Role} and allow it to be played by any \class{Agent}. To work on a \class{Project}, the \class{Customer} \relation{signsContract} the corresponding \class{Project\_Contract}.
 
 \section{Processes \progressbar[filledcolor=yellow]{0.4}}
 \label{processes}

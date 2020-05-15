@@ -884,16 +884,21 @@
                 <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#is_played_by"/>
                 <owl:allValuesFrom>
                     <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
+                        <owl:intersectionOf rdf:parseType="Collection">
                             <rdf:Description rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Group"/>
-                            <owl:Class>
-                                <owl:unionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Alumna"/>
-                                    <rdf:Description rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Consultant"/>
-                                    <rdf:Description rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Senior_Consultant"/>
-                                </owl:unionOf>
-                            </owl:Class>
-                        </owl:unionOf>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#has_member"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:unionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Alumna"/>
+                                            <rdf:Description rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Consultant"/>
+                                            <rdf:Description rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Senior_Consultant"/>
+                                        </owl:unionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
             </owl:Restriction>
