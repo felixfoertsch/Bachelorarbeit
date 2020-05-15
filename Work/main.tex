@@ -475,7 +475,7 @@ no absolute time
 
 \gls{bfo} \gls{gfo} have complex implementations of time that are not needed in this ontology.
 
-\chapter{Ontological Aspects in the SCO Domain \progressbar[filledcolor=yellow]{0.4}}
+\chapter{Ontological Aspects in the SCO Domain \progressbar[filledcolor=yellow]{0.7}}
 \label{domain-aspects}
 At the center of our domain lies a social structure. It is driven by processes and interactions that involve people. Such social constructs are inherently complex. For example: The same individual can often act in multiple capacities, actors can be part of different groups and these groups can have different degrees of formalization, the contexts of interactions are dynamic and fluid, etc. The challenge lies in modeling the domain in a way that it is adequately represented, but not too complex to use.
 
@@ -543,7 +543,7 @@ Another way is to start with the implied context and add explanations, comments,
 
 We are using the latter approach and try to avoid additionally ambiguity by discussing the relevant contexts explicitly as part of this work, as well as add explanation texts to the ontology.
 
-\section{Social Constructs \progressbar[filledcolor=yellow]{0.7}}
+\section{Social Constructs \progressbar[filledcolor=green]{0.9}}
  This section deals with the model for human beings.
  \eg as a \gls{sco} member or -non-member, as part of a project, as a customer, etc.
  Aggregation of these actors can occur in different degrees of formalization, \eg informal meeting of \gls{sco} members as friends, a project team meeting, an official meeting of the member council, etc. 
@@ -722,18 +722,20 @@ Patrons are financial and/or ideological supporters of the \gls{sco}: A financia
 \end{mdframed}
 
 \subsection{Roles in the Project Context}
-As discussed in section \ref{context}, we look at projects as black boxes. We focus on their inputs and outputs, as well as the support during its life cycle. This perspective influences the role model, since the primary inputs are people playing a certain role in the \gls{pc}. The \textit{roles} of a project are: the team---consisting of the team leader and team members---, the controlling entity, and the customer. The roles in the \gls{pc} operate on a higher, more general level of abstraction when compared to the classes in the \gls{oc}, to account for the generality if projects.
+As discussed in section \ref{context}, we look at projects as black boxes. We focus on their inputs and outputs, as well as the support during its life cycle. This perspective influences the role model, since the primary inputs are people playing a certain role in the \gls{pc}. The \textit{roles} of a project are: the team---consisting of team leader and team members---, the controlling entity, and the customer. The roles in the \gls{pc} operate on a higher, more general level of abstraction when compared to the classes in the \gls{oc}, to account for the generality if projects.
 
-\subsubsection{Project Team: Leader, Member, Controlling}
-A project team in its most basic form consists of team members that are lead by a team leader. Additionally a controlling entity observes and measures the progress of the project, giving feedback on the project work, and helping the team in various capacity where necessary. The project team leader is typically a more experienced member of the organization, to ensure the knowledge transfer and successful operation of the project, whereas the team members are recruited from the general member pool. The role of the controlling entity is usually played by someone or some group---both are common in the domain---, that has gathered experience with projects in general, and/or has specific knowledge that is useful in the project it supports. Using an experienced controlling entity further supplements the learning process of the team. 
+\subsubsection{Project Team}
+A project team in its most basic form consists of team members that are lead by a team leader. The project team leader is typically a more experienced member of the organization, to ensure the knowledge transfer and successful operation of the project, whereas the team members are recruited from the general member pool.
 
 We model \class{Project\_Team\_Member} and \class{Project\_Team\_Leader} as \relation{subclassOf} \class{Project\_Role}. To indicate that these roles are only played by members of the organization, both are \relation{playedBy only}
 \class{Alumna} or \class{Consultant} or \class{Junior\_Consultant} or \class{Senior\_Consultant}. Additionally the \relation{isPlayedBy} relation of the role \class{Project\_Team\_Member} is extended with \relation{or} \class{Trainee}, to account for the fact that trainees in a \gls{sco} can not become the \class{Project\_Team\_Leader}. By using \class{Trainee} our model binds the cut-off point for the leadership role to the formal membership (see section \ref{ranks}).
 
-We model the \class{Project\_Team} as \relation{subclassOf} \class{Group}. It is a collection of certain \class{Members} of the \gls{sco}, that each either play the role of a team member or a leader. Being \relation{subclassOf} \class{Group} also gives it the ability to act as an \class{Agent}: It \relation{participatesIn} a \class{Project} and \relation{signsContract} the \class{Project\_Contract}. 
+The \class{Project\_Team} itself is not a role. However, it is a relevant entity of the ontology. It is a collection of certain \class{Members} of the \gls{sco}, that each either play the role of a team member or a leader. We model it as \relation{subclassOf} \class{Group}. This also gives it the ability to act as an \class{Agent}: It \relation{participatesIn} a \class{Project} and \relation{signsContract} the \class{Project\_Contract}.
+
+\subsubsection{Project Controlling}
+In addition to the team, the \gls{sco} typically provides a controlling entity for the project. It observes and measures the progress of the project, gives feedback on the project work, and helps the team in various capacity where necessary. The role of the controlling entity is usually played by someone or some group---both are common in the domain---, that has gathered experience with projects in general and has specific knowledge that is useful in the project it supports. Additionally, using an experienced controlling entity helps the learning process of the team.
 
 When modeling the controlling entity, the duality of being a single person or a group has to be considered. We model \class{Project\_Controlling} as \relation{subclassOf} \class{Project\_Role}. 
-
 
 \subsubsection{Customer}
 The second party of a basic project is the \class{Customer}. The role can be played by any \class{Agent}. It represents the actor that wants to reach a goal and sets up a project with the \gls{sco} to reach it. To work on a \class{Project}, the \class{Customer} \relation{signsContract} the corresponding \class{Project\_Contract}.
