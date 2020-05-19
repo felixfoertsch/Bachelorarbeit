@@ -486,6 +486,8 @@ In the following section, we discuss three distinct and noteworthy aspects that 
 	\item our model for \textit{processes}.
 \end{inparablank}
 
+Please note, that there are other classes and relations present in the ontology---and also describes in section \ref{ontology}---that are relevant to the domain, but \textit{not} discussed in detail in this part of the work (\eg \class{Document}).
+
 \section{Context \progressbar[filledcolor=green]{0.9}}
 \label{context}
 Context plays an important role in knowledge engineering. Things can take on a different meaning, depending on which context they are presented. Accounting for it poses a challenge for any ontology, because of its inherent complexity and domain specificity \cite[p.\,1]{moore2012intelligent}. It is important to note that context can, but doesn't have to be modeled explicitly. It indirectly influences all entities; however, the degree of influence can change from one to another.
@@ -523,10 +525,10 @@ A project is an organizational construct that exists to reach a common goal, as 
 As already pointed out, projects are the tool of choice for educating the \gls{sco} members. The organization can be thought of as the central hub for multiple projects: It is the entity that frames each projects life cycle. It ensures sufficient starting conditions, provides external support during a projects duration, and accompanies its finalization. The content of each individual project does not impact the ontology. Hence, we can look at each project as a black box similar to a function. Our model has to consider the project inputs (\eg personnel) and its outputs (\eg documents), as well as a model for interactions between a running project and the organization.
 
 %TODO: Write how the context is modeled
-\begin{compactenum}
-	\item The typical \gls{sco} requires project members to be formal members of the organization itself.
-	\item A member can be part of a project and part of the organizational structure at the same time.
-\end{compactenum}
+%\begin{compactenum}
+%	\item The typical \gls{sco} requires project members to be formal members of the organization itself.
+%	\item A member can be part of a project and part of the organizational structure at the same time.
+%\end{compactenum}
 
 \subsection{Contextual Ambiguity}
 Ontology engineering relies on natural language to describe concepts. This work uses primarily English words (see section \ref{vocabulary}) for this task. That naturally introduces a form of contextual ambiguity, because people often use words in a flexible manner. \cite[p.\,7, 1.5.2]{uschold1998enterprise}  It's our goal to keep the ontology as simple as possible. It is therefore important to find a way to avoid ambiguity as much as possible.
@@ -541,7 +543,7 @@ However, this approach discards all previous knowledge about a concept. Furtherm
 
 Another way is to start with the implied context and add explanations, comments, clarifications, and restrictions to it, to make the meaning as clear as possible; building the required context in the process. This can be furthered by using already existing definitions from pre-definied name spaces and established ontologies (see section \ref{related-work}).
 
-We are using the latter approach and try to avoid additionally ambiguity by discussing the relevant contexts explicitly as part of this work, as well as add explanation texts to the ontology.
+We are using the latter approach and try to avoid additional ambiguity by discussing the relevant contexts explicitly as part of this work, as well as add explanation texts to the ontology. Furthermore we try to lean on common understand of terms as much as possible, by creating links to well-known ontologies like \gls{foaf}.
 
 \section{Social Constructs \progressbar[filledcolor=green]{0.9}}
  This section deals with the model for human beings.
@@ -744,15 +746,13 @@ The remaining party of a basic project is the \class{Customer}. It represents th
 \label{processes}
 Processes are a helpful concept when describing organizations: They are created to achieve a goal and its processes are the steps needed to reach that goal. \cite[p.\,5, Definition 1.1]{Weske:2019aa} In theory, every organization can be decomposed to a sequence of single activities, which, when executed correctly and in the correct order, terminate in reaching the goal of the organization.
 
-Since processes are a commonly used concept in the business world, it is not surprising, that many different methods and frameworks for modeling them have been developed. Their output often are visual representations of all workflows that make up an organization. Combining process models with goals and measurements makes them a powerful tool for optimization and quality control. For example, ISO 9001 is an industry standard that uses a process approach as the foundation of measuring quality. \cite{iso-process-approach} Because process documentation contains a lot of data about organizations, it is a valuable source for ontology development.
+Since processes are a commonly used concept in the business world, it is not surprising, that many different methods and frameworks for modeling them have been developed. They often revolve around visual representations of all workflows that make up an organization. Combining process models with goals and measurements makes them a powerful tool for optimization and quality control. For example, ISO 9001 is an industry standard that uses a process approach as the foundation of measuring quality. \cite{iso-process-approach} Because process documentation contains a lot of data about organizations, it is also a valuable source for ontology development.
 
 Widely known representations and methods include: Flowcharts, \gls{bpmn}, \gls{epc}, \gls{uml} Activity Diagrams, and \gls{opm}\footnote{Standardized as ISO~19450.}. There are also contributions rooted in ontology research, such as the \gls{bpmn} ontology (an \gls{owl} ontology for the \gls{bpmn} notation) \cite{2014foisbpmn}, the \gls{psl}\footnote{Developed by the \gls{nist} and standardized as ISO~18629.}, and processes concepts as part of \gls{gfo} or \gls{bfo}.
 
 \subsection{Implementation in Related Ontologies}
 % TODO: Was verfolgt die jeweilige Implementierung für ein Ziel? Irgendwie einen Schluss aus der betrachtung ziehen
-When compared to the rather practical and direct implementation of social structures discussed in section \ref{human-beings-in-other-ontologies}, processes are a more abstract concept. The impact of abstraction levels clearly shows when analyzing related ontologies. For example: While \gls{foaf} is a good source when discussing its niche---the modeling of connection between human beings---it does not require an implementation of a process concept. The closest possible link between these two knowledge domains is the  class \class{foaf:Project}\foottt{foaf:Project rdfs:comment: \enquote{A project (a collective endeavour of some kind).}}, which can be viewed as a procedural concept. However, it doesn't offer any additional reusable detail.
-
-A similar observation can be made for \gls{schema}. Its primary purpose is adding semantic meaning to the internet: \enquote{Schema.org is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet, on web pages, in email messages, and beyond.} \cite{schema-mission} Hence, it is not surprising, that it doesn't implement a detailed process representation.
+When compared to the rather practical and direct implementation of social structures discussed in section \ref{human-beings-in-other-ontologies}, processes are a more abstract concept. The impact of abstraction levels clearly shows when analyzing related ontologies. For example: While \gls{foaf} is a good source when discussing its niche---the modeling of connection between human beings---it does not require an implementation of a process concept. The closest possible link between these two knowledge domains is the  class \class{foaf:Project}\foottt{foaf:Project rdfs:comment: \enquote{A project (a collective endeavour of some kind).}}, which can be viewed as a procedural concept. However, it doesn't offer any additional reusable detail. A similar observation can be made for \gls{schema}. Its primary purpose is adding semantic meaning to the internet: \enquote{Schema.org is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet, on web pages, in email messages, and beyond.} \cite{schema-mission} Hence, it is not surprising, that it doesn't implement a detailed process representation.
 
 On the other hand, the two related top-level ontologies, \gls{bfo} and \gls{gfo}, deal with time (see section \ref{time}) on a very high level and also implement process concepts: \gls{bfo} uses the class
 \class{bfo:Occurent}%
@@ -895,26 +895,34 @@ The users of this ontology are the leadership of \glspl{sco} in Germany as well 
 
 \section{Classes}
 \subsection{Agent}
-\subsubsection{Group}
-\subsubsection{Organization}
-\subsubsection{Person}
-\paragraph{Trainee}
-\paragraph{Junior Consultant}
-\paragraph{Consultant}
-\paragraph{Senior Consultant}
-
-\subsection{Document}
-
-\subsection{Processes}
-
-\subsubsection{Human Resource Process}
-\subsubsection{Project Process}
-\subsubsection{Support Processes}
-\subsection{Projects}
-
-\section{Relations}
-
-Syntactic decision: is/has relations
+\begin{compactitem}
+\item Agent
+	\begin{compactitem}
+	\item Group
+		\begin{compactitem}
+			\item Executive\_Board
+			\item Member\_Assembly
+			\item Project\_Team
+		\end{compactitem}
+	\item Organization
+		\begin{compactitem}
+			\item Student\_Consulting\_Organization
+			\item Umbrella\_Organization
+			\item University
+		\end{compactitem}
+	\item Person
+		\begin{compactitem}
+			\item Member
+				\begin{compactenum}
+					\item Consultant
+					\item Junior\_Consultant
+					\item Senior\_Consultant
+					\item Trainee
+				\end{compactenum}
+		\end{compactitem}
+	\end{compactitem}
+\end{compactitem}
+% TODO: Syntactic decision: is/has relations
 
 % TODO: Verify ($\diamond$ means the relation is implemented in the ontology)
 
