@@ -750,13 +750,18 @@ Since processes are a commonly used concept in the business world, it is not sur
 
 Widely known representations and methods include: Flowcharts, \gls{bpmn}, \gls{epc}, \gls{uml} Activity Diagrams, and \gls{opm}\footnote{Standardized as ISO~19450.}. There are also contributions rooted in ontology research, such as the \gls{bpmn} ontology (an \gls{owl} ontology for the \gls{bpmn} notation) \cite{2014foisbpmn}, the \gls{psl}\footnote{Developed by the \gls{nist} and standardized as ISO~18629.}, and processes concepts as part of \gls{gfo} or \gls{bfo}.
 
+Our intent is the representation of the required \textit{core} processes of an \gls{sco} in such a way, that it makes it clear to the ontology user \underline{which} process have to be implemented, but leaves enough creative freedom in regards to \underline{how} to implement them.
+
 \subsection{Implementation in Related Ontologies}
 % TODO: Was verfolgt die jeweilige Implementierung für ein Ziel? Irgendwie einen Schluss aus der betrachtung ziehen
-When compared to the rather practical and direct implementation of social structures discussed in section \ref{human-beings-in-other-ontologies}, processes are a more abstract concept. The impact of abstraction levels clearly shows when analyzing related ontologies. For example: While \gls{foaf} is a good source when discussing its niche---the modeling of connection between human beings---it does not require an implementation of a process concept. The closest possible link between these two knowledge domains is the  class \class{foaf:Project}\foottt{foaf:Project rdfs:comment: \enquote{A project (a collective endeavour of some kind).}}, which can be viewed as a procedural concept. However, it doesn't offer any additional reusable detail. A similar observation can be made for \gls{schema}. Its primary purpose is adding semantic meaning to the internet: \enquote{Schema.org is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet, on web pages, in email messages, and beyond.} \cite{schema-mission} Hence, it is not surprising, that it doesn't implement a detailed process representation.
+When compared to the rather practical and direct implementation of social structures discussed in section \ref{human-beings-in-other-ontologies}, processes are a more abstract concept. The impact of abstraction levels clearly shows when analyzing related ontologies. For example: While \gls{foaf} is a good source when discussing its niche---the modeling of connection between human beings---it does not require an implementation of a process concept. The closest link from \gls{foaf} to a process representation is the  class \class{foaf:Project}\foottt{foaf:Project rdfs:comment: \enquote{A project (a collective endeavour of some kind).}}, which can be viewed as a procedural concept. However, it doesn't offer any additional reusable detail.
 
-On the other hand, the two related top-level ontologies, \gls{bfo} and \gls{gfo}, deal with time (see section \ref{time}) on a very high level and also implement process concepts: \gls{bfo} uses the class
-\class{bfo:Occurent}%
-	\foottt{bfo:Occurent elucidation: \enquote{An occurrent is an entity that unfolds itself in time or it is the instantaneous boundary of such an entity (for example a beginning or an ending) or it is a temporal or spatiotemporal region which such an entity occupies\_temporal\_region or occupies\_spatiotemporal\_region. (axiom label in BFO2 Reference: [077-002])}}
+A similar observation can be made for \gls{schema}. Its primary purpose is adding semantic meaning to the internet: \enquote{Schema.org is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet, on web pages, in email messages, and beyond.} \cite{schema-mission} Hence, it is not surprising, that it doesn't implement a detailed process representation. The other time-related class that could be connected to processes, \class{schema:Event}, is geared towards content description (\eg \class{schema:Business\_Event}, \class{schema:Sports\_Event}) and website interaction (\eg \class{schema:User\_Likes} \relation{subclassOf} \class{schema:User\_Interaction}) instead.
+
+On the other hand, the two top-level ontologies, \gls{bfo} and \gls{gfo}, implement process concepts on such a high level of abstraction, that they are not directly applicable for our domain process model:
+%
+\gls{bfo} uses the class %
+	\class{bfo:Occurent}\foottt{bfo:Occurent elucidation: \enquote{An occurrent is an entity that unfolds itself in time or it is the instantaneous boundary of such an entity (for example a beginning or an ending) or it is a temporal or spatiotemporal region which such an entity occupies\_temporal\_region or occupies\_spatiotemporal\_region. (axiom label in BFO2 Reference: [077-002])}}
 %
 as entry point for its process concepts. It is sub-classed by %
 	\class{bfo:Process}\foottt{bfo:Process definition: \enquote{p is a process = Def. p is an occurrent that has temporal proper parts and for some time t, p s-depends\_on some material entity at t. (axiom label in BFO2 Reference: [083-003])}},
@@ -765,9 +770,7 @@ as entry point for its process concepts. It is sub-classed by %
 %
 	\class{bfo:Spatiotemporal\_Region}\foottt{bfo:Spatiotemporal\_Region elucidation: \enquote{A spatiotemporal region is an occurrent entity that is part of spacetime. (axiom label in BFO2 Reference: [095-001])}}, and
 %
-	\class{bfo:Temporal\_Region}\foottt{bfo:Temporal\_Region elucidation: \enquote{A temporal region is an occurrent entity that is part of time as defined relative to some reference frame. (axiom label in BFO2 Reference: [100-001])}}.
-%
-Looking closer at the given examples\foottt{bfo:Process example of usage:
+	\class{bfo:Temporal\_Region}\foottt{bfo:Temporal\_Region elucidation: \enquote{A temporal region is an occurrent entity that is part of time as defined relative to some reference frame. (axiom label in BFO2 Reference: [100-001])}}, to enable it to distinguish between the process itself and its temporal parts. \cite[p.\,66--68]{smith2015basic} Looking closer at the given examples\foottt{bfo:Process example of usage:
 	\begin{inparaenum}
 		\item a process of cell-division,
 		\item a beating of the heart,
@@ -778,23 +781,28 @@ Looking closer at the given examples\foottt{bfo:Process example of usage:
 		\item the life of an organism,
 		\item your process of aging.
 	\end{inparaenum}
-} for \class{bfo:Process} emphasizes the classes high-level nature.
+} for \class{bfo:Process} further emphasizes the classes high-level nature. \gls{gfo} uses the high-level term \textit{Temporal Complexes} to denote the \enquote{most general kind of concrete individuals which have a temporal extension} \cite[p.\,26]{herre2010general}, which includes processes: \enquote{The set of processes is a proper subset of the set of connected temporal complexes.} \cite[p.\,27]{herre2010general}. In the ontology, the class %
+	\class{gfo:Processual\_Structure}\foottt{gfo:Processual\_Structure dc:description: \enquote{The category of processual structures centers around the more intuitive notion of processes. It captures processes themselves and occurrents, i.e., primarily structures of several other kinds that can be derived from processes.}}
+%
+represents its entry point. It is sub-classed by %
+	\class{gfo:Occurent}\foottt{gfo:Occurent dc:description: \enquote{The category of occurrents comprises several categories that can be derived from processes.}}
+%
+and %
+	\class{gfo:Processes}\foottt{gfo:Processes dc:description: \enquote{Processes are directly in time, they develop over and unfold in time. Processes have characteristics which cannot be captured by a collection of time boundaries. In particular, processes exhibit internal coherence.}}.
 
-\gls{gfo} uses the class
-\class{gfo:Processual\_Structure}\foottt{gfo:Processual\_Structure dc:description: \enquote{The category of processual structures centers around the more intuitive notion of processes. It captures processes themselves and occurrents, i.e., primarily structures of several other kinds that can be derived from processes.}}
-as its entry point. It is sub-classed by
-\class{gfo:Occurent}\foottt{gfo:Occurent dc:description: \enquote{The category of occurrents comprises several categories that can be derived from processes.}}
-and
-\class{gfo:Processes}\foottt{gfo:Processes dc:description: \enquote{Processes are directly in time, they develop over and unfold in time. Processes have characteristics which cannot be captured by a collection of time boundaries. In particular, processes exhibit internal coherence.}}.
+\gls{gist} is also not directly applicable, since it does not account for processes. It also deals with time on a comparatively high level with the class %
+	\class{gist:Event}\foottt{gist:Event rdfs:comment: \enquote{Something happening over some period of time, often characterized as some kind of activity being carried out by some person, organization, or software application.}} %
+that uses \class{gist:Time\_Instant} to specify start and end of the event. However, even though it is not useful for our \textit{process} model, \gls{gist} offers an intuitive approach for the other time-related concepts that we can apply to our ontology, namely \textit{tasks} and \textit{projects}: A %
+	\class{gist:Project}\foottt{gist:Project rdfs:comment \enquote{A project is a task (usually a longer duration task) made up of other tasks.}} %
+is considered a longer duration task that is made out of a number of other %
+	\class{gist:Tasks}\foottt{gist:Task rdfs:comment: \enquote{A task which has been defined and either scheduled or accomplished, or both.}}. %
+\class{gist:Project} is \relation{subclassOf} \class{gist:Task} is \relation{subclassOf} \class{gist:Event}.
+
+\gls{fibo} also does not offer a process model. It has the class \class{fibo:Time\_Instant} as overlap with \gls{gist}. Additionally it offers \class{fibo:Time\_Interval} and \class{fibo:Time\_Direction}. However, their sub-classes---for \class{fibo:Time\_Instant}: \class{fibo:Date}, \class{fibo:Date\_Time}, \class{fibo:Date\_Time\_Stamp} and for \class{fibo:Time\_Interval}: \class{fibo:Calendar\_Period}, \class{fibo:Duration}, \class{fibo:Date\_Time\_Stamp}, \class{fibo:Recurrence\_Interval}---make it clear, that it focuses more on accurately modeling calendar dates and operations, instead of procedures.
+
+\gls{doap} does not reference processes at all.
 
 
-\gls{doap}
-
-\gls{fibo}
-
-\gls{gist} uses the root class \class{Event}\foottt{gist:Event rdfs:comment: \enquote{Something happening over some period of time, often characterized as some kind of activity being carried out by some person, organization, or software application.}} to deal with time-related constructs such as processes.
-
-bfp gfo contain valuable information, that can be modified and adapted for the process implementation of the \gls{sco} domain.
 
 
 \subsection{Structure of the Class Hierarchy}
