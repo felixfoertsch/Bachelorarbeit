@@ -861,6 +861,7 @@
         </rdfs:subClassOf>
         <rdfs:label xml:lang="de">Projekt</rdfs:label>
         <rdfs:label xml:lang="en">project</rdfs:label>
+        <rdfs:seeAlso>gist:Project</rdfs:seeAlso>
     </owl:Class>
     
 

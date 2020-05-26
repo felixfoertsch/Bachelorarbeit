@@ -141,7 +141,7 @@
 %*******************************************************************************
 \begin{document}
 
-\titlehead{Overall Progress: \progressbar[filledcolor=yellow]{0.6}}
+\titlehead{Overall Progress: \progressbar[filledcolor=green]{0.8}}
 \subject{Bachelor's Thesis}
 \title{Student Consulting Organizations}
 \subtitle{A Domain Ontology}
@@ -742,7 +742,7 @@ We model \class{Project\_Controlling} as \relation{subclassOf} \class{Project\_R
 \subsubsection{Customer}
 The remaining party of a basic project is the \class{Customer}. It represents the actor that wants to reach a goal and sets up a project with the \gls{sco} to reach it. Similar to other aspects in the \gls{pc}, we use a minimal approach to the role to accommodate for the required flexibility. We model it as \relation{subclassOf} \class{Project\_Role} and allow it to be played by any \class{Agent}. To work on a \class{Project}, the \class{Customer} \relation{signsContract} the corresponding \class{Project\_Contract}.
 
-\section{Processes \progressbar[filledcolor=yellow]{0.4}}
+\section{Processes \progressbar[filledcolor=yellow]{0.6}}
 \label{processes}
 Processes are a helpful concept when describing organizations: They are created to achieve a goal and its processes are the steps needed to reach that goal. \cite[p.\,5, Definition 1.1]{Weske:2019aa} In theory, every organization can be decomposed to a sequence of single activities, which, when executed correctly and in the correct order, terminate in reaching the goal of the organization.
 
@@ -792,67 +792,47 @@ and %
 
 \gls{gist} is also not directly applicable, since it does not account for processes. It also deals with time on a comparatively high level with the class %
 	\class{gist:Event}\foottt{gist:Event rdfs:comment: \enquote{Something happening over some period of time, often characterized as some kind of activity being carried out by some person, organization, or software application.}} %
-that uses \class{gist:Time\_Instant} to specify start and end of the event. However, even though it is not useful for our \textit{process} model, \gls{gist} offers an intuitive approach for the other time-related concepts that we can apply to our ontology, namely \textit{tasks} and \textit{projects}: A %
-	\class{gist:Project}\foottt{gist:Project rdfs:comment \enquote{A project is a task (usually a longer duration task) made up of other tasks.}} %
-is considered a longer duration task that is made out of a number of other %
-	\class{gist:Tasks}\foottt{gist:Task rdfs:comment: \enquote{A task which has been defined and either scheduled or accomplished, or both.}}. %
-\class{gist:Project} is \relation{subclassOf} \class{gist:Task} is \relation{subclassOf} \class{gist:Event}.
+that uses \class{gist:Time\_Instant} to specify start and end of the event. 
 
-\gls{fibo} also does not offer a process model. It has the class \class{fibo:Time\_Instant} as overlap with \gls{gist}. Additionally it offers \class{fibo:Time\_Interval} and \class{fibo:Time\_Direction}. However, their sub-classes---for \class{fibo:Time\_Instant}: \class{fibo:Date}, \class{fibo:Date\_Time}, \class{fibo:Date\_Time\_Stamp} and for \class{fibo:Time\_Interval}: \class{fibo:Calendar\_Period}, \class{fibo:Duration}, \class{fibo:Date\_Time\_Stamp}, \class{fibo:Recurrence\_Interval}---make it clear, that it focuses more on accurately modeling calendar dates and operations, instead of procedures.
+\begin{mdframed}
+	\textbf{Note:} Even though \gls{gist} is not useful for our \textit{process} model, it offers an intuitive approach for the other time-related concepts that we can apply to our ontology, namely \textit{tasks} and \textit{projects}: A %
+	\class{gist:Project}\foottt{gist:Project rdfs:comment \enquote{A project is a task (usually a longer duration task) made up of other tasks.}} %
+	is considered a longer duration task that is made out of a number of other %
+	\class{gist:Tasks}\foottt{gist:Task rdfs:comment: \enquote{A task which has been defined and either scheduled or accomplished, or both.}}. %
+	\class{gist:Project} is \relation{subclassOf} \class{gist:Task} is \relation{subclassOf} \class{gist:Event}. We share this understanding of projects and tasks and can therefore link it in our ontology: \class{Project} \relation{rdfs:seeAlso: \enquote{gist:Project}}.
+\end{mdframed} 
+
+\gls{fibo} also does not offer a process model. The time related concepts it offers have a small overlap with \gls{gist} in the class \class{fibo:Time\_Instant}. Additionally it offers \class{fibo:Time\_Interval} and \class{fibo:Time\_Direction}. However, their sub-classes---for \class{fibo:Time\_Instant}: \class{fibo:Date}, \class{fibo:Date\_Time}, \class{fibo:Date\_Time\_Stamp}; for \class{fibo:Time\_Interval}: \class{fibo:Calendar\_Period}, \class{fibo:Duration}, \class{fibo:Date\_Time\_Stamp}, \class{fibo:Recurrence\_Interval}---make it clear, that it focuses more on accurately modeling calendar dates and operations, instead of procedures.
 
 \gls{doap} does not reference processes at all.
-
-
-
 
 \subsection{Structure of the Class Hierarchy}
 \label{process-subclass}
 Processes need special attention when implementing them in a domain ontology, since their nature is quite different from other classes that represent physical, \eg \class{Document}, or intuitive concepts, \eg \class{Person}. As mentioned in section \ref{classes}, the built in \relation{subclassOf} relation of the class hierarchy already carries semantic meaning, that is generally not applicable to processes. For example: a \class{Delivery\_Process} may involve a \class{Food\_Preperation\_Process} as a procedural step. However, it is easy to see and understand that a \class{Food\_Preperation\_Process} is $\underline{not}$ \relation{subclassOf} a \class{Delivery\_Process} and therefore should not inherit its properties.
 
-To model processes correctly, one could consider introducing a class like \class{*\_Process\_Part} (in the given example: \class{Delivery\_Process\_Part}) and use it to collect and connect sub-processes to their parent process. However, this results in many additional \textit{helper} classes in the class hierarchy, since every level of sub-processes requires another \class{*\_Process\_Part} class. This makes the class hierarchy harder to read and understand, since the process structure is encoded in these helper classes.
+Since none of the related works strike the right level of abstraction to make it applicable in our model, we have to develop the structure according to the general idea and principles of this ontology. To model processes correctly, one could consider introducing a class like \class{*\_Process\_Part} (in the given example: \class{Delivery\_Process\_Part}) and use it to collect and connect sub-processes to their parent process. However, this results in many additional \textit{helper} classes in the class hierarchy, since every level of sub-processes requires another \class{*\_Process\_Part} class. This makes the class hierarchy harder to read and understand, since the process structure is encoded in these helper classes.
 
-Another solution is the use of a root \class{Process} class to collect all processes and the relation \relation{isProcessPartOf}\footnote{Inverse: \relation{hasProcessPart}.} to connect a sub-process to its parent process. This results in a completely flat structure of the class hierarchy: every process is directly \relation{subclassOf} \class{Process}, independent from the level of abstraction.
+Another solution is the use of a root \class{Process} class to collect all processes and the relation \relation{isProcessPartOf}\footnote{Inverse: \relation{hasProcessPart}.} to connect a sub-process to its parent process. This method utilizes the core concepts of ontologies, classes and relations, and avoids encoding extra information in unconventional ways. This results in a completely flat structure of the class hierarchy: every process is directly \relation{subclassOf} \class{Process}, independent from the level of abstraction.
 
-\subsection{Ordering of Processes}
-Another aspect that has to be discussed is the ordering of processes.
+We make use of this approach; however, to compensate for the resulting un-intuitive flat class hierarchy, we add diagrams to describe the processes and their relationships graphically (see appendix \ref{process-diagrams}).
+
+\subsection{Relations Between Processes}
+After establishing the structure of processes in the class hierarchy, we have to describe the relationships between them: They intuitively have a start, duration, and end. Furthermore they can have sub-processes, since processes can be decomposed into individual actions.
 
 Processes are a concept that heavily relies on abstraction. The right level of abstraction depends on the use case.
 
 \begin{compactenum}
-	\item It is hard to create a complete process diagram/describe a complete process
-	\item A successful process model relies on the correct
-	\item Besides from the problem of completeness, if you go on the lowest level of abstraction ordering the steps become easier (true?!)
-	\item Trying to create a generally applicable domain ontology brings up an interesting questions in regards to process concepts: what is the correct level of abstraction and is it possible to bring certain processes in the correct order
-	\item It is therefore necessary to look at every process and its parts -- and discuss if 1) correct level of abstraction 2) can it be ordered
-	\item A parent process aggregates child process
-
 	\item When discussing the lowest level of a process Depending on the level of abstraction,
-	\item Indepentendt from the class hierarchy problem, another topic: The procedural information is encoded in the relation.
+	\item Independent from the class hierarchy problem, another topic: The procedural information is encoded in the relation.
 	\item Processes are a sequence of action -> but not always
 	\item there should be a next\_process relation, but it's not straight forward, since there is not necessarily a strict ordering.
 	\item introduce a non strict ordering?
 \end{compactenum}
 
-\subsection{Discreet Events and Liquid Processes}
+\subsection{Process Selection}
+There are many processes and not all of them can be written down. There has to be a selection process.
 
-\begin{compactenum}
-\item In addition to that a distinction has to be made between \textit{discreet} events and \textit{liquid} processes. \cite[p.\,447]{Russell:2010aa}
-\item Processes are an immaterial concept that is strongly connected to relations of relative time, such as \relation{before} and \relation{after}.
-\end{compactenum}
-
-
-
-
-\subsection{Legal Requirements in the Processes}
-\glspl{sco} are organizations in the social context; German law applies to them, like it applies to every other German organization. It influences their structure and processes. However, discussing the impact of the law onto internal workings of an organizations would go far out of scope of this work. Therefore the ontology omits a detailed description of the legal obligations, but references them abstractly where it is necessary.
-
-For example: German law requires every company to pay taxes on their earnings. Depending on the \gls{sco} and the way projects are handled, this influences the process that is concerned with taxation. To develop a perfectly correct model, a very detailed discussion of specific processes would be required; this is out of scope. However, interacting with the tax authorities and learning about and filing the correct paper work is an important part of the learning experience for student consultants. It is therefore important for the ontology. To address this fact, but keep the ontology focused, it is condensed into the class \textit{Project Taxation Process} as part of the \textit{Project Process}.
-
-
-%\subsection{Conclusion: Processes in this Work}
-They intuitively have a start, duration, and end.
-
-Since the focus of the ontology is on simplicity, we decide to use a single  class \class{Process} as root for all processes in conjunction with the \relation{isProcessPartOf} relation. This method utilizes the core concepts of ontologies, classes and relations, and avoids encoding extra information in unconventional ways. To compensate for the resulting un-intuitive flat class hierarchy, we add diagrams to describe the processes and their relationships graphically (see appendix \ref{process-diagrams}).
+For example: German law requires every company to pay taxes on their earnings. Depending on the \gls{sco} and the way projects are handled, this influences the process that is concerned with taxation. It is out of scope to model taxation process required by law. However, interacting with the tax authorities and learning about and filing the correct paper work is an important part of the learning experience for student consultants. It is therefore important for the ontology. To address this, the process is condensed into the class \textit{Project Taxation Process} as part of the \textit{Project Process}.
 
 %\subsubsection{Intuitive Look}
 The primary goal of an \gls{sco} is teaching students project work. They reach this goal by training their members and offering them opportunities to work on real-world projects. Looking at this from a high-level process perspective, this can be boiled down to distinct steps that have to be performed by the organization:
