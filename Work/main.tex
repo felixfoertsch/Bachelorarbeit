@@ -161,11 +161,8 @@
 	\item Relations are written in camelCase: \texttt{subclassOf}
 	\item Classes are bold, capitalized, and use Snake\_Case: \texttt{\textbf{Awesome\_Class}}
 	\item Name spaces may be added to a class for clarification; they are separated by a colon: \class{namespace:Class}
+	\item The bibliography is sorted alphabetically by the first authors last name.
 \end{compactitem}
-
-% To raise awareness for unfairness in society, we use the female form of words where it is possible.
-
-% TODO: Decide on labeling system \url{https://en.wikipedia.org/wiki/Simple_Knowledge_Organization_System}
 
 \chapter*{Leseanleitung}
 \newpage
@@ -229,14 +226,15 @@ Ontologies have many applications in various fields. They are used in artificial
 This work is concerned with the knowledge representation of one particular domain: \glspl{sco}. The following section describes how we approach the development of this particular ontology, define the necessary vocabulary and relations between the terms, and structurally explore the domain.
 
 \section{Methodology for the Development of the Ontology \progressbar[filledcolor=green]{0.95}}
-The primary goal of this work (see section \ref{goal}) is the creation of a particular domain ontology. Our language of choice for this task is the \gls{owl}. It is an ontology language developed by the consensus-driven and well respected \gls{w3c}. \cite[p.\,206]{baader2017introduction} It is widely used and offers very good tooling in the ontology editor \link{https://protege.stanford.edu}{\pn{Protégé}}. It is built and maintained by ontology researchers of \pn{Stanford University}. \cite{musen2015protege} Furthermore the research group provides a ontology development methodology \cite{guide-to-ontology}, that we can build upon. It involves the following steps:
+\label{methodology}
+The primary goal of this work (see \autoref{goal}) is the creation of a particular domain ontology. Our language of choice for this task is the \gls{owl}. It is an ontology language developed by the consensus-driven and well respected \gls{w3c}. \cite[p.\,206]{baader2017introduction} It is widely used and offers very good tooling in the ontology editor \link{https://protege.stanford.edu}{\pn{Protégé}}. It is built and maintained by ontology researchers of \pn{Stanford University}. \cite{musen2015protege} Furthermore the research group provides a ontology development methodology \cite{guide-to-ontology}, that we can build upon. It involves the following steps:
 \begin{compactenum}[(1)]
 	\item Determine the domain and scope of the ontology,
 	\item consider reusing existing ontologies,
 	\item enumerate important terms in the ontology,
 	\item define the classes and the class hierarchy,
-	\item define the properties of classes-slots,
-	\item define the facets of the slots, and
+	\item define the properties of classes-slots\footnote{The guide is written for an earlier version of Protégé and the terms have since been updated. Slots are now referred to as annotations and facets are the data types of annotations.},
+	\item define the facets of the slots\footnote{See above.}, and
 	\item create instances.
 \end{compactenum}
 
@@ -280,7 +278,7 @@ This intuitive approach generates a the starting point for the research:
 
 Furthermore it implies some more general research topics such as the implications of other general, upper-level, and top-level ontologies (\eg \gls{gfo}, \gls{bfo}, \gls{gist}) as well as theory of description logic and theory of ontologies (\eg modeling of roles and processes).
 
-Defining the scope of the ontology is the formal step that concludes the \textit{Research Phase}. This work accomplishes this by answering the Competency Questions. Since the questions can be considered a part of the ontology, they and their corresponding answers can be found as part of the ontology in section \ref{competency-questions}.
+Defining the scope of the ontology is the formal step that concludes the \textit{Research Phase}. This work accomplishes this by answering the Competency Questions. Since the questions can be considered a part of the ontology, they and their corresponding answers can be found as part of the ontology in \autoref{competency-questions}.
 
 \subsection{Analysis and Synthesis Phase}
 \label{analysis}
@@ -293,7 +291,7 @@ At the core of this thought process is the conversion of available implicit know
 
 To progress from the word graph to the more rigorous class hierarchy, we transcribe the vertices into a first-draft/skeleton class hierarchy---using the Protégé editor---, starting with the concepts with the highest amount of edges connecting them to other concepts; more connections indicate higher influence. Furthermore we can identify and assign trivial sub-classes during that process, by evaluating the quality of the edge connections. Fewer connections might indicate a more direct relationship between two terms. After these steps, the draft hierarchy contains mostly high-level classes and trivial sub-classes (\eg high-level class \textbf{Process} and all the identified processes as trivial sub-classes). It can then be further modified, refined, and polished by adding clarifications, delimitations, definitions, and descriptions to all terms as well as relations within the class hierarchy.
 
-During this development process we can identify the aspects that play the most important role for our domain. We document and discuss the challenges and our approach to solving them in detail in section \ref{domain-aspects}.
+During this development process we can identify the aspects that play the most important role for our domain. We document and discuss the challenges and our approach to solving them in detail in \autoref{domain-aspects}.
 
 The output of the final steps is the first major version of the ontology in the form of an \gls{owl} file, which completes the \textit{Analysis and Synthesis Phase} and also the second deliverable of this work.
 
@@ -304,14 +302,14 @@ Depending on the ambiguity and complexity of concepts, natural language can quic
 \label{vocabulary}
 Commonly, the term \textit{vocabulary} is used to describe the collection of all words one specific person knows. But this already implies that one person's vocabulary can be different to someone else's. Furthermore, the word vocabulary itself is also overloaded, as the dictionary definition (see appendix \ref{dictionary}) shows. Depending on context the described collection changes. \cite{mw-dictionary}
 
-In the context of ontologies it is used interchangeably with \textit{alphabet} and \textit{signature}. On an abstract level it simply describes a set of symbols. \cite[p.\,46]{loebe2015ontological} Transferred to this work, it is the collection term for all class (see section \ref{classes}) and object property names (see section \ref{relations}), which are mainly words from the English language in conjunction with the underscore as delimitation symbol. The word choices draw inspiration or are translated from the \gls{hc} process documentation and our experience with different \glspl{sco}, as well as the business world. Some of these words are not special to the domain: \textbf{Organization}, for example, is not only used in many different related ontologies, but also very common in natural language.
+In the context of ontologies it is used interchangeably with \textit{alphabet} and \textit{signature}. On an abstract level it simply describes a set of symbols. \cite[p.\,46]{loebe2015ontological} Transferred to this work, it is the collection term for all classes (see \ref{classes}) and object property names (see \ref{relations}), which are mainly words from the English language in conjunction with the underscore as delimitation symbol. The word choices draw inspiration or are translated from the \gls{hc} process documentation and our experience with different \glspl{sco}, as well as the business world. Some of these words are not special to the domain: \textbf{Organization}, for example, is not only used in many different related ontologies, but also very common in natural language.
 
-To ensure adequate precision, each entry in the vocabulary has a few guaranteed properties (see section \ref{annotation-properties}).
+To ensure adequate precision, each entry in the vocabulary has a few guaranteed properties (see \ref{annotation-properties}).
 
 \subsection{Domain Ontology}
-The term \textit{domain} is the easy part of this definition, since it intuitively and simply refers to the knowledge area it describes. \cite[p.\,7]{loebe2015ontological} This is close to the dictionary definition (see section \ref{dictionary}), where every listed sense has a delimiting meaning to it. \cite{mw-dictionary}
+The term \textit{domain} is the easy part of this definition, since it intuitively and simply refers to the knowledge area it describes. \cite[p.\,7]{loebe2015ontological} This is close to the dictionary definition (see appendix \ref{dictionary}), where every listed sense has a delimiting meaning to it. \cite{mw-dictionary}
 
-However, at the time of writing, an exact definition of the term \textit{ontology} is hard to come by. There is no unified understanding across the sciences. \cite{Hesse_2014} Numerous authors tried defining the term as shown by Loebe \cite[p.\,4-6]{loebe2015ontological} and Gomez et al. \cite[p.\, 6--9]{Gomez-Perez:2004aa}, but to our knowledge there has not yet been a conclusive definition. Since it's not our objective to end this discourse, we will not engage in a detailed analysis. Instead, we construct a \textit{working definition} by illuminating different aspects that are important for this work's goal of representing a knowledge domain.
+However, at the time of writing, an exact definition of the term \textit{ontology} is difficult to find. There is no unified understanding across the sciences. \cite{Hesse_2014} Numerous authors tried defining the term as shown by Loebe \cite[p.\,4-6]{loebe2015ontological} and Gomez et al. \cite[p.\, 6--9]{Gomez-Perez:2004aa}, but to our knowledge there has not yet been a conclusive definition. Since it's not our objective to end this discourse, we will not engage in a detailed analysis. Instead, we construct a \textit{working definition} by illuminating different aspects that are important for this work's goal of representing a knowledge domain.
 
 The influential paper \cite[p.\,9]{schulz2012guideline} \cite[p.\,4]{loebe2015ontological} \textit{A Translation Approach to Portable Ontology Specifications} by Thomas R. Gruber---a paper that has been cited more than 19.000 times according to Google Scholar---contains the following definition:
 
@@ -331,23 +329,23 @@ This gives us two anchor points to attach it to our work:
 	\item Our ontology language is \gls{owl}.
 \end{inparaenum}
 
-To works further towards our secondary goal of providing an ontology that is usable for software projects, we extend our requirements to the definition for domain ontologies from Jean: 
+To work further towards our secondary goal of providing an ontology that is usable for software projects, we extend our requirements to the definition for domain ontologies from Jean: 
 
 \begin{quote}
 	\enquote{A \textbf{domain ontology }is a formal and consensual dictionary of categories and properties of entities of a domain and the relationships that hold among them.} \cite[p.\,240]{Jean_2007}
 \end{quote}
 
-We try to achieve formality by adhering to \gls{owl} standard and using the \textit{HermiT} reasoner during development. To aim for consensus, we prepare the ontology in way so that it can be peer reviewed in the future.
+We try to achieve formality by adhering to \gls{owl} standard \cite{w3c-owl-guide} and using the \textit{HermiT} reasoner during development. To aim for consensus, we prepare the ontology in way so that it can be peer reviewed in the future.
 
 Similar to the general discussion about ontologies, there is an ongoing debate on which term best represents the elements of an ontology. We are following the Protégé naming convention and are calling the collection of elements \textit{entities}. Furthermore we use the term \textit{Classes} to represent things, \textit{Object Properties} to represent relationships between things, and \textit{Annotation Properties} to describe both more closely with additional comments.
 
 \subsubsection{Classes and Class Hierarchy \progressbar[filledcolor=green]{1}}
 \label{classes}
-Classes are the most basic building blocks of an ontology. Each class tries to capture and describe an entity of the knowledge domain. The name of the class creates a connection between the entity within the ontology and the thing it tries to describe. It is supplemented by additional information via its annotation properties (see section \ref{annotation-properties}). The classes are aggregated an structured in a meaningful way by the \textit{class hierarchy}.
+Classes are the most basic building blocks of an ontology. Each class tries to capture and describe an entity of the knowledge domain. The name of the class creates a connection between the entity within the ontology and the thing it tries to describe. It is supplemented by additional information via its annotation properties (see \ref{annotation-properties}). The classes are aggregated and structured in a meaningful way by the \textit{class hierarchy}.
 
-The class hierarchy is a tree where the children of a node have the built in relation (see section \ref{relations}): \relation{subclassOf}. There typically exists a root element called \class{Thing}, which \underline{all} classes are \relation{subclassOf}. As pointed out before, this work follows the \gls{owl} standard and hence we use \class{owl:Thing} as the root element. The built in relation gives additional meaning to classes in the hierarchy. \relation{subclassOf} implies that a class \relation{isA} type of the class it sub-classes. It is therefore key, to only introduce a sub-class relationship, if it is correct for the representation of the domain. Since \textit{everything} in our ontology inherits from \class{owl:Thing}, it would pass on its properties as well. Since there are no properties that apply to all classes of our ontology, our \class{owl:Thing} does not have properties.
+The class hierarchy is a tree where the children of a node have the built in relation (see \ref{relations}): \relation{subclassOf}. There typically exists a root element called \class{Thing}, which \underline{all} classes are \relation{subclassOf}. As pointed out before, this work follows the \gls{owl} standard and hence we use \class{owl:Thing} as the root element. The built in relation gives additional meaning to classes in the hierarchy. \relation{subclassOf} implies that a class \relation{isA} type of the class it sub-classes. It is therefore key, to only introduce a sub-class relationship, if it is correct for the representation of the domain. Since \textit{everything} in our ontology inherits from \class{owl:Thing}, it would pass on its properties as well. Since there are no properties that apply to all classes of our ontology, our \class{owl:Thing} does not have properties.
 
-This has implications for our ontology. For example, it is the reason for the different structuring of \class{Agent} and \class{Process}: The former sub-domain can make use of the sub-class relation, whereas the latter cannot (see section \ref{process-subclass}).
+This has implications for our ontology. For example, it is the reason for the different structuring of \class{Agent} and \class{Process}: The former sub-domain can make use of the sub-class relation, whereas the latter cannot (see \autoref{process-subclass}).
 
 \subsubsection{Properties \progressbar[filledcolor=green]{1}}
 The classes and the class hierarchy give an ontology its basic structure; they defines what things exist in the world the ontology describes. The \textit{properties} bring this world to life. A property is a binary relation: It can be used to assert facts about a class, describe it in more detail, and to establish relationships between classes. \cite{w3c-owl-guide} We primarily use two types of properties in our work: \textit{Object Properties} and \textit{Annotation Properties}. To make them more distinguishable we also introduce and use their colloquial references \textit{Relationships}/\textit{Relations} and \textit{Annotations}.
@@ -358,15 +356,15 @@ To express relationships within the knowledge area, we use object properties. Th
 
 There are different ways of structuring object properties. The one end of the spectrum holds generalized relations, like \relation{hasA} or \relation{isPartOf}. This type of relationship can be applied to many different classes, because the semantics lies in the connection between the classes, instead of the relation itself. This type of generalized relation can be applied in different contexts. The \relation{isPartOf} relation, for example, can be used in different ways: A \class{Wheel} \relation{isPartOf} a \class{Car}; but also: A \class{House} \relation{isPartOf} a \class{Neighbourhood}.
 
-On the other end fo the spectrum are highly specific relations that carry a lot of meaning by themselves and thus can not be applied to other contexts easily. For example: A \class{Person} \relation{isMemberOfTheMajorityCounil} \class{Member\_Council}.
+On the other end of the spectrum are highly specific relations that carry a lot of meaning by themselves and thus can't be applied to other contexts easily. For example: A \class{Person} \relation{isMemberOfTheMajorityCounil} \class{Member\_Council}.
 
 As with many aspects of ontology development, it is important to strike the right balance and achieve the correct level of abstraction. In this work, we use a bottom-up approach. We start with specific relations and generalize them, if that is possible.
 
-As already mentioned before, there is one special object property that is built into the class hierarchy: \relation{subclassOf}. It would be possible to It links a child class to its parent and expresses that the child is of the same type as the parent. For example: In our ontology, the class \class{Agent} is sub-classed by \class{Person} and \class{Organization}. This implies that both \class{Person} and \class{Organization} \underline{are} \class{Agents}. Everything a \class{Agent} can do, a \class{Person} or an \class{Organization} can also do.
+As already mentioned before, there is one special object property that is built into the class hierarchy: \relation{subclassOf}. It links a child class to its parent and expresses that the child is of the same type as the parent. For example: In our ontology, the class \class{Agent} is sub-classed by \class{Person} and \class{Organization}. This implies that both \class{Person} and \class{Organization} \underline{are} \class{Agents}. Everything \class{Agent} can do, a \class{Person} or an \class{Organization} can also do.
 
 \paragraph{Annotation Properties \aka Annotations}
 \label{annotation-properties}
-We use annotation properties to add additional information to entities in our domain. They can be thought of simple key-value pairs that are attached to a specific entity. The \underline{key} might be defined within the scope of the ontology or may be sourced from knowledge organization conventions like \gls{rdfs} or \gls{skos}. If a key belongs to such a schema, it uses the corresponding prefix, separated by a colon (\eg \prop{rdfs:label}). The \underline{value} holds the additional information about a class.
+We use annotation properties to add additional information to entities in our domain. They can be thought of simple key-value pairs that are attached to a specific entity. The \underline{key} might be defined within the scope of the ontology or may be sourced from knowledge organization conventions like \gls{rdfs} \cite{brickley2014rdf} or \gls{skos} \cite{miles2009skos}. If a key belongs to such a schema, it uses the corresponding prefix, separated by a colon (\eg \prop{rdfs:label}). The \underline{value} holds the additional information about a class.
 
 Each class of our domain has two guaranteed annotation properties:
 \begin{inparaenum}
@@ -482,7 +480,7 @@ In the following section, we discuss three distinct and noteworthy aspects that 
 	\item our model for \textit{processes}.
 \end{inparablank}
 
-Please note, that there are other classes and relations present in the ontology---and also describes in section \ref{ontology}---that are relevant to the domain, but \textit{not} discussed in detail in this part of the work (\eg \class{Document}).
+Please note, that there are other classes and relations present in the ontology---and also describes in \autoref{ontology}---that are relevant to the domain, but \textit{not} discussed in detail in this part of the work (\eg \class{Document}).
 
 \section{Context \progressbar[filledcolor=green]{0.9}}
 \label{context}
@@ -502,7 +500,7 @@ We focus on two aspects:
 \end{inparaenum}
 
 \subsection{Primary Domain Context and Sub-Contexts}
-To define the primary context of our domain, we first have to take a look at \textit{what} exactly we are modeling. As stated in the introduction (see section \ref{goal}), the goal of our work is the creation of an abstract \gls{sco}. We consider it a form of \textit{idealized blueprint}, that can later be used to create concrete instances of this type of organization. It is clear that this can happen more than once and that different \glspl{sco} can co-exist and interact with each other, influencing each others contexts. However, we are deliberately \textbf{not} modeling \underline{all} \glspl{sco} in one ontology.
+To define the primary context of our domain, we first have to take a look at \textit{what} exactly we are modeling. As stated in the introduction (see \autoref{goal}), the goal of our work is the creation of an abstract \gls{sco}. We consider it a form of \textit{idealized blueprint}, that can later be used to create concrete instances of this type of organization. It is clear that this can happen more than once and that different \glspl{sco} can co-exist and interact with each other, influencing each others contexts. However, we are deliberately \textbf{not} modeling \underline{all} \glspl{sco} in one ontology.
 
 Hence, \underline{one} \gls{sco} is the primary and default context of the ontology and that all the classes have to be interpreted and understood in this particular way. If one were to extend our model to incorporate multiple \glspl{sco}, it would be necessary to develop dedicated links between instances. This primary context is active for all the classes within the scope.
 
@@ -527,7 +525,7 @@ As already pointed out, projects are the tool of choice for educating the \gls{s
 %\end{compactenum}
 
 \subsection{Contextual Ambiguity}
-Ontology engineering relies on natural language to describe concepts. This work uses primarily English words (see section \ref{vocabulary}) for this task. That naturally introduces a form of contextual ambiguity, because people often use words in a flexible manner. \cite[p.\,7, 1.5.2]{uschold1998enterprise}  It's our goal to keep the ontology as simple as possible. It is therefore important to find a way to avoid ambiguity as much as possible.
+Ontology engineering relies on natural language to describe concepts. This work uses primarily English words (see \autoref{vocabulary}) for this task. That naturally introduces a form of contextual ambiguity, because people often use words in a flexible manner. \cite[p.\,7, 1.5.2]{uschold1998enterprise}  It's our goal to keep the ontology as simple as possible. It is therefore important to find a way to avoid ambiguity as much as possible.
 
 Let's imagine a domain \class{Dreamworld} that is home to a \class{Person}. At first glance the concept seems to be intuitive. However, when looking more closely and realizing that in the \class{Dreamworld} a \class{Dreamworld:Person} \relation{hasPart} \class{Dreamworld:Wheel}, this concept of a \class{Person} would suddenly appear odd. It would stray away from the common understanding.
 
@@ -537,7 +535,7 @@ It is also possible to specify the context of a class in such a way, that ambigu
 
 However, this approach discards all previous knowledge about a concept. Furthermore, an ontology built this way would be hard to work with for another human being.
 
-Another way is to start with the implied context and add explanations, comments, clarifications, and restrictions to it, to make the meaning as clear as possible; building the required context in the process. This can be furthered by using already existing definitions from pre-definied name spaces and established ontologies (see section \ref{related-work}).
+Another way is to start with the implied context and add explanations, comments, clarifications, and restrictions to it, to make the meaning as clear as possible; building the required context in the process. This can be furthered by using already existing definitions from pre-definied name spaces and established ontologies (see \autoref{related-work}).
 
 We are using the latter approach and try to avoid additional ambiguity by discussing the relevant contexts explicitly as part of this work, as well as add explanation texts to the ontology. Furthermore we try to lean on common understand of terms as much as possible, by creating links to well-known ontologies like \gls{foaf}.
 
@@ -546,7 +544,7 @@ We are using the latter approach and try to avoid additional ambiguity by discus
  \eg as a \gls{sco} member or -non-member, as part of a project, as a customer, etc.
  Aggregation of these actors can occur in different degrees of formalization, \eg informal meeting of \gls{sco} members as friends, a project team meeting, an official meeting of the member council, etc. 
 
-Since this is not a domain specific phenomenon, it is sensible to consider how existing and related ontologies (see section \ref{related-work}) represent these cases.
+Since this is not a domain specific phenomenon, it is sensible to consider how existing and related ontologies (see \autoref{related-work}) represent these cases.
 
 \subsection{General Implementation}
 \label{human-beings-in-other-ontologies}
@@ -661,7 +659,7 @@ When looking at the related work, we make the following observations:
 	\item The class \class{Agent} represents actors of an action. Sub-classing it gives the model freedom to express what exactly acts: It can be an \class{Agent}, a \class{Person}, a \class{Group}, or an \class{Organization}. This flexibility makes the models powerful. They can describe general (\eg somebody) or other agents (\eg robots) directly via \class{Agent}, but can also be used more specifically via a sub-class (\eg a \class{Person}). Additionally, a group is a collection class that is also \relation{subclassOf} \class{Agent} and hence can become an \class{Agent}---an actor---itself.
 \end{enumerate}
 
-As shown above, the classes \class{Agent}, \class{Person}, \class{Organization}, and \class{Group} are common in the class hierarchies of the related ontologies. Therefore this ontology will use these classes. However, the different ontologies also use different ways of defining classes. Ranging from the very direct and simple way of \gls{foaf}, to the very intricate way of \gls{gist}. Since this ontology is trying to be as intuitive to use as possible, the more simple approach from \gls{foaf} is adapted.\footnote{This decision is a direct application of the \gls{kiss} principle (see section \ref{keeping-things-simple}). Having more information in an ontology can obviously be useful for a very detailed model of a domain. However, its size can be kept smaller and the complexity lower by omitting information (\eg certain relations or attributes) that can be inferred from linked ontologies when necessary. For example: \gls{fibo} and \gls{gist} offer attributes for a \class{Person}; \eg in \gls{fibo} a \class{Person} \relation{hasDateOfBirth exactly 1} \class{Date}, in \gls{gist} a \class{Person} is \relation{offspringOf} another \class{Person} and need to have a \relation{name} \class{xsd:string}. These attributes can be extracted on demand, by following the \relation{equivalentTo} relation.}
+As shown above, the classes \class{Agent}, \class{Person}, \class{Organization}, and \class{Group} are common in the class hierarchies of the related ontologies. Therefore this ontology will use these classes. However, the different ontologies also use different ways of defining classes. Ranging from the very direct and simple way of \gls{foaf}, to the very intricate way of \gls{gist}. Since this ontology is trying to be as intuitive to use as possible, the more simple approach from \gls{foaf} is adapted.\footnote{This decision is a direct application of the \gls{kiss} principle (see \autoref{keeping-things-simple}). Having more information in an ontology can obviously be useful for a very detailed model of a domain. However, its size can be kept smaller and the complexity lower by omitting information (\eg certain relations or attributes) that can be inferred from linked ontologies when necessary. For example: \gls{fibo} and \gls{gist} offer attributes for a \class{Person}; \eg in \gls{fibo} a \class{Person} \relation{hasDateOfBirth exactly 1} \class{Date}, in \gls{gist} a \class{Person} is \relation{offspringOf} another \class{Person} and need to have a \relation{name} \class{xsd:string}. These attributes can be extracted on demand, by following the \relation{equivalentTo} relation.}
 
 After deciding on these basic building blocks, they can be extended according to the additional domain specifications. For example, a \class{Person} might need further differentiation based on \gls{sco} membership status, on business rank for internal organization and career progress, or on organizational roles. But there are other concepts that can involve a \class{Person}---\eg \textit{being a customer} of the \gls{sco}---that could just as easily involve an \class{Organization}. This observation points to the requirement of a more general approach for modeling these cases: Roles.
 
@@ -670,13 +668,13 @@ Since there is no clear agreement on a particular role concept, we are adopting 
 
 The strength of the role concept is its flexibility. A player can play multiple roles at the same time and each role can be associated with a different context. An example for this is the CEO role. It has defined responsibilities and playing the role means a requirement to fulfill certain tasks. With \glspl{sco} typically any formal \class{Member}---in our ontology this means any \class{Member} with rank \class{Junior Consultant} or above---can become CEO by being elected. When elected, the \class{Member} plays two roles in the \gls{oc}. Additionally, the same \class{Member} could work on a project as \class{Project Leader}, a role from the \gls{pc}.
 
-Since \glspl{sco} are a social construct and are defined by the people of the organization, the modeled roles are primarily from the type \textit{social role}. Furthermore, the contexts described in section \ref{context} also have implications for the roles that exists in the domain.
+Since \glspl{sco} are a social construct and are defined by the people of the organization, the modeled roles are primarily from the type \textit{social role}. Furthermore, the contexts described in \autoref{context} also have implications for the roles that exists in the domain.
 
 \subsection{Roles in the Organizational Context}
 
 \subsubsection{Membership}
 \label{membership}
-Within the \gls{oc} (see section \ref{context}), the most basic property is membership: Either being part of the organization and thus being a \class{Member} or not participating and a \class{Non-Member}. \class{Members} of the \gls{sco} can play different roles in the \gls{oc}. \class{Non-Members} don't play roles within the organization, but can play external roles. For example: The role of a \class{Customer}. The distinction is important for this ontology, since the status is typically used in the internal organizational procedures. For example: Someone might be required to be a proper member to be allowed to vote in the Member Assembly, to be part of a project, or to become part of the Executive Board.
+Within the \gls{oc} (see \autoref{context}), the most basic property is membership: Either being part of the organization and thus being a \class{Member} or not participating and a \class{Non-Member}. \class{Members} of the \gls{sco} can play different roles in the \gls{oc}. \class{Non-Members} don't play roles within the organization, but can play external roles such as the role of a \class{Customer}. The distinction is important for this ontology, since the status is typically used in the internal organizational procedures. For example: Someone might be required to be a proper member to be allowed to vote in the Member Assembly, to be part of a project, or to become part of the Executive Board.
 
 It is important to note, that within \glspl{sco} the \class{Member} role can only be played by human beings. For this model this means a restriction to \class{Person}. The members are the defining group that fills all the organizational functions, works on the projects, and participates in the majority of processes. Even though membership does not have to be limited like this in general---there are many examples where organizations are members of other organizations---it is limited in this domain. Since \class{Member} are necessarily \textbf{always} human beings, we introduce the role as \relation{subclassOf} \class{Person}.
 
@@ -720,25 +718,25 @@ Patrons are financial and/or ideological supporters of the \gls{sco}: A financia
 \end{mdframed}
 
 \subsection{Roles in the Project Context}
-As discussed in section \ref{context}, we look at projects as black boxes. We focus on their inputs and outputs, as well as the support during its life cycle. This perspective influences the role model, since the primary inputs are people playing a certain role in the \gls{pc}. The \textit{roles} of a project are: the team---consisting of team leader and team members---, the controlling entity, and the customer. The roles in the \gls{pc} operate on a higher, more general level of abstraction when compared to the classes in the \gls{oc}, to account for the generality if projects.
+As discussed in \autoref{context}, we look at projects as black boxes. We focus on their inputs and outputs, as well as the support during its life cycle. This perspective influences the role model, since the primary inputs are people playing a certain role in the \gls{pc}. The \textit{roles} of a project are: the team---consisting of team leader and team members---, the controlling entity, and the customer. The roles in the \gls{pc} operate on a higher, more general level of abstraction when compared to the classes in the \gls{oc}, to account for the generality if projects.
 
 \subsubsection{Project Team}
 A project team in its most basic form consists of team members that are lead by a team leader. The project team leader is typically a more experienced member of the organization, to ensure the knowledge transfer and successful operation of the project, whereas the team members are recruited from the general member pool.
 
 We model \class{Project\_Team\_Member} and \class{Project\_Team\_Leader} as \relation{subclassOf} \class{Project\_Role}. To indicate that these roles are only played by members of the organization, both are \relation{playedBy only}
-\class{Alumna} or \class{Consultant} or \class{Junior\_Consultant} or \class{Senior\_Consultant}. Additionally the \relation{isPlayedBy} relation of the role \class{Project\_Team\_Member} is extended with \relation{or} \class{Trainee}, to account for the fact that trainees in a \gls{sco} can not become the \class{Project\_Team\_Leader}. By using \class{Trainee} our model binds the cut-off point for the leadership role to the formal membership (see section \ref{ranks}).
+\class{Alumna} or \class{Consultant} or \class{Junior\_Consultant} or \class{Senior\_Consultant}. Additionally the \relation{isPlayedBy} relation of the role \class{Project\_Team\_Member} is extended with \relation{or} \class{Trainee}, to account for the fact that trainees in a \gls{sco} can not become the \class{Project\_Team\_Leader}. By using \class{Trainee} our model binds the cut-off point for the leadership role to the formal membership (see \ref{ranks}).
 
 The \class{Project\_Team} itself is not a role. However, it is a relevant entity of the ontology. It is a collection of certain \class{Members} of the \gls{sco}, that each either play the role of a team member or a leader. We model it as \relation{subclassOf} \class{Group}. This also gives it the ability to act as an \class{Agent}: It \relation{participatesIn} a \class{Project} and \relation{signsContract} the \class{Project\_Contract}.
 
 \subsubsection{Project Controlling}
 In addition to the team, the \gls{sco} typically provides a controlling entity for the project. It observes and measures the progress of the project, gives feedback on the project work, and helps the team in various capacity where necessary. The role of the controlling entity is usually played by someone or some group---both are common in the domain---, that has gathered experience with projects in general and has specific knowledge that is useful in the project it supports. Additionally, using an experienced controlling entity helps the learning process of the team.
 
-We model \class{Project\_Controlling} as \relation{subclassOf} \class{Project\_Role}. We model the players as a group of experienced members; if an organization only uses a single member to play the controlling entity, our models considers it a group of one ($n = 1$). We encode the required experience into the ranks (see section \ref{ranks}), cutting out \class{Trainee} and \class{Junior\_Consultant}. This means the role \relation{isPlayedBy only} (\class{Group} and \relation{hasMember} some (\class{Alumna} or \class{Consultant} or \class{Senior\_Consultant})).
+We model \class{Project\_Controlling} as \relation{subclassOf} \class{Project\_Role}. We model the players as a group of experienced members; if an organization only uses a single member to play the controlling entity, our models considers it a group of one ($n = 1$). We encode the required experience into the ranks (see \ref{ranks}), cutting out \class{Trainee} and \class{Junior\_Consultant}. This means the role \relation{isPlayedBy only} (\class{Group} and \relation{hasMember} some (\class{Alumna} or \class{Consultant} or \class{Senior\_Consultant})).
 
 \subsubsection{Customer}
 The remaining party of a basic project is the \class{Customer}. It represents the actor that wants to reach a goal and sets up a project with the \gls{sco} to reach it. Similar to other aspects in the \gls{pc}, we use a minimal approach to the role to accommodate for the required flexibility. We model it as \relation{subclassOf} \class{Project\_Role} and allow it to be played by any \class{Agent}. To work on a \class{Project}, the \class{Customer} \relation{signsContract} the corresponding \class{Project\_Contract}.
 
-\section{Processes \progressbar[filledcolor=yellow]{0.6}}
+\section{Processes \progressbar[filledcolor=yellow]{0.9}}
 \label{processes}
 Processes are a helpful concept when describing organizations: They are created to achieve a goal and its processes are the steps needed to reach that goal. \cite[p.\,5, Definition 1.1]{Weske:2019aa} In theory, every organization can be decomposed to a sequence of single activities, which, when executed correctly and in the correct order, terminate in reaching the goal of the organization.
 
@@ -746,11 +744,11 @@ Since processes are a commonly used concept in the business world, it is not sur
 
 Widely known representations and methods include: Flowcharts, \gls{bpmn}, \gls{epc}, \gls{uml} Activity Diagrams, and \gls{opm}\footnote{Standardized as ISO~19450.}. There are also contributions rooted in ontology research, such as the \gls{bpmn} ontology (an \gls{owl} ontology for the \gls{bpmn} notation) \cite{2014foisbpmn}, the \gls{psl}\footnote{Developed by the \gls{nist} and standardized as ISO~18629.}, and processes concepts as part of \gls{gfo} or \gls{bfo}.
 
-Our intent is the representation of the required \textit{core} processes of an \gls{sco} in such a way, that it makes it clear to the ontology user \underline{which} process have to be implemented, but leaves enough creative freedom in regards to \underline{how} to implement them.
+Our intent is the representation of the most important processes of an \gls{sco} in such a way, that it makes it clear to the ontology user \underline{which} process have to be implemented, but leaves enough creative freedom in regards to \underline{how} to implement them.
 
 \subsection{Implementation in Related Ontologies}
 % TODO: Was verfolgt die jeweilige Implementierung für ein Ziel? Irgendwie einen Schluss aus der betrachtung ziehen
-When compared to the rather practical and direct implementation of social structures discussed in section \ref{human-beings-in-other-ontologies}, processes are a more abstract concept. The impact of abstraction levels clearly shows when analyzing related ontologies. For example: While \gls{foaf} is a good source when discussing its niche---the modeling of connection between human beings---it does not require an implementation of a process concept. The closest link from \gls{foaf} to a process representation is the  class \class{foaf:Project}\foottt{foaf:Project rdfs:comment: \enquote{A project (a collective endeavour of some kind).}}, which can be viewed as a procedural concept. However, it doesn't offer any additional reusable detail.
+When compared to the rather practical and direct implementation of social structures discussed in \autoref{human-beings-in-other-ontologies}, processes are a more abstract concept. The impact of abstraction levels clearly shows when analyzing related ontologies. For example: While \gls{foaf} is a good source when discussing its niche---the modeling of connection between human beings---it does not require an implementation of a process concept. The closest link from \gls{foaf} to a process representation is the  class \class{foaf:Project}\foottt{foaf:Project rdfs:comment: \enquote{A project (a collective endeavour of some kind).}}, which can be viewed as a procedural concept. However, it doesn't offer any additional reusable detail.
 
 A similar observation can be made for \gls{schema}. Its primary purpose is adding semantic meaning to the internet: \enquote{Schema.org is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet, on web pages, in email messages, and beyond.} \cite{schema-mission} Hence, it is not surprising, that it doesn't implement a detailed process representation. The other time-related class that could be connected to processes, \class{schema:Event}, is geared towards content description (\eg \class{schema:Business\_Event}, \class{schema:Sports\_Event}) and website interaction (\eg \class{schema:User\_Likes} \relation{subclassOf} \class{schema:User\_Interaction}) instead.
 
@@ -804,77 +802,60 @@ that uses \class{gist:Time\_Instant} to specify start and end of the event.
 
 \subsection{Structure of the Class Hierarchy}
 \label{process-subclass}
-Processes need special attention when implementing them in a domain ontology, since their nature is quite different from other classes that represent physical, \eg \class{Document}, or intuitive concepts, \eg \class{Person}. As mentioned in section \ref{classes}, the built in \relation{subclassOf} relation of the class hierarchy already carries semantic meaning, that is generally not applicable to processes. For example: a \class{Delivery\_Process} may involve a \class{Food\_Preperation\_Process} as a procedural step. However, it is easy to see and understand that a \class{Food\_Preperation\_Process} is $\underline{not}$ \relation{subclassOf} a \class{Delivery\_Process} and therefore should not inherit its properties.
+Since none of the related works offer a model to make it applicable in our ontology, we have to develop the structure for processes according to the general ideas and principles we outlined before.
 
-Since none of the related works strike the right level of abstraction to make it applicable in our model, we have to develop the structure according to the general idea and principles of this ontology. To model processes correctly, one could consider introducing a class like \class{*\_Process\_Part} (in the given example: \class{Delivery\_Process\_Part}) and use it to collect and connect sub-processes to their parent process. However, this results in many additional \textit{helper} classes in the class hierarchy, since every level of sub-processes requires another \class{*\_Process\_Part} class. This makes the class hierarchy harder to read and understand, since the process structure is encoded in these helper classes.
+Processes need special attention when implementing them in a domain ontology, since their nature is quite different from other classes that represent physical, \eg \class{Document}, or intuitive concepts, \eg \class{Person}. As mentioned in \ref{classes}, the built in \relation{subclassOf} relation of the class hierarchy already carries semantic meaning, that is generally not applicable to processes. For example: a \class{Delivery\_Process} may involve a \class{Food\_Preperation\_Process} as a procedural step. However, it is easy to see and understand that a \class{Food\_Preperation\_Process} is $\underline{not}$ \relation{subclassOf} a \class{Delivery\_Process} and therefore should not inherit its properties.
 
-Another solution is the use of a root \class{Process} class to collect all processes and the relation \relation{isProcessPartOf}\footnote{Inverse: \relation{hasProcessPart}.} to connect a sub-process to its parent process. This method utilizes the core concepts of ontologies, classes and relations, and avoids encoding extra information in unconventional ways. This results in a completely flat structure of the class hierarchy: every process is directly \relation{subclassOf} \class{Process}, independent from the level of abstraction.
+To model processes correctly, one could consider introducing a class like \class{*\_Process\_Part} (in the given example: \class{Delivery\_Process\_Part}) and use it to collect and connect sub-processes to their parent process. However, this results in many additional \textit{helper} classes in the class hierarchy, since every level of sub-processes requires another \class{*\_Process\_Part} class. This makes the class hierarchy harder to read and understand, since the process structure is encoded in these helper classes.
 
-We make use of this approach; however, to compensate for the resulting reduced readability because of the flat class hierarchy, we add diagrams to describe the processes and their relationships graphically (see appendix \ref{process-diagrams}).
+Another solution is the use of a root \class{Process} class to collect all processes and a relation to connect a sub-process to its parent process. This method utilizes the core concepts of ontologies, classes and relations, and avoids encoding extra information in unconventional ways. This, however, results in a loss of readability because of a completely flat structure of the class hierarchy: every process is directly \relation{subclassOf} \class{Process}, independent from its level of abstraction.
+
+We make use of the second approach. To compensate for the resulting reduced readability, we add diagrams to describe the processes and their relationships graphically (see appendix \ref{process-diagrams}).
 
 \subsection{Relations Between Processes}
-After establishing the structure of processes in the class hierarchy, we have to describe the relationships between them. Processes embody a kind \textit{of order of operations} and as such, an order relation is the first thing that comes to mind to describe them. However, within our domain exists different types of processes. Some can be strictly or semi-strictly ordered and some that can not. Additionally processes can have sub-processes, since processes can be decomposed into individual actions and these sub-processes---or even actions---can overlap with parts from a previous processes.
+After establishing the structure of processes in the class hierarchy, we have to describe the relationships between them. Processes embody a kind \textit{of order of operations} and as such, an order relation is the first thing that comes to mind to describe them. However, within our domain exists different types of processes. Some can be strictly or semi-strictly ordered and some that can not. Additionally processes can have sub-processes, since processes can be decomposed into individual actions and these sub-processes---or even actions---can overlap with parts from previous processes.
 
-For example: In the beginning of a project, it is planned and its exact goal has to be defined. Both---the project plan and the project goal---are stated in the project contract that is signed by the project parties and hence share the moment they are \textit{finished}. But since project planning and goal development are both very complex tasks and they often influence each other, they are often worked on at the same time. Their ordering needs to be: \textit{At the same time}. However, all the procedural details can change from project to project. Sometimes one step indeed finishes before the other: \textit{At the same time} would not be exact anymore. It is therefore impossible to exactly define their order in a general manner.
+For example: In the beginning of a project, it is planned and its exact goal has to be defined. Both---the project plan and the project goal---are stated in the project contract that is signed by the project parties and hence share the moment they are \textit{finished}. But since project planning and goal development are both very complex tasks and they often influence each other, they are often worked on at the same time. Their ordering needs to be: \textit{At the same time}. However, all the procedural details can change from project to project. Sometimes one step indeed finishes before the other: \textit{At the same time} would not be exact anymore. It is impossible to exactly define their order in a general manner without a complete implementation for a ontological process system, which is out of scope of this work.
 
-We introduce two relations (and their corresponding inverse):
+But since processes play a very important role in the domain and are required, we introduce simple process relations, that sufficiently model the relationships between the processes for this particular domain:
 \begin{compactenum}
-	\item If a process is guaranteed to start before another, it can use \relation{nextProcess} (\relation{previousProcess})to declare its follower. This relation allows overlap between the processes.
-	\item If a process is 
+	\item If a process is guaranteed to start before another, it can use \relation{nextProcess} to point to the follower. Its inverse is \relation{previousProcess}. This relation allows overlap between the processes.
+	\item If a process is part of another process (see \autoref{process-subclass}), it can point to its parent using \relation{isProcessPartOf}. Its inverse is \relation{hasProcessPart}. This relation does not express anything about the ordering of the process parts. They may be ordered between each other via \relation{nextProcess}, but don't necessarily have to be.
 \end{compactenum}
 
-It is therefore imperative to 
+This model makes no statements about the actual implementation of the processes, since it can differ from one \gls{sco} to the other. This also means that implementation details such as process properties (\eg process duration, process responsibility) are deliberately left out.
 
-In general, processes are a concept that heavily relies on abstraction and the correct level of abstraction depends on the use case. 
+\subsection{Processes Selection and Level of Abstraction}
+As stated in the introduction of this section (see \ref{processes}), the goal is to describe the processes in such way that makes it clear \underline{which} processes have to be implemented, not \underline{how}. At the extreme, a very detailed process enforces everything, which goes contrary to our goal.
 
+Therefore it is necessary to identify the relevant processes and select their correct level of abstraction individually. This also includes a cut-off point for the level of details.  On the one hand, each process class should convey enough information to understand its purpose. On the other, it should not be overloaded. This approach helps to ensure that the ontology user is able to understand the process system of the domain as a whole.
 
+For example: German law requires every company---and therefore also every \gls{sco} that does paid project work---to pay taxes on their earnings. Depending on the way projects are handled, this influences the process that is concerned with taxation. It is commonly known, that the German taxation system is daunting and hard to understand for a layperson and including the complete taxation process required by law is out of scope of the domain model. However, interacting with the tax authorities and filing the correct paper work is an important part of the learning experience for student consultants. It is therefore also important for the ontology. However, each \gls{sco} handles this differently, so it can not be modeled generally. In this case, the selected cut-off point is very high-level: The process is condensed into the class \textit{Project Taxation Process} as part of the \textit{Project Process}. This makes it clear that an \gls{sco} has to deal with the project taxation, but does not prescribe how to do it.
 
-Furthermore, the level of abstraction influences the ordering as well. While 
+To select the relevant processes, we use a top-down approach based on expert knowledge and the \gls{hc} process documentation \cite{hc-prozesshandbuch}. The cut-off point is selected for every individual process in the ontology.
 
+\subsection{Core Processes}
+The primary goal of an SCO is teaching students project work. This involves training their members and offering them opportunities to work on real-world projects. The topmost level of the process perspectives has to reflect this goal, by formulating the core actions an \gls{sco} has to perform:
+\begin{inparaenum}
+	\item Members have to be recruited and have to be taught the necessary skills, to be able to work on projects.
+	\item Projects have to be acquired and worked on by members.
+\end{inparaenum}
+All other processes (\eg technical support, legal support, or marketing processes) only exist to support these actions.
 
+The \gls{hc} Process Documentation \cite{hc-prozesshandbuch} calls\footnote{Translated from German.} these two processes \gls{hrp} and \gls{pp}. The sub-processes of the \gls{hc} \gls{hrp} focus on recruitment, training, and generally enabling of the \glspl{sco} members. The \gls{hc} \gls{pp} establishes the way the organization handles projects from start to finish. Both of these labels are also very commonly found in the business world. We adapt the naming for our ontology.
 
+Since all other processes are supplementary and the ontology is focused on simplicity, we exclusively model these two core processes and their sub-processes up to a certain depth. Furthermore it is important to note, that each core process can be viewed from two different perspectives:
 
+On the one hand, it can viewed as the process of the organization. For example: The \gls{sco} itself has a \gls{hrp}. It structures important aspects of the organization. It describes the complete path from recruitment of a new member to offboarding at the end of the membership. Most importantly this process describes the plan of the \underline{organization} on an abstract level and knowingly omits parts of the real world process that are not important to the organization.
 
-\begin{compactenum}
-	\item When discussing the lowest level of a process Depending on the level of abstraction,
-	\item Independent from the class hierarchy problem, another topic: The procedural information is encoded in the relation.
-	\item Processes are a sequence of action -> but not always
-	\item there should be a next\_process relation, but it's not straight forward, since there is not necessarily a strict ordering.
-	\item introduce a non strict ordering?
-\end{compactenum}
+On the other hand, it can be viewed from an individuals perspective. Each member has her own instance of an \gls{hrp}. For example: The protagonist is one individual student. She is following her own instance of the process from the individuals perspective; this instance does not have to be identical with an instance of a second individual. Both individuals might partake in the education process, but might do different courses. Both individual might hold the same rank in the organization, but might their membership duration might be different.
 
-\subsection{Process Selection}
-There are many processes and not all of them can be written down. There has to be a selection process.
+Both perspectives are relevant to the reality of an \gls{sco}. However, as discussed in \autoref{methodology}, the individual instance are not part of our model. This holds for the individual \gls{hrp} instance as well. Furthermore, as we consider the individual project as a black box (see \autoref{context}), the \gls{pp} in our ontology is viewed only from the perspective of the organization.
 
-For example: German law requires every company to pay taxes on their earnings. Depending on the \gls{sco} and the way projects are handled, this influences the process that is concerned with taxation. It is out of scope to model taxation process required by law. However, interacting with the tax authorities and learning about and filing the correct paper work is an important part of the learning experience for student consultants. It is therefore important for the ontology. To address this, the process is condensed into the class \textit{Project Taxation Process} as part of the \textit{Project Process}.
-
-%\subsubsection{Intuitive Look}
-The primary goal of an \gls{sco} is teaching students project work. They reach this goal by training their members and offering them opportunities to work on real-world projects. Looking at this from a high-level process perspective, this can be boiled down to distinct steps that have to be performed by the organization:
-
-\begin{compactitem}
-	\item Members have to be recruited.
-	\item Members have to be taught the necessary skills, to be able to work on projects.
-	\item Projects have to be acquired.
-	\item Projects have to be worked on by members.
-\end{compactitem}
-
-Additionally these steps have various amount of support processes that help facilitate them, \eg technical and legal support.
-
-%\subsubsection{Comparison with Process Documentation}
-Conflating this intuitive view results in two complex processes that are commonly know in the business world \cite{CN} and are also present in the available process documentation \cite{hc-prozesshandbuch}:
-\begin{compactenum}
-	\item A \gls{hrp}, that focuses on the recruitment, training, and generally enabling of human beings (or in the case of \glspl{sco}: Members).
-	\item A \gls{pp}, that documents the way an organization handles projects from start to finish.
-\end{compactenum}
-
-Again, both processes are influenced by the context switches discussed in section \ref{context-switches}. On the one hand, they can be viewed as an individual instance for one of the main protagonists of the process. On the other, they can viewed as the process of the organization. Example:
-\begin{compactitem}
-	\item The main protagonist of the HRP is one individual student. This individual student is following one instance of the HRP; this instance does not have to be identical with the instance of a second individual student, nor with the planned process of the organization. Both individuals might do different educational courses, hold different business ranks within the organization, or might be at different points in time of their career.
-	\item The \gls{sco} itself has a HRP. It structures important aspects of the organization such as the career path. It describes the complete path from recruitment of a new member to offboarding at the end of the membership. Most importantly this process describes the plan on an abstract level and knowingly omits parts of the real world process that are not important to the organization.
-\end{compactitem}
-
+The detailed descriptions of the rest of the modeled processes can be found in the ontology (see \autoref{the-ontology}) and the \gls{owl} file.
 
 \chapter{Student Consulting Organizations: The Ontology \progressbar[filledcolor=red]{0.2}}
+\label{the-ontology}
 \section{Scope of the Domain \progressbar[filledcolor=green]{0.8}}
 \label{competency-questions}
 \subsection{What is the domain that the ontology will cover?}

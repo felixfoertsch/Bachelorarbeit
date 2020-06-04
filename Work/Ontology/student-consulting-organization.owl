@@ -1113,7 +1113,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label xml:lang="de">Projektverkaufsprozess</rdfs:label>
-        <rdfs:label xml:lang="en">sales process</rdfs:label>
+        <rdfs:label xml:lang="en">project sales process</rdfs:label>
     </owl:Class>
     
 
