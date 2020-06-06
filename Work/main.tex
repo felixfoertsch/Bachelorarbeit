@@ -1,7 +1,7 @@
 % !TeX encoding = UTF-8
 % !TeX spellcheck = en_US
 
-% Document Version: v13
+% Document Version: v14
 
 %*******************************************************************************
 %* Work Configuration
@@ -425,9 +425,14 @@ External Vocabulary References]{Dan-Brickley2014FOAF-Vocabulary}
 
 \section{Principles and Assumptions \progressbar[filledcolor=red]{0.2}}
 \label{general-aspects}
+This work is about the development of a domain ontology and this is not a hard science. There exist underlying assumptions and various trade-offs that influence the ontology's design. This section describes principles that we apply during the development. Furthermore, we discuss some assumptions of the ontology sphere and describe how they influence the work.
 
 \subsection{Keeping Things Simple}
 \label{keeping-things-simple}
+Ontologies are a tool to describe the world with a structured approach. They have their roots in description logic. 
+
+However, this also makes them harder to understand for the layperson. It is our goal to make this ontology as accessible as possible. This means that we try to avoid complexity as much as possible.
+
 Polysemy Paper \cite{arapinis2015plea}
 \gls{kiss}
 
@@ -469,7 +474,7 @@ no absolute time
 
 \gls{bfo} \gls{gfo} have complex implementations of time that are not needed in this ontology.
 
-\chapter{Ontological Aspects in the SCO Domain \progressbar[filledcolor=yellow]{0.7}}
+\chapter{Ontological Aspects in the SCO Domain \progressbar[filledcolor=green]{0.90}}
 \label{domain-aspects}
 At the center of our domain lies a social structure. It is driven by processes and interactions that involve people. Such social constructs are inherently complex. For example: The same individual can often act in multiple capacities, actors can be part of different groups and these groups can have different degrees of formalization, the contexts of interactions are dynamic and fluid, etc. The challenge lies in modeling the domain in a way that it is adequately represented, but not too complex to use.
 
@@ -736,7 +741,7 @@ We model \class{Project\_Controlling} as \relation{subclassOf} \class{Project\_R
 \subsubsection{Customer}
 The remaining party of a basic project is the \class{Customer}. It represents the actor that wants to reach a goal and sets up a project with the \gls{sco} to reach it. Similar to other aspects in the \gls{pc}, we use a minimal approach to the role to accommodate for the required flexibility. We model it as \relation{subclassOf} \class{Project\_Role} and allow it to be played by any \class{Agent}. To work on a \class{Project}, the \class{Customer} \relation{signsContract} the corresponding \class{Project\_Contract}.
 
-\section{Processes \progressbar[filledcolor=yellow]{0.9}}
+\section{Processes \progressbar[filledcolor=green]{0.9}}
 \label{processes}
 Processes are a helpful concept when describing organizations: They are created to achieve a goal and its processes are the steps needed to reach that goal. \cite[p.\,5, Definition 1.1]{Weske:2019aa} In theory, every organization can be decomposed to a sequence of single activities, which, when executed correctly and in the correct order, terminate in reaching the goal of the organization.
 
