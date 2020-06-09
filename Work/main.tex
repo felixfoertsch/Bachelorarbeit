@@ -1,7 +1,7 @@
 % !TeX encoding = UTF-8
 % !TeX spellcheck = en_US
 
-% Document Version: v14
+% Document Version: v15
 
 %*******************************************************************************
 %* Work Configuration
@@ -43,7 +43,7 @@
 %\setcounter{tocdepth}{\paragraphtocdepth}
 
 % SubSubsection numbering
-\setcounter{secnumdepth}{5}
+%\setcounter{secnumdepth}{5}
 
 % Layout Settings
 \KOMAoptions{draft=false}
@@ -173,16 +173,16 @@
 \mainmatter
 \chapter{Introduction \progressbar[filledcolor=yellow]{0.6}}
 \section{Motivation \progressbar[filledcolor=green]{0.8}}
-\gls{sco}\footnote{Also known as \link{https://en.wikipedia.org/wiki/Junior_enterprise}{Junior Enterprises} in some parts of the world.} are student-run consulting businesses that focus on teaching their members essentials business and life skills exceeding the theoretical knowledge from university. They are very similar to small to medium consulting businesses, but are run and organized---most of the time exclusively---by students. And even though the concept is not universally know, these kind of organizations exists worldwide and have a history dating back to at least 1967\footnote{The founding of \link{https://www.en.junioressec.com/}{Junior ESSEC} in France.}. Germany has two different umbrella organizations for \glspl{sco} with more than 60 member organizations.\footnote{\gls{bdsu}, \gls{jcn}}
+\gls{sco}\footnote{Also known as \link{https://en.wikipedia.org/wiki/Junior_enterprise}{Junior Enterprises} in some parts of the world.} are student-run consulting businesses that focus on teaching their members essentials business and life skills exceeding the theoretical knowledge from university. They are very similar to small to medium consulting businesses, but are run and organized---most of the time exclusively---by students. And even though the concept is not universally known, this kind of organization exists worldwide and has a history dating back to at least 1967\footnote{The founding of \link{https://www.en.junioressec.com/}{Junior ESSEC} in France.}. Germany has two different umbrella organizations for \glspl{sco} with more than 60 member organizations.\footnote{\gls{bdsu}, \gls{jcn}}
 
 But as far as we know, there hasn't yet been any effort to collect and compose the existing domain knowledge of German \glspl{sco} in a publicly available and usable form. We consider this an important task, since it is a contribution to prevent knowledge loss that is inherent in the dynamics of these organizations: the majority of the staff are students and thus their consulting career is inherently linked to their university career:
 
 \begin{enumerate}
 	\item The career is time-bound to the duration of the education. A bachelor's degree in Germany averages 7,5-7,6 semesters and a master's degree 4,2-4,5 semesters, which adds up to a total of 11,7-12,1 semesters or ca. six years. \cite{stabu2019a} This frames the available time for the transfer of the domain knowledge.\footnote{There sometimes are also PhD students, but they can be considered outliers and are atypical.}
-	\item The career is in parallel to the curriculum. From our experience, freshmen that decide to join student organizations typically do so at the beginning of their second or third semester, after they got acclimated with the workload of their university classes. Since students usually participate in parallel to their education---and the focus is typically on the education---, they have to manage their time accordingly, which reduce time spent with the \gls{sco}. Furthermore, students may have other (\eg personal) interests that compete with the same time budget.
+	\item The career is parallel to the curriculum. From our experience, freshmen that decide to join student organizations typically do so at the beginning of their second or third semester, after they got acclimated with the workload of their university classes. Since students usually participate in parallel to their education---and the focus is typically on the education---, they have to manage their time accordingly, which reduces time spent with the \gls{sco}. Furthermore, students may have other (\eg personal) interests that compete with the same time budget.
 \end{enumerate}
 
-The reasons above reduce the available time for knowledge transfer and persistence and make these problems harder. Many \glspl{sco} have worked on and developed solutions to help with this problem. Some of them are informal, some formal in nature. For example: One particular organization we worked with, \gls{hc}, used process methodology to document a lot of their knowledge. Another we worked with, \gls{ci}, was focusing on lectures and training sessions.
+The reasons above reduce the available time for knowledge transfer and persistence and make these problems harder. Many \glspl{sco} have worked on and developed solutions to help with this problem. Some of them are informal, some formal in nature. For example: One particular organization we worked with, \gls{hc}, used process methodology to document a lot of their knowledge. Another one we worked with, \gls{ci}, was focusing on lectures and training sessions.
 
 However, the majority of available domain documents are highly individualized and miss the necessary level of abstraction to make them directly applicable to other \glspl{sco}. But even though every \gls{sco} is organized slightly differently than the next, uses different vocabulary and each has their individual culture, they all share the idea of teaching consulting and project work to their members. Since they aim for the same goal, they are very similar at their core.
 
@@ -216,7 +216,7 @@ The main use case of this work is supporting \gls{sco} idea by the documenting t
 
 Furthermore, we hope to aid the advance of the \gls{sco} idea, by creating a computer-readable ontology that can enable the creation of software projects.
 
-\chapter{Preliminaries \progressbar[filledcolor=yellow]{0.5}}
+\chapter{Preliminaries \progressbar[filledcolor=yellow]{0.8}}
 Ontologies have many applications in various fields. They are used in artificial intelligence research, database design and integration, semantic web, and many more. \cite[p.\,1]{Gomez-Perez:2004aa} One of these applications is knowledge representation.
 
 \begin{quote}
@@ -227,7 +227,7 @@ This work is concerned with the knowledge representation of one particular domai
 
 \section{Methodology for the Development of the Ontology \progressbar[filledcolor=green]{0.95}}
 \label{methodology}
-The primary goal of this work (see \autoref{goal}) is the creation of a particular domain ontology. Our language of choice for this task is the \gls{owl}. It is an ontology language developed by the consensus-driven and well respected \gls{w3c}. \cite[p.\,206]{baader2017introduction} It is widely used and offers very good tooling in the ontology editor \link{https://protege.stanford.edu}{\pn{Protégé}}. It is built and maintained by ontology researchers of \pn{Stanford University}. \cite{musen2015protege} Furthermore the research group provides a ontology development methodology \cite{guide-to-ontology}, that we can build upon. It involves the following steps:
+The primary goal of this work (see \autoref{goal}) is the creation of a particular domain ontology. Our language of choice for this task is the \gls{owl}. It is an ontology language developed by the consensus-driven and well respected \gls{w3c}. \cite[p.\,206]{baader2017introduction} It is widely used and offers very good tooling in the ontology editor \link{https://protege.stanford.edu}{\pn{Protégé}}. It is built and maintained by ontology researchers of \pn{Stanford University}. \cite{musen2015protege} Furthermore the research group provides an ontology development methodology \cite{guide-to-ontology}, that we can build upon. It involves the following steps:
 \begin{compactenum}[(1)]
 	\item Determine the domain and scope of the ontology,
 	\item consider reusing existing ontologies,
@@ -267,9 +267,9 @@ To find a starting point for data collection and identify existing ontologies, w
 	Consulting is a very diverse field of work. Since consulting can be applied to any field of business, it can be used as a stepping stone into a career.
 \end{mdframed}
 
-Observing this intuitive perspective, we can see, that \glspl{sco} are connected to other knowledge domains in various ways: They are a type of social organization and thus are driven by people and processes. Organizations and in extension their processes have actors with responsibilities. This is a hint that the concept of roles might to be a part of the ontology. \glspl{sco} can be generally considered a form of business and therefore business aspects have to be taken into account. The fact that they do consulting work creates a connection into the domain of (business) consulting and the domain of projects, since consulting work is project based.
+Observing this intuitive perspective, we can see, that \glspl{sco} are connected to other knowledge domains in various ways: They are a type of social organization and thus are driven by people and processes. Organizations and in extension their processes have actors with responsibilities. This is a hint that the concept of roles might be a part of the ontology. \glspl{sco} can be generally considered a form of business and therefore business aspects have to be taken into account. The fact that they do consulting work creates a connection into the domain of (business) consulting and the domain of projects, since consulting work is project based.
 
-This intuitive approach generates a the starting point for the research:
+This intuitive approach generates a starting point for the research:
 \begin{compactitem}
 	\item Previously developed ontologies in related domains, \eg consulting, project management, educational organizations.
 	\item Available domain knowledge, \eg process documentation of \gls{hc} and \gls{ci}.
@@ -335,7 +335,7 @@ To work further towards our secondary goal of providing an ontology that is usab
 	\enquote{A \textbf{domain ontology }is a formal and consensual dictionary of categories and properties of entities of a domain and the relationships that hold among them.} \cite[p.\,240]{Jean_2007}
 \end{quote}
 
-We try to achieve formality by adhering to \gls{owl} standard \cite{w3c-owl-guide} and using the \textit{HermiT} reasoner during development. To aim for consensus, we prepare the ontology in way so that it can be peer reviewed in the future.
+We try to achieve formality by adhering to \gls{owl} standard \cite{w3c-owl-guide} and using the \textit{HermiT} reasoner during development. To aim for consensus, we prepare the ontology in a way so that it can be peer reviewed in the future.
 
 Similar to the general discussion about ontologies, there is an ongoing debate on which term best represents the elements of an ontology. We are following the Protégé naming convention and are calling the collection of elements \textit{entities}. Furthermore we use the term \textit{Classes} to represent things, \textit{Object Properties} to represent relationships between things, and \textit{Annotation Properties} to describe both more closely with additional comments.
 
@@ -348,7 +348,7 @@ The class hierarchy is a tree where the children of a node have the built in rel
 This has implications for our ontology. For example, it is the reason for the different structuring of \class{Agent} and \class{Process}: The former sub-domain can make use of the sub-class relation, whereas the latter cannot (see \autoref{process-subclass}).
 
 \subsubsection{Properties \progressbar[filledcolor=green]{1}}
-The classes and the class hierarchy give an ontology its basic structure; they defines what things exist in the world the ontology describes. The \textit{properties} bring this world to life. A property is a binary relation: It can be used to assert facts about a class, describe it in more detail, and to establish relationships between classes. \cite{w3c-owl-guide} We primarily use two types of properties in our work: \textit{Object Properties} and \textit{Annotation Properties}. To make them more distinguishable we also introduce and use their colloquial references \textit{Relationships}/\textit{Relations} and \textit{Annotations}.
+The classes and the class hierarchy give an ontology its basic structure; they define what things exist in the world the ontology describes. The \textit{properties} bring this world to life. A property is a binary relation: It can be used to assert facts about a class, describe it in more detail, and to establish relationships between classes. \cite{w3c-owl-guide} We primarily use two types of properties in our work: \textit{Object Properties} and \textit{Annotation Properties}. To make them more distinguishable we also introduce and use their colloquial references \textit{Relationships}/\textit{Relations} and \textit{Annotations}.
 
 \paragraph{Object Properties \aka Relationships \aka Relations}
 \label{relations}
@@ -377,7 +377,7 @@ Furthermore we provide one or more \prop{skos:example} where examples help descr
 \label{related-work}
 As already discussed previously, the \gls{sco} domain touches on various other knowledge areas. Related source material could be found in other ontologies, \gls{pm} models and concepts, organizational theory, process documentation and models, established vocabulary, and so forth. The challenge lies in identifying the most useful information and merge the input from many different sources to construct the ontology.
 
-This is made harder by the vastness of some related fields. \gls{pm}, for example, is a central topic for our domain and it is easy to find many different books, theories, and models about it on the market. It is also an complex, overarching, and very general subject matter. Part of its domain are concepts of complex nature like time, problem analysis, and project structuring. If we were to focus too much on this aspect within our ontology, it would easily dominate it and the ultimate goal of our ontology would be  missed. It is therefore imperative to identify the correct level of abstraction and connect the related work in an adequate manner.
+This is made harder by the vastness of some related fields. \gls{pm}, for example, is a central topic for our domain and it is easy to find many different books, theories, and models about it on the market. It is also a complex, overarching, and very general subject matter. Part of its domain are concepts of complex nature like time, problem analysis, and project structuring. If we were to focus too much on this aspect within our ontology, it would easily dominate it and the ultimate goal of our ontology would be  missed. It is therefore imperative to identify the correct level of abstraction and connect the related work in an adequate manner.
 
 This section discusses the related work and shows how we are applying it to the \gls{sco} ontology.
 
@@ -388,6 +388,8 @@ dcterms\footnote{\texttt{dcterms} is used in the \pn{FOAF} rdf file, \texttt{dct
 
 To reflect on this fact in the ontology, we try to merge the
 \subsection{Top-Level Ontologies}
+
+Top-Level Ontologies provide general notions under which with all the terms in existing ontologies are related. Examples of top level ontologies are: Sowa’s boolean lattice [Sow97], PAN- GLOSS [KL94], Penman Upper Level [BKMW90], Cyc [LG90], Mikrokosmos [Mah96] and Guarino’s top level proposal [Gua98].\cite[p.\,3]{perez1999overview}
 \begin{compactenum}
 	\item What is a TLO (Definition)?
 	\item What can we use them for in this work? -> Processes, Roles, Time?
@@ -423,56 +425,29 @@ External Vocabulary References]{Dan-Brickley2014FOAF-Vocabulary}
 
 
 
-\section{Principles and Assumptions \progressbar[filledcolor=red]{0.2}}
+\section{Principles and Assumptions \progressbar[filledcolor=green]{0.9}}
 \label{general-aspects}
-This work is about the development of a domain ontology and this is not a hard science. There exist underlying assumptions and various trade-offs that influence the ontology's design. This section describes principles that we apply during the development. Furthermore, we discuss some assumptions of the ontology sphere and describe how they influence the work.
+Ontologies are a powerful tool, rooted in description logic. They build on this ancestry as well as its rigorous- and correctness to try to describe the world with a structured approach. But even though an ontology \textit{can} be correct, its development process is not a hard science. It is hard to describe the world and there exist underlying assumptions, principles, and various trade-offs that impact an ontology's design. \cite[p.\,383--394]{sowa1999knowledge}
 
-\subsection{Keeping Things Simple}
-\label{keeping-things-simple}
-Ontologies are a tool to describe the world with a structured approach. They have their roots in description logic. 
+This poses the challenge to make good design decisions and select adequate abstractions of the world. But it also gives the ontology developer some room and flexibility to impose a design idea on the work. 
 
-However, this also makes them harder to understand for the layperson. It is our goal to make this ontology as accessible as possible. This means that we try to avoid complexity as much as possible.
+Our primary principle is simplicity. This manifests in various ways during the design process. It is our goal to make this ontology as accessible and as easy to understand as possible, because its potential users are not necessarily experts. Since it is more a \textit{design philosophy}, we will not document every single occurrence. We will, however, describe our reasoning in a few important instances:
 
-Polysemy Paper \cite{arapinis2015plea}
-\gls{kiss}
+\paragraph{First: Avoid complexity by allowing inference of details} High information-density can be useful, if the goal is a highly detailed model. However, a smaller and more concise ontology is easier to grasp and process. Since we strive for simplicity, we reduce the size and complexity of our ontology by omitting information (\eg certain relations or attributes) that can be inferred from linked ontologies when required.
 
-keep it as simple as possible (\eg \textit{contract} and \textit{contract document} can be considered two distinct things, but this distinction is not important for the domain knowledge -- maybe add a relation "has document"?)
+For example: Both \gls{fibo} and \gls{gist} offer attributes for a \class{Person}; \eg in \gls{fibo} a \class{Person} \relation{hasDateOfBirth exactly 1} \class{Date}, in \gls{gist} a \class{Person} is \relation{offspringOf} another \class{Person} and need to have a \relation{name} \class{xsd:string}. Instead of copying these attributes to our ontology, we use this the relation \relation{rdfs:seeAlso} \cite[https://www.w3.org/TR/rdf-schema/\#ch\_seealso]{brickley2014rdf} as a soft reference for attributes that can be extracted on demand.
 
-Example: A contract is a document that captures a business agreement. The word "contract" can refer to the immaterial agreement between the parties, but it can also refer to the document itself. Depending on the use case of the ontology it might be useful to separate these two things.
+\paragraph{Second: Avoid content overload by utilizing the open world assumption} \gls{owl}, our ontology language of choice, is built on the Open World Assumption\footnote{The Open World Assumption states that if a value is not stated, it's \texttt{unknown} opposed to the Closed World Assumption that would default to \texttt{false}.}. \cite[p.\,388--389]{moore2015context} \cite[p.\,299, 417]{Russell:2010aa} \cite[p.\,372]{hitzler2009foundations} to \textit{hide} unhelpful information.
 
-However, in this ontology the goal is to keep it a simple as possible, since the potential users of this ontology are not necessarily experts.
+The first example is the description of the \gls{sco}'s problem space. It is as varied as their clients, since it is easily conceivable to offer consulting in any area imaginable: Digitization, Human Resources, Knowledge Management, Market Research, Marketing, Corporate Strategy, etc. Depending on the individual \gls{sco} instance, each topic can be considered part of the consulting domain and should therefore be included in the model. However, this would lead to an infinite list of possible topics and would quickly extend the scope far beyond the true intention of the ontology.
 
-\subsection{The Unique Name Assumption}
-\cite[p.\,299]{Russell:2010aa}
-\subsection{Open World Assumption}
-Closed world: if a value is not stated, it's false\cite[p.\,299]{Russell:2010aa} \cite[p.\,388]{moore2015context}
+Another example are IT systems. They are an essential and often integral part of modern business. The same is true for consulting companies. The systems are used to support, supplement, and optimize all processes. However, they are not the core value proposal of consulting companies. Hence, a detailed model of the IT systems would not contribute in a meaningful way to the ontology, even though we can assume that every \gls{sco} uses these kind of systems to facilitate their business.
 
-Open world: if a value is not stated, it's unknown \cite[p.\,417]{Russell:2010aa} 
+\paragraph{Third: Allow individual complex classes} Ontologies allow dissecting the world to a high degree of detail. Some real-world objects, however, posses inherent polysemy. Decomposing them can introduce unneeded or---in our case---unwanted complexity, without offering a significant value-gain.
 
-OWL is based on the OWA \cite[p.\,389]{moore2015context}
-\subsection{Content Completeness Problem}
-The \textit{Content Completeness Problem} states, that an ontology is incapable of containing all the concepts relevant to its users.
+The classic example for inherent polysemy is the book. It can be viewed from two different perspectives: The physical object and its contents\footnote{\enquote{physical object reading} and \enquote{abstract informational reading}. \cite[Section 2.1]{arapinis2015plea}}. Another example from our domain is the contract: It is a document that captures a business agreement. The term \textit{contract} can refer to the immaterial agreement between the parties, but it can also refer to the physical document.
 
-Developing an ontology involves thinking about the correct level of abstraction and making choices on what to focus on.
-
-\url{https://en.wikipedia.org/wiki/Content_completeness_problem}
-As is true for any domain ontology \cite{CN}, the content completeness problem exists for this ontology as well.
-
-active/passive content completeness
-
-bewusst weggelassen:
-\subsubsection{Consulting Topics}
-The main goal of consulting companies is in their name: consulting. They are a source of expertise and knowledge and can be employed as an option to solve a difficult problem at hand. The problem space of consulting companies is vast; examples are: Digitization, Human Resources, Knowledge Management, Market Research, Marketing, Coporate Strategy, etc. These topics are obviously part of the consulting domain. However, they are deliberately omitted, since their exploration would exceed the scope of the work.
-
-\subsubsection{IT and Communication Systems}
-IT systems are an essential part of modern business and there are companies where these systems are integral to everything (\eg AI companies). However, in the context of a consulting company they are mainly used to support, supplement, and optimize the already existing processes. Hence, a model of an IT system would not contribute in a meaningful way to the ontology.
-
-\subsection{Time}
-\label{time}
-Implement time abstract -> only needed for processes before/after
-no absolute time
-
-\gls{bfo} \gls{gfo} have complex implementations of time that are not needed in this ontology.
+Even though it's \textit{possible} to decompose these objects, it's not \textit{necessary}. The usefulness of such a decomposition depends on the use case. In our case, with the focus on simplicity, it is enough to describe most classes on a high level, since the exact design is up to the user. \textit{Arapinis} argues in \cite{arapinis2015plea} to allow the use of complex classes to avoid introducing incoherence and inconsistency.
 
 \chapter{Ontological Aspects in the SCO Domain \progressbar[filledcolor=green]{0.90}}
 \label{domain-aspects}
@@ -485,7 +460,7 @@ In the following section, we discuss three distinct and noteworthy aspects that 
 	\item our model for \textit{processes}.
 \end{inparablank}
 
-Please note, that there are other classes and relations present in the ontology---and also describes in \autoref{ontology}---that are relevant to the domain, but \textit{not} discussed in detail in this part of the work (\eg \class{Document}).
+Please note, that there are other classes and relations present in the ontology---and also describes in \autoref{the-ontology}---that are relevant to the domain, but \textit{not} discussed in detail in this part of the work (\eg \class{Document}).
 
 \section{Context \progressbar[filledcolor=green]{0.9}}
 \label{context}
@@ -578,7 +553,7 @@ Starting with the general model of human beings, \gls{foaf} is a very common cho
 \class{schema:Organization}%
 	\foottt{schema:Organization rdfs:comment: \enquote{An organization such as a school, NGO, corporation, club, etc.}}.
 %
-\class{schema:Person} is considered \relation{equivalentTo} \class{foaf:Person}. This establishes a two-way link between \gls{foaf} and \gls{schema}. \class{schema:Organization} is sub-classed to accommodate for specialized forms of organizations that are relevant for the use cases schema was developed for, \eg \class{schema:Airline}, \class{schema:NGO}. A collection class like \class{foaf:Group} does not exists explicitly, but a \class{schema:Person} as well as a \class{schema:Organization} can be a \relation{memberOf} an \class{Organization}.
+\class{schema:Person} is considered \relation{equivalentTo} \class{foaf:Person}. This establishes a two-way link between \gls{foaf} and \gls{schema}. \class{schema:Organization} is sub-classed to accommodate for specialized forms of organizations that are relevant for the use cases schema was developed for, \eg \class{schema:Airline}, \class{schema:NGO}. A collection class like \class{foaf:Group} does not exist explicitly, but a \class{schema:Person} as well as a \class{schema:Organization} can be a \relation{memberOf} an \class{Organization}.
 
 \gls{fibo} uses very similarly named classes with a more complex description. The root class is called
 %
@@ -664,7 +639,7 @@ When looking at the related work, we make the following observations:
 	\item The class \class{Agent} represents actors of an action. Sub-classing it gives the model freedom to express what exactly acts: It can be an \class{Agent}, a \class{Person}, a \class{Group}, or an \class{Organization}. This flexibility makes the models powerful. They can describe general (\eg somebody) or other agents (\eg robots) directly via \class{Agent}, but can also be used more specifically via a sub-class (\eg a \class{Person}). Additionally, a group is a collection class that is also \relation{subclassOf} \class{Agent} and hence can become an \class{Agent}---an actor---itself.
 \end{enumerate}
 
-As shown above, the classes \class{Agent}, \class{Person}, \class{Organization}, and \class{Group} are common in the class hierarchies of the related ontologies. Therefore this ontology will use these classes. However, the different ontologies also use different ways of defining classes. Ranging from the very direct and simple way of \gls{foaf}, to the very intricate way of \gls{gist}. Since this ontology is trying to be as intuitive to use as possible, the more simple approach from \gls{foaf} is adapted.\footnote{This decision is a direct application of the \gls{kiss} principle (see \autoref{keeping-things-simple}). Having more information in an ontology can obviously be useful for a very detailed model of a domain. However, its size can be kept smaller and the complexity lower by omitting information (\eg certain relations or attributes) that can be inferred from linked ontologies when necessary. For example: \gls{fibo} and \gls{gist} offer attributes for a \class{Person}; \eg in \gls{fibo} a \class{Person} \relation{hasDateOfBirth exactly 1} \class{Date}, in \gls{gist} a \class{Person} is \relation{offspringOf} another \class{Person} and need to have a \relation{name} \class{xsd:string}. These attributes can be extracted on demand, by following the \relation{equivalentTo} relation.}
+As shown above, the classes \class{Agent}, \class{Person}, \class{Organization}, and \class{Group} are common in the class hierarchies of the related ontologies. Therefore this ontology will use these classes. However, the different ontologies also use different ways of defining classes. Ranging from the very direct and simple way of \gls{foaf}, to the very intricate way of \gls{gist}. Since this ontology is trying to be as intuitive to use as possible, the more simple approach from \gls{foaf} is adapted.
 
 After deciding on these basic building blocks, they can be extended according to the additional domain specifications. For example, a \class{Person} might need further differentiation based on \gls{sco} membership status, on business rank for internal organization and career progress, or on organizational roles. But there are other concepts that can involve a \class{Person}---\eg \textit{being a customer} of the \gls{sco}---that could just as easily involve an \class{Organization}. This observation points to the requirement of a more general approach for modeling these cases: Roles.
 
@@ -705,7 +680,7 @@ The complete set of tasks and responsibilities for the organizations day-to-day 
 The exact set of task differs from \gls{sco} to \gls{sco} and is also dependent on the organizational form, \eg a \gls{sco} using the form of a registered association has different (legal) obligations than a \gls{sco} organized as university group. Completely specifying it is impossible on the level of abstraction this ontology operates on. In the same vein, it is impossible to define which tasks are attributed to which role, since every \gls{sco} organizes differently. Therefore we fall back on an extensible model and introduce the general class \class{Coporoate\_Officer} as \relation{subclassOf} \class{Organizational\_Role}. To play a leadership role, it is required to be a formal \class{Member} of the \gls{sco}. Hence: \class{Coporoate\_Officer} \relation{isPlayedBy} only
 (\class{Junior\_Consultant} or \class{Consultant} or \class{Senior\_Consultant}).
 
-There exists some common roles, that arise from the necessities of an \gls{sco}: There is typically a person that is formally responsible for the organization, a person that takes care of the finances, and a person that takes care of legal aspects of the project work. We differentiate between these three branches explicitly and introduce dedicated roles for each: \class{Chief\_Executive\_Officer}, \class{Chief\_Financial\_Officer}, and \class{Chief\_Legal\_Officer}.
+There exist some common roles, that arise from the necessities of an \gls{sco}: There is typically a person that is formally responsible for the organization, a person that takes care of the finances, and a person that takes care of legal aspects of the project work. We differentiate between these three branches explicitly and introduce dedicated roles for each: \class{Chief\_Executive\_Officer}, \class{Chief\_Financial\_Officer}, and \class{Chief\_Legal\_Officer}.
 
 It is important to note that these roles can all be played by the $\underline{same}$ \class{Person}. And: That we do not introduce any concrete tasks these roles have to fulfill.
 
