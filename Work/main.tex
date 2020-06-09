@@ -43,7 +43,7 @@
 %\setcounter{tocdepth}{\paragraphtocdepth}
 
 % SubSubsection numbering
-\setcounter{secnumdepth}{5}
+%\setcounter{secnumdepth}{5}
 
 % Layout Settings
 \KOMAoptions{draft=false}
@@ -216,7 +216,7 @@ The main use case of this work is supporting \gls{sco} idea by the documenting t
 
 Furthermore, we hope to aid the advance of the \gls{sco} idea, by creating a computer-readable ontology that can enable the creation of software projects.
 
-\chapter{Preliminaries \progressbar[filledcolor=yellow]{0.5}}
+\chapter{Preliminaries \progressbar[filledcolor=yellow]{0.8}}
 Ontologies have many applications in various fields. They are used in artificial intelligence research, database design and integration, semantic web, and many more. \cite[p.\,1]{Gomez-Perez:2004aa} One of these applications is knowledge representation.
 
 \begin{quote}
@@ -425,29 +425,29 @@ External Vocabulary References]{Dan-Brickley2014FOAF-Vocabulary}
 
 
 
-\section{Principles and Assumptions \progressbar[filledcolor=yellow]{0.66}}
+\section{Principles and Assumptions \progressbar[filledcolor=green]{0.9}}
 \label{general-aspects}
 Ontologies are a powerful tool, rooted in description logic. They build on this ancestry as well as its rigorous- and correctness to try to describe the world with a structured approach. But even though an ontology \textit{can} be correct, its development process is not a hard science. It is hard to describe the world and there exist underlying assumptions, principles, and various trade-offs that impact an ontology's design. \cite[p.\,383--394]{sowa1999knowledge}
 
 This poses the challenge to make good design decisions and select adequate abstractions of the world. But it also gives the ontology developer some room and flexibility to impose a design idea on the work. 
 
-Our primary principle is simplicity.
+Our primary principle is simplicity. This manifests in various ways during the design process. It is our goal to make this ontology as accessible and as easy to understand as possible, because its potential users are not necessarily experts. Since it is more a \textit{design philosophy}, we will not document every single occurrence. We will, however, describe our reasoning in a few important instances:
 
-This manifests in various ways during the design process. It is our goal to make this ontology as accessible and as easy to understand as possible, because its potential users are not necessarily experts. Since it is more a \textit{design philosophy}, we will not document every single occurrence. We will, however, describe our reasoning in a few important instances.
+\paragraph{First: Avoid complexity by allowing inference of details} High information-density can be useful, if the goal is a highly detailed model. However, a smaller and more concise ontology is easier to grasp and process. Since we strive for simplicity, we reduce the size and complexity of our ontology by omitting information (\eg certain relations or attributes) that can be inferred from linked ontologies when required.
 
-First: Avoiding complexity by allowing inference of details. High information-density can be useful, if the goal is a highly detailed model. However, a smaller and more concise ontology is easier to grasp and process. Since we strive for simplicity, we reduce the size and complexity of our ontology by omitting information (\eg certain relations or attributes) that can be inferred from linked ontologies when required. For example: Both \gls{fibo} and \gls{gist} offer attributes for a \class{Person}; \eg in \gls{fibo} a \class{Person} \relation{hasDateOfBirth exactly 1} \class{Date}, in \gls{gist} a \class{Person} is \relation{offspringOf} another \class{Person} and need to have a \relation{name} \class{xsd:string}. Instead of copying these attributes to our ontology, we use this the relation \relation{rdfs:seeAlso} \cite[https://www.w3.org/TR/rdf-schema/\#ch\_seealso]{brickley2014rdf} as a soft reference for attributes that can be extracted on demand.
+For example: Both \gls{fibo} and \gls{gist} offer attributes for a \class{Person}; \eg in \gls{fibo} a \class{Person} \relation{hasDateOfBirth exactly 1} \class{Date}, in \gls{gist} a \class{Person} is \relation{offspringOf} another \class{Person} and need to have a \relation{name} \class{xsd:string}. Instead of copying these attributes to our ontology, we use this the relation \relation{rdfs:seeAlso} \cite[https://www.w3.org/TR/rdf-schema/\#ch\_seealso]{brickley2014rdf} as a soft reference for attributes that can be extracted on demand.
 
-Second: Avoiding content overload by explicitly utilizing the open world assumption\footnote{The Open World Assumption states that if a value is not stated, it's \texttt{unknown} opposed to the Closed World Assumption that would default to \texttt{false}. \gls{owl}, our ontology language of choice, is built on the Open World Assumption. \cite[p.\,388--389]{moore2015context} \cite[p.\,299, 417]{Russell:2010aa} \cite[p.\,372]{hitzler2009foundations}} to \textit{hide} unhelpful information. The first example is the description of the \gls{sco}'s problem space. It is as varied as their clients, since it is easily conceivable to offer consulting in any area imaginable: Digitization, Human Resources, Knowledge Management, Market Research, Marketing, Corporate Strategy, etc. Depending on the individual \gls{sco} instance, each topic can be considered part of the consulting domain and should therefore be included in the model. However, this would lead to an infinite list of possible topics and would quickly extend the scope far beyond the true intention of the ontology. Another example are IT systems. They are an essential and often integral part of modern business. The same is true for consulting companies. The systems are used to support, supplement, and optimize all processes. However, they are not the core value proposal of consulting companies. Hence, a detailed model of the IT systems would not contribute in a meaningful way to the ontology, even though we can assume that every \gls{sco} uses these kind of systems to facilitate their business.
+\paragraph{Second: Avoid content overload by utilizing the open world assumption} \gls{owl}, our ontology language of choice, is built on the Open World Assumption\footnote{The Open World Assumption states that if a value is not stated, it's \texttt{unknown} opposed to the Closed World Assumption that would default to \texttt{false}.}. \cite[p.\,388--389]{moore2015context} \cite[p.\,299, 417]{Russell:2010aa} \cite[p.\,372]{hitzler2009foundations} to \textit{hide} unhelpful information.
 
-Third: Allow individual complex classes.
+The first example is the description of the \gls{sco}'s problem space. It is as varied as their clients, since it is easily conceivable to offer consulting in any area imaginable: Digitization, Human Resources, Knowledge Management, Market Research, Marketing, Corporate Strategy, etc. Depending on the individual \gls{sco} instance, each topic can be considered part of the consulting domain and should therefore be included in the model. However, this would lead to an infinite list of possible topics and would quickly extend the scope far beyond the true intention of the ontology.
 
-Polysemy Paper \cite{arapinis2015plea}
+Another example are IT systems. They are an essential and often integral part of modern business. The same is true for consulting companies. The systems are used to support, supplement, and optimize all processes. However, they are not the core value proposal of consulting companies. Hence, a detailed model of the IT systems would not contribute in a meaningful way to the ontology, even though we can assume that every \gls{sco} uses these kind of systems to facilitate their business.
 
-keep it as simple as possible (\eg \textit{contract} and \textit{contract document} can be considered two distinct things, but this distinction is not important for the domain knowledge -- maybe add a relation "has document"?)
+\paragraph{Third: Allow individual complex classes} Ontologies allow dissecting the world to a high degree of detail. Some real-world objects, however, posses inherent polysemy. Decomposing them can introduce unneeded or---in our case---unwanted complexity, without offering a significant value-gain.
 
-Example: A contract is a document that captures a business agreement. The word "contract" can refer to the immaterial agreement between the parties, but it can also refer to the document itself. Depending on the use case of the ontology it might be useful to separate these two things.
+The classic example for inherent polysemy is the book. It can be viewed from two different perspectives: The physical object and its contents\footnote{\enquote{physical object reading} and \enquote{abstract informational reading}. \cite[Section 2.1]{arapinis2015plea}}. Another example from our domain is the contract: It is a document that captures a business agreement. The term \textit{contract} can refer to the immaterial agreement between the parties, but it can also refer to the physical document.
 
-
+Even though it's \textit{possible} to decompose these objects, it's not \textit{necessary}. The usefulness of such a decomposition depends on the use case. In our case, with the focus on simplicity, it is enough to describe most classes on a high level, since the exact design is up to the user. \textit{Arapinis} argues in \cite{arapinis2015plea} to allow the use of complex classes to avoid introducing incoherence and inconsistency.
 
 \chapter{Ontological Aspects in the SCO Domain \progressbar[filledcolor=green]{0.90}}
 \label{domain-aspects}
