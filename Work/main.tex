@@ -12,7 +12,12 @@
 %* Packages
 %*******************************************************************************
 \usepackage[english]{babel}
-\usepackage[urldate=iso]{biblatex}
+\usepackage[
+	backend=biber,
+	style=numeric,
+	urldate=iso,
+	sorting=none
+	]{biblatex}
 \usepackage{xcolor} % Für Farben im Text
 \usepackage{xstring} % String-Manipulation; wird von anderen Paketen oft verwendet
 \usepackage{fontspec} % Einstellungen für Schriftarten (zB lokales Laden)
@@ -110,6 +115,7 @@
 \newacronym{schema}{Schema.org}{Schema.org Ontology}
 \newacronym{doap}{DOAP}{Description of a Project}
 \newacronym{bpmn}{BPMN}{Business Process Modeling and Notation}
+\newacronym{bpmno}{BPMNO}{Business Process Modeling and Notation Ontology}
 \newacronym{epc}{EPC}{Event-Driven Process Chain}
 \newacronym{uml}{UML}{Unified Modeling Language}
 \newacronym{psl}{PSL}{Process Specification Language}
@@ -132,9 +138,10 @@
 \newacronym{rdf}{RDF}{Resource Description Framework}
 \newacronym{rdfs}{RDFS}{Resource Description Framework Schema}
 \newacronym{skos}{SKOS}{Simple Knowledge Organization System}
+\newacronym{eo}{EO}{Enterprise Ontology}
 
 % Special Plurals
-\newglossaryentry{tlo}{name={TLO}, description={Top-Level Ontology}, descriptionplural={Top-Level Ontologies}, firstplural={\glsentrydescplural{tlo} (\glsentryplural{tlo})}}
+\newglossaryentry{tlo}{name={TLO}, description={Top-Level Ontology}, descriptionplural={Top-Level Ontologies}, firstplural={\glsentrydescplural{tlo} (\glsentryplural{tlo}, also sometimes called \textit{Upper Ontologies})}}
 \newglossaryentry{udo}{name={UDO}, description={Upper-Domain Ontology}, descriptionplural={Upper-Domain Ontologies}, firstplural={\glsentrydescplural{udo} (\glsentryplural{udo})}}
 \newglossaryentry{do}{name={DO}, description={Domain Ontology}, descriptionplural={Domain Ontologies}, firstplural={\glsentrydescplural{do} (\glsentryplural{do})}}
 
@@ -146,7 +153,7 @@
 
 \titlehead{
 	Document Version: v15 \\
-	Overall Progress: \progressbar[filledcolor=green]{0.8}
+	Overall Progress: \progressbar[filledcolor=green]{0.9}
 }
 \subject{Bachelor's Thesis}
 \title{Student Consulting Organizations}
@@ -158,7 +165,7 @@
 
 \frontmatter
 \chapter*{Abstract \progressbar[filledcolor=yellow]{0.5}}
-	This work develops a domain ontology for \glspl{sco}. The model declares the domain knowledge and defines its vocabulary. It contains the information necessary to establish or run such an organization in a university context. Additionally it allows for optimization in existing organizations and contributes to cooperation between \glspl{sco} by organizing the existing knowledge. It maximizes the use of vocabularies, relations, and classes from established ontologies like \gls{foaf}, \gls{fibo}, \gls{gfo}, and \gls{gist} to link the domain knowledge into a bigger context. The main resource of the developed ontology are \glspl{sco} from Germany, but the concepts can be transferred and made applicable in a wider area.
+	This work develops a domain ontology for \glspl{sco}. The model declares the domain knowledge and defines its vocabulary. It contains the information necessary to establish or run such an organization in a university context. Additionally it allows for optimization in existing organizations and contributes to cooperation between \glspl{sco} by organizing the existing knowledge. It maximizes the use of vocabularies, relations, and classes from established ontologies to link the domain knowledge into a bigger context. The main resource of the developed ontology are \glspl{sco} from Germany, but the concepts can be transferred and made applicable in a wider area.
 	
 	PRODUKTWERBUNG
 
@@ -169,7 +176,7 @@
 	\item Relations are written in camelCase: \texttt{subclassOf}
 	\item Classes are bold, capitalized, and use Snake\_Case: \texttt{\textbf{Awesome\_Class}}
 	\item Name spaces may be added to a class for clarification; they are separated by a colon: \class{namespace:Class}
-	\item The bibliography is sorted alphabetically by the first authors last name.
+	\item The bibliography is sorted by order of appearance.
 \end{compactitem}
 
 \chapter*{Leseanleitung}
@@ -224,7 +231,7 @@ The main use case of this work is supporting \gls{sco} idea by the documenting t
 
 Furthermore, we hope to aid the advance of the \gls{sco} idea, by creating a computer-readable ontology that can enable the creation of software projects.
 
-\chapter{Preliminaries \progressbar[filledcolor=yellow]{0.8}}
+\chapter{Preliminaries \progressbar[filledcolor=green]{0.9}}
 Ontologies have many applications in various fields. They are used in artificial intelligence research, database design and integration, semantic web, and many more. \cite[p.\,1]{Gomez-Perez:2004aa} One of these applications is knowledge representation.
 
 \begin{quote}
@@ -233,7 +240,7 @@ Ontologies have many applications in various fields. They are used in artificial
 
 This work is concerned with the knowledge representation of one particular domain: \glspl{sco}. The following section describes how we approach the development of this particular ontology, define the necessary vocabulary and relations between the terms, and structurally explore the domain.
 
-\section{Methodology for the Development of the Ontology \progressbar[filledcolor=green]{0.95}}
+\section{Methodology for the Development of the Ontology \progressbar[filledcolor=green]{0.9}}
 \label{methodology}
 The primary goal of this work (see \autoref{goal}) is the creation of a particular domain ontology. Our language of choice for this task is the \gls{owl}. It is an ontology language developed by the consensus-driven and well respected \gls{w3c}. \cite[p.\,206]{baader2017introduction} It is widely used and offers very good tooling in the ontology editor \link{https://protege.stanford.edu}{\pn{Protégé}}. It is built and maintained by ontology researchers of \pn{Stanford University}. \cite{musen2015protege} Furthermore the research group provides an ontology development methodology \cite{guide-to-ontology}, that we can build upon. It involves the following steps:
 \begin{compactenum}[(1)]
@@ -255,7 +262,7 @@ The phases of the methodology are discussed in more detail in the following two 
 	\item Steps 3 to 6 during the \pn{Analysis and Synthesis Phase}.
 \end{compactenum}
 
-The last step, (7) the creation of instances, is omitted in this work. It is only really relevant if the ontology is used to describe one specific \gls{sco}. \cite{CN} However, this ontology is operating on a higher level of abstraction, trying to describe a more general case.
+The last step, (7) the creation of instances, is omitted in this work. It is only really relevant if the ontology is used to describe one specific \gls{sco}. However, this ontology is operating on a higher level of abstraction, trying to describe a more general case.
 
 \subsection{Research Phase}
 To our understanding, the main goal of the first part of the methodology is the creation of a foundation for the ontology: It needs to have a clearly defined scope. Additionally the recommended reuse of other ontologies helps creating a web of linked knowledge and reduces the amount of duplicate work.
@@ -284,7 +291,7 @@ This intuitive approach generates a starting point for the research:
 	\item Personal expert domain knowledge and peer-review by other \gls{sco} members.
 \end{compactitem}
 
-Furthermore it implies some more general research topics such as the implications of other general, upper-level, and top-level ontologies (\eg \gls{gfo}, \gls{bfo}, \gls{gist}) as well as theory of description logic and theory of ontologies (\eg modeling of roles and processes).
+Furthermore it implies some more general research topics such as the implications of other general, upper-domain, and top-level ontologies as well as theory of description logic and theory of ontologies (\eg modeling of roles and processes).
 
 Defining the scope of the ontology is the formal step that concludes the \textit{Research Phase}. This work accomplishes this by answering the Competency Questions. Since the questions can be considered a part of the ontology, they and their corresponding answers can be found as part of the ontology in \autoref{competency-questions}.
 
@@ -373,7 +380,7 @@ As already mentioned before, there is one special object property that is built 
 
 \paragraph{Annotation Properties \aka Annotations}
 \label{annotation-properties}
-We use annotation properties to add additional information to entities in our domain. They can be thought of simple key-value pairs that are attached to a specific entity. The \underline{key} might be defined within the scope of the ontology or may be sourced from knowledge organization conventions like \gls{rdfs} \cite{brickley2014rdf} or \gls{skos} \cite{miles2009skos}. If a key belongs to such a schema, it uses the corresponding prefix, separated by a colon (\eg \prop{rdfs:label}). The \underline{value} holds the additional information about a class.
+We use annotation properties to add additional information to entities in our domain. They can be thought of simple key-value pairs that are attached to a specific entity. The \underline{key} might be defined within the scope of the ontology or may be sourced from knowledge organization conventions or metadata schemas (see \autoref{metadata-schemas}). If a key belongs to such a schema, it uses the corresponding prefix, separated by a colon (\eg \prop{rdfs:label}). The \underline{value} holds the additional information about a class.
 
 Each class of our domain has two guaranteed annotation properties:
 \begin{inparaenum}
@@ -382,65 +389,41 @@ Each class of our domain has two guaranteed annotation properties:
 \end{inparaenum}
 Furthermore we provide one or more \prop{skos:example} where examples help describing the class more clearly.
 
-\section{Related Work \progressbar[filledcolor=red]{0.1}}
+\section{Related Work \progressbar[filledcolor=green]{0.9}}
 \label{related-work}
-As already discussed previously, the \gls{sco} domain intersects with various other knowledge areas. Related source material can be found in other ontologies, \gls{pm} models and concepts, process documentation and process models, established ontology schemas and vocabulary, and so forth. The challenge lies in identifying the most useful information and merge the input from many different sources to construct the ontology.
+To our knowledge, there has not yet been any effort to model the \gls{sco} domain explicitly as an ontology. However, it intersects with various other knowledge areas and related source material can be found in other ontologies, \gls{pm} models and concepts, established ontology schemas and vocabulary, and so forth. The challenge lies in identifying the most useful information and merge the input from many different sources to construct our ontology.
 
--> Vorhandensein anderer Arbeiten?!
+\paragraph{Ontologies}
+We already touched the complicated nature of ontologies in \autoref{definitions}. There are so many different ideas, concepts, and proposals available in this space, that it is impossible to completely work through it in the limited scope of this work. We briefly discuss three categories of ontologies and how we are using them in this work. We group them by their level of abstraction, going from the highest to the lowest: \glspl{tlo}, \glspl{udo}, and \glspl{do}.
 
-\paragraph{Ontologies} We already touched the complicated nature of ontologies in \autoref{definitions}. There are so many different ideas, concepts, and proposals available in this space, that it is impossible to completely work through it in the limited scope of this work. Hence, we restrict the discussion of the related ontologies to three groups, based on their level of abstraction, going from the highest to the lowest: \glspl{tlo}, \glspl{udo}, and \glspl{do}.
+\begin{mdframed}
+	\textbf{Note:} These categories are a tool to organize the related ontologies. They are not absolute, but instead can be thought of as labels for areas on a linear scale that is based on the level of abstraction. The borders of the areas are not fixed and other researchers might place them differently.
+\end{mdframed}
 
-\glspl{tlo} deal with the highest level concepts that relate other ontologies. \cite[p.\,3]{perez1999overview} These may include: Entities, Relators, Time, Space, etc. Examples are: \gls{gfo} \cite{herre2010general}, \gls{bfo} \cite{smith2015basic},
+\glspl{tlo} deal with the highest level concepts that relate other ontologies. \cite[p.\,3]{perez1999overview} These may include: Entities, Relators, Time, Space, etc. Examples are: The %
+	\gls{gfo} \cite{herre2010general},
+	\gls{bfo} \cite{smith2015basic}, and
+	\gls{gist} \cite{gist-ontology}.
+More examples are available on  \link{https://en.wikipedia.org/wiki/Upper\_ontology\#Available\_upper\_ontologies}{Wikipedia: Upper Ontology}. Since \glspl{tlo} operate on such a high level, we do not expect to be able to apply them directly. We will, however, try to find links to this class of ontology for the domain topics, that are more abstract in nature (\eg processes). For this process, we focus on the three aforementioned \glspl{tlo} examples.
 
-\glspl{udo} occupy the space between \glspl{tlo} and \glspl{do}. They \gls{gist} 
+\glspl{udo} occupy the space between the high-level \glspl{tlo} and the lower-level \glspl{do}. They describe a wide and general area, but start going into specific descriptions. Examples are: The %
+	\gls{fibo}\footnote{Describes the world of financial businesses.} \cite{fibo-ontology},
+	\gls{schema}\footnote{Develops common vocabulary for internet semantics.} \cite{schema-ontology},
+	\gls{foaf}\footnote{Models relationships between people.} \cite{Dan-Brickley2014FOAF-Vocabulary},
+	\gls{bpmno}\footnote{Models the notational system of \gls{bpmn} as an ontology.} \cite{2014foisbpmn},
+	\gls{doap}\footnote{Defines the entities of a software project.} \cite{doap-ontology},
+	and \gls{eo} \cite{enterprise-ontology}\footnote{Defines terms and definitions relevant to business enterprises.}.%
+We consider \glspl{udo} as a very promising source of information, since their domains are relatively wide, but still concrete. They explore them thoroughly and we expect them to model classes that are also required in our domain (\eg people, organizations). These classes can then be analyzed and serve as inspiration for our work.
 
-SNIK
+\glspl{do} are specialists. They focus on a narrow domain and its vocabulary, classes, and relationships. \cite[p.\,3]{perez1999overview} Examples are: This work, the Wine Ontology from the \gls{w3c} \gls{owl} guide \cite{w3c-owl-guide}, and many more that can be found in the \link{https://protegewiki.stanford.edu/wiki/Protege\_Ontology\_Library}{Protege Ontology Library}.
 
+\paragraph{Metadata Schemas} 
+\label{metadata-schemas}
+Metadata Schemas provide the scaffolding for an ontology. They implement a vocabulary that helps organizing the knowledge and add structure by standardization. Examples are: \gls{rdfs} \cite{brickley2014rdf}, \gls{skos} \cite{miles2009skos}, and \gls{dcmt} \cite{dublin-core}. As with the grouping of ontologies, categorizing something as a \textit{metadata schema} is not necessarily clear-cut. The schemas themselves can be considered ontologies and some of them are very extensive. The \gls{dcmt}, for example, is not limited to metadata and properties. It also contains classes such as \class{Agent}, \class{Location}, or \class{Policy} that would indicate a classification as \gls{udo}. However, since they typically occupy their own name space (\eg when used in annotation properties, see \autoref{annotation-properties}), it is easily possible to \textit{mix and match} and individually select the parts required. This work primarily uses the annotation properties (\eg \relation{rdfs:label}) from these schemas.
 
-\begin{quote}
-	\enquote{Domain ontologies are reusable in a given domain. They provide vocabularies about the concepts within a domain and their relationships, about the activities that take place in that domain, and about the theories and elementary principles governing that domain.} \cite[p.\,3]{perez1999overview}
-\end{quote}
+\paragraph{Project Management Concepts}
+Projects management is a big part of the consulting domain. As such, it also plays a very important role for \glspl{sco}. It is an overarching and very general subject matter and contains many concepts of complex nature: Time, problem analysis, project structuring, etc. It is easy to find many different books, theories, or models about these topics. Each brings their own approach, flavor, scope, and goal for project management. Examples are: The Project Management Body of Knowledge \cite{pmbok} for a general and universal project management concept, SCRUM \cite{sutherland2017scrum} for a specific type of software development. We use these concepts as guidelines for our domain classes and descriptions.
 
-\begin{compactenum}
-	\item What is a TLO (Definition)?
-	\item What can we use them for in this work? -> Processes, Roles, Time?
-	\item What are popular TLOs and what are their strengths and weaknesses?
-	\begin{compactenum}
-		\item BFO 
-		\item DOLCE
-		\item GIST
-		\item BPMN  \cite{2014foisbpmn}
-		\item GFO 
-	\end{compactenum}
-\end{compactenum}
-
-\begin{compactenum}
-	\item What is a UDO (Definition)?
-	\item What can we use them for in this work?
-	\item What are popular UDOs and what are their strengths and weaknesses?
-	\begin{enumerate}
-		\item OWL-S
-		\item \href{https://en.wikipedia.org/wiki/Suggested_Upper_Merged_Ontology}{SUMO}
-		\item \gls{fibo}
-		\item \gls{doap} https://github.com/ewilderj/doap
-		\item \gls{schema}: not really ideal, but useful for general concepts like Person or Organization
-		\item \gls{foaf} is close to schema, link to dublin core: "dct:Agent
-		\item Enterprise Ontology \url{http://www.aiai.ed.ac.uk/project/enterprise/enterprise/ontology.html}
-	\end{enumerate}
-\end{compactenum}
-
-\paragraph{Ontology Schemas}
-
-dcterms\footnote{\texttt{dcterms} is used in the \pn{FOAF} rdf file, \texttt{dct} is used in the \pn{FOAF} documentation.}
-
-Dublin Core's notion of Agent is much like FOAF's; Dublin Core says "A resource that acts or has the power to act.", we say "things that do stuff". As nobody has provided a counter-example of something fitting one definition but not the other, we say here that foaf:Agent stands in an 'equivalent class' relationship to dct:Agent (and vice-versa)." \cite[
-External Vocabulary References]{Dan-Brickley2014FOAF-Vocabulary}
-
-\paragraph{Project and Project Management Concepts}
-This is made harder by the vastness and especially variability of some related fields. \gls{pm}, for example, is a central topic for our domain and it is easy to find many different books, theories, and models about it on the market. It is a complex, overarching, and very general subject matter. Part of its domain are concepts of complex nature like time, problem analysis, and project structuring. If we were to focus too much on this aspect within our ontology, it would easily dominate it. It is therefore imperative to identify the correct level of abstraction and connect the related work in an adequate manner.
-
-
-\paragraph{Process Documentation}
 
 \section{Principles and Assumptions \progressbar[filledcolor=green]{0.9}}
 \label{general-aspects}
@@ -871,7 +854,7 @@ The ontology serves as an abstract description of the \gls{sco} domain. It defin
 \end{itemize}
 
 \subsection{Who will use and maintain the ontology?}
-The users of this ontology are the leadership of \glspl{sco} in Germany as well as the leadership of the \gls{sco} umbrella organizations. The release version coincides with the finalization and grading of this work. If the ontology sees use by the target group, it will be maintained by the author. Access will be publicly provided on a GitHub repository. It is considered a living document, hence not necessarily complete until otherwise stated. Contributions and forks will be possible via the GitHub interface.
+The users of this ontology are the leadership of \glspl{sco} in Germany as well as the leadership of the \gls{sco} umbrella organizations. The release version coincides with the finalization and grading of this work. If the ontology sees use by the target group, it will be maintained by the authors. Access will be publicly provided on a GitHub repository. It is considered a living document, hence not necessarily complete until otherwise stated. Contributions and forks will be possible via the GitHub interface.
 
 \section{Classes}
 \subsection{Agent}
