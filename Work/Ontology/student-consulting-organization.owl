@@ -86,6 +86,7 @@
     <!-- https://www.felixfoertsch.de/ontologies/student-consulting-group#definition -->
 
     <owl:AnnotationProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#definition">
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/core"/>
         <rdfs:label xml:lang="en">definition</rdfs:label>
         <skos:definition xml:lang="en">A statement or formal explanation of the meaning of a concept.</skos:definition>
@@ -103,6 +104,7 @@
     <!-- https://www.felixfoertsch.de/ontologies/student-consulting-group#note -->
 
     <owl:AnnotationProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#note">
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/core"/>
         <rdfs:label xml:lang="en">note</rdfs:label>
         <skos:definition xml:lang="en">A general note, for any purpose.</skos:definition>
@@ -133,6 +135,7 @@
     <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#has_member">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#is_member_of"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"/>
         <rdfs:label xml:lang="en">has member</rdfs:label>
         <skos:definition>relates something, typically a group or organization, to some discrete thing identified as a part (member) of it</skos:definition>
@@ -145,6 +148,7 @@
 
     <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#is_member_of">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"/>
         <rdfs:label xml:lang="en">is member of</rdfs:label>
         <skos:definition>belonging, either individually or collectively, to a group</skos:definition>
@@ -156,6 +160,7 @@
 
     <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#is_played_by">
         <owl:inverseOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#plays_role"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:comment>QName: fibo-fnd-pty-rl:isPlayedBy</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/"/>
         <rdfs:label xml:lang="en">is played by</rdfs:label>
@@ -170,6 +175,7 @@
     <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#next_process">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#previous_process"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="en">next process</rdfs:label>
     </owl:ObjectProperty>
     
@@ -179,6 +185,7 @@
 
     <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#next_rank">
         <owl:inverseOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#previous_rank"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="en">next rank</rdfs:label>
     </owl:ObjectProperty>
     
@@ -188,6 +195,7 @@
 
     <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#part_of">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:comment>customer/team/etc part of project</rdfs:comment>
         <rdfs:comment>processes part of SCO</rdfs:comment>
         <rdfs:label xml:lang="en">part of</rdfs:label>
@@ -199,6 +207,7 @@
 
     <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#plays_role">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:comment>QName: fibo-fnd-pty-rl:playsRole</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/"/>
         <rdfs:label>plays role</rdfs:label>
@@ -211,6 +220,7 @@
     <!-- https://www.felixfoertsch.de/ontologies/student-consulting-group#previous_process -->
 
     <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#previous_process">
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="en">previous process</rdfs:label>
     </owl:ObjectProperty>
     
@@ -219,6 +229,7 @@
     <!-- https://www.felixfoertsch.de/ontologies/student-consulting-group#previous_rank -->
 
     <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#previous_rank">
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="en">previous rank</rdfs:label>
     </owl:ObjectProperty>
     
@@ -284,6 +295,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Recruiting_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Werbeprozess</rdfs:label>
         <rdfs:label xml:lang="en">advertising process</rdfs:label>
     </owl:Class>
@@ -300,6 +312,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Person"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Beirat</rdfs:label>
         <rdfs:label xml:lang="en">advisor</rdfs:label>
     </owl:Class>
@@ -309,6 +322,7 @@
     <!-- https://www.felixfoertsch.de/ontologies/student-consulting-group#Agent -->
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Agent">
+        <rdfs:comment xml:lang="en">Agents are the actors of the ontology.</rdfs:comment>
         <rdfs:label xml:lang="en">agent</rdfs:label>
     </owl:Class>
     
@@ -324,6 +338,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Person"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Alumna</rdfs:label>
         <rdfs:label xml:lang="en">alumna</rdfs:label>
     </owl:Class>
@@ -334,6 +349,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Calendar">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Document"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Kalender</rdfs:label>
         <rdfs:label xml:lang="en">calendar</rdfs:label>
     </owl:Class>
@@ -356,6 +372,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Human_Resources_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Karriereprozess</rdfs:label>
         <rdfs:label xml:lang="en">career process</rdfs:label>
     </owl:Class>
@@ -366,6 +383,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Chief_Executive_Officer">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Corporate_Officer"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:comment>QName: fibo-be-oac-exec:ChiefExecutiveOfficer</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/"/>
         <rdfs:label xml:lang="de">Vorstandsvorsitzende Person</rdfs:label>
@@ -381,6 +399,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Chief_Financial_Officer">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Corporate_Officer"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:comment>QName: fibo-be-oac-exec:ChiefFinancialOfficer</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/"/>
         <rdfs:label xml:lang="de">Finanzverantwortliche Person</rdfs:label>
@@ -396,6 +415,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Chief_Legal_Officer">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Corporate_Officer"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="en">chief legal officer</rdfs:label>
     </owl:Class>
     
@@ -423,6 +443,7 @@
                 <owl:allValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Junior_Consultant"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Berater</rdfs:label>
         <rdfs:label xml:lang="en">consultant</rdfs:label>
     </owl:Class>
@@ -433,6 +454,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Contract">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Document"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:comment>QName: fibo-fnd-agr-ctr:Contract</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/"/>
         <rdfs:label xml:lang="de">Vertrag</rdfs:label>
@@ -462,6 +484,7 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:comment>QName: fibo-be-oac-exec:CorporateOfficer</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/"/>
         <rdfs:label xml:lang="de">Vorstand</rdfs:label>
@@ -489,6 +512,7 @@
                 <owl:allValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Agent"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:comment>QName: fibo-fnd-pas-pas:Customer</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/"/>
         <rdfs:label xml:lang="de">Kunde</rdfs:label>
@@ -503,6 +527,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Document">
         <owl:disjointWith rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Person"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Dokument</rdfs:label>
         <rdfs:label xml:lang="en">document</rdfs:label>
         <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/Document</rdfs:seeAlso>
@@ -520,6 +545,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Career_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Ausbildungsprozess</rdfs:label>
         <rdfs:label xml:lang="en">education process</rdfs:label>
     </owl:Class>
@@ -536,6 +562,7 @@
                 <owl:allValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Member"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Vorstand</rdfs:label>
     </owl:Class>
     
@@ -551,6 +578,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Education_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Externer Ausbildungsprozess</rdfs:label>
         <rdfs:label xml:lang="en">external education process</rdfs:label>
     </owl:Class>
@@ -562,6 +590,7 @@
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#External_Project">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project"/>
         <owl:disjointWith rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Internal_Project"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Externes Projekt</rdfs:label>
         <rdfs:label xml:lang="en">external project</rdfs:label>
     </owl:Class>
@@ -572,6 +601,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Financial_Patron">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Patron"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="en">financial patron</rdfs:label>
     </owl:Class>
     
@@ -581,6 +611,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Gantt_Diagramm">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Document"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="en">gantt diagram</rdfs:label>
     </owl:Class>
     
@@ -590,6 +621,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Group">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Agent"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Gruppe</rdfs:label>
         <rdfs:label xml:lang="en">group</rdfs:label>
     </owl:Class>
@@ -600,6 +632,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Human_Resources_Process">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Human-Resources-Prozess</rdfs:label>
         <rdfs:label xml:lang="en">human resource process</rdfs:label>
     </owl:Class>
@@ -610,6 +643,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Ideological_Patron">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Patron"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="en">ideological patron</rdfs:label>
     </owl:Class>
     
@@ -625,6 +659,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Education_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Interner Ausbildungsprozess</rdfs:label>
         <rdfs:label xml:lang="en">internal education process</rdfs:label>
     </owl:Class>
@@ -635,6 +670,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Internal_Project">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Internes Projekt</rdfs:label>
         <rdfs:label xml:lang="en">internal project</rdfs:label>
     </owl:Class>
@@ -645,6 +681,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Invoice">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Document"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Rechnung</rdfs:label>
         <rdfs:label xml:lang="en">invoice</rdfs:label>
     </owl:Class>
@@ -673,6 +710,7 @@
                 <owl:allValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Trainee"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Junior Berater</rdfs:label>
         <rdfs:label xml:lang="en">junior consultant</rdfs:label>
     </owl:Class>
@@ -689,6 +727,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Student_Consulting_Organization"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Mitglied</rdfs:label>
     </owl:Class>
     
@@ -704,6 +743,7 @@
                 <owl:allValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Member"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Mitgliederversammlung</rdfs:label>
     </owl:Class>
     
@@ -719,6 +759,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Human_Resources_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Offboarding-Prozess</rdfs:label>
         <rdfs:label xml:lang="en">offboarding process</rdfs:label>
         <definition xml:lang="en">The process of parting ways between the organization and a member. Can occur during every phase of the human resource process.</definition>
@@ -730,6 +771,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Offering">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Document"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Angebot</rdfs:label>
         <rdfs:label xml:lang="en">offering</rdfs:label>
     </owl:Class>
@@ -752,6 +794,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Human_Resources_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Onboarding-Prozess</rdfs:label>
         <rdfs:label xml:lang="en">onboarding process</rdfs:label>
         <definition xml:lang="en">The process of preparing a new member for the work in and with the organization. Typically involves educating the new member about the internal and external processes, documenting personal data, etc.</definition>
@@ -770,6 +813,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Person"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:comment>QName: fibo-fnd-org-org:Organization</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/Organizations/"/>
         <rdfs:label xml:lang="de">Organisation</rdfs:label>
@@ -785,6 +829,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Organizational_Role">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Role"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="en">organizational role</rdfs:label>
     </owl:Class>
     
@@ -807,6 +852,7 @@
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="en">patron</rdfs:label>
     </owl:Class>
     
@@ -816,6 +862,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Person">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Agent"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:comment>QName: fibo-fnd-aap-ppl:Person</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"/>
         <rdfs:label xml:lang="de">Person</rdfs:label>
@@ -830,6 +877,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Presentation">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Document"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="en">presentation</rdfs:label>
     </owl:Class>
     
@@ -838,6 +886,7 @@
     <!-- https://www.felixfoertsch.de/ontologies/student-consulting-group#Process -->
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process">
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Prozess</rdfs:label>
         <rdfs:label xml:lang="en">process</rdfs:label>
     </owl:Class>
@@ -859,6 +908,7 @@
                 <owl:allValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Customer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projekt</rdfs:label>
         <rdfs:label xml:lang="en">project</rdfs:label>
         <rdfs:seeAlso>gist:Project</rdfs:seeAlso>
@@ -870,6 +920,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Contract">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Contract"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektvertrag</rdfs:label>
         <rdfs:label>project contract</rdfs:label>
     </owl:Class>
@@ -904,6 +955,7 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektcontrolling</rdfs:label>
         <rdfs:label xml:lang="en">project controlling</rdfs:label>
     </owl:Class>
@@ -920,6 +972,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Finalization_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektdokumentationsprozess</rdfs:label>
         <rdfs:label xml:lang="en">project documentation process</rdfs:label>
     </owl:Class>
@@ -936,6 +989,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Finalization_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektevaluationsprozess</rdfs:label>
         <rdfs:label xml:lang="en">project evaluation process</rdfs:label>
     </owl:Class>
@@ -958,6 +1012,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektdurchführungsprozess</rdfs:label>
         <rdfs:label xml:lang="en">project execution process</rdfs:label>
     </owl:Class>
@@ -974,6 +1029,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektabschlussprozess</rdfs:label>
         <rdfs:label xml:lang="en">project finalization process</rdfs:label>
     </owl:Class>
@@ -990,6 +1046,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Initiation_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektzielentwicklungsproezess</rdfs:label>
         <rdfs:label xml:lang="en">project goal development process</rdfs:label>
     </owl:Class>
@@ -1012,6 +1069,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektinitiierungsprozess</rdfs:label>
         <rdfs:label xml:lang="en">project initiation process</rdfs:label>
     </owl:Class>
@@ -1028,6 +1086,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Finalization_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektabrechnungsprozess</rdfs:label>
         <rdfs:label xml:lang="en">project invoicing process</rdfs:label>
     </owl:Class>
@@ -1038,6 +1097,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Plan">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Document"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektplan</rdfs:label>
         <rdfs:label xml:lang="en">project plan</rdfs:label>
     </owl:Class>
@@ -1054,6 +1114,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Initiation_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektplanungsprozess</rdfs:label>
         <rdfs:label xml:lang="en">project planning process</rdfs:label>
     </owl:Class>
@@ -1064,6 +1125,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Process">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektprozess</rdfs:label>
         <rdfs:label xml:lang="en">project process</rdfs:label>
     </owl:Class>
@@ -1080,6 +1142,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Initiation_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektrisikobewertungsprozess</rdfs:label>
         <rdfs:label xml:lang="en">project risk assessment process</rdfs:label>
     </owl:Class>
@@ -1090,6 +1153,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Role">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Role"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektrolle</rdfs:label>
         <rdfs:label xml:lang="en">project role</rdfs:label>
     </owl:Class>
@@ -1112,6 +1176,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektverkaufsprozess</rdfs:label>
         <rdfs:label xml:lang="en">project sales process</rdfs:label>
     </owl:Class>
@@ -1128,6 +1193,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Finalization_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektbesteuerungsprozess</rdfs:label>
         <rdfs:label xml:lang="en">project taxation process</rdfs:label>
     </owl:Class>
@@ -1173,6 +1239,7 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektteam</rdfs:label>
         <rdfs:label xml:lang="en">project team</rdfs:label>
     </owl:Class>
@@ -1189,6 +1256,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Team_Making_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektteambewerbungsprozess</rdfs:label>
         <rdfs:label xml:lang="en">project team application process</rdfs:label>
     </owl:Class>
@@ -1214,6 +1282,7 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektteam-Leiter</rdfs:label>
         <rdfs:label xml:lang="en">project team leader</rdfs:label>
     </owl:Class>
@@ -1230,6 +1299,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Initiation_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektteambesetzungsprozess</rdfs:label>
         <rdfs:label xml:lang="en">project team making process</rdfs:label>
     </owl:Class>
@@ -1256,6 +1326,7 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektteam-Mitglied</rdfs:label>
         <rdfs:label xml:lang="en">project team member</rdfs:label>
     </owl:Class>
@@ -1272,6 +1343,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Team_Making_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Projektteamauswahlprozess</rdfs:label>
         <rdfs:label xml:lang="en">project team selection process</rdfs:label>
     </owl:Class>
@@ -1294,6 +1366,7 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Human_Resources_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Recruiting-Prozess</rdfs:label>
         <rdfs:label xml:lang="en">recruiting process</rdfs:label>
         <definition xml:lang="en">The process of acquiring new members for the organization. Typically involves advertising using different means.</definition>
@@ -1305,6 +1378,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Report">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Document"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="en">report</rdfs:label>
     </owl:Class>
     
@@ -1313,6 +1387,7 @@
     <!-- https://www.felixfoertsch.de/ontologies/student-consulting-group#Role -->
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Role">
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:comment>QName: fibo-fnd-pty-rl:Role</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/"/>
         <rdfs:label xml:lang="de">Rolle</rdfs:label>
@@ -1340,6 +1415,7 @@
                 <owl:allValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Consultant"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Senior Berater</rdfs:label>
         <rdfs:label xml:lang="en">senior consultant</rdfs:label>
     </owl:Class>
@@ -1350,6 +1426,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Student_Consulting_Organization">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Organization"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Studentische Unternehmensberatung</rdfs:label>
         <rdfs:label xml:lang="en">student consulting organization</rdfs:label>
     </owl:Class>
@@ -1372,6 +1449,7 @@
                 <owl:allValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Junior_Consultant"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Trainee</rdfs:label>
         <rdfs:label xml:lang="en">trainee</rdfs:label>
         <skos:definition xml:lang="en">A person that has stated the intent to join the organization but is not yet a member (e.g. a person that has not yet fullfilled the necessary requirements).</skos:definition>
@@ -1383,6 +1461,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Umbrella_Organization">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Organization"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Dachverband</rdfs:label>
         <rdfs:label xml:lang="en">umbrella organization</rdfs:label>
     </owl:Class>
@@ -1393,6 +1472,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#University">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Organization"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Universität</rdfs:label>
         <rdfs:label xml:lang="en">university</rdfs:label>
     </owl:Class>
@@ -1403,6 +1483,7 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Work_Document">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Document"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="en">work document</rdfs:label>
         <definition xml:lang="en">A document that is part or result of the work within a project.</definition>
     </owl:Class>
