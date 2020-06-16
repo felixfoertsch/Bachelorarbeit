@@ -197,6 +197,7 @@
 \newacronym{rdfs}{RDFS}{Resource Description Framework Schema}
 \newacronym{skos}{SKOS}{Simple Knowledge Organization System}
 \newacronym{eo}{EO}{Enterprise Ontology}
+\newacronym{iri}{IRI}{Internationalized Resource Identifier}
 
 % Special Plurals
 \newglossaryentry{tlo}{name={TLO}, description={Top-Level Ontology}, descriptionplural={Top-Level Ontologies}, firstplural={\glsentrydescplural{tlo} (\glsentryplural{tlo}, also sometimes called \textit{Upper Ontologies})}}
@@ -894,7 +895,7 @@ The detailed descriptions of the rest of the modeled processes can be found in t
 
 \chapter{Student Consulting Organizations: The Ontology \progressbar[filledcolor=red]{0.2}}
 \label{the-ontology}
-\section{Scope of the Domain \progressbar[filledcolor=green]{0.8}}
+\section{Scope of the Domain \progressbar[filledcolor=yellow]{0.5}}
 \label{competency-questions}
 We define the scope of the domain according to our ontology development methodology described in \autoref{methodology} using \textit{Competency Questions}:
 
@@ -916,96 +917,218 @@ The ontology serves as an abstract description of the \gls{sco} domain. It defin
 \paragraph{Who will use and maintain the ontology?}
 The users of this ontology are the leadership of \glspl{sco} in Germany as well as the leadership of the \gls{sco} umbrella organizations. The release version coincides with the finalization and grading of this work. If the ontology sees use by the target group, it will be maintained by the authors. Access will be publicly provided on a GitHub repository. It is considered a living document, hence not necessarily complete until otherwise stated. Contributions and forks will be possible via the GitHub interface.
 
-\section{Classes}
+\section{Classes \progressbar[filledcolor=yellow]{0.5}}
 This section describes all classes and relations as well as their properties. We use color coding and indentation to give this section some structure. Both are only helpers and have no explicit other meaning. They are, however, inspired by the defining relations of their corresponding class (\eg )
 
+The box header contains the classes \gls{iri}. If a class has multiple \relation{skos:example}, we condense them into a list and label it \relation{skos:examples}.
 \begin{mdframed}[style=onto, frametitle={TEMPLATE}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: 
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \subsection{Agent}
 \begin{mdframed}[style=onto, frametitle={Agent}]
 	{% Begin box content
-		rdfs:comment "Agents are the actors of the ontology."@en
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: agent
+			\item \textbf{rdfs:comment}: Agents are the actors of the ontology.
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-1, frametitle={Group}]
 	{% Begin box content
-
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: group
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-2, frametitle={Executive\_Board}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: executive board
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-2, frametitle={Member\_Assembly}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: member assembly
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-2, frametitle={Project\_Team}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project team
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-1, frametitle={Organization}]
 	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: organization
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-2, frametitle={Student\_Consulting\_Organization}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: student consulting organization
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-2, frametitle={Umbrella\_Organization}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: umbrella organization
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-2, frametitle={University}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: university
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-1, frametitle={Person}]
 	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: person
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-2, frametitle={Member}]
 	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: member
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-3, frametitle={Trainee}]
 	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: trainee
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-3, frametitle={Junior\_Consultant}]
 	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: junior consultant
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-3, frametitle={Consultant}]
 	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: consultant
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-3, frametitle={Senior\_Consultant}]
 	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: senior consultant
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\subsection{Document}
+\begin{mdframed}[style=onto, frametitle={Document}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: document
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:examples}: Calendar, Gantt Diagram, Invoice, Presentation, Project Plan, Report, Work Document
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-1, frametitle={Contract}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: contract
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}: 
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Project\_Contract}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project contract
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
@@ -1013,145 +1136,265 @@ This section describes all classes and relations as well as their properties. We
 
 \begin{mdframed}[style=onto, frametitle={Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-1, frametitle={Project\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-2, frametitle={Project\_Sales\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project sales process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-2, frametitle={Project\_Initiation\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project initiation process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-3, frametitle={Project\_Goal\_Development\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project goal development process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-3, frametitle={Project\_Risk\_Assessment\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project risk assessment process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-3, frametitle={Project\_Team\_Making\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project team making process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-4, frametitle={Project\_Team\_Application\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project team application process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-4, frametitle={Project\_Team\_Selection\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project team selection process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-2, frametitle={Project\_Execution\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project execution process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-2, frametitle={Project\_Finalization\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project finalization process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-3, frametitle={Project\_Documentation\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project documentation process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-3, frametitle={Project\_Invoicing\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project invoicing process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-3, frametitle={Project\_Evaluation\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project evaluation process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-3, frametitle={Project\_Taxation\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project taxation process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-1, frametitle={Human\_Ressource\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: human resource process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-2, frametitle={Recruiting\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: recruiting process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-3, frametitle={Advertising\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: advertising process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-2, frametitle={Onboarding\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: onboarding process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-2, frametitle={Career\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: career process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-3, frametitle={Education\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: education process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-4, frametitle={Internal\_Education\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: internal education process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-4, frametitle={External\_Education\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: external education process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto-2, frametitle={Offboarding\_Process}]
 	{% Begin box content
-		
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: offboarding process
+			\item \textbf{rdfs:comment}:
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
@@ -1160,7 +1403,222 @@ This section describes all classes and relations as well as their properties. We
 
 % TODO: Verify ($\diamond$ means the relation is implemented in the ontology)
 
-\section{Relations}
+\subsection{Project}
+\begin{mdframed}[style=onto, frametitle={Project}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-1, frametitle={External\_Project}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: external project
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-1, frametitle={Internal\_Project}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: internal project
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\subsection{Role}
+
+\begin{mdframed}[style=onto, frametitle={Role}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: role
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-1, frametitle={Organizational\_Role}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: organizational role
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Advisor}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: advisor
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Aluma}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: alumna
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Corporate\_Officer}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: corporate officer
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Chief\_Executive\_Officer}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: chief executive officer
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Chief\_Financial\_Officer}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: chief financial officer
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Chief\_Legal\_Officer}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: chief legal officer
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Patron}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: patron
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Financial\_Patron}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: financial patron
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Ideological\_Patron}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: ideological patron
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Project\_Role}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project role
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Customer}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: customer
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Project\_Controlling}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project controlling
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Project\_Team\_Leader}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project team leader
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Project\_Team\_Member}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}: project team member
+			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+
+
+
+\section{Relations \progressbar[filledcolor=red]{0}}
 
 \textbf{Agent}
 \begin{compactitem}
@@ -1189,15 +1647,17 @@ before/after:
 \end{compactitem}
 
 
-\chapter{Conclusion and Further Research}
+\chapter{Conclusion and Further Research \progressbar[filledcolor=red]{0}}
+
+Responsibility as part of the ontology?
 
 \appendix
 \chapter{Appendix}
-\section{Term Enumeration}
+\section{Term Enumeration \progressbar[filledcolor=red]{0}}
 \label{word-cloud}
 
 \newpage
-\section{Diagrams}
+\section{Diagrams \progressbar[filledcolor=yellow]{0.5}}
 \subsection{General Diagrams}
 % TODO: Add correct relation
 
@@ -1236,7 +1696,7 @@ before/after:
 
 \newpage
 
-\section{Dictionary Definitions}
+\section{Dictionary Definitions \progressbar[filledcolor=green]{1}}
 \label{dictionary}
 % \textcolor{gray}{\textit{\enquote{}}}
 
@@ -1300,7 +1760,7 @@ before/after:
 \end{mdframed}
 
 \newpage
-\section{Ontology Import Links}
+\section{Ontology Import Links \progressbar[filledcolor=yellow]{0.7}}
 This work lists different ontologies in the related work section. To import them into the Protégé editor, the following links can be used:
 
 \begin{asparadesc}
