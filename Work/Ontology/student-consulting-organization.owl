@@ -126,7 +126,10 @@
 
     <!-- https://www.felixfoertsch.de/ontologies/student-consulting-group#has_customer -->
 
-    <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#has_customer"/>
+    <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#has_customer">
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
+        <rdfs:label xml:lang="en">has customer</rdfs:label>
+    </owl:ObjectProperty>
     
 
 
@@ -136,10 +139,7 @@
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#is_member_of"/>
         <rdfs:comment xml:lang="en">Comment</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"/>
         <rdfs:label xml:lang="en">has member</rdfs:label>
-        <skos:definition>relates something, typically a group or organization, to some discrete thing identified as a part (member) of it</skos:definition>
-        <AnnotationVocabulary:explanatoryNote>This property should be read as being the property of a logical union of group and organization (not shown).</AnnotationVocabulary:explanatoryNote>
     </owl:ObjectProperty>
     
 
@@ -149,9 +149,9 @@
     <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#is_member_of">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:comment xml:lang="en">Comment</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"/>
+        <rdfs:comment xml:lang="en">belonging, either individually or collectively, to a group</rdfs:comment>
         <rdfs:label xml:lang="en">is member of</rdfs:label>
-        <skos:definition>belonging, either individually or collectively, to a group</skos:definition>
+        <rdfs:seeAlso>fibo</rdfs:seeAlso>
     </owl:ObjectProperty>
     
 
@@ -161,10 +161,9 @@
     <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#is_played_by">
         <owl:inverseOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#plays_role"/>
         <rdfs:comment xml:lang="en">Comment</rdfs:comment>
-        <rdfs:comment>QName: fibo-fnd-pty-rl:isPlayedBy</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/"/>
+        <rdfs:comment xml:lang="en">Indicates the independent thing, typically a person or organization filling a role.</rdfs:comment>
         <rdfs:label xml:lang="en">is played by</rdfs:label>
-        <skos:definition>indicates the independent thing, typically a person or organization filling a role</skos:definition>
+        <rdfs:seeAlso>https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/</rdfs:seeAlso>
         <skos:example>a party, counterparty, or third party to a contract is played by an organization or person; an issuer of a financial instrument is typically played by an organization.</skos:example>
     </owl:ObjectProperty>
     
@@ -248,6 +247,8 @@
     <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-organization#has_process_part">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
+        <rdfs:label xml:lang="en">has process part</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -256,13 +257,18 @@
 
     <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
+        <rdfs:label xml:lang="en">is process part of</rdfs:label>
     </owl:ObjectProperty>
     
 
 
     <!-- https://www.felixfoertsch.de/ontologies/student-consulting-organization#participates_in -->
 
-    <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-organization#participates_in"/>
+    <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-organization#participates_in">
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
+        <rdfs:label xml:lang="en">participates in</rdfs:label>
+    </owl:ObjectProperty>
     
 
 
@@ -270,6 +276,8 @@
 
     <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-organization#signs_contract">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
+        <rdfs:label xml:lang="en">signs contract</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -323,7 +331,10 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Agent">
         <rdfs:comment xml:lang="en">Agents are the actors of the ontology.</rdfs:comment>
+        <rdfs:label xml:lang="de">Agent</rdfs:label>
         <rdfs:label xml:lang="en">agent</rdfs:label>
+        <rdfs:seeAlso>foaf:Agent, dcterms:Agent, fibo:AutonomousAgent</rdfs:seeAlso>
+        <skos:example xml:lang="en">A person, an organization</skos:example>
     </owl:Class>
     
 
@@ -555,11 +566,23 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#has_member"/>
-                <owl:allValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Member"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Member"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#plays_role"/>
+                                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Corporate_Officer"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
+        <rdfs:comment xml:lang="en">The leadership of an organization. Consists of people that play an organizational role of type Corporate Officer.</rdfs:comment>
         <rdfs:label xml:lang="de">Vorstand</rdfs:label>
+        <rdfs:label xml:lang="en">executive board</rdfs:label>
+        <skos:example xml:lang="en">The leadership of a student consulting organization.</skos:example>
     </owl:Class>
     
 
@@ -607,9 +630,10 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Group">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Agent"/>
-        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
+        <rdfs:comment xml:lang="en">A collection of agents that is itself an agent.</rdfs:comment>
         <rdfs:label xml:lang="de">Gruppe</rdfs:label>
         <rdfs:label xml:lang="en">group</rdfs:label>
+        <rdfs:seeAlso>foaf:Group</rdfs:seeAlso>
     </owl:Class>
     
 
@@ -704,6 +728,7 @@
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">Comment</rdfs:comment>
         <rdfs:label xml:lang="de">Mitglied</rdfs:label>
+        <rdfs:label xml:lang="en">member</rdfs:label>
     </owl:Class>
     
 
@@ -715,11 +740,22 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#has_member"/>
-                <owl:allValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Member"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Member"/>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Trainee"/>
+                            </owl:Class>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
+        <rdfs:comment xml:lang="en">A collection of members of an organization that has authoritative power. In Germany it is the highest committee of an registered association.</rdfs:comment>
         <rdfs:label xml:lang="de">Mitgliederversammlung</rdfs:label>
+        <rdfs:label xml:lang="en">member assembly</rdfs:label>
+        <skos:example xml:lang="en">The collection of members of a student consulting organization that together have the authoritative power over the organization.</skos:example>
     </owl:Class>
     
 
@@ -773,18 +809,21 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#plays_role"/>
-                <owl:allValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Customer"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Customer"/>
+                            <rdf:Description rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Patron"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Person"/>
-        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
-        <rdfs:comment>QName: fibo-fnd-org-org:Organization</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/Organizations/"/>
+        <rdfs:comment xml:lang="en">An organization.</rdfs:comment>
         <rdfs:label xml:lang="de">Organisation</rdfs:label>
         <rdfs:label xml:lang="en">organization</rdfs:label>
-        <skos:definition>a unique framework of authority within which a person or persons act, or are designated to act, towards some purpose, such as to meet a need or pursue collective goals on a continuing basis</skos:definition>
-        <skos:example>This may be a business entity or a government, international or not-for-profit, or other unincorporated social organization.</skos:example>
-        <AnnotationVocabulary:adaptedFrom>https://www.iso.org/obp/ui/#iso:std:iso-iec:6523:-1:ed-1:v1:en</AnnotationVocabulary:adaptedFrom>
+        <rdfs:seeAlso>fibo:Organization, foaf:Organization, gist:Organization, schema:Organization</rdfs:seeAlso>
     </owl:Class>
     
 
@@ -826,13 +865,10 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Person">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Agent"/>
-        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
-        <rdfs:comment>QName: fibo-fnd-aap-ppl:Person</rdfs:comment>
-        <rdfs:isDefinedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/"/>
+        <rdfs:comment xml:lang="en">A person. A human being/homo sapiens.</rdfs:comment>
         <rdfs:label xml:lang="de">Person</rdfs:label>
         <rdfs:label xml:lang="en">person</rdfs:label>
-        <skos:definition>a person; any member of the species homo sapiens</skos:definition>
-        <AnnotationVocabulary:synonym>natural person</AnnotationVocabulary:synonym>
+        <rdfs:seeAlso>fibo:Person, foaf:Person, gist:Person, schema:Person</rdfs:seeAlso>
     </owl:Class>
     
 
@@ -1182,7 +1218,7 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
+        <rdfs:comment xml:lang="en">A group of people that form a project team.</rdfs:comment>
         <rdfs:label xml:lang="de">Projektteam</rdfs:label>
         <rdfs:label xml:lang="en">project team</rdfs:label>
     </owl:Class>
@@ -1359,9 +1395,16 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Student_Consulting_Organization">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Organization"/>
-        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#has_member"/>
+                <owl:allValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Member"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A student consulting organization.</rdfs:comment>
         <rdfs:label xml:lang="de">Studentische Unternehmensberatung</rdfs:label>
         <rdfs:label xml:lang="en">student consulting organization</rdfs:label>
+        <skos:example>Campus Inform, Hanseatic Consulting</skos:example>
     </owl:Class>
     
 
@@ -1394,9 +1437,16 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Umbrella_Organization">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Organization"/>
-        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#has_member"/>
+                <owl:allValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Student_Consulting_Organization"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">An umbrella organization for student consulting organizations.</rdfs:comment>
         <rdfs:label xml:lang="de">Dachverband</rdfs:label>
         <rdfs:label xml:lang="en">umbrella organization</rdfs:label>
+        <skos:example>Bundesverband Deutscher Studentischer Unternehmenberatungen, JCNetwork</skos:example>
     </owl:Class>
     
 
@@ -1405,9 +1455,10 @@
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#University">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Organization"/>
-        <rdfs:comment xml:lang="en">Comment</rdfs:comment>
+        <rdfs:comment xml:lang="en">A university.</rdfs:comment>
         <rdfs:label xml:lang="de">Universität</rdfs:label>
         <rdfs:label xml:lang="en">university</rdfs:label>
+        <skos:example>University Leipzig</skos:example>
     </owl:Class>
     
 
