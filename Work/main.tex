@@ -443,10 +443,10 @@ We use annotation properties to add additional information to entities in our do
 
 Each class of our domain has two guaranteed annotation properties:
 \begin{inparaenum}
-\item A \prop{rdfs:label} to define its name in both English and German and
-\item a \prop{rdfs:comment} in English, to describe the class more closely.
+	\item A \prop{rdfs:label} to define its name in both English and German and
+	\item a \prop{rdfs:comment} in English, to describe the class more closely.
 \end{inparaenum}
-Furthermore we provide one or more \prop{skos:example} where examples help describing the class more clearly.
+Furthermore we provide one or more \prop{skos:example} where examples help describing the class more clearly and we use \prop{rdfs:seeAlso} for soft links (see \autoref{avoid-complexity}).
 
 \section{Related Work \progressbar[filledcolor=green]{0.9}}
 \label{related-work}
@@ -492,7 +492,7 @@ This poses the challenge to make good design decisions and select adequate abstr
 
 Our primary principle is simplicity. This manifests in various ways during the design process. It is our goal to make this ontology as accessible and as easy to understand as possible, because its potential users are not necessarily experts. Since it is more a \textit{design philosophy}, we will not document every single occurrence. We will, however, describe our reasoning in a few important instances:
 
-\paragraph{First: Avoid complexity by allowing inference of details} High information-density can be useful, if the goal is a highly detailed model. However, a smaller and more concise ontology is easier to grasp and process. Since we strive for simplicity, we reduce the size and complexity of our ontology by omitting information (\eg certain relations or attributes) that can be inferred from linked ontologies when required.
+\paragraph{First: Avoid complexity by allowing inference of details} \label{avoid-complexity} High information-density can be useful, if the goal is a highly detailed model. However, a smaller and more concise ontology is easier to grasp and process. Since we strive for simplicity, we reduce the size and complexity of our ontology by omitting information (\eg certain relations or attributes) that can be inferred from linked ontologies when required.
 
 For example: Both \gls{fibo} and \gls{gist} offer attributes for a \class{Person}; \eg in \gls{fibo} a \class{Person} \relation{hasDateOfBirth exactly 1} \class{Date}, in \gls{gist} a \class{Person} is \relation{offspringOf} another \class{Person} and need to have a \relation{name} \class{xsd:string}. Instead of copying these attributes to our ontology, we use this the relation \relation{rdfs:seeAlso} \cite[https://www.w3.org/TR/rdf-schema/\#ch\_seealso]{brickley2014rdf} as a soft reference for attributes that can be extracted on demand.
 
@@ -593,10 +593,10 @@ Starting with the general model of human beings, \gls{foaf} is a very common cho
 	\foottt{foaf:Group rdfs:comment: \enquote{A class of agents.}},
 %
 \class{foaf:Organization}%
-	\foottt{foaof:Organization rdfs:comment: \enquote{An organization.}},
+	\foottt{foaf:Organization rdfs:comment: \enquote{An organization.}},
 %
 \class{foaf:Person}%
-	\foottt{foaof:Person rdfs:comment: \enquote{A person.}},
+	\foottt{foaf:Person rdfs:comment: \enquote{A person.}},
 %
 \class{Person}%
 	\footnote{\label{footn:no-desc}Note: The ontology doesn't offer any description.}, and
@@ -938,8 +938,8 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: agent
 			\item \textbf{rdfs:comment}: Agents are the actors of the ontology.
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:seeAlso}: foaf:Agent, dcterms:Agent, fibo:AutonomousAgent
+			\item \textbf{skos:example}: A person, an organization
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -948,9 +948,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: group
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A collection class for agents.
+			\item \textbf{rdfs:seeAlso}: foaf:Group
+			%\item \textbf{skos:example}:
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -959,9 +959,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: executive board
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: The leadership of an organization. Consists of people that play an organizational role of type Corporate Officer.
+			%\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}: The leadership of a student consulting organization
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -970,9 +970,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: member assembly
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A collection of members of an organization that has authoritative power. In Germany it is the highest committee of an registered association.
+			%\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}: The collection of members of a student consulting organization that together have the authoritative power over the organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -981,9 +981,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project team
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: The group of people that form a project team.
+			%\item \textbf{rdfs:seeAlso}:
+			%\item \textbf{skos:example}:
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -992,9 +992,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: organization
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: An organization.
+			\item \textbf{rdfs:seeAlso}: fibo:Organization, foaf:Organization, gist:Organization, \\ schema:Organization
+			%\item \textbf{skos:example}:
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1003,9 +1003,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: student consulting organization
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A student consulting organization.
+			%\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}: Campus Inform, Hanseatic Consulting
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1014,9 +1014,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: umbrella organization
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: An umbrella organization for student consulting organizations.
+			%\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}: Bundesverband Deutscher Studentischer Unternehmenberatungen, JCNetwork
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1025,9 +1025,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: university
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A university.
+			%\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}: University Leipzig
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1036,9 +1036,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: person
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A person. A human being.
+			\item \textbf{rdfs:seeAlso}: fibo:Person, foaf:Person, gist:Person, schema:Person
+			%\item \textbf{skos:example}:
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1047,9 +1047,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: member
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A member of a student consulting organization.
+			%\item \textbf{rdfs:seeAlso}:
+			%\item \textbf{skos:example}:
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1058,9 +1058,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: trainee
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A rank within the career process of a student consulting organization.
+			%\item \textbf{rdfs:seeAlso}:
+			%\item \textbf{skos:example}:
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1069,9 +1069,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: junior consultant
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A rank within the career process of a student consulting organization.
+			%\item \textbf{rdfs:seeAlso}:
+			%\item \textbf{skos:example}:
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1080,9 +1080,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: consultant
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A rank within the career process of a student consulting organization.
+			%\item \textbf{rdfs:seeAlso}:
+			%\item \textbf{skos:example}:
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1091,9 +1091,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: senior consultant
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A rank within the career process of a student consulting organization.
+			%\item \textbf{rdfs:seeAlso}:
+			%\item \textbf{skos:example}:
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1103,8 +1103,8 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: document
-			\item \textbf{rdfs:comment}: 
-			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{rdfs:comment}: A document. Complex class. Conflates both, the physical object as well as the abstract information.
+			\item \textbf{rdfs:seeAlso}: foaf:Document
 			\item \textbf{skos:examples}: Calendar, Gantt Diagram, Invoice, Presentation, Project Plan, Report, Work Document
 		\end{compactitem}
 	} % End box content
@@ -1114,9 +1114,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: contract
-			\item \textbf{rdfs:comment}: 
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}: 
+			\item \textbf{rdfs:comment}: A general contract. Binding obligation between multiple parties.
+			%\item \textbf{rdfs:seeAlso}:
+			%\item \textbf{skos:example}: 
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1125,9 +1125,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project contract
-			\item \textbf{rdfs:comment}: 
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: Specialized contract that is the cornerstone of every project.
+			%\item \textbf{rdfs:seeAlso}:
+			%\item \textbf{skos:example}:
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1138,9 +1138,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A construct that describes procedures on an abstract level. A processes can have sub-processes that are themselves processes.
+			\item \textbf{rdfs:seeAlso}: bfo:Process, gfo:Processual\_Structure, gist:Event, 
+			%\item \textbf{skos:example}:
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1149,9 +1149,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A project process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1160,9 +1158,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project sales process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A project sales process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1171,9 +1167,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project initiation process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A project initiation process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1182,9 +1176,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project goal development process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A project goal development process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1193,9 +1185,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project risk assessment process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A project risk assessment process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1204,9 +1194,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project team making process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A project team making process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1215,9 +1203,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project team application process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A project team application process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1226,9 +1212,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project team selection process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A project team selection process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1237,9 +1221,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project execution process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A project execution process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1248,9 +1230,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project finalization process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A project finalization process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1259,9 +1239,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project documentation process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A project documentation process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1270,9 +1248,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project invoicing process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A project invoicing process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1281,9 +1257,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project evaluation process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A project risk evaluation process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1292,9 +1266,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project taxation process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A project taxation process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1303,9 +1275,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: human resource process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A human resource process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1314,9 +1284,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: recruiting process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A recruiting process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1325,9 +1293,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: advertising process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: An advertising process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1336,9 +1302,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: onboarding process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: An onboarding process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1347,9 +1311,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: career process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A career process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1358,9 +1320,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: education process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: An education process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1369,9 +1329,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: internal education process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: An internal education process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1380,9 +1338,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: external education process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: An external education process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1391,26 +1347,19 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: offboarding process
-			\item \textbf{rdfs:comment}:
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: An offboarding process of a student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
-
-
-% TODO: Syntactic decision: is/has relations
-
-% TODO: Verify ($\diamond$ means the relation is implemented in the ontology)
 
 \subsection{Project}
 \begin{mdframed}[style=onto, frametitle={Project}]
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project
-			\item \textbf{rdfs:comment}: 
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A project is unique process, consisting of a set of coordinated and controlled ac- tivities with start and finish dates, undertaken to achieve an objective conforming to specific requirements, including the constraints of time, cost and resources. \cite{iso-9000-2015}
+			\item \textbf{rdfs:seeAlso}: foaf:Project, gist:Project, gist:Task
+			%\item \textbf{skos:example}:
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1419,9 +1368,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: external project
-			\item \textbf{rdfs:comment}: 
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A project that is external to the student consulting organization.
+			%\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}: A project that has a paying customer outside of the organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1430,9 +1379,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: internal project
-			\item \textbf{rdfs:comment}: 
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A project that is internal to the student consulting organization.
+			%\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}: A project to optimize internal workflows.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1443,9 +1392,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: role
-			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:comment}: A role played by an Agent in a specific context.
 			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			%\item \textbf{skos:example}:
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1454,7 +1403,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: organizational role
-			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:comment}: An role that is connected to the organizational context of the student consulting organization.
 			\item \textbf{rdfs:seeAlso}:
 			\item \textbf{skos:example}:
 		\end{compactitem}
@@ -1465,9 +1414,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: advisor
-			\item \textbf{rdfs:comment}: 
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: An advisor within the student consulting organization.
+			%\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}: Advisor to the Chief Executive Officer.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1476,9 +1425,9 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: alumna
-			\item \textbf{rdfs:comment}: 
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A former member of the student consulting organization that is still in contact with the organization and participates in some form.
+			%\item \textbf{rdfs:seeAlso}:
+			%\item \textbf{skos:example}:
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1487,9 +1436,8 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: corporate officer
-			\item \textbf{rdfs:comment}: 
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A member of the student consulting organization that is in a leadership/executive position.
+			\item \textbf{rdfs:seeAlso}: fibo:CorporateOfficer
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1498,9 +1446,8 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: chief executive officer
-			\item \textbf{rdfs:comment}: 
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: The highest ranking corporate officer, responsible for leading the leadership team.
+			\item \textbf{rdfs:seeAlso}: fibo:ChiefExecutiveOfficer
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1509,9 +1456,8 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: chief financial officer
-			\item \textbf{rdfs:comment}: 
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: The corporate officer responsible for the finances of the student consulting organization.
+			\item \textbf{rdfs:seeAlso}: fibo:ChiefFinancialOfficer
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1520,9 +1466,8 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: chief legal officer
-			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:comment}: The corporate officer responsible for the legal aspects of the student consulting organization.
 			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1531,7 +1476,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: patron
-			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:comment}: A benefactor of the student consulting organization that helps the organization reach its goals.
 			\item \textbf{rdfs:seeAlso}:
 			\item \textbf{skos:example}:
 		\end{compactitem}
@@ -1542,9 +1487,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: financial patron
-			\item \textbf{rdfs:comment}: 
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A patron that contributes financially.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1553,9 +1496,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: ideological patron
-			\item \textbf{rdfs:comment}: 
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A patron that contributes ideologically.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1564,9 +1505,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project role
-			\item \textbf{rdfs:comment}: 
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: An role that is connected to the project context of the student consulting organization.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1575,7 +1514,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: customer
-			\item \textbf{rdfs:comment}: 
+			\item \textbf{rdfs:comment}: The (paying) customer of a project.
 			\item \textbf{rdfs:seeAlso}:
 			\item \textbf{skos:example}:
 		\end{compactitem}
@@ -1597,9 +1536,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project team leader
-			\item \textbf{rdfs:comment}: 
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A leader of a student consulting organization project.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1608,9 +1545,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}: project team member
-			\item \textbf{rdfs:comment}: 
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}:
+			\item \textbf{rdfs:comment}: A team member of a student consulting organization project.
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1655,74 +1590,17 @@ Responsibility as part of the ontology?
 \chapter{Appendix}
 \section{Word Cloud \progressbar[filledcolor=red]{0}}
 \label{word-cloud}
-Ausbildung
-Beratungsfelder
-Digitalisierung
-Gründung
-Marketing
-Marktanalyse
-Personal
-Prozesse
-Strategie
-Dachverband
-Event
-Begrüßungsabend
-Vorlesungspräsentation
-GANTT
-Gruppe
-Projektteam
-Ressort/Arbeitsgruppe
-Finanzen
-IT
-Datei-Management
-Email
-Signatur
-IT-Admin
-IT-Support
-PM-Software
-Website
-Marketing
-Personal
-Projekte
-Recht
-Kalender
-Karrierestufen
-Junior_Consultant
-Projektcontroller
-Senior_Consultant
-Trainee
-Person
-Beirat
-Kunde
-Kurator
-Partner
-Schatzmeister
-Trainee
-Berater/Consultant
-Vorstand/CEO
-Pitch
-Projekt
-Akquise
-Kunde
-Phasen
-Projektverständnis
-Rechnung
-Report
-Zeitmessung
-Aufgabe/Task
-Präsentation
-Studentschische_Beratung
-Tätigkeit
-Accountmanagement
-CRM
-Projektleitung
-Projektmanagement
-Projektorganisation
-Sales
-Unternehmensberatung
-Verein
-Marketing/Werbung
+\begin{figure}[h]
+	\caption{Word Cloud}
+	\centering
+	\includegraphics[width=1\textwidth]{Images/word-cloud.png}
+\end{figure}
+\newpage
+
 \section{Word Graph \progressbar[filledcolor=red]{0}}
+
+
+
 \newpage
 \section{Diagrams \progressbar[filledcolor=yellow]{0.5}}
 \subsection{General Diagrams}
