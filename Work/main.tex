@@ -80,7 +80,7 @@
 \global\mdfdefinestyle{onto}{%
 	linewidth=1pt,%
 	frametitlerule=true,%
-	frametitlerulecolor=red,%
+	frametitlerulecolor=black,%
 	frametitlerulewidth=2pt,%
 	frametitlebackgroundcolor=gray!20,%
 	frametitlefont=\textbf%
@@ -120,7 +120,7 @@
 	leftmargin=80pt,
 	linewidth=1pt,%
 	frametitlerule=true,%
-	frametitlerulecolor=yellow,%
+	frametitlerulecolor=red,%
 	frametitlerulewidth=2pt,%
 	frametitlebackgroundcolor=gray!20,%
 	frametitlefont=\textbf%
@@ -895,9 +895,9 @@ Both perspectives are relevant to the reality of an \gls{sco}. However, as discu
 
 The detailed descriptions of the rest of the modeled processes can be found in the ontology (see \autoref{the-ontology}) and the \gls{owl} file.
 
-\chapter{Student Consulting Organizations: The Ontology \progressbar[filledcolor=red]{0.2}}
+\chapter{Student Consulting Organizations: The Ontology \progressbar[filledcolor=green]{0.9}}
 \label{the-ontology}
-\section{Scope of the Domain \progressbar[filledcolor=yellow]{0.5}}
+\section{Scope of the Domain \progressbar[filledcolor=yellow]{0.9}}
 \label{competency-questions}
 We define the scope of the domain according to our ontology development methodology described in \autoref{methodology} using \textit{Competency Questions}:
 
@@ -919,7 +919,7 @@ The ontology serves as an abstract description of the \gls{sco} domain. It defin
 \paragraph{Who will use and maintain the ontology?}
 The users of this ontology are the leadership of \glspl{sco} in Germany as well as the leadership of the \gls{sco} umbrella organizations. The release version coincides with the finalization and grading of this work. If the ontology sees use by the target group, it will be maintained by the authors. Access will be publicly provided on a GitHub repository. It is considered a living document, hence not necessarily complete until otherwise stated. Contributions and forks will be possible via the GitHub interface.
 
-\section{Classes \progressbar[filledcolor=yellow]{0.5}}
+\section{Classes \progressbar[filledcolor=green]{0.9}}
 This section describes all classes and relations as well as their properties. We use color coding and indentation to give this section some structure. Both are only helpers and have no explicit other meaning. They are, however, inspired by the defining relations of their corresponding class (\eg )
 
 The box header contains the classes \gls{iri}. If a class has multiple \relation{skos:example}, we condense them into a list and label it \relation{skos:examples}.
@@ -1130,15 +1130,13 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 \end{mdframed}
 
 \subsection{Process}
-
 \begin{mdframed}[style=onto, frametitle={Process}]
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:label}@en: process
 			\item \textbf{rdfs:label}@de: Prozess
 			\item \textbf{rdfs:comment}@en: A construct that describes procedures on an abstract level. A processes can have sub-processes that are themselves processes.
-			\item \textbf{rdfs:seeAlso}: bfo:Process, gfo:Processual\_Structure, gist:Event, 
-			%\item \textbf{skos:example}@en:
+			\item \textbf{rdfs:seeAlso}: bfo:Process, gfo:Processual\_Structure, gist:Event
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1408,7 +1406,6 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 \end{mdframed}
 
 \subsection{Role}
-
 \begin{mdframed}[style=onto, frametitle={Role}]
 	{% Begin box content
 		\begin{compactitem}
@@ -1535,11 +1532,11 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 	} % End box content
 \end{mdframed}
 
-\begin{mdframed}[style=onto-3, frametitle={Customer}]
+\begin{mdframed}[style=onto-3, frametitle={Project\_Customer}]
 	{% Begin box content
 		\begin{compactitem}
-			\item \textbf{rdfs:label}@en: customer
-			\item \textbf{rdfs:label}@de: Kunde
+			\item \textbf{rdfs:label}@en: project customer
+			\item \textbf{rdfs:label}@de: Projektkunde
 			\item \textbf{rdfs:comment}@en: The (paying) customer of a project that receives the project's services.
 			\item \textbf{rdfs:seeAlso}: fibo:Customer
 		\end{compactitem}
@@ -1580,48 +1577,273 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 
 
 
-\section{Relations \progressbar[filledcolor=red]{0}}
-
-\begin{mdframed}[style=onto, frametitle={TEMPLATE}]
+\section{Relations \progressbar[filledcolor=green]{0.9}}
+\begin{mdframed}[style=onto, frametitle={has\_customer}]
 	{% Begin box content
 		\begin{compactitem}
-			\item \textbf{rdfs:label}@en: 
-			\item \textbf{rdfs:comment}@en: 
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}@en:
+			\item \textbf{rdfs:label}@en: has customer
+			%\item \textbf{inverseOf}:
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item project SubClassOf 'has customer' min 1 'project customer'
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
-\textbf{Agent}
-\begin{compactitem}
-	\item All members except trainees and almunus can be corporate officers $\diamond$
-	\item Non-members can not become corporate officers $\diamond$
-	\item Members can play project team roles $\diamond$
-	\item Every agent can play the customer role in a project $\diamond$
-	\item Every member goes through his individual HRP
-	\item An organizational rank has tbd requirements
-	\item Customer, Team, Contract, etc are \textbf{part of} a project
-	\item Organizations can only \textbf{play} the customer \textbf{role} in a project $\diamond$
-	\item Organization can only play external roles $\diamond$
-\end{compactitem}
+\begin{mdframed}[style=onto, frametitle={has\_member}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: has member
+			\item \textbf{inverseOf}: is\_member\_of
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item 'executive board' SubClassOf 'has member' min 1 (member and ('plays role' some 'corporate officer'))
+			\item 'member assembly' SubClassOf 'has member' min 1 (member and (not (trainee)))
+			\item 'project team' SubClassOf 'has member' only 
+			(member and ('plays role' some 
+			('project team leader' or 'project team member')))
+			\item 'student consulting organization' SubClassOf 'has member' min 1 member
+			\item 'umbrella organization' SubClassOf 'has member' min 1 'student consulting organization'
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
 
-\textbf{Processes}
-\begin{compactitem}
-	\item All processes have a \textbf{next\_process} $\diamond$
-	\item \textbf{previous\_process} should be inferred?!
-	\item
-\end{compactitem}
+\begin{mdframed}[style=onto, frametitle={is\_defined\_by}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: is defined by
+			%\item \textbf{inverseOf}:
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item project SubClassOf 'is defined by' min 1 'project contract'
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
 
-before/after:
-\begin{compactitem}
-	\item FIBO: relates to -> precedes/succeeds?
-	\item plays role
-\end{compactitem}
+\begin{mdframed}[style=onto, frametitle={is\_member\_of}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: is member of
+			\item \textbf{inverseOf}: has\_member
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item member SubClassOf 'is member of' some 'student consulting organization'
+			\item trainee SubClassOf 'is member of' some 'student consulting organization'
+			\item 'junior consultant' SubClassOf 'is member of' some 'student consulting organization'
+			\item consultant SubClassOf 'is member of' some 'student consulting organization'
+			\item 'senior consultant' SubClassOf 'is member of' some 'student consulting organization'
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
 
+\begin{mdframed}[style=onto, frametitle={is\_part\_of}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: is part of
+			%\item \textbf{inverseOf}:
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item document SubClassOf 'is part of' some 
+			(process or project)
+			\item 'project team' SubClassOf 'is part of' some project
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={is\_played\_by}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: is played by
+			\item \textbf{inverseOf}: plays\_role
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item advisor SubClassOf 'is played by' some person
+			\item alumna SubClassOf 'is played by' some person
+			\item 'corporate officer' SubClassOf 'is played by' only 
+			(consultant or 'junior consultant' or 'senior consultant')
+			\item patron SubClassOf 'is played by' some 
+			(organization or person)
+			\item 'project controlling' SubClassOf 'is played by' some agent
+			\item 'project customer' SubClassOf 'is played by' some agent
+			\item 'project team leader' SubClassOf 'is played by' only 
+			(alumna or consultant or 'junior consultant' or 'senior consultant')
+			\item 'project team member' SubClassOf 'is played by' only 
+			(alumna or consultant or 'junior consultant' or 'senior consultant' or trainee)
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={is\_process\_part\_of}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: is process part of
+			\item \textbf{inverseOf}: has\_process\_part
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item 'advertising process' SubClassOf 'is process part of' some 'recruiting process'
+			\item 'career process' SubClassOf 'is process part of' some 'human resource process'
+			\item 'education process' SubClassOf 'is process part of' some 'career process'
+			\item 'external education process' SubClassOf 'is process part of' some 'education process'
+			\item 'internal education process' SubClassOf 'is process part of' some 'education process'
+			\item 'offboarding process' SubClassOf 'is process part of' some 'human resource process'
+			\item 'onboarding process' SubClassOf 'is process part of' some 'human resource process'
+			\item 'project documentation process' SubClassOf 'is process part of' some 'project finalization process'
+			\item 'project evaluation process' SubClassOf 'is process part of' some 'project finalization process'
+			\item 'project execution process' SubClassOf 'is process part of' some 'project process'
+			\item 'project finalization process' SubClassOf 'is process part of' some 'project process'
+			\item 'project goal development process' SubClassOf 'is process part of' some 'project initiation process'
+			\item 'project initiation process' SubClassOf 'is process part of' some 'project process'
+			\item 'project invoicing process' SubClassOf 'is process part of' some 'project finalization process'
+			\item 'project planning process' SubClassOf 'is process part of' some 'project initiation process'
+			\item 'project risk assessment process' SubClassOf 'is process part of' some 'project initiation process'
+			\item 'project sales process' SubClassOf 'is process part of' some 'project process'
+			\item 'project taxation process' SubClassOf 'is process part of' some 'project finalization process'
+			\item 'project team application process' SubClassOf 'is process part of' some 'project team making process'
+			\item 'project team making process' SubClassOf 'is process part of' some 'project initiation process'
+			\item 'project team selection process' SubClassOf 'is process part of' some 'project team making process'
+			\item 'recruiting process' SubClassOf 'is process part of' some 'human resource process'
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={is\_signed\_by}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: is signed by
+			\item \textbf{inverseOf}: signs\_contract
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item 'project contract' SubClassOf 'is signed by' some 
+			('project customer' and 'project team')
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={next\_process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: next process
+			\item \textbf{inverseOf}: previous\_process
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item 'career process' SubClassOf 'next process' some 'offboarding process'
+			\item 'onboarding process' SubClassOf 'next process' some 'career process'
+			\item 'project execution process' SubClassOf 'next process' some 'project finalization process'
+			\item 'project initiation process' SubClassOf 'next process' some 'project execution process'
+			\item 'project sales process' SubClassOf 'next process' some 'project initiation process'
+			\item 'recruiting process' SubClassOf 'next process' some 'onboarding process'
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={next\_rank}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: next rank
+			\item \textbf{inverseOf}: previous\_rank
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item 'junior consultant' SubClassOf 'next rank' only consultant
+			\item trainee SubClassOf 'next rank' only 'junior consultant'
+			\item consultant SubClassOf 'next rank' only 'senior consultant'
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={plays\_role}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: plays role
+			\item \textbf{inverseOf}: is\_played\_by
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item 'executive board' SubClassOf 'has member' min 1 (member and ('plays role' some 'corporate officer'))
+			\item organization SubClassOf 'plays role' only 
+			(patron or 'project customer')
+			\item 'project team' SubClassOf 'has member' only 
+			(member and ('plays role' some 
+			('project team leader' or 'project team member')))
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={previous\_process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: previous process
+			\item \textbf{inverseOf}: next\_process
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={previous\_rank}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: previous rank
+			\item \textbf{inverseOf}: next\_rank
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item 'junior consultant' SubClassOf 'previous rank' only trainee
+			\item consultant SubClassOf 'previous rank' only 'junior consultant'
+			\item 'senior consultant' SubClassOf 'previous rank' only consultant
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={signs\_contract}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: signs contract
+			\item \textbf{inverseOf}: is\_signed\_by
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item 'project customer' SubClassOf 'signs contract' some 'project contract'
+			\item 'project team' SubClassOf 'signs contract' some 'project contract'
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
 
 \chapter{Conclusion and Further Research \progressbar[filledcolor=red]{0}}
-
 Responsibility as part of the ontology?
 
 \appendix
