@@ -76,6 +76,64 @@
 %	BoldFont=*-Bold,
 %]{FiraCode}
 
+% mdframed Styles
+\global\mdfdefinestyle{onto}{%
+	linewidth=1pt,%
+	frametitlerule=true,%
+	frametitlerulecolor=black,%
+	frametitlerulewidth=2pt,%
+	frametitlebackgroundcolor=gray!20,%
+	frametitlefont=\textbf%
+}
+
+\global\mdfdefinestyle{onto-1}{%
+	leftmargin=20pt,
+	linewidth=1pt,%
+	frametitlerule=true,%
+	frametitlerulecolor=green,%
+	frametitlerulewidth=2pt,%
+	frametitlebackgroundcolor=gray!20,%
+	frametitlefont=\textbf%
+}
+
+\global\mdfdefinestyle{onto-2}{%
+	leftmargin=40pt,
+	linewidth=1pt,%
+	frametitlerule=true,%
+	frametitlerulecolor=blue,%
+	frametitlerulewidth=2pt,%
+	frametitlebackgroundcolor=gray!20,%
+	frametitlefont=\textbf%
+}
+
+\global\mdfdefinestyle{onto-3}{%
+	leftmargin=60pt,
+	linewidth=1pt,%
+	frametitlerule=true,%
+	frametitlerulecolor=orange,%
+	frametitlerulewidth=2pt,%
+	frametitlebackgroundcolor=gray!20,%
+	frametitlefont=\textbf%
+}
+
+\global\mdfdefinestyle{onto-4}{%
+	leftmargin=80pt,
+	linewidth=1pt,%
+	frametitlerule=true,%
+	frametitlerulecolor=red,%
+	frametitlerulewidth=2pt,%
+	frametitlebackgroundcolor=gray!20,%
+	frametitlefont=\textbf%
+}
+
+\global\mdfdefinestyle{dictionary}{%
+	linewidth=1pt,%
+	frametitlerule=true,%
+	frametitlebackgroundcolor=gray!20,%
+	innertopmargin=\topskip,%
+	frametitlefont=\textbf%
+}
+
 %*******************************************************************************
 %* Macros
 %*******************************************************************************
@@ -139,6 +197,7 @@
 \newacronym{rdfs}{RDFS}{Resource Description Framework Schema}
 \newacronym{skos}{SKOS}{Simple Knowledge Organization System}
 \newacronym{eo}{EO}{Enterprise Ontology}
+\newacronym{iri}{IRI}{Internationalized Resource Identifier}
 
 % Special Plurals
 \newglossaryentry{tlo}{name={TLO}, description={Top-Level Ontology}, descriptionplural={Top-Level Ontologies}, firstplural={\glsentrydescplural{tlo} (\glsentryplural{tlo}, also sometimes called \textit{Upper Ontologies})}}
@@ -152,8 +211,8 @@
 \begin{document}
 
 \titlehead{
-	Document Version: v16 \\
-	Overall Progress: \progressbar[filledcolor=green]{0.9}
+	Document Version: v17 \\
+	Overall Progress: \progressbar[filledcolor=green]{0.95}
 }
 \subject{Bachelor's Thesis}
 \title{Student Consulting Organizations}
@@ -384,10 +443,10 @@ We use annotation properties to add additional information to entities in our do
 
 Each class of our domain has two guaranteed annotation properties:
 \begin{inparaenum}
-\item A \prop{rdfs:label} to define its name in both English and German and
-\item a \prop{rdfs:comment} in English, to describe the class more closely.
+	\item A \prop{rdfs:label} to define its name in both English and German and
+	\item a \prop{rdfs:comment} in English, to describe the class more closely.
 \end{inparaenum}
-Furthermore we provide one or more \prop{skos:example} where examples help describing the class more clearly.
+Furthermore we provide one or more \prop{skos:example} where examples help describing the class more clearly and we use \prop{rdfs:seeAlso} for soft links (see \autoref{avoid-complexity}).
 
 \section{Related Work \progressbar[filledcolor=green]{0.9}}
 \label{related-work}
@@ -433,7 +492,7 @@ This poses the challenge to make good design decisions and select adequate abstr
 
 Our primary principle is simplicity. This manifests in various ways during the design process. It is our goal to make this ontology as accessible and as easy to understand as possible, because its potential users are not necessarily experts. Since it is more a \textit{design philosophy}, we will not document every single occurrence. We will, however, describe our reasoning in a few important instances:
 
-\paragraph{First: Avoid complexity by allowing inference of details} High information-density can be useful, if the goal is a highly detailed model. However, a smaller and more concise ontology is easier to grasp and process. Since we strive for simplicity, we reduce the size and complexity of our ontology by omitting information (\eg certain relations or attributes) that can be inferred from linked ontologies when required.
+\paragraph{First: Avoid complexity by allowing inference of details} \label{avoid-complexity} High information-density can be useful, if the goal is a highly detailed model. However, a smaller and more concise ontology is easier to grasp and process. Since we strive for simplicity, we reduce the size and complexity of our ontology by omitting information (\eg certain relations or attributes) that can be inferred from linked ontologies when required.
 
 For example: Both \gls{fibo} and \gls{gist} offer attributes for a \class{Person}; \eg in \gls{fibo} a \class{Person} \relation{hasDateOfBirth exactly 1} \class{Date}, in \gls{gist} a \class{Person} is \relation{offspringOf} another \class{Person} and need to have a \relation{name} \class{xsd:string}. Instead of copying these attributes to our ontology, we use this the relation \relation{rdfs:seeAlso} \cite[https://www.w3.org/TR/rdf-schema/\#ch\_seealso]{brickley2014rdf} as a soft reference for attributes that can be extracted on demand.
 
@@ -534,10 +593,10 @@ Starting with the general model of human beings, \gls{foaf} is a very common cho
 	\foottt{foaf:Group rdfs:comment: \enquote{A class of agents.}},
 %
 \class{foaf:Organization}%
-	\foottt{foaof:Organization rdfs:comment: \enquote{An organization.}},
+	\foottt{foaf:Organization rdfs:comment: \enquote{An organization.}},
 %
 \class{foaf:Person}%
-	\foottt{foaof:Person rdfs:comment: \enquote{A person.}},
+	\foottt{foaf:Person rdfs:comment: \enquote{A person.}},
 %
 \class{Person}%
 	\footnote{\label{footn:no-desc}Note: The ontology doesn't offer any description.}, and
@@ -646,7 +705,7 @@ After deciding on these basic building blocks, they can be extended according to
 As already shown by \textit{Loebe}, the concepts and ideas about roles have been heavily discussed in the ontology community and literature. \cite[p.\,130~1.2]{loebe2007abstract} The role concept is not trivial, very fundamental, and using it as part of an ontology allows for a flexible and powerful model.
 Since there is no clear agreement on a particular role concept, we are adopting the approach from \textit{Loebe} (2007) and its basic role model. It is very general and can be applied in various ways: It can be used in the intuitive way regarding social roles, \eg thinking about a human being playing the role of a patient and another the role of a doctor. But it is also possible to think about numbers and relationship between them in the form of abstract roles. \cite[p.\,131--133]{loebe2007abstract}
 
-The strength of the role concept is its flexibility. A player can play multiple roles at the same time and each role can be associated with a different context. An example for this is the CEO role. It has defined responsibilities and playing the role means a requirement to fulfill certain tasks. With \glspl{sco} typically any formal \class{Member}---in our ontology this means any \class{Member} with rank \class{Junior Consultant} or above---can become CEO by being elected. When elected, the \class{Member} plays two roles in the \gls{oc}. Additionally, the same \class{Member} could work on a project as \class{Project Leader}, a role from the \gls{pc}.
+The strength of the role concept is its flexibility. A player can play multiple roles at the same time and each role can be associated with a different context. An example for this is the CEO role. It has defined responsibilities and playing the role means a requirement to fulfill certain tasks. With \glspl{sco} typically any \class{Member} that holds a certain rank---in our ontology this means any \class{Member} with rank \class{Junior Consultant} or above---can become CEO by being elected. When elected, the \class{Member} plays two roles in the \gls{oc}. Additionally, the same \class{Member} could work on a project as \class{Project Leader}, a role from the \gls{pc}.
 
 Since \glspl{sco} are a social construct and are defined by the people of the organization, the modeled roles are primarily from the type \textit{social role}. Furthermore, the contexts described in \autoref{context} also have implications for the roles that exists in the domain.
 
@@ -663,6 +722,8 @@ The \class{Non-Member} role, however, is not limited to only \class{Person}. In 
 \paragraph{Business Ranks}
 \label{ranks}
 The second property a \class{Person} can have in the \gls{oc} is the business rank. Examples from the business world are: Associate, Senior Associate, Consultant, Partner, etc. Similar to regular businesses, \glspl{sco} also organize these ranks around their career process: A person receives the lowest available rank at the begin of their career. During the time with the organization a person is awarded higher ranks based on some organizational system (\eg a merit-based system), until the highest rank is reached or the person leaves the organization.
+
+There might exist a duration, where someone participates in the activities of an \gls{sco} and is member-like, but not yet a formal member. This formality represents the legal rights (\eg voting in the member assembly) that often come with formally joining an organization. This duration might happen at the beginning of a career. Since we are not modeling duration, we use ranks to encode this concept by declaration.
 
 The exact terms for the ranks, their meaning, gradation, and organizational implications are highly specific to the \gls{sco} instance. We therefore introduce a rough and extensible skeleton representation:
 \begin{compactenum}
@@ -834,97 +895,965 @@ Both perspectives are relevant to the reality of an \gls{sco}. However, as discu
 
 The detailed descriptions of the rest of the modeled processes can be found in the ontology (see \autoref{the-ontology}) and the \gls{owl} file.
 
-\chapter{Student Consulting Organizations: The Ontology \progressbar[filledcolor=red]{0.2}}
+\chapter{Student Consulting Organizations: The Ontology \progressbar[filledcolor=green]{0.9}}
 \label{the-ontology}
-\section{Scope of the Domain \progressbar[filledcolor=green]{0.8}}
+This section describes our developed ontology. It contains its scope, all classes and relations as well as their properties. We define the scope of the domain according to our ontology development methodology described in \autoref{methodology} using \textit{Competency Questions}. We use color coding and indentation to give the classes section some structure. The indentation and colors are helpers and have no explicit other meaning. They are, however, inspired by the defining relations of their corresponding class. The box header contains the \gls{iri}. If a class has multiple \relation{skos:example}, we condense them into a list and label it \relation{skos:examples}.
+
+\section{Scope of the Domain \progressbar[filledcolor=green]{0.9}}
 \label{competency-questions}
-\subsection{What is the domain that the ontology will cover?}
+\paragraph{What is the domain that the ontology will cover?}
 \glspl{sco} are a form of consulting firms.  They can be compared to small consulting businesses, but are staffed -- most of the time exclusively -- by students. In other countries, \eg in France and Brazil, they are also referred to as \href{https://en.wikipedia.org/wiki/Junior_enterprise}{\textit{Junior Enterprises}} (JE). In Germany they are usually a registered association (German: \textit{Verein}) and/or a group associated with a specific university (German: \textit{Hochschulgruppe}). They aim to teach students about consulting as a profession by providing a platform that educates and trains students in the craft and provides them with the organizational means to work on consulting projects.
 
 The domain is a specialization of the a classical consulting firm. It differs especially in terms of professionalization, since companies are focused on profit using education as the means, whereas \glspl{sco} focus on the educational aspect and on providing experience, while having profit as secondary goal.
 
-\subsection{For what we are going to use the ontology?}
+\paragraph{For what we are going to use the ontology?}
 This ontology is a contribution to the knowledge management of \glspl{sco}. It can be used to learn or teach about the domain. It can also be used as a starting point for projects that require a model of the domain.
 
-\subsection{For what types of questions the information in the ontology should provide answers?}
+\paragraph{For what types of questions the information in the ontology should provide answers?}
 The ontology serves as an abstract description of the \gls{sco} domain. It defines all classes and relations that are typically present in this type of organization. Therefore it can answer questions like:
 \begin{itemize}
 	\item What processes exist and are required in an \gls{sco}?
 	\item What roles exist and have to be filled in an \gls{sco}?
 \end{itemize}
 
-\subsection{Who will use and maintain the ontology?}
+\paragraph{Who will use and maintain the ontology?}
 The users of this ontology are the leadership of \glspl{sco} in Germany as well as the leadership of the \gls{sco} umbrella organizations. The release version coincides with the finalization and grading of this work. If the ontology sees use by the target group, it will be maintained by the authors. Access will be publicly provided on a GitHub repository. It is considered a living document, hence not necessarily complete until otherwise stated. Contributions and forks will be possible via the GitHub interface.
 
-\section{Classes}
+\section{Classes \progressbar[filledcolor=green]{0.9}}
 \subsection{Agent}
-\begin{compactitem}
-\item Agent
-	\begin{compactitem}
-	\item Group
+\begin{mdframed}[style=onto, frametitle={Agent}]
+	{% Begin box content
 		\begin{compactitem}
-			\item Executive\_Board
-			\item Member\_Assembly
-			\item Project\_Team
+			\item \textbf{rdfs:label}@en: agent
+			\item \textbf{rdfs:label}@de: Agent
+			\item \textbf{rdfs:comment}@en: The actors of the ontology.
+			\item \textbf{rdfs:seeAlso}: dcterms:Agent, fibo:AutonomousAgent, foaf:Agent
 		\end{compactitem}
-	\item Organization
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-1, frametitle={Group}]
+	{% Begin box content
 		\begin{compactitem}
-			\item Student\_Consulting\_Organization
-			\item Umbrella\_Organization
-			\item University
+			\item \textbf{rdfs:label}@en: group
+			\item \textbf{rdfs:label}@de: Gruppe
+			\item \textbf{rdfs:comment}@en: A collection of agents that is itself an agent.
+			\item \textbf{rdfs:seeAlso}: doap:Group, fibo:Group, foaf:Group
+			%\item \textbf{skos:example}@en:
 		\end{compactitem}
-	\item Person
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Executive\_Board}]
+	{% Begin box content
 		\begin{compactitem}
-			\item Member
-				\begin{compactitem}
-					\item Consultant
-					\item Junior\_Consultant
-					\item Senior\_Consultant
-					\item Trainee
-				\end{compactitem}
+			\item \textbf{rdfs:label}@en: executive board
+			\item \textbf{rdfs:label}@de: Vorstand
+			\item \textbf{rdfs:comment}@en: The leadership of an organization. Consists of people that play an organizational role of type Corporate Officer.
+			\item \textbf{rdfs:seeAlso}: fibo:LegallyDelegatedAuthority
+			\item \textbf{skos:example}@en: The leadership of a student consulting organization.
 		\end{compactitem}
-	\end{compactitem}
-\end{compactitem}
-% TODO: Syntactic decision: is/has relations
+	} % End box content
+\end{mdframed}
 
-% TODO: Verify ($\diamond$ means the relation is implemented in the ontology)
+\begin{mdframed}[style=onto-2, frametitle={Member\_Assembly}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: member assembly
+			\item \textbf{rdfs:label}@de: Mitgliederversammlung
+			\item \textbf{rdfs:comment}@en: A collection of members of an organization that has authoritative power. In Germany it is the highest committee of an registered association.
+			\item \textbf{rdfs:seeAlso}: fibo:EntityControllingParty
+			\item \textbf{skos:example}@en: The collection of members of a student consulting organization that together have the authoritative power over the organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
 
-\textbf{Agent}
-\begin{compactitem}
-	\item All members except trainees and almunus can be corporate officers $\diamond$
-	\item Non-members can not become corporate officers $\diamond$
-	\item Members can play project team roles $\diamond$
-	\item Every agent can play the customer role in a project $\diamond$
-	\item Every member goes through his individual HRP
-	\item An organizational rank has tbd requirements
-	\item Customer, Team, Contract, etc are \textbf{part of} a project
-	\item Organizations can only \textbf{play} the customer \textbf{role} in a project $\diamond$
-	\item Organization can only play external roles $\diamond$
-\end{compactitem}
+\begin{mdframed}[style=onto-2, frametitle={Project\_Team}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project team
+			\item \textbf{rdfs:label}@de: Projektteam
+			\item \textbf{rdfs:comment}@en: A group of people that form a project team.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
 
-\textbf{Processes}
-\begin{compactitem}
-	\item All processes have a \textbf{next\_process} $\diamond$
-	\item \textbf{previous\_process} should be inferred?!
-	\item
-\end{compactitem}
+\begin{mdframed}[style=onto-1, frametitle={Organization}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: organization
+			\item \textbf{rdfs:label}@de: Organisation
+			\item \textbf{rdfs:comment}@en: An organization.
+			\item \textbf{rdfs:seeAlso}: fibo:Organization, foaf:Organization, gist:Organization, \\ schema:Organization
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
 
-before/after:
-\begin{compactitem}
-	\item FIBO: relates to -> precedes/succeeds?
-	\item plays role
-\end{compactitem}
+\begin{mdframed}[style=onto-2, frametitle={Student\_Consulting\_Organization}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: student consulting organization
+			\item \textbf{rdfs:label}@de: Studentische Unternehmensberatung
+			\item \textbf{rdfs:comment}@en: A student consulting organization.
+			\item \textbf{skos:example}: Campus Inform, Hanseatic Consulting
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
 
+\begin{mdframed}[style=onto-2, frametitle={Umbrella\_Organization}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: umbrella organization
+			\item \textbf{rdfs:label}@de: Dachverband
+			\item \textbf{rdfs:comment}@en: An umbrella organization for student consulting organizations.
+			\item \textbf{skos:example}: Bundesverband Deutscher Studentischer Unternehmenberatungen, JCNetwork
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
 
-\chapter{Conclusion and Further Research}
+\begin{mdframed}[style=onto-2, frametitle={University}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: university
+			\item \textbf{rdfs:label}@de: Universität
+			\item \textbf{rdfs:comment}@en: A university.
+			\item \textbf{skos:example}: University Leipzig
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-1, frametitle={Person}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: person
+			\item \textbf{rdfs:label}@de: Person
+			\item \textbf{rdfs:comment}@en: A person. A human being/homo sapiens.
+			\item \textbf{rdfs:seeAlso}: fibo:Person, foaf:Person, gist:Person, schema:Person
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Member}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: member
+			\item \textbf{rdfs:label}@de: Mitglied
+			\item \textbf{rdfs:comment}@en: A member of a student consulting organization.
+			\item \textbf{rdfs:seeAlso}: fibo:OrganizationMember
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Trainee}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: trainee
+			\item \textbf{rdfs:label}@de: Trainee
+			\item \textbf{rdfs:comment}@en: The lowest rank within the career process of a student consulting organization. Does not yet have a formal membership (\eg is not allowed to vote in the membership assembly).
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Junior\_Consultant}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: junior consultant
+			\item \textbf{rdfs:label}@de: Junior Berater
+			\item \textbf{rdfs:comment}@en: A rank within the career process of a student consulting organization. Represents the first rank that has a formal membership within the student consulting organization. Represents a low amount of experience within the organization and with project work.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Consultant}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: consultant
+			\item \textbf{rdfs:label}@en: Berater
+			\item \textbf{rdfs:comment}@en: A rank within the career process of a student consulting organization. Represents a medium amount of experience within the organization and with project work.
+			%\item \textbf{rdfs:seeAlso}:
+			%\item \textbf{skos:example}@en:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Senior\_Consultant}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: senior consultant
+			\item \textbf{rdfs:label}@en: Senior Berater
+			\item \textbf{rdfs:comment}@en: The highest rank within the career process of a student consulting organization. Represents a high amount of experience within the organization and with project work.
+			%\item \textbf{rdfs:seeAlso}:
+			%\item \textbf{skos:example}@en:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\subsection{Document}
+\begin{mdframed}[style=onto, frametitle={Document}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: document
+			\item \textbf{rdfs:label}@de: Dokument
+			\item \textbf{rdfs:comment}@en: A document. Complex class. Conflates both, the physical object as well as the abstract information.
+			\item \textbf{rdfs:seeAlso}: fibo:Document, foaf:Document
+			\item \textbf{skos:examples}: Calendar, Gantt Diagram, Invoice, Presentation, Project Plan, Report, Work Document
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-1, frametitle={Contract}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: contract
+			\item \textbf{rdfs:label}@de: Vertrag
+			\item \textbf{rdfs:comment}@en: A general contract. Binding obligation between multiple parties.
+			\item \textbf{rdfs:seeAlso}: fibo:Contract, fibo:ContractDocument
+			%\item \textbf{skos:example}@en: 
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Project\_Contract}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project contract
+			\item \textbf{rdfs:label}@de: Projektvertrag
+			\item \textbf{rdfs:comment}@en: Specialized contract that is the cornerstone of every project.
+			%\item \textbf{rdfs:seeAlso}:
+			%\item \textbf{skos:example}@en:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\subsection{Process}
+\begin{mdframed}[style=onto, frametitle={Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: process
+			\item \textbf{rdfs:label}@de: Prozess
+			\item \textbf{rdfs:comment}@en: A construct that describes procedures on an abstract level. A processes can have sub-processes that are themselves processes.
+			\item \textbf{rdfs:seeAlso}: bfo:Process, gfo:Processual\_Structure, gist:Event
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-1, frametitle={Project\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project process
+			\item \textbf{rdfs:label}@de: Projektprozess
+			\item \textbf{rdfs:comment}@en: A process that models the way a projects is run within a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Project\_Sales\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project sales process
+			\item \textbf{rdfs:label}@de: Projektverkaufsprozess
+			\item \textbf{rdfs:comment}@en: A process that models how projects are sold to customers by a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Project\_Initiation\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project initiation process
+			\item \textbf{rdfs:label}@de: Projektinitiierungsprozess
+			\item \textbf{rdfs:comment}@en: A process that models how the initiation of a projects happens within a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Project\_Goal\_Development\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project goal development process
+			\item \textbf{rdfs:label}@de: Projektzielentwicklungsproezess
+			\item \textbf{rdfs:comment}@en: A process that models the definition of a project's goal.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Project\_Risk\_Assessment\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project risk assessment process
+			\item \textbf{rdfs:label}@de: Projektrisikobewertungsprozess
+			\item \textbf{rdfs:comment}@en: A process that models how project risk is assessed within a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Project\_Team\_Making\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project team making process
+			\item \textbf{rdfs:label}@de: Projektteambesetzungsprozess
+			\item \textbf{rdfs:comment}@en: A process that models how the team composition is decided and carried out within a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-4, frametitle={Project\_Team\_Application\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project team application process
+			\item \textbf{rdfs:label}@de: Projektteambewerbungsprozess
+			\item \textbf{rdfs:comment}@en: A process that models how applicants apply to a project within a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-4, frametitle={Project\_Team\_Selection\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project team selection process
+			\item \textbf{rdfs:label}@de: Projektteamauswahlprozess
+			\item \textbf{rdfs:comment}@en: A process that models how applicants are selected within a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Project\_Execution\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project execution process
+			\item \textbf{rdfs:label}@de: Projektdurchführungsprozess
+			\item \textbf{rdfs:comment}@en: A process that models how a project is executed within a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Project\_Finalization\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project finalization process
+			\item \textbf{rdfs:label}@de: Projektabschlussprozess
+			\item \textbf{rdfs:comment}@en: A process that models how a project is finalized within a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Project\_Documentation\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project documentation process
+			\item \textbf{rdfs:label}@de: Projektdokumentationsprozess
+			\item \textbf{rdfs:comment}@en: A process that models how a project is documented within a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Project\_Invoicing\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project invoicing process
+			\item \textbf{rdfs:label}@de: Projektabrechnungsprozess
+			\item \textbf{rdfs:comment}@en: A process that models how the invoicing is done within a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Project\_Evaluation\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project evaluation process
+			\item \textbf{rdfs:label}@de: Projektevaluationsprozess
+			\item \textbf{rdfs:comment}@en: A process that models how the success or failure of a project is evaluated within a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Project\_Taxation\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project taxation process
+			\item \textbf{rdfs:label}@de:
+			\item \textbf{rdfs:comment}@en: A process that models how the taxation of a project is done within a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-1, frametitle={Human\_Ressource\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: human resource process
+			\item \textbf{rdfs:label}@de: Human-Resources-Prozess
+			\item \textbf{rdfs:comment}@en: A process that models the interactions of human resources within a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Recruiting\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: recruiting process
+			\item \textbf{rdfs:label}@de: Recruiting-Prozess
+			\item \textbf{rdfs:comment}@en: A process that models how the recruiting is done by a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Advertising\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: advertising process
+			\item \textbf{rdfs:label}@de: Werbeprozess
+			\item \textbf{rdfs:comment}@en: A process that models how the advertisement for new members is handled within a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Onboarding\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: onboarding process
+			\item \textbf{rdfs:label}@de: Onboarding-Prozess
+			\item \textbf{rdfs:comment}@en: A process that models how a student consulting organization prepares new members for the work within the organization. Typically involves educating the new member about the internal and external processes, documenting personal data, etc.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Career\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: career process
+			\item \textbf{rdfs:label}@de: Karriereprozess
+			\item \textbf{rdfs:comment}@en: A process that models the career system of a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Education\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: education process
+			\item \textbf{rdfs:label}@de: Ausbildungsprozess
+			\item \textbf{rdfs:comment}@en: A process that models how members are educated within a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-4, frametitle={Internal\_Education\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: internal education process
+			\item \textbf{rdfs:label}@de: Interner Ausbildungsprozess
+			\item \textbf{rdfs:comment}@en: A process that models how internal education is carried out within a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-4, frametitle={External\_Education\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: external education process
+			\item \textbf{rdfs:label}@de: Externer Ausbildungsprozess
+			\item \textbf{rdfs:comment}@en: A process that models how external education is integrated into the education system of a student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Offboarding\_Process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: offboarding process
+			\item \textbf{rdfs:label}@de: Offboarding-Prozess
+			\item \textbf{rdfs:comment}@en: A process that models how the departure of a member from a student consulting organization is handled. Can occur during every stage of the HR process.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\subsection{Project}
+\begin{mdframed}[style=onto, frametitle={Project}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project
+			\item \textbf{rdfs:label}@de: Projekt
+			\item \textbf{rdfs:comment}@en: A project is unique process, consisting of a set of coordinated and controlled activities with start and finish dates, undertaken to achieve an objective conforming to specific requirements, including the constraints of time, cost and resources. \cite{iso-9000-2015}
+			\item \textbf{rdfs:seeAlso}: foaf:Project, gist:Project, gist:Task
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-1, frametitle={External\_Project}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: external project
+			\item \textbf{rdfs:label}@de: Externes Projekt
+			\item \textbf{rdfs:comment}@en: A project that is external to the student consulting organization.
+			\item \textbf{skos:example}@en: A project that has a paying customer outside of the organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-1, frametitle={Internal\_Project}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: internal project
+			\item \textbf{rdfs:label}@de: Internes Projekt
+			\item \textbf{rdfs:comment}@en: A project that is internal to the student consulting organization.
+			\item \textbf{skos:example}@en: A project to optimize internal workflows; typically no payments.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\subsection{Role}
+\begin{mdframed}[style=onto, frametitle={Role}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: role
+			\item \textbf{rdfs:label}@de: Rolle
+			\item \textbf{rdfs:comment}@en: A role played by an Agent in a specific context.
+			\item \textbf{rdfs:seeAlso}: fibo:Role
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-1, frametitle={Organizational\_Role}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: organizational role
+			\item \textbf{rdfs:label}@de: Organisatorische Rolle
+			\item \textbf{rdfs:comment}@en: An role that is connected to the organizational context of the student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Advisor}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: advisor
+			\item \textbf{rdfs:label}@de: Beirat
+			\item \textbf{rdfs:comment}@en: An advisor within the student consulting organization. Contributes experience in a field or works as a mediator between different internal parties (\eg within the Corporate Officer Team).
+			%\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}@en: Advisor to the Corporate Officer Team.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Aluma}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: alumna
+			\item \textbf{rdfs:label}@de: Alumna
+			\item \textbf{rdfs:comment}@en: A former member of the student consulting organization that is still in contact with the organization and participates in some form.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Corporate\_Officer}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: corporate officer
+			\item \textbf{rdfs:label}@de: Vorstand
+			\item \textbf{rdfs:comment}@en: A member of the student consulting organization that is in a leadership/executive position.
+			\item \textbf{rdfs:seeAlso}: fibo:CorporateOfficer
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Chief\_Executive\_Officer}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: chief executive officer
+			\item \textbf{rdfs:label}@de: Vorstandsvorsitzende Person
+			\item \textbf{rdfs:comment}@en: The highest ranking corporate officer, responsible for leading the leadership team.
+			\item \textbf{rdfs:seeAlso}: fibo:ChiefExecutiveOfficer
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Chief\_Financial\_Officer}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: chief financial officer
+			\item \textbf{rdfs:label}@de: Vorstand Finanzen
+			\item \textbf{rdfs:comment}@en: The corporate officer responsible for the finances of the student consulting organization.
+			\item \textbf{rdfs:seeAlso}: fibo:ChiefFinancialOfficer
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Chief\_Legal\_Officer}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: chief legal officer
+			\item \textbf{rdfs:label}@de: Vorstand Recht
+			\item \textbf{rdfs:comment}@en: The corporate officer responsible for the legal aspects of the student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Patron}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: patron
+			\item \textbf{rdfs:label}@de: Förderer
+			\item \textbf{rdfs:comment}@en: A benefactor of the student consulting organization that helps the organization reach its goals.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Financial\_Patron}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: financial patron
+			\item \textbf{rdfs:label}@de:  Förderer (finanziell)
+			\item \textbf{rdfs:comment}@en: A patron that contributes financially.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Ideological\_Patron}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: ideological patron
+			\item \textbf{rdfs:label}@de: Förderer (ideologisch)
+			\item \textbf{rdfs:comment}@en: A patron that contributes ideologically.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-2, frametitle={Project\_Role}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project role
+			\item \textbf{rdfs:label}@de: Projektrolle
+			\item \textbf{rdfs:comment}@en: A role that is connected to the project context of the student consulting organization.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Project\_Customer}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project customer
+			\item \textbf{rdfs:label}@de: Projektkunde
+			\item \textbf{rdfs:comment}@en: The (paying) customer of a project that receives the project's services.
+			\item \textbf{rdfs:seeAlso}: fibo:Customer
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Project\_Controlling}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project controlling
+			\item \textbf{rdfs:label}@de: Projektcontrolling
+			\item \textbf{rdfs:comment}@en: An institution that is concerned with the controlling of a project.
+			\item \textbf{skos:example}@en: The project controlling committee.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Project\_Team\_Leader}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project team leader
+			\item \textbf{rdfs:label}@de: Projektleitung
+			\item \textbf{rdfs:comment}@en: A leader of a student consulting organization project.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto-3, frametitle={Project\_Team\_Member}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: project team member
+			\item \textbf{rdfs:label}@de: Projektmitglied
+			\item \textbf{rdfs:comment}@en: A team member of a student consulting organization project.
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\section{Relations \progressbar[filledcolor=green]{0.9}}
+\begin{mdframed}[style=onto, frametitle={has\_customer}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: has customer
+			%\item \textbf{inverseOf}:
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item project SubClassOf 'has customer' min 1 'project customer'
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={has\_member}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: has member
+			\item \textbf{inverseOf}: is\_member\_of
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item 'executive board' SubClassOf 'has member' min 1 (member and ('plays role' some 'corporate officer'))
+			\item 'member assembly' SubClassOf 'has member' min 1 (member and (not (trainee)))
+			\item 'project team' SubClassOf 'has member' only 
+			(member and ('plays role' some 
+			('project team leader' or 'project team member')))
+			\item 'student consulting organization' SubClassOf 'has member' min 1 member
+			\item 'umbrella organization' SubClassOf 'has member' min 1 'student consulting organization'
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={is\_defined\_by}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: is defined by
+			%\item \textbf{inverseOf}:
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item project SubClassOf 'is defined by' min 1 'project contract'
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={is\_member\_of}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: is member of
+			\item \textbf{inverseOf}: has\_member
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item member SubClassOf 'is member of' some 'student consulting organization'
+			\item trainee SubClassOf 'is member of' some 'student consulting organization'
+			\item 'junior consultant' SubClassOf 'is member of' some 'student consulting organization'
+			\item consultant SubClassOf 'is member of' some 'student consulting organization'
+			\item 'senior consultant' SubClassOf 'is member of' some 'student consulting organization'
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={is\_part\_of}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: is part of
+			%\item \textbf{inverseOf}:
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item document SubClassOf 'is part of' some 
+			(process or project)
+			\item 'project team' SubClassOf 'is part of' some project
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={is\_played\_by}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: is played by
+			\item \textbf{inverseOf}: plays\_role
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item advisor SubClassOf 'is played by' some person
+			\item alumna SubClassOf 'is played by' some person
+			\item 'corporate officer' SubClassOf 'is played by' only 
+			(consultant or 'junior consultant' or 'senior consultant')
+			\item patron SubClassOf 'is played by' some 
+			(organization or person)
+			\item 'project controlling' SubClassOf 'is played by' some agent
+			\item 'project customer' SubClassOf 'is played by' some agent
+			\item 'project team leader' SubClassOf 'is played by' only 
+			(alumna or consultant or 'junior consultant' or 'senior consultant')
+			\item 'project team member' SubClassOf 'is played by' only 
+			(alumna or consultant or 'junior consultant' or 'senior consultant' or trainee)
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={is\_process\_part\_of}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: is process part of
+			\item \textbf{inverseOf}: has\_process\_part
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item 'advertising process' SubClassOf 'is process part of' some 'recruiting process'
+			\item 'career process' SubClassOf 'is process part of' some 'human resource process'
+			\item 'education process' SubClassOf 'is process part of' some 'career process'
+			\item 'external education process' SubClassOf 'is process part of' some 'education process'
+			\item 'internal education process' SubClassOf 'is process part of' some 'education process'
+			\item 'offboarding process' SubClassOf 'is process part of' some 'human resource process'
+			\item 'onboarding process' SubClassOf 'is process part of' some 'human resource process'
+			\item 'project documentation process' SubClassOf 'is process part of' some 'project finalization process'
+			\item 'project evaluation process' SubClassOf 'is process part of' some 'project finalization process'
+			\item 'project execution process' SubClassOf 'is process part of' some 'project process'
+			\item 'project finalization process' SubClassOf 'is process part of' some 'project process'
+			\item 'project goal development process' SubClassOf 'is process part of' some 'project initiation process'
+			\item 'project initiation process' SubClassOf 'is process part of' some 'project process'
+			\item 'project invoicing process' SubClassOf 'is process part of' some 'project finalization process'
+			\item 'project planning process' SubClassOf 'is process part of' some 'project initiation process'
+			\item 'project risk assessment process' SubClassOf 'is process part of' some 'project initiation process'
+			\item 'project sales process' SubClassOf 'is process part of' some 'project process'
+			\item 'project taxation process' SubClassOf 'is process part of' some 'project finalization process'
+			\item 'project team application process' SubClassOf 'is process part of' some 'project team making process'
+			\item 'project team making process' SubClassOf 'is process part of' some 'project initiation process'
+			\item 'project team selection process' SubClassOf 'is process part of' some 'project team making process'
+			\item 'recruiting process' SubClassOf 'is process part of' some 'human resource process'
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={is\_signed\_by}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: is signed by
+			\item \textbf{inverseOf}: signs\_contract
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item 'project contract' SubClassOf 'is signed by' some 
+			('project customer' and 'project team')
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={next\_process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: next process
+			\item \textbf{inverseOf}: previous\_process
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item 'career process' SubClassOf 'next process' some 'offboarding process'
+			\item 'onboarding process' SubClassOf 'next process' some 'career process'
+			\item 'project execution process' SubClassOf 'next process' some 'project finalization process'
+			\item 'project initiation process' SubClassOf 'next process' some 'project execution process'
+			\item 'project sales process' SubClassOf 'next process' some 'project initiation process'
+			\item 'recruiting process' SubClassOf 'next process' some 'onboarding process'
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={next\_rank}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: next rank
+			\item \textbf{inverseOf}: previous\_rank
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item 'junior consultant' SubClassOf 'next rank' only consultant
+			\item trainee SubClassOf 'next rank' only 'junior consultant'
+			\item consultant SubClassOf 'next rank' only 'senior consultant'
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={plays\_role}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: plays role
+			\item \textbf{inverseOf}: is\_played\_by
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item 'executive board' SubClassOf 'has member' min 1 (member and ('plays role' some 'corporate officer'))
+			\item organization SubClassOf 'plays role' only 
+			(patron or 'project customer')
+			\item 'project team' SubClassOf 'has member' only 
+			(member and ('plays role' some 
+			('project team leader' or 'project team member')))
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={previous\_process}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: previous process
+			\item \textbf{inverseOf}: next\_process
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={previous\_rank}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: previous rank
+			\item \textbf{inverseOf}: next\_rank
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item 'junior consultant' SubClassOf 'previous rank' only trainee
+			\item consultant SubClassOf 'previous rank' only 'junior consultant'
+			\item 'senior consultant' SubClassOf 'previous rank' only consultant
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\begin{mdframed}[style=onto, frametitle={signs\_contract}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: signs contract
+			\item \textbf{inverseOf}: is\_signed\_by
+			%\item \textbf{rdfs:comment}@en: 
+		\end{compactitem}
+		\hrulefill\\
+		\textbf{Uses:}
+		\begin{compactitem}
+			\item 'project customer' SubClassOf 'signs contract' some 'project contract'
+			\item 'project team' SubClassOf 'signs contract' some 'project contract'
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
+
+\chapter{Conclusion and Further Research \progressbar[filledcolor=red]{0}}
+Responsibility as part of the ontology?
 
 \appendix
 \chapter{Appendix}
-\section{Term Enumeration}
+\section{Word Cloud \progressbar[filledcolor=red]{0}}
 \label{word-cloud}
+\begin{figure}[h]
+	\caption{Word Cloud}
+	\centering
+	\includegraphics[width=1\textwidth]{Images/word-cloud.png}
+\end{figure}
+\newpage
+
+\section{Word Graph \progressbar[filledcolor=red]{0}}
 
 \newpage
-\section{Diagrams}
+\section{Diagrams \progressbar[filledcolor=yellow]{0.5}}
 \subsection{General Diagrams}
 % TODO: Add correct relation
 
@@ -963,20 +1892,12 @@ before/after:
 
 \newpage
 
-\section{Dictionary Definitions}
+\section{Dictionary Definitions \progressbar[filledcolor=green]{1}}
 \label{dictionary}
 % \textcolor{gray}{\textit{\enquote{}}}
 
-\begin{mdframed}[%
-	linewidth=1pt,%
-	frametitlerule=true,%
-	frametitlebackgroundcolor=gray!20,%
-	innertopmargin=\topskip,%
-	frametitlefont=\normalfont,%
-	frametitle={{\textbf{context}} {\scriptsize\textsc{noun \hfill Merriam-Webster}}}%
-	]
-	
-	{\small con·​text
+\begin{mdframed}[style=dictionary, frametitle={context {\scriptsize\normalfont\textsc{noun \hfill Merriam-Webster}}}]{
+	\small con·​text \textit{\textcolor{teal}{plural}} contexts
 		\begin{compactenum}
 			\item the parts of a discourse that surround a word or passage and can throw light on its meaning
 			\item the interrelated conditions in which something exists or occurs : ENVIRONMENT, SETTING \\
@@ -985,16 +1906,8 @@ before/after:
 	}
 \end{mdframed}
 
-\begin{mdframed}[%
-	linewidth=1pt,%
-	frametitlerule=true,%
-	frametitlebackgroundcolor=gray!20,%
-	innertopmargin=\topskip,%
-	frametitlefont=\normalfont,%
-	frametitle={{\textbf{domain}} {\scriptsize\textsc{noun \hfill Merriam-Webster}}}%
-	]
-	
-	{\small do·​main
+\begin{mdframed}[style=dictionary, frametitle={domain {\scriptsize\normalfont\textsc{noun \hfill Merriam-Webster}}}]
+	{\small do·​main \textit{\textcolor{teal}{plural}} domains
 			\begin{compactenum}
 				\item law
 				\begin{compactenum}
@@ -1023,14 +1936,7 @@ before/after:
 	}
 \end{mdframed}
 
-\begin{mdframed}[%
-	linewidth=1pt,%
-	frametitlerule=true,%
-	frametitlebackgroundcolor=gray!20,%
-	innertopmargin=\topskip,%
-	frametitlefont=\normalfont,%
-	frametitle={{\textbf{vocabulary}} {\scriptsize\textsc{noun \hfill Merriam-Webster}}}%
-	]
+\begin{mdframed}[style=dictionary, frametitle={vocabulary {\scriptsize\normalfont\textsc{noun \hfill Merriam-Webster}}}]
 	
 	{\small vo·​cab·​u·​lary \textit{\textcolor{teal}{plural}} vocabularies
 		\begin{compactenum}
@@ -1050,7 +1956,7 @@ before/after:
 \end{mdframed}
 
 \newpage
-\section{Ontology Import Links}
+\section{Ontology Import Links \progressbar[filledcolor=yellow]{0.7}}
 This work lists different ontologies in the related work section. To import them into the Protégé editor, the following links can be used:
 
 \begin{asparadesc}
