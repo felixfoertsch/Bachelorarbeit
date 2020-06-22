@@ -923,16 +923,6 @@ The users of this ontology are the leadership of \glspl{sco} in Germany as well 
 This section describes all classes and relations as well as their properties. We use color coding and indentation to give this section some structure. Both are only helpers and have no explicit other meaning. They are, however, inspired by the defining relations of their corresponding class (\eg )
 
 The box header contains the classes \gls{iri}. If a class has multiple \relation{skos:example}, we condense them into a list and label it \relation{skos:examples}.
-\begin{mdframed}[style=onto, frametitle={TEMPLATE}]
-	{% Begin box content
-		\begin{compactitem}
-			\item \textbf{rdfs:label}@en: 
-			\item \textbf{rdfs:comment}@en: 
-			\item \textbf{rdfs:seeAlso}:
-			\item \textbf{skos:example}@en:
-		\end{compactitem}
-	} % End box content
-\end{mdframed}
 
 \subsection{Agent}
 \begin{mdframed}[style=onto, frametitle={Agent}]
@@ -964,6 +954,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 			\item \textbf{rdfs:label}@en: executive board
 			\item \textbf{rdfs:label}@de: Vorstand
 			\item \textbf{rdfs:comment}@en: The leadership of an organization. Consists of people that play an organizational role of type Corporate Officer.
+			\item \textbf{rdfs:seeAlso}: fibo:LegallyDelegatedAuthority
 			\item \textbf{skos:example}@en: The leadership of a student consulting organization.
 		\end{compactitem}
 	} % End box content
@@ -975,6 +966,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 			\item \textbf{rdfs:label}@en: member assembly
 			\item \textbf{rdfs:label}@de: Mitgliederversammlung
 			\item \textbf{rdfs:comment}@en: A collection of members of an organization that has authoritative power. In Germany it is the highest committee of an registered association.
+			\item \textbf{rdfs:seeAlso}: fibo:EntityControllingParty
 			\item \textbf{skos:example}@en: The collection of members of a student consulting organization that together have the authoritative power over the organization.
 		\end{compactitem}
 	} % End box content
@@ -1051,8 +1043,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 			\item \textbf{rdfs:label}@en: member
 			\item \textbf{rdfs:label}@de: Mitglied
 			\item \textbf{rdfs:comment}@en: A member of a student consulting organization.
-			%\item \textbf{rdfs:seeAlso}:
-			%\item \textbf{skos:example}@en:
+			\item \textbf{rdfs:seeAlso}: fibo:OrganizationMember
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1108,7 +1099,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 			\item \textbf{rdfs:label}@en: document
 			\item \textbf{rdfs:label}@de: Dokument
 			\item \textbf{rdfs:comment}@en: A document. Complex class. Conflates both, the physical object as well as the abstract information.
-			\item \textbf{rdfs:seeAlso}: foaf:Document
+			\item \textbf{rdfs:seeAlso}: fibo:Document, foaf:Document
 			\item \textbf{skos:examples}: Calendar, Gantt Diagram, Invoice, Presentation, Project Plan, Report, Work Document
 		\end{compactitem}
 	} % End box content
@@ -1120,7 +1111,7 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 			\item \textbf{rdfs:label}@en: contract
 			\item \textbf{rdfs:label}@de: Vertrag
 			\item \textbf{rdfs:comment}@en: A general contract. Binding obligation between multiple parties.
-			\item \textbf{rdfs:seeAlso}: fibo:Contract
+			\item \textbf{rdfs:seeAlso}: fibo:Contract, fibo:ContractDocument
 			%\item \textbf{skos:example}@en: 
 		\end{compactitem}
 	} % End box content
@@ -1590,6 +1581,17 @@ The box header contains the classes \gls{iri}. If a class has multiple \relation
 
 
 \section{Relations \progressbar[filledcolor=red]{0}}
+
+\begin{mdframed}[style=onto, frametitle={TEMPLATE}]
+	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:label}@en: 
+			\item \textbf{rdfs:comment}@en: 
+			\item \textbf{rdfs:seeAlso}:
+			\item \textbf{skos:example}@en:
+		\end{compactitem}
+	} % End box content
+\end{mdframed}
 
 \textbf{Agent}
 \begin{compactitem}
