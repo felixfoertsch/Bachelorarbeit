@@ -883,6 +883,12 @@
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Agent"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_part_of"/>
+                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">An institution that is concerned with the controlling of a project.</rdfs:comment>
         <rdfs:label xml:lang="de">Projektcontrolling</rdfs:label>
         <rdfs:label xml:lang="en">project controlling</rdfs:label>
