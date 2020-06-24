@@ -457,7 +457,6 @@
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Person"/>
         <rdfs:comment xml:lang="en">A document. Complex class. Conflates both, the physical object as well as the abstract information.</rdfs:comment>
         <rdfs:label xml:lang="de">Dokument</rdfs:label>
         <rdfs:label xml:lang="en">document</rdfs:label>

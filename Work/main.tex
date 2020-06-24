@@ -25,11 +25,12 @@
 \usepackage[hidelinks]{hyperref} % Hyperlink-Helfer
 \usepackage[defblank]{paralist} % Erlaubt verschiedene neue Listen-Umgebungen (zB inparaenum), defblank für Listenumgebung, die gesetzt wird wie regulärer Text
 \usepackage{mdframed} % Erlaubt das einfügen von Kästen (zB Einrahmen von Anmerkungen)
-\usepackage{lscape} % Querformat-Umgebung
+%\usepackage{lscape} % Querformat-Umgebung
 \usepackage[toc, section=section, numberedsection=autolabel, nonumberlist]{glossaries} % Glossar
 \usepackage[titletoc]{appendix}
 \usepackage{progressbar}
 \usepackage{tikz}
+\usepackage{multicol} % Mehrfachspalten-Umgebung
 
 %*******************************************************************************
 %* Configuration
@@ -211,7 +212,7 @@
 \begin{document}
 
 \titlehead{
-	Document Version: v17 \\
+	Document Version: v18 \\
 	Overall Progress: \progressbar[filledcolor=green]{0.95}
 }
 \subject{Bachelor's Thesis}
@@ -295,7 +296,7 @@ Both documents will be publicly hosted and freely available to any interested pa
 \section{Use Cases and Outlook \progressbar[filledcolor=green]{0.9}}
 The main use case of this work is supporting \gls{sco} idea by the documenting the domain knowledge and thus helping others to better understand it. We are trying to design the ontology in a way to enable its use for everyone: From the layperson to the expert.
 
-We identified the following use cases from our personal experience and hope that our work can contribute to them in a meaningful way:
+We identified the following additional use cases from our personal experience and hope that this work can contribute to them in a meaningful way:
 
 \begin{enumerate}
 	\item \textbf{Founding of a \gls{sco}.} Founding an business is hard. It becomes even more challenging, if there are no available learning materials for the domain, the learning materials are hidden away, or the materials offer low quality. And even though many of the \glspl{sco} in Germany have produced a lot of material and each figured out their own way of doing things, and even though there are umbrella organizations to help organize all the sub-organizations, it is still hard for the target audience to get sufficient information to easily found such an organization. This work can support this process by providing basic insight into the inner workings the domain. It sheds light on its most important processes and actors. It can provide the new founders with knowledge and a guideline on what to focus on. The public availability further supports this idea.
@@ -304,7 +305,7 @@ We identified the following use cases from our personal experience and hope that
 \end{enumerate}
 
 \chapter[Preliminaries \\\textcolor{gray}{
-	{\footnotesize \textsl{Gives the background of this work and prepares for the following elucidation by providing the used methodology, definitions, and assumptions.}}
+	{\footnotesize \textsl{Gives the background of this work and prepares for the subsequent elucidation.}}
 }]{Preliminaries}
 \markright{Preliminaries}
 Ontologies have many applications in various fields. They are used in artificial intelligence research, database design and integration, semantic web, and many more. \cite[p.\,1]{Gomez-Perez:2004aa} One of these applications is knowledge representation.
@@ -526,7 +527,7 @@ The classic example for inherent polysemy is the book. It can be viewed from two
 Even though it's \textit{possible} to decompose these objects, it's not \textit{necessary}. The usefulness of such a decomposition depends on the use case. In our case, with the focus on simplicity, it is enough to describe most classes on a high level, since the exact design is up to the user. \textit{Arapinis} argues in \cite{arapinis2015plea} to allow the use of complex classes to avoid introducing incoherence and inconsistency.
 
 \chapter[Ontological Aspects in the SCO Domain \\\textcolor{gray}{
-	{\footnotesize \textsl{Discusses the three major concepts of the ontology and their implementation.}}
+	{\footnotesize \textsl{Discusses the three major concepts and their implementation in the context of related work.}}
 }]{Ontological Aspects in the SCO Domain}
 \markright{Ontological Aspects in the SCO Domain}
 \label{domain-aspects}
@@ -909,11 +910,11 @@ Both perspectives are relevant to the reality of an \gls{sco}. However, as discu
 The detailed descriptions of the rest of the modeled processes can be found in the ontology (see \autoref{the-ontology}) and the \gls{owl} file.
 
 \chapter[Student Consulting Organizations: The Ontology \\\textcolor{gray}{
-	{\footnotesize \textsl{Declares the ontology: Its scope, its classes and their properties as well as their relations.}}
+	{\footnotesize \textsl{Declares the ontology in a readable format.}}
 }]{Student Consulting Organizations: The Ontology}
 \markright{Student Consulting Organizations: The Ontology}
 \label{the-ontology}
-This section describes our developed ontology. It contains its scope, all classes and relations as well as their properties. We define the scope of the domain according to our ontology development methodology described in \autoref{methodology} using \textit{Competency Questions}. We use color coding and indentation to give the classes section some structure. The indentation and colors are helpers and have no explicit other meaning. They are, however, inspired by the defining relations of their corresponding class. The box header contains the \gls{iri}. If a class has multiple \relation{skos:example}, we condense them into a list and label it \relation{skos:examples}.
+This section describes our developed ontology. It contains its scope, all classes and relations as well as their properties. We define the scope of the domain according to our ontology development methodology described in \autoref{methodology} using \textit{Competency Questions}.
 
 \section{Scope of the Domain \progressbar[filledcolor=green]{0.9}}
 \label{competency-questions}
@@ -935,9 +936,117 @@ The ontology serves as an abstract description of the \gls{sco} domain. It defin
 \paragraph{Who will use and maintain the ontology?}
 The users of this ontology are the leadership of \glspl{sco} in Germany as well as the leadership of the \gls{sco} umbrella organizations. The release version coincides with the finalization and grading of this work. If the ontology sees use by the target group, it will be maintained by the authors. Access will be publicly provided on a GitHub repository. It is considered a living document, hence not necessarily complete until otherwise stated. Contributions and forks will be possible via the GitHub interface.
 
-\section{Ontology Overview}
+\section{Classes Overview}
+This section provides an overview by displaying all ontology classes as a tree. 
+We omit the root node \class{owl:Thing} and display the classes by their 
+\gls{iri} stripped by the underscore.
+
+\begin{multicols}{2}
+	\begin{compactitem}
+		\item Agent
+		\begin{compactitem}
+			\item Group
+			\begin{compactitem}
+				\item Executive Board
+				\item Member Assembly
+				\item Project Team
+			\end{compactitem}
+			\item Organization
+			\begin{compactitem}
+				\item Student Consulting Organization
+				\item Umbrella Organization
+				\item University
+			\end{compactitem}
+			\item Person
+			\begin{compactitem}
+				\item Member
+				\begin{compactitem}
+					\item Consultant
+					\item Junior Consultant
+					\item Senior Consultant
+					\item Trainee
+				\end{compactitem}
+			\end{compactitem}
+		\end{compactitem}
+		\item Document
+		\begin{compactitem}
+			\item Contract
+			\begin{compactitem}
+				\item Project Contract
+			\end{compactitem}
+		\end{compactitem}
+		\item Project
+		\begin{compactitem}
+			\item External Project
+			\item Internal Project
+		\end{compactitem}
+		\item Role
+		\begin{compactitem}
+			\item Organizational Role
+			\begin{compactitem}
+				\item Advisor
+				\item Alumna
+				\item Corporate Officer
+				\begin{compactitem}
+					\item Chief Executive Officer
+					\item Chief Financial Officer
+					\item Chief Legal Officer
+				\end{compactitem}
+				\item Patron
+				\begin{compactitem}
+					\item Financial Patron
+					\item Ideological Patron
+				\end{compactitem}
+			\end{compactitem}
+			\item project role
+			\begin{compactitem}
+				\item Project Controlling
+				\item Project Customer
+				\item Project Team Leader
+				\item Project Team Member
+			\end{compactitem}
+		\end{compactitem}
+		\columnbreak
+		\item Process
+		\begin{compactitem}
+			\item Advertising Process
+			\item Career Process
+			\item Education Process
+			\item External Education Process
+			\item Human Resource Process
+			\item Internal Education Process
+			\item Offboarding Process
+			\item Onboarding Process
+			\item Project Documentation Process
+			\item Project Evaluation Process
+			\item Project Execution Process
+			\item Project Finalization Process
+			\item Project Goal Development Process
+			\item Project Initiation Process
+			\item Project Invoicing Process
+			\item Project Planning Process
+			\item Project Process
+			\item Project Risk Assessment Process
+			\item Project Sales Process
+			\item Project Taxation Process
+			\item Project Team Application Process
+			\item Project Team Making Process
+			\item Project Team Selection Process
+			\item Recruiting Process
+		\end{compactitem}
+	\end{compactitem}
+\end{multicols}
 \section{Classes \progressbar[filledcolor=green]{0.9}}
-%TODO: Kernstrukutur, weglassen labels -> siehe ontologie, 
+%TODO: Kernstrukutur, weglassen labels -> siehe ontologie,  disjunktheit
+This section contains all classes present in the \gls{owl} file. We use color 
+coding and indentation to give the section some structure. The indentation and 
+colors are helpers and indicate the \relation{subclassOf} relation. The box 
+header contains the \gls{iri}, stripped by the underscore used to bridge spaces. 
+The box body contains the \prop{rdfs:comment}, \prop{rdfs:seeAlso}, and 
+\prop{skos:example} of the class. If a class has multiple 
+\relation{skos:example}, we condense them into a list and label it 
+\relation{skos:examples}.
+
 \subsection{Agent}
 \begin{mdframed}[style=onto, frametitle={Agent}]
 	{% Begin box content
@@ -990,7 +1099,9 @@ The users of this ontology are the leadership of \glspl{sco} in Germany as well 
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:comment}@en: An organization.
-			\item \textbf{rdfs:seeAlso}: fibo:Organization, foaf:Organization, gist:Organization, \\ schema:Organization
+			\item \textbf{rdfs:seeAlso}: fibo:Organization, foaf:Organization, 
+			gist:Organization, \\ schema:Organization
+			\item \textbf{disjointWith}: Person
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1026,7 +1137,9 @@ The users of this ontology are the leadership of \glspl{sco} in Germany as well 
 	{% Begin box content
 		\begin{compactitem}
 			\item \textbf{rdfs:comment}@en: A person. A human being/homo sapiens.
-			\item \textbf{rdfs:seeAlso}: fibo:Person, foaf:Person, gist:Person, schema:Person
+			\item \textbf{rdfs:seeAlso}: fibo:Person, foaf:Person, gist:Person, 
+			schema:Person
+			\item \textbf{disjointWith}: Organization
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1043,7 +1156,12 @@ The users of this ontology are the leadership of \glspl{sco} in Germany as well 
 \begin{mdframed}[style=onto-3, frametitle={Trainee}]
 	{% Begin box content
 		\begin{compactitem}
-			\item \textbf{rdfs:comment}@en: The lowest rank within the career process of a student consulting organization. Does not yet have a formal membership (\eg is not allowed to vote in the membership assembly).
+			\item \textbf{rdfs:comment}@en: The lowest rank within the career 
+			process of a student consulting organization. Does not yet have a 
+			formal membership (\eg is not allowed to vote in the membership 
+			assembly).
+			\item \textbf{disjointWith}: Junior Consultant, Consultant, Senior 
+			Consultant, Alumna
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1051,7 +1169,13 @@ The users of this ontology are the leadership of \glspl{sco} in Germany as well 
 \begin{mdframed}[style=onto-3, frametitle={Junior Consultant}]
 	{% Begin box content
 		\begin{compactitem}
-			\item \textbf{rdfs:comment}@en: A rank within the career process of a student consulting organization. Represents the first rank that has a formal membership within the student consulting organization. Represents a low amount of experience within the organization and with project work.
+			\item \textbf{rdfs:comment}@en: A rank within the career process of 
+			a student consulting organization. Represents the first rank that has a 
+			formal membership within the student consulting organization. 
+			Represents a low amount of experience within the organization and 
+			with project work.
+			\item \textbf{disjointWith}: Trainee, Consultant, Senior Consultant, 
+			Alumna
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1059,9 +1183,11 @@ The users of this ontology are the leadership of \glspl{sco} in Germany as well 
 \begin{mdframed}[style=onto-3, frametitle={Consultant}]
 	{% Begin box content
 		\begin{compactitem}
-			\item \textbf{rdfs:comment}@en: A rank within the career process of a student consulting organization. Represents a medium amount of experience within the organization and with project work.
-			%\item \textbf{rdfs:seeAlso}:
-			%\item \textbf{skos:example}@en:
+			\item \textbf{rdfs:comment}@en: A rank within the career process of 
+			a student consulting organization. Represents a medium amount of 
+			experience within the organization and with project work.
+			\item \textbf{disjointWith}: Trainee, Junior Consultant, Senior 
+			Consultant, Alumna
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1069,9 +1195,11 @@ The users of this ontology are the leadership of \glspl{sco} in Germany as well 
 \begin{mdframed}[style=onto-3, frametitle={Senior Consultant}]
 	{% Begin box content
 		\begin{compactitem}
-			\item \textbf{rdfs:comment}@en: The highest rank within the career process of a student consulting organization. Represents a high amount of experience within the organization and with project work.
-			%\item \textbf{rdfs:seeAlso}:
-			%\item \textbf{skos:example}@en:
+			\item \textbf{rdfs:comment}@en: The highest rank within the career 
+			process of a student consulting organization. Represents a high 
+			amount of experience within the organization and with project work.
+			\item \textbf{disjointWith}: Trainee, Junior Consultant, Consultant, 
+			Alumna
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1466,6 +1594,27 @@ The users of this ontology are the leadership of \glspl{sco} in Germany as well 
 	} % End box content
 \end{mdframed}
 
+
+\section{Relations Overview}
+This section provides an overview by displaying all ontology classes as a tree. 
+We omit the root node \class{owl:topObjectProperty} and display the classes 
+by their \gls{iri} stripped by the underscore.
+\begin{compactitem}
+	\item has customer
+	\item has member
+	\item is member of
+	\item is played by
+	\item next process
+	\item next rank
+	\item plays role
+	\item previous process
+	\item previous rank
+	\item is defined by
+	\item is part of
+	\item is process part of
+	\item is signed by
+	\item signs contract
+\end{compactitem}
 \section{Relations \progressbar[filledcolor=green]{0.9}}
 \begin{mdframed}[style=onto, frametitle={has customer}]
 	{% Begin box content
