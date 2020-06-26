@@ -249,16 +249,17 @@
 \chapter{Introduction}
 \markright{Introduction}
 \section{Motivation \progressbar[filledcolor=green]{0.9}}
-\gls{sco}\footnote{Also known as \link{https://en.wikipedia.org/wiki/Junior_enterprise}{Junior Enterprises} in some parts of the world.} are student-run consulting businesses that focus on teaching their members essentials business and life skills exceeding the theoretical knowledge from university. They are very similar to small to medium consulting businesses, but are run and organized---most of the time exclusively---by students. And even though the concept is not universally known, this kind of organization exists worldwide and has a history dating back to at least 1967\footnote{The founding of \link{https://www.en.junioressec.com/}{Junior ESSEC} in France.}. Germany has two different umbrella organizations for \glspl{sco} with more than 60 member organizations.\footnote{\gls{bdsu}, \gls{jcn}}
+\glspl{sco}\footnote{Also known as 
+\link{https://en.wikipedia.org/wiki/Junior_enterprise}{Junior Enterprises} in some parts of the world.} are student-run consulting businesses that focus on teaching their members essentials business and life skills exceeding the theoretical knowledge from university. They are very similar to small to medium consulting businesses, but are run and organized---most of the time exclusively---by students. And even though the concept is not universally known, this kind of organization exists worldwide and has a history dating back to at least 1967\footnote{The founding of \link{https://www.en.junioressec.com/}{Junior ESSEC} in the context of the ESSEC Business School in France.}. Germany has two different umbrella organizations for \glspl{sco} with more than 60 member organizations.\footnote{\gls{bdsu}, \gls{jcn}}
 
-But as far as we know, there hasn't yet been any effort to collect and compose the existing domain knowledge of German \glspl{sco} in a publicly available and usable form. We consider this an important task, since it is a contribution to prevent knowledge loss that is inherent in the dynamics of these organizations: the majority of the staff are students and thus their consulting career is inherently linked to their university career:
+But as far as we know, there has not yet been any effort to collect and compose the existing domain knowledge of German \glspl{sco} in a publicly available and usable form. We consider this an important task, since it is a contribution to prevent knowledge loss that is inherent in the dynamics of these organizations: the majority of the staff are students and thus their consulting career is inherently linked to their university career:
 
 \begin{enumerate}
 	\item The career is time-bound to the duration of the education. A bachelor's degree in Germany averages 7,5-7,6 semesters and a master's degree 4,2-4,5 semesters, which adds up to a total of 11,7-12,1 semesters or ca. six years. \cite{stabu2019a} This frames the available time for the transfer of the domain knowledge.\footnote{There sometimes are also PhD students, but they can be considered outliers and are atypical.}
 	\item The career is parallel to the curriculum. From our experience, freshmen that decide to join student organizations typically do so at the beginning of their second or third semester, after they got acclimated with the workload of their university classes. Since students usually participate in parallel to their education---and the focus is typically on the education---, they have to manage their time accordingly, which reduces time spent with the \gls{sco}. Furthermore, students may have other (\eg personal) interests that compete with the same time budget.
 \end{enumerate}
 
-The reasons above reduce the available time for knowledge transfer and persistence and make these problems harder. Many \glspl{sco} have worked on and developed solutions to help with this problem. Some of them are informal, some formal in nature. For example: One particular organization we worked with, \gls{hc}, used process methodology to document a lot of their knowledge. Another one we worked with, \gls{ci}, was focusing on lectures and training sessions.
+The reasons above reduce the available time for knowledge transfer and persistence and make these problems harder. Many \glspl{sco} have worked on and developed solutions to help with this problem. Some of them are informal, some formal in nature. For example: One particular organization we worked with, \gls{hc}, used process methodology to document much their knowledge. Another one we worked with, \gls{ci}, focused on lectures and training sessions.
 
 However, the majority of available domain documents are highly individualized and miss the necessary level of abstraction to make them directly applicable to other \glspl{sco}. But even though every \gls{sco} is organized slightly differently than the next, uses different vocabulary and each has their individual culture, they all share the idea of teaching consulting and project work to their members. Since they aim for the same goal, they are very similar at their core.
 
@@ -267,7 +268,7 @@ Therefore we try to contribute a more general model in the form of an ontology t
 \section{Goal and Scope of the Work \progressbar[filledcolor=green]{0.9}}
 \label{goal}
 \paragraph{Goal}
-The goal of this work is the description of one abstract \gls{sco}. It extracts the available implicit expert knowledge, links it with related work, and transforms it into explicit  knowledge by using an ontology as its vehicle. It defines common classes and relations required to describe such an organization using domain vocabulary. Additionally it provides terminology explanations, background knowledge, and links into other ontologies where it is sensible.
+The goal of this work is the description of one abstract \gls{sco}. It extracts the available implicit expert knowledge, links it with related work, and transforms it into explicit  knowledge by presenting it as an ontology. It defines common classes and relations required to describe such an organization using domain vocabulary. Additionally it provides terminology explanations, background knowledge, and links into other ontologies where it is sensible.
 
 \paragraph{Deliverables}
 \begin{quote}
@@ -276,11 +277,11 @@ The goal of this work is the description of one abstract \gls{sco}. It extracts 
 
 The deliverable output of this work are two documents:
 \begin{enumerate}
-	\item This thesis as a documentation and explanation of the ontology development process including but not limited to: methodology, background information, decisions in regards to the ontology, etc.
-	\item The ontology document as a representation of the domain knowledge.
+	\item This thesis as a documentation and explanation of the ontology development process including but not limited to: methodology, background information, decisions in regarding the ontology, etc.
+	\item The ontology document as a representation of the domain knowledge in the \gls{owl}.
 \end{enumerate}
 
-Both documents will be publicly hosted and freely available to any interested parties, such as the umbrella organizations, \glspl{sco}, or students.
+Both documents will be publicly hosted and freely available to any interested parties, such as umbrella organizations, \glspl{sco}, or students.
 %TODO: Host the document publicly
 
 \paragraph{Out of Scope}
@@ -314,11 +315,11 @@ Ontologies have many applications in various fields. They are used in artificial
 	\enquote{\textbf{Knowledge Representation} is the field of Artificial Intelligence that focuses on the design of formalisms that are both epistemologically and computationally adequate for expressing knowledge about a particular domain.} \cite[p.\,XV, Preface]{baader2017introduction}
 \end{quote}
 
-This work is concerned with the knowledge representation of one particular domain: \glspl{sco}. The following section describes how we approach the development of this particular ontology, define the necessary vocabulary and relations between the terms, and structurally explore the domain.
+This work is concerned with the knowledge representation of one particular domain: \glspl{sco}. The following section describes how we approach the development of this particular ontology, define the necessary vocabulary and relations between the terms, and explore the domain structurally.
 
 \section{Methodology for the Development of the Ontology \progressbar[filledcolor=green]{0.9}}
 \label{methodology}
-The primary goal of this work (see \autoref{goal}) is the creation of a particular domain ontology. Our language of choice for this task is the \gls{owl}. It is an ontology language developed by the consensus-driven and well respected \gls{w3c}. \cite[p.\,206]{baader2017introduction} It is widely used and offers very good tooling in the ontology editor \link{https://protege.stanford.edu}{\pn{Protégé}}. It is built and maintained by ontology researchers of \pn{Stanford University}. \cite{musen2015protege} Furthermore the research group provides an ontology development methodology \cite{guide-to-ontology}, that we can build upon. It involves the following steps:
+The primary goal of this work (see \autoref{goal}) is the creation of a particular domain ontology. Our language of choice for this task is \gls{owl}. It is an ontology language developed by the consensus-driven and well respected \gls{w3c}. \cite[p.\,206]{baader2017introduction} It is widely used and offers very good tooling in the ontology editor \link{https://protege.stanford.edu}{\pn{Protégé}}, which is built and maintained by ontology researchers of \pn{Stanford University}. \cite{musen2015protege} Furthermore the research group provides an ontology development methodology \cite{guide-to-ontology} that we can build upon. It involves the following steps:
 \begin{compactenum}[(1)]
 	\item Determine the domain and scope of the ontology,
 	\item consider reusing existing ontologies,
@@ -375,7 +376,7 @@ Defining the scope of the ontology is the formal step that concludes the \textit
 
 \subsection{Analysis and Synthesis Phase}
 \label{analysis}
-The majority of this work happens during the Analysis and Synthesis Phase. Its goal is the review, interpretation, and structuring of the collected data; ultimately generating an ontology in the target format \gls{owl}.
+The majority of this work happened during the Analysis and Synthesis Phase. Its goal is the review, interpretation, and structuring of the collected data; ultimately generating an ontology in the target format \gls{owl}.
 
 Based on the Protégé-methodology, the first two steps of this phase are: (3) the creation of an enumeration of terms that are relevant for the domain. And (4) the translation of the terms into the backbone of every ontology: the class hierarchy. Both are rooted in the results of the previous phase and further supplemented by expert knowledge.
 
@@ -393,7 +394,7 @@ Depending on the ambiguity and complexity of concepts, natural language can quic
 
 \subsection{Vocabulary}
 \label{vocabulary}
-Commonly, the term \textit{vocabulary} is used to describe the collection of all words one specific person knows. But this already implies that one person's vocabulary can be different to someone else's. Furthermore, the word vocabulary itself is also overloaded, as the dictionary definition (see appendix \ref{dictionary}) shows. Depending on context the described collection changes. \cite{mw-dictionary}
+Commonly, the term \textit{vocabulary} is used to describe the collection of all words one specific person knows. But this already implies that one person's vocabulary can be different from someone else's. Furthermore, the word vocabulary itself is also overloaded, as the dictionary definition (see appendix \ref{dictionary}) shows. Depending on context the described collection changes. \cite{mw-dictionary}
 
 In the context of ontologies it is used interchangeably with \textit{alphabet} and \textit{signature}. On an abstract level it simply describes a set of symbols. \cite[p.\,46]{loebe2015ontological} Transferred to this work, it is the collection term for all classes (see \ref{classes}) and object property names (see \ref{relations}), which are mainly words from the English language in conjunction with the underscore as delimitation symbol. The word choices draw inspiration or are translated from the \gls{hc} process documentation and our experience with different \glspl{sco}, as well as the business world. Some of these words are not special to the domain: \textbf{Organization}, for example, is not only used in many different related ontologies, but also very common in natural language.
 
@@ -449,7 +450,7 @@ To express relationships within the knowledge area, we use object properties. Th
 
 There are different ways of structuring object properties. The one end of the spectrum holds generalized relations, like \relation{hasA} or \relation{isPartOf}. This type of relationship can be applied to many different classes, because the semantics lies in the connection between the classes, instead of the relation itself. This type of generalized relation can be applied in different contexts. The \relation{isPartOf} relation, for example, can be used in different ways: A \class{Wheel} \relation{isPartOf} a \class{Car}; but also: A \class{House} \relation{isPartOf} a \class{Neighbourhood}.
 
-On the other end of the spectrum are highly specific relations that carry a lot of meaning by themselves and thus can not be applied to other contexts easily. For example: A \class{Person} \relation{isMemberOfTheMajorityCounil} \class{Member\_Council}.
+On the other end of the spectrum are highly specific relations that carry a lot of meaning by themselves and thus cannot be applied to other contexts easily. For example: A \class{Person} \relation{isMemberOfTheMajorityCounil} \class{Member\_Council}.
 
 As with many aspects of ontology development, it is important to strike the right balance and achieve the correct level of abstraction. In this work, we use a bottom-up approach. We start with specific relations and generalize them, if that is possible.
 
@@ -594,9 +595,7 @@ Another way is to start with the implied context and add explanations, comments,
 We are using the latter approach and try to avoid additional ambiguity by discussing the relevant contexts explicitly as part of this work, as well as add explanation texts to the ontology. Furthermore we try to lean on common understand of terms as much as possible, by creating links to well-known ontologies like \gls{foaf}.
 
 \section{Social Constructs \progressbar[filledcolor=green]{0.9}}
- This section deals with the model for human beings.
- \eg as a \gls{sco} member or -non-member, as part of a project, as a customer, etc.
- Aggregation of these actors can occur in different degrees of formalization, \eg informal meeting of \gls{sco} members as friends, a project team meeting, an official meeting of the member council, etc. 
+This section deals with the model for human beings. \Eg as a \gls{sco} member or -non-member, as part of a project, as a customer, etc. Aggregation of these actors can occur in different degrees of formalization, \eg informal meeting of \gls{sco} members as friends, a project team meeting, an official meeting of the member council, etc. 
 
 Since this is not a domain specific phenomenon, it is sensible to consider how existing and related ontologies (see \autoref{related-work}) represent these cases.
 
@@ -717,8 +716,7 @@ As shown above, the classes \class{Agent}, \class{Person}, \class{Organization},
 
 After deciding on these basic building blocks, they can be extended according to the additional domain specifications. For example, a \class{Person} might need further differentiation based on \gls{sco} membership status, on business rank for internal organization and career progress, or on organizational roles. But there are other concepts that can involve a \class{Person}---\eg \textit{being a customer} of the \gls{sco}---that could just as easily involve an \class{Organization}. This observation points to the requirement of a more general approach for modeling these cases: Roles.
 
-As already shown by \textit{Loebe}, the concepts and ideas about roles have been heavily discussed in the ontology community and literature. \cite[p.\,130~1.2]{loebe2007abstract} The role concept is not trivial, very fundamental, and using it as part of an ontology allows for a flexible and powerful model.
-Since there is no clear agreement on a particular role concept, we are adopting the approach from \textit{Loebe} (2007) and its basic role model. It is very general and can be applied in various ways: It can be used in the intuitive way regarding social roles, \eg thinking about a human being playing the role of a patient and another the role of a doctor. But it is also possible to think about numbers and relationship between them in the form of abstract roles. \cite[p.\,131--133]{loebe2007abstract}
+As already shown by \textit{Loebe}, the concepts and ideas about roles have been heavily discussed in the ontology community and literature. \cite[p.\,130~1.2]{loebe2007abstract} The role concept is not trivial, very fundamental, and using it as part of an ontology allows for a flexible and powerful model. Since there is no clear agreement on a particular role concept, we are adopting the approach from \textit{Loebe} (2007) and its basic role model. It is very general and can be applied in various ways: It can be used in the intuitive way regarding social roles, \eg thinking about a human being playing the role of a patient and another the role of a doctor. But it is also possible to think about numbers and relationship between them in the form of abstract roles. \cite[p.\,131--133]{loebe2007abstract}
 
 The strength of the role concept is its flexibility. A player can play multiple roles at the same time and each role can be associated with a different context. An example for this is the CEO role. It has defined responsibilities and playing the role means a requirement to fulfill certain tasks. With \glspl{sco} typically any \class{Member} that holds a certain rank---in our ontology this means any \class{Member} with rank \class{Junior Consultant} or above---can become CEO by being elected. When elected, the \class{Member} plays two roles in the \gls{oc}. Additionally, the same \class{Member} could work on a project as \class{Project Leader}, a role from the \gls{pc}.
 
@@ -728,17 +726,20 @@ Since \glspl{sco} are a social construct and are defined by the people of the or
 
 \paragraph{Membership}
 \label{membership}
-Within the \gls{oc} (see \autoref{context}), the most basic property is membership: Either being part of the organization and thus being a \class{Member} or not participating and being a \class{Non-Member}. \class{Members} of the \gls{sco} can play different roles in the \gls{oc}. \class{Non-Members} do not play roles within the organization, but can play external roles such as the role of a \class{Project\_Customer}. The distinction is important for this ontology, since the status is typically used in the internal organizational procedures. For example: Someone might be required to be a proper member to be allowed to vote in the Member Assembly, to be part of a project, or to become part of the Executive Board.
+Within the \gls{oc} (see \autoref{context}), the most basic property is membership: Either being part of the organization and thus being a \class{Member} or not participating and being a \class{Non-Member}. \class{Members} of the \gls{sco} can play different roles in the \gls{oc}. \class{Non-Members} do not play roles within the organization, but can play external roles such as the role of a \class{Project\_Customer}. The distinction is important for this ontology, since the membership status is typically used in the internal organizational procedures. For example: Someone might be required to be a proper member to be allowed to vote in the Member Assembly, to be part of a project, or to become part of the Executive Board.
 
 It is important to note that within \glspl{sco} the \class{Member} role can only be played by human beings. For this model this means a restriction to \class{Person}. The members are the defining group that fills all the organizational functions, works on the projects, and participates in the majority of processes. Even though membership does not have to be limited like this in general---there are many examples where organizations are members of other organizations---it is limited in this domain. Since \class{Member} are necessarily \textbf{always} human beings, we introduce the role as \relation{subclassOf} \class{Person}.
 
-The \class{Non-Member} role, however, is not limited to only \class{Person}. In fact, everything and everyone that is not a \class{Member} is by definition a \class{Non-Member}. Therefore it is sufficient to model the class \class{Member} and omit \class{Non-Member}.
+%TODO: Text sagt member role, Person ist subclassOf Agent -> Paralleles 
+%Konzept
+
+The \class{Non-Member} role, however, is not limited to only \class{Person}. In fact, everything and everyone that is not a \class{Member} is by definition a \class{Non-Member}. Furthermore, \gls{owl} supports negation in case it would be necessary to express non-membership. Therefore it is sufficient to model the class \class{Member} and omit \class{Non-Member}.
 
 \paragraph{Business Ranks}
 \label{ranks}
 The second property a \class{Person} can have in the \gls{oc} is the business rank. Examples from the business world are: Associate, Senior Associate, Consultant, Partner, etc. Similar to regular businesses, \glspl{sco} also organize these ranks around their career process: A person receives the lowest available rank at the begin of their career. During the time with the organization a person is awarded higher ranks based on some organizational system (\eg a merit-based system), until the highest rank is reached or the person leaves the organization.
 
-There might exist a duration, where someone participates in the activities of an \gls{sco} and is member-like, but not yet a formal member. This formality represents the legal rights (\eg voting in the member assembly) that often come with formally joining an organization. This duration might happen at the beginning of a career. Since we are not modeling duration, we use ranks to encode this concept by declaration.
+There might exist a duration, where someone participates in the activities of an \gls{sco} and is member-like, but not yet or not anymore a formal member. This formality represents the legal rights (\eg voting in the member assembly) that often come with formally joining an organization. This duration typically happens at the beginning and end of a career. Since we are not modeling duration, we use ranks to encode this concept by declaration and link the starting rank---\class{Trainee}---to being explicitly member-like, but not yet formally a member.
 
 The exact terms for the ranks, their meaning, gradation, and organizational implications are highly specific to the \gls{sco} instance. We therefore introduce a rough and extensible skeleton representation:
 \begin{enumerate}
@@ -748,17 +749,20 @@ The exact terms for the ranks, their meaning, gradation, and organizational impl
 	\item \class{Senior Consultant}: The ultimate rank of the organization that can be reached after gathering a substantial amount of knowledge, experience, and organizational social status.
 \end{enumerate}
 
-\class{Ranks} can only be attained by \class{Members} and therefore both are directly related. Since a \class{Member} can only hold exactly one \class{Rank} and the \class{Rank} further specifies the \class{Member} in the \gls{oc}, we introduce the ranks as \relation{subclassOf} \class{Member}. This is similar to the \gls{schema} approach that sub-classes \class{Organization} to be more specific about the type of organization: We are sub-classing \class{Member} to be more specific about it.
+Like the membership itself, \class{Ranks} can only be attained by 
+\class{Persons}. Furthermore the membership and business ranks are closelsy 
+linked.
+
+Since a \class{Member} can only hold exactly one \class{Rank} and the  \class{Rank} further specifies the \class{Member} in the \gls{oc}, we introduce the ranks as \relation{subclassOf} \class{Member}. This is similar to the \gls{schema} approach that sub-classes \class{Organization} to be more specific about the type of organization: We are sub-classing \class{Member} to be more specific about it.
 
 \paragraph{Corporate Officers}
-The complete set of tasks and responsibilities for the organization's day-to-day leadership is associated with the group of people referred to as \glspl{co}. This set is typically divided into sub-sets and each sub-set is associated with a different role, to organize the work loads; each role is played by a different person. For example: An organization may have the roles \gls{ceo}, \gls{coo}, and \gls{cfo} and each is played by a different individual.
+The complete set of tasks and responsibilities for the organization's day-to-day leadership is associated with the group of people referred to as \glspl{co}. This set can be divided into sub-sets and each sub-set can be associated with a different role, to organize the work loads. Note: We do not introduce any concrete tasks these roles have to fulfill.
 
-The exact set of tasks differs from \gls{sco} to \gls{sco} and is also dependent on the organizational form, \eg an \gls{sco} using the form of a registered association has different (legal) obligations than a \gls{sco} organized as university group. Completely specifying it is  impossible on the level of abstraction that this ontology operates on. In the same vein, it is impossible to define which tasks are attributed to which role, since every \gls{sco} organizes itself differently. Therefore we fall back on an extensible model and introduce the general class \class{Coporoate\_Officer} as \relation{subclassOf} \class{Organizational\_Role}. To play a leadership role, it is required to be a formal \class{Member} of the \gls{sco}. Hence: \class{Coporoate\_Officer} \relation{isPlayedBy} only
-(\class{Junior\_Consultant} or \class{Consultant} or \class{Senior\_Consultant}).
+Each role is typically played by a different person. However, these roles \textit{can} be played by the $\underline{same}$ \class{Person}. For example: An organization may have the roles \gls{ceo}, \gls{coo}, and \gls{cfo} and each is played by a different individual. Another may only have a \gls{ceo} that is also responsible for the financial and legal affairs.
+
+The exact set of tasks differs from \gls{sco} to \gls{sco} and is also dependent on the organizational form, \eg an \gls{sco} using the form of a registered association has different (legal) obligations than a \gls{sco} organized as university group. Completely specifying it is  impossible on the level of abstraction that this ontology operates on. In the same vein, it is impossible to define which tasks are attributed to which role, since every \gls{sco} organizes itself differently. Therefore we fall back on an extensible model and introduce the general class \class{Coporoate\_Officer} as \relation{subclassOf} \class{Organizational\_Role}. To play a leadership role, it is required to be a formal \class{Member} of the \gls{sco}. Hence: \class{Coporoate\_Officer} \relation{isPlayedBy} only (\class{Junior\_Consultant} or \class{Consultant} or \class{Senior\_Consultant}).
 
 There exist some common roles, that arise from the necessities of an \gls{sco}: There is typically a person that is formally responsible for the organization, a person that takes care of the finances, and a person that takes care of legal aspects of the project work. We differentiate between these three branches explicitly and introduce dedicated roles for each: \class{Chief\_Executive\_Officer}, \class{Chief\_Financial\_Officer}, and \class{Chief\_Legal\_Officer}.
-
-It is important to note that these roles can all be played by the $\underline{same}$ \class{Person}. And: That we do not introduce any concrete tasks these roles have to fulfill.
 
 \paragraph{Alumni, Advisor, and Patron}
 In the duality of membership---\class{Member} vs. \class{Non-Member}---exist some roles where an assignment to either group is not clear cut when projecting on the real world: Alumni, advisors and patrons. All of these roles can be played by \class{Members}, \class{Non-Members} or a \class{Group} of both. The role attribution depends on the internal organization of the particular \gls{sco}. Furthermore each of the roles have their own restrictions.
@@ -779,8 +783,7 @@ As discussed in \autoref{context}, we look at projects as black boxes. We focus 
 \paragraph{Project Team}
 A project team in its most basic form consists of team members that are lead by a team leader. The project team leader is typically a more experienced member of the organization, to ensure the knowledge transfer and successful operation of the project, whereas the team members are recruited from the general member pool.
 
-We model \class{Project\_Team\_Member} and \class{Project\_Team\_Leader} as \relation{subclassOf} \class{Project\_Role}. To indicate that these roles are only played by members of the organization, both are \relation{playedBy only}
-\class{Alumna} or \class{Consultant} or \class{Junior\_Consultant} or \class{Senior\_Consultant}. Additionally the \relation{isPlayedBy} relation of the role \class{Project\_Team\_Member} is extended with \relation{or} \class{Trainee}, to account for the fact that trainees in a \gls{sco} can not become the \class{Project\_Team\_Leader}. By using \class{Trainee} our model binds the cut-off point for the leadership role to the formal membership (see \ref{ranks}).
+We model \class{Project\_Team\_Member} and \class{Project\_Team\_Leader} as \relation{subclassOf} \class{Project\_Role}. To indicate that these roles are only played by members of the organization, both are \relation{playedBy only} \class{Alumna} or \class{Consultant} or \class{Junior\_Consultant} or \class{Senior\_Consultant}. Additionally the \relation{isPlayedBy} relation of the role \class{Project\_Team\_Member} is extended with \relation{or} \class{Trainee}, to account for the fact that trainees in a \gls{sco} cannot become the \class{Project\_Team\_Leader}. By using \class{Trainee} our model binds the cut-off point for the leadership role to the formal membership (see \ref{ranks}).
 
 The \class{Project\_Team} itself is not a role. However, it is a relevant entity of the ontology. It is a collection of certain \class{Members} of the \gls{sco}, that each either play the role of a team member or a leader. We model it as \relation{subclassOf} \class{Group}. This also gives it the ability to act as an \class{Agent}: It \relation{participatesIn} a \class{Project} and \relation{signsContract} the \class{Project\_Contract}.
 
@@ -885,7 +888,7 @@ As stated in the introduction of this section (see \ref{processes}), the goal is
 
 Therefore it is necessary to identify the relevant processes and select their correct level of abstraction individually. This also includes a cut-off point for the level of details.  On the one hand, each process class should convey enough information to understand its purpose. On the other, it should not be overloaded. This approach helps to ensure that the ontology user is able to understand the process system of the domain as a whole.
 
-For example: German law requires every company---and therefore also every \gls{sco} that does paid project work---to pay taxes on their earnings. Depending on the way projects are handled, this influences the process that is concerned with taxation. It is commonly known, that the German taxation system is daunting and hard to understand for a layperson and including the complete taxation process required by law is out of scope of the domain model. However, interacting with the tax authorities and filing the correct paper work is an important part of the learning experience for student consultants. It is therefore also important for the ontology. However, each \gls{sco} handles this differently, so it can not be modeled generally. In this case, the selected cut-off point is very high-level: The process is condensed into the class \textit{Project Taxation Process} as part of the \textit{Project Process}. This makes it clear that an \gls{sco} has to deal with the project taxation, but does not prescribe how to do it.
+For example: German law requires every company---and therefore also every \gls{sco} that does paid project work---to pay taxes on their earnings. Depending on the way projects are handled, this influences the process that is concerned with taxation. It is commonly known, that the German taxation system is daunting and hard to understand for a layperson and including the complete taxation process required by law is out of scope of the domain model. However, interacting with the tax authorities and filing the correct paper work is an important part of the learning experience for student consultants. It is therefore also important for the ontology. However, each \gls{sco} handles this differently, so it cannot be modeled generally. In this case, the selected cut-off point is very high-level: The process is condensed into the class \textit{Project Taxation Process} as part of the \textit{Project Process}. This makes it clear that an \gls{sco} has to deal with the project taxation, but does not prescribe how to do it.
 
 To select the relevant processes, we use a top-down approach based on expert knowledge and the \gls{hc} process documentation \cite{hc-prozesshandbuch}. The cut-off point is selected for every individual process in the ontology.
 
@@ -937,13 +940,11 @@ The ontology serves as an abstract description of the \gls{sco} domain. It defin
 The users of this ontology are the leadership of \glspl{sco} in Germany as well as the leadership of the \gls{sco} umbrella organizations. The release version coincides with the finalization and grading of this work. If the ontology sees use by the target group, it will be maintained by the authors. Access will be publicly provided on a GitHub repository. It is considered a living document, hence not necessarily complete until otherwise stated. Contributions and forks will be possible via the GitHub interface.
 
 \section{Classes Overview}
-This section provides an overview by displaying all ontology classes as a tree. 
-We omit the root node \class{owl:Thing} and display the classes by their 
-\gls{iri} stripped by the underscore.
+This section provides an overview by displaying all ontology classes as a tree. We omit the root node \class{owl:Thing} and display the classes by their \gls{iri} stripped by the underscore.
 
 \begin{multicols}{2}
 	\begin{compactitem}
-		\item Agent
+		\item \textbf{Agent}
 		\begin{compactitem}
 			\item Group
 			\begin{compactitem}
@@ -968,19 +969,19 @@ We omit the root node \class{owl:Thing} and display the classes by their
 				\end{compactitem}
 			\end{compactitem}
 		\end{compactitem}
-		\item Document
+		\item \textbf{Document}
 		\begin{compactitem}
 			\item Contract
 			\begin{compactitem}
 				\item Project Contract
 			\end{compactitem}
 		\end{compactitem}
-		\item Project
+		\item \textbf{Project}
 		\begin{compactitem}
 			\item External Project
 			\item Internal Project
 		\end{compactitem}
-		\item Role
+		\item \textbf{Role}
 		\begin{compactitem}
 			\item Organizational Role
 			\begin{compactitem}
@@ -998,7 +999,7 @@ We omit the root node \class{owl:Thing} and display the classes by their
 					\item Ideological Patron
 				\end{compactitem}
 			\end{compactitem}
-			\item project role
+			\item Project Role
 			\begin{compactitem}
 				\item Project Controlling
 				\item Project Customer
@@ -1007,7 +1008,7 @@ We omit the root node \class{owl:Thing} and display the classes by their
 			\end{compactitem}
 		\end{compactitem}
 		\columnbreak
-		\item Process
+		\item \textbf{Process}
 		\begin{compactitem}
 			\item Advertising Process
 			\item Career Process
@@ -1038,14 +1039,7 @@ We omit the root node \class{owl:Thing} and display the classes by their
 \end{multicols}
 \section{Classes \progressbar[filledcolor=green]{0.9}}
 %TODO: Kernstrukutur, weglassen labels -> siehe ontologie,  disjunktheit
-This section contains all classes present in the \gls{owl} file. We use color 
-coding and indentation to give the section some structure. The indentation and 
-colors are helpers and indicate the \relation{subclassOf} relation. The box 
-header contains the \gls{iri}, stripped by the underscore used to bridge spaces. 
-The box body contains the \prop{rdfs:comment}, \prop{rdfs:seeAlso}, and 
-\prop{skos:example} of the class. If a class has multiple 
-\relation{skos:example}, we condense them into a list and label it 
-\relation{skos:examples}.
+This section contains all classes present in the \gls{owl} file. We use color coding and indentation to give the section some structure. The indentation and colors are helpers and indicate the \relation{subclassOf} relation. The box header contains the \gls{iri}, stripped by the underscore used to bridge spaces. The box body contains the \prop{rdfs:comment}, \prop{rdfs:seeAlso}, and \prop{skos:example} of the class. If a class has multiple \relation{skos:example}, we condense them into a list and label it \relation{skos:examples}.
 
 \subsection{Agent}
 \begin{mdframed}[style=onto, frametitle={Agent}]
@@ -1596,9 +1590,8 @@ The box body contains the \prop{rdfs:comment}, \prop{rdfs:seeAlso}, and
 
 
 \section{Relations Overview}
-This section provides an overview by displaying all ontology classes as a tree. 
-We omit the root node \class{owl:topObjectProperty} and display the classes 
-by their \gls{iri} stripped by the underscore.
+This section provides an overview by displaying all ontology classes as a tree. We omit the root node \class{owl:topObjectProperty} and display the classes by their \gls{iri} stripped by the underscore.
+
 \begin{compactitem}
 	\item has customer
 	\item has member
@@ -1615,6 +1608,7 @@ by their \gls{iri} stripped by the underscore.
 	\item is signed by
 	\item signs contract
 \end{compactitem}
+
 \section{Relations \progressbar[filledcolor=green]{0.9}}
 \begin{mdframed}[style=onto, frametitle={has customer}]
 	{% Begin box content
@@ -1864,7 +1858,6 @@ During our work we identified the following aspects that can be considered for s
 	\item The two contexts described in this work (\gls{pc} and \gls{oc}) are the most important ones within this domain. However, it is possible to drill down further and map out more detailed context spaces. For example: Considering the vast amount of available project concepts, it might be reasonable to identify a simple representation and adapt it for the domain. Since projects are such an important aspect of \glspl{sco}, offering a generalized project model as a high-level overview and blueprint could be useful for the use cases described in the introduction.
 	\item This work focuses on a high level view of the core processes to keep the core of the ontology small and focused. The next version could integrate a more general model for supporting processes. These processes, for example an IT or legal support process, might be deeply intertwined with the core processes and it would be necessary to model them in this highly connected manner. This would probably require a deeper understanding about the connection between the core and support processes as well as a maybe a remodel, since this work reduces the ordering of the processes to a relatively simple relation (\relation{next\_process}) that might not be sufficient when integrating support processes.
 \end{enumerate}
- 
 
 \appendix
 \chapter{Appendix  \progressbar[filledcolor=green]{0.9}}
@@ -1984,7 +1977,6 @@ During our work we identified the following aspects that can be considered for s
 		\end{compactenum}
 	}
 \end{mdframed}
-\newpage
 
 \section{Ontology Import Links}
 This work lists different ontologies in the related work section. To import them into the Protégé editor, the following links can be used:
@@ -2004,6 +1996,8 @@ This work lists different ontologies in the related work section. To import them
 This work was conducted using the Protégé resource, which is supported by grant GM10331601 from the National Institute of General Medical Sciences of the United States National Institutes of Health.
 
 \clearpage
-\printnoidxglossaries
+\begin{multicols}{2}
+	\printnoidxglossaries
+\end{multicols}
 
 \end{document}
