@@ -457,7 +457,6 @@
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Person"/>
         <rdfs:comment xml:lang="en">A document. Complex class. Conflates both, the physical object as well as the abstract information.</rdfs:comment>
         <rdfs:label xml:lang="de">Dokument</rdfs:label>
         <rdfs:label xml:lang="en">document</rdfs:label>
@@ -646,7 +645,7 @@
                 <owl:allValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Trainee"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">A rank within the career process of a student consulting organization. Represents the first rank that has a formal membership within the student consulting organization. Represents a low amount of experience within the organization and with project work.</rdfs:comment>
+        <rdfs:comment xml:lang="en">A rank within the career process of a student consulting organization. Represents the first rank that has a full membership within the student consulting organization. Represents a low amount of experience within the organization and with project work.</rdfs:comment>
         <rdfs:label xml:lang="de">Junior Berater</rdfs:label>
         <rdfs:label xml:lang="en">junior consultant</rdfs:label>
     </owl:Class>
@@ -1390,7 +1389,7 @@
                 <owl:allValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Junior_Consultant"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">The lowest rank within the career process of a student consulting organization. Does not yet have a formal membership (e.g. is not allowed to vote in the membership assembly).</rdfs:comment>
+        <rdfs:comment xml:lang="en">The lowest rank within the career process of a student consulting organization. Does not yet have a full membership (e.g. is not allowed to vote in the membership assembly).</rdfs:comment>
         <rdfs:label xml:lang="de">Trainee</rdfs:label>
         <rdfs:label xml:lang="en">trainee</rdfs:label>
     </owl:Class>
