@@ -527,6 +527,9 @@ The classic example for inherent polysemy is the book. It can be viewed from two
 
 Even though it's \textit{possible} to decompose these objects, it's not \textit{necessary}. The usefulness of such a decomposition depends on the use case. In our case, with the focus on simplicity, it is enough to describe most classes on a high level, since the exact design is up to the user. \textit{Arapinis} argues in \cite{arapinis2015plea} to allow the use of complex classes to avoid introducing incoherence and inconsistency.
 
+\paragraph{Fourth: Model a Specific Snapshot}
+%TODO: Jmd könnte zum Zeitpuntk T trainee sein und dann t+1 Alumna. Das wird nicht modelliert.
+
 \chapter[Ontological Aspects in the SCO Domain \\\textcolor{gray}{
 	{\footnotesize \textsl{Discusses the three major concepts and their implementation in the context of related work.}}
 }]{Ontological Aspects in the SCO Domain}
@@ -600,7 +603,7 @@ This section deals with the model for human beings. \Eg as a \gls{sco} member or
 Since this is not a domain specific phenomenon, it is sensible to consider how existing and related ontologies (see \autoref{related-work}) represent these cases.
 
 \subsection{General Implementation}
-\label{human-beings-in-other-ontologies}
+\label{general-implementation}
 Starting with the general model of human beings, \gls{foaf} is a very common choice when thinking about representing social structures. It is a well established ontology and referenced multiple times as backbone for social concepts. Its implementation and description are relatively basic: The anchor is the top-level class \class{foaf:Agent}\foottt{foaf:Agent rdfs:comment: \enquote{An agent (eg. person, group, software or physical artifact).}}, which is referred to as the class of \enquote{things that do stuff} \cite[http://xmlns.com/foaf/spec/\#term\_Agent]{Dan-Brickley2014FOAF-Vocabulary}. It is connected to the name space of the \gls{dcmt} via \relation{equivalentTo} \relation{dcterms:Agent}. It is sub-classed by
 %
 \class{foaf:Group}%
@@ -726,41 +729,38 @@ Since \glspl{sco} are a social construct and are defined by the people of the or
 
 \paragraph{Membership}
 \label{membership}
-Within the \gls{oc} (see \autoref{context}), the most basic property is membership: Either being part of the organization and thus being a \class{Member} or not participating and being a \class{Non-Member}. \class{Members} of the \gls{sco} can play different roles in the \gls{oc}. \class{Non-Members} do not play roles within the organization, but can play external roles such as the role of a \class{Project\_Customer}. The distinction is important for this ontology, since the membership status is typically used in the internal organizational procedures. For example: Someone might be required to be a proper member to be allowed to vote in the Member Assembly, to be part of a project, or to become part of the Executive Board.
+Within the \gls{oc} (see \autoref{context}), the most basic property is membership: Either being part of the organization and thus being a \class{Member} or not participating and being a \class{Non-Member}. \class{Members} of the \gls{sco} can play different roles in the \gls{oc}. \class{Non-Members} do not play roles within the organization, but can play external roles such as the role of a \class{Project\_Customer}. The membership status is typically used in the internal organizational procedures. For example: Someone might be required to be a full member to be allowed to vote in the Member Assembly, to be part of a project, or to become part of the Executive Board.
 
 It is important to note that within \glspl{sco} the \class{Member} role can only be played by human beings. For this model this means a restriction to \class{Person}. The members are the defining group that fills all the organizational functions, works on the projects, and participates in the majority of processes. Even though membership does not have to be limited like this in general---there are many examples where organizations are members of other organizations---it is limited in this domain. Since \class{Member} are necessarily \textbf{always} human beings, we introduce the role as \relation{subclassOf} \class{Person}.
 
-%TODO: Text sagt member role, Person ist subclassOf Agent -> Paralleles 
-%Konzept
+%TODO: Text sagt member role, Person ist subclassOf Agent -> Paralleles Konzept
 
 The \class{Non-Member} role, however, is not limited to only \class{Person}. In fact, everything and everyone that is not a \class{Member} is by definition a \class{Non-Member}. Furthermore, \gls{owl} supports negation in case it would be necessary to express non-membership. Therefore it is sufficient to model the class \class{Member} and omit \class{Non-Member}.
 
 \paragraph{Business Ranks}
 \label{ranks}
-The second property a \class{Person} can have in the \gls{oc} is the business rank. Examples from the business world are: Associate, Senior Associate, Consultant, Partner, etc. Similar to regular businesses, \glspl{sco} also organize these ranks around their career process: A person receives the lowest available rank at the begin of their career. During the time with the organization a person is awarded higher ranks based on some organizational system (\eg a merit-based system), until the highest rank is reached or the person leaves the organization.
+The second property a \class{Person} can have in the \gls{oc} is a business rank. Examples for ranks from the business world are: Associate, Senior Associate, Consultant, Partner, etc. Similar to regular businesses, \glspl{sco} also organize these ranks around their career process: A new member receives the lowest available rank at the begin of their career. During the time with the organization a person is awarded higher ranks based on some organizational system (\eg a merit-based system), until the highest rank is reached or the person leaves the organization.
 
-There might exist a duration, where someone participates in the activities of an \gls{sco} and is member-like, but not yet or not anymore a formal member. This formality represents the legal rights (\eg voting in the member assembly) that often come with formally joining an organization. This duration typically happens at the beginning and end of a career. Since we are not modeling duration, we use ranks to encode this concept by declaration and link the starting rank---\class{Trainee}---to being explicitly member-like, but not yet formally a member.
+As stated above, a \class{Rank} can only be attained by a \class{Person}, more specifically only a \class{Member}. Since a \class{Member} can only hold exactly one \class{Rank} and the \class{Rank} further specifies \class{Member} in the \gls{oc}, it is sensible to introduce the ranks as \relation{subclassOf} \class{Member} instead of a separate role. This is an approach also used in \gls{schema} (see \autoref{general-implementation}): A \class{schema:Airline} is \relation{subclassOf} a \class{schema:Organization}, since it is a specialized version of it.
+
+However, this approach leads to a conflict in one aspect encoded within the ranks: There might exist a duration at the beginning of a career, where someone participates in the activities of an \gls{sco} and operates like a member, but has not yet officially become a full member. Depending on the organization, this can mean different things. For example: Such a person might be allowed to work on projects and participate in events, but might not be allowed to vote in the member assembly. However, using \relation{subclassOf} \class{Member} states that a each of the ranks are, in fact, \class{Members}.
+
+Because we are not modeling time in the context of ranks and this concept is important, we have to encode it. Since the member-like nature of the first rank outweighs the usefulness of reorganizing the class hierarchy and the subsequent loss of simplicity, we implement this by declaration in the \prop{rdfs:comment}.
 
 The exact terms for the ranks, their meaning, gradation, and organizational implications are highly specific to the \gls{sco} instance. We therefore introduce a rough and extensible skeleton representation:
 \begin{enumerate}
-	\item \class{Trainee}: The entry level rank, without a formal membership.
-	\item \class{Junior Consultant}: The first rank after someone acquires an official, formal membership.
+	\item \class{Trainee}: The entry level rank, without a full membership.
+	\item \class{Junior Consultant}: The first rank after someone acquires an official, full membership.
 	\item \class{Consultant}: The rank that implies someone has reached the required amount of knowledge and experience to fulfill all organizational functions.
 	\item \class{Senior Consultant}: The ultimate rank of the organization that can be reached after gathering a substantial amount of knowledge, experience, and organizational social status.
 \end{enumerate}
 
-Like the membership itself, \class{Ranks} can only be attained by 
-\class{Persons}. Furthermore the membership and business ranks are closelsy 
-linked.
-
-Since a \class{Member} can only hold exactly one \class{Rank} and the  \class{Rank} further specifies the \class{Member} in the \gls{oc}, we introduce the ranks as \relation{subclassOf} \class{Member}. This is similar to the \gls{schema} approach that sub-classes \class{Organization} to be more specific about the type of organization: We are sub-classing \class{Member} to be more specific about it.
-
 \paragraph{Corporate Officers}
-The complete set of tasks and responsibilities for the organization's day-to-day leadership is associated with the group of people referred to as \glspl{co}. This set can be divided into sub-sets and each sub-set can be associated with a different role, to organize the work loads. Note: We do not introduce any concrete tasks these roles have to fulfill.
+The complete set of tasks and responsibilities for the organization's day-to-day leadership is associated with the group of people referred to as \glspl{co}. This set can be divided into sub-sets and each sub-set can be associated with a different role, to organize the work loads.
 
-Each role is typically played by a different person. However, these roles \textit{can} be played by the $\underline{same}$ \class{Person}. For example: An organization may have the roles \gls{ceo}, \gls{coo}, and \gls{cfo} and each is played by a different individual. Another may only have a \gls{ceo} that is also responsible for the financial and legal affairs.
+Each role is typically played by a different person. However, these roles \textit{can} be played by the same \class{Person}. For example: An organization may have the roles \gls{ceo}, \gls{coo}, and \gls{cfo} and each is played by a different individual. Another may only have a \gls{ceo} that is also responsible for the financial and legal affairs.
 
-The exact set of tasks differs from \gls{sco} to \gls{sco} and is also dependent on the organizational form, \eg an \gls{sco} using the form of a registered association has different (legal) obligations than a \gls{sco} organized as university group. Completely specifying it is  impossible on the level of abstraction that this ontology operates on. In the same vein, it is impossible to define which tasks are attributed to which role, since every \gls{sco} organizes itself differently. Therefore we fall back on an extensible model and introduce the general class \class{Coporoate\_Officer} as \relation{subclassOf} \class{Organizational\_Role}. To play a leadership role, it is required to be a formal \class{Member} of the \gls{sco}. Hence: \class{Coporoate\_Officer} \relation{isPlayedBy} only (\class{Junior\_Consultant} or \class{Consultant} or \class{Senior\_Consultant}).
+We do not introduce any concrete tasks these roles have to fulfill, since the exact set of tasks differs from \gls{sco} to \gls{sco} and is also dependent on the organizational form, \eg an \gls{sco} using the form of a registered association has different (legal) obligations than a \gls{sco} organized as university group. Completely specifying it is  impossible on the level of abstraction that this ontology operates on. In the same vein, it is impossible to define which tasks are attributed to which role, since every \gls{sco} organizes itself differently. Therefore we fall back on an extensible model and introduce the general class \class{Coporoate\_Officer} as \relation{subclassOf} \class{Organizational\_Role}. To play a leadership role, it is required to be a full \class{Member} of the \gls{sco}. Hence: \class{Coporoate\_Officer} \relation{isPlayedBy} only (\class{Junior\_Consultant} or \class{Consultant} or \class{Senior\_Consultant}).
 
 There exist some common roles, that arise from the necessities of an \gls{sco}: There is typically a person that is formally responsible for the organization, a person that takes care of the finances, and a person that takes care of legal aspects of the project work. We differentiate between these three branches explicitly and introduce dedicated roles for each: \class{Chief\_Executive\_Officer}, \class{Chief\_Financial\_Officer}, and \class{Chief\_Legal\_Officer}.
 
@@ -783,7 +783,7 @@ As discussed in \autoref{context}, we look at projects as black boxes. We focus 
 \paragraph{Project Team}
 A project team in its most basic form consists of team members that are lead by a team leader. The project team leader is typically a more experienced member of the organization, to ensure the knowledge transfer and successful operation of the project, whereas the team members are recruited from the general member pool.
 
-We model \class{Project\_Team\_Member} and \class{Project\_Team\_Leader} as \relation{subclassOf} \class{Project\_Role}. To indicate that these roles are only played by members of the organization, both are \relation{playedBy only} \class{Alumna} or \class{Consultant} or \class{Junior\_Consultant} or \class{Senior\_Consultant}. Additionally the \relation{isPlayedBy} relation of the role \class{Project\_Team\_Member} is extended with \relation{or} \class{Trainee}, to account for the fact that trainees in a \gls{sco} cannot become the \class{Project\_Team\_Leader}. By using \class{Trainee} our model binds the cut-off point for the leadership role to the formal membership (see \ref{ranks}).
+We model \class{Project\_Team\_Member} and \class{Project\_Team\_Leader} as \relation{subclassOf} \class{Project\_Role}. To indicate that these roles are only played by members of the organization, both are \relation{playedBy only} \class{Alumna} or \class{Consultant} or \class{Junior\_Consultant} or \class{Senior\_Consultant}. Additionally the \relation{isPlayedBy} relation of the role \class{Project\_Team\_Member} is extended with \relation{or} \class{Trainee}, to account for the fact that trainees in a \gls{sco} cannot become the \class{Project\_Team\_Leader}. By using \class{Trainee} our model binds the cut-off point for the leadership role to the full membership (see \ref{ranks}).
 
 The \class{Project\_Team} itself is not a role. However, it is a relevant entity of the ontology. It is a collection of certain \class{Members} of the \gls{sco}, that each either play the role of a team member or a leader. We model it as \relation{subclassOf} \class{Group}. This also gives it the ability to act as an \class{Agent}: It \relation{participatesIn} a \class{Project} and \relation{signsContract} the \class{Project\_Contract}.
 
@@ -797,20 +797,20 @@ The remaining party of a basic project is the \class{Project\_Customer}. It repr
 
 \section{Processes \progressbar[filledcolor=green]{0.9}}
 \label{processes}
-Processes are a helpful concept when describing organizations: They are created to achieve a goal and its processes are the steps needed to reach that goal. \cite[p.\,5, Definition 1.1]{Weske:2019aa} In theory, every organization can be decomposed to a sequence of single activities, which, when executed correctly and in the correct order, terminate in reaching the goal of the organization.
+Processes are a helpful concept when describing organizations: The latter are created to achieve a goal and its processes are the steps needed to reach that goal. \cite[p.\,5, Definition 1.1]{Weske:2019aa} In theory, every organization can be decomposed into a sequence of single activities, which, when executed correctly and in the correct order, terminate in reaching the goal of the organization.
 
-Since processes are a commonly used concept in the business world, it is not surprising, that many different methods and frameworks for modeling them have been developed. They often revolve around visual representations of all workflows that make up an organization. Combining process models with goals and measurements makes them a powerful tool for optimization and quality control. For example, ISO 9001 is an industry standard that uses a process approach as the foundation of measuring quality. \cite{iso-process-approach} Because process documentation contains a lot of data about organizations, it is also a valuable source for ontology development.
+Since processes are a commonly used concept in the business world, it is not surprising that many different methods and frameworks for modeling them have been developed. They often revolve around visual representations of all workflows that make up an organization. Combining process models with goals and measurements makes them a powerful tool for optimization and quality control. For example, ISO 9001 is an industry standard that uses a process approach as the foundation of measuring quality. \cite{iso-process-approach} Because process documentation contains a lot of data about organizations, it is also a valuable source for ontology development.
 
-Widely known representations and methods include: Flowcharts, \gls{bpmn}, \gls{epc}, \gls{uml} Activity Diagrams, and \gls{opm}\footnote{Standardized as ISO~19450.}. There are also contributions rooted in ontology research, such as the \gls{bpmn} ontology (an \gls{owl} ontology for the \gls{bpmn} notation) \cite{2014foisbpmn}, the \gls{psl}\footnote{Developed by the \gls{nist} and standardized as ISO~18629.}, and processes concepts as part of \gls{gfo} or \gls{bfo}.
+Widely known representations and methods include: Flowcharts, \gls{bpmn}, \gls{epc}, \gls{uml} Activity Diagrams, and \gls{opm}\footnote{Standardized as ISO~19450.}. There are also contributions rooted in ontology research, such as the \gls{bpmn} ontology (an \gls{owl} ontology for the \gls{bpmn} notation) \cite{2014foisbpmn}, the \gls{psl}\footnote{Developed by the \gls{nist} and standardized as ISO~18629.}, and process concepts as part of \gls{gfo} or \gls{bfo}.
 
-Our intent is the representation of the most important processes of an \gls{sco} in such a way, that it makes it clear to the ontology user \underline{which} process have to be implemented, but leaves enough creative freedom in regards to \underline{how} to implement them.
+Our intent is the representation of the most important processes of an \gls{sco} in a way that makes clear to the ontology user \underline{which} process have to be implemented, but leaves enough creative freedom in regards to \underline{how} to implement them.
 
 \subsection{Implementation in Related Ontologies}
-When compared to the rather practical and direct implementation of social structures discussed in \autoref{human-beings-in-other-ontologies}, processes are a more abstract concept. The impact of abstraction levels clearly shows when analyzing related ontologies. For example: While \gls{foaf} is a good source when discussing its niche---the modeling of connection between human beings---it does not require an implementation of a process concept. The closest link from \gls{foaf} to a process representation is the  class \class{foaf:Project}\foottt{foaf:Project rdfs:comment: \enquote{A project (a collective endeavour of some kind).}}, which can be viewed as a procedural concept. However, it doesn't offer any additional reusable detail.
+When compared to the rather practical and direct implementation of social structures discussed in \autoref{general-implementation}, processes are a more abstract concept. The impact of abstraction levels clearly shows itself when analyzing related ontologies. For example: While \gls{foaf} is a good source when discussing its niche---the modeling of connections between human beings---it does not require an implementation of a process concept. The closest link from \gls{foaf} to a process representation is the  class \class{foaf:Project}\foottt{foaf:Project rdfs:comment: \enquote{A project (a collective endeavour of some kind).}}, which can be viewed as a procedural concept. However, it doesn't offer any additional reusable detail.
 
-A similar observation can be made for \gls{schema}. Its primary purpose is adding semantic meaning to the internet: \enquote{Schema.org is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet, on web pages, in email messages, and beyond.} \cite{schema-mission} Hence, it is not surprising, that it doesn't implement a detailed process representation. The other time-related class that could be connected to processes, \class{schema:Event}, is geared towards content description (\eg \class{schema:Business\_Event}, \class{schema:Sports\_Event}) and website interaction (\eg \class{schema:User\_Likes} \relation{subclassOf} \class{schema:User\_Interaction}) instead.
+A similar observation can be made for \gls{schema}. Its primary purpose is adding semantic meaning to the internet: \enquote{Schema.org is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet, on web pages, in email messages, and beyond.} \cite{schema-mission} Hence, it is not surprising that it does not implement a detailed process representation. The other time-related class that could be connected to processes, \class{schema:Event}, is geared towards content description (\eg \class{schema:Business\_Event}, \class{schema:Sports\_Event}) and website interaction (\eg \class{schema:User\_Likes} \relation{subclassOf} \class{schema:User\_Interaction}) instead.
 
-On the other hand, the two top-level ontologies, \gls{bfo} and \gls{gfo}, implement process concepts on such a high level of abstraction, that they are not directly applicable for our domain process model:
+On the other hand, the two top-level ontologies \gls{bfo} and \gls{gfo} implement process concepts on such a high level of abstraction, that they are not directly applicable for our domain process model:
 %
 \gls{bfo} uses the class %
 	\class{bfo:Occurent}\foottt{bfo:Occurent elucidation: \enquote{An occurrent is an entity that unfolds itself in time or it is the instantaneous boundary of such an entity (for example a beginning or an ending) or it is a temporal or spatiotemporal region which such an entity occupies\_temporal\_region or occupies\_spatiotemporal\_region. (axiom label in BFO2 Reference: [077-002])}}
@@ -840,7 +840,7 @@ represents its entry point. It is sub-classed by %
 	\class{gfo:Occurent}\foottt{gfo:Occurent dc:description: \enquote{The category of occurrents comprises several categories that can be derived from processes.}}
 %
 and %
-	\class{gfo:Processes}\foottt{gfo:Processes dc:description: \enquote{Processes are directly in time, they develop over and unfold in time. Processes have characteristics which cannot be captured by a collection of time boundaries. In particular, processes exhibit internal coherence.}}.
+	\class{gfo:Process}\foottt{gfo:Process dc:description: \enquote{Processes are directly in time, they develop over and unfold in time. Processes have characteristics which cannot be captured by a collection of time boundaries. In particular, processes exhibit internal coherence.}}.
 
 \gls{gist} is also not directly applicable, since it does not account for processes. It also deals with time on a comparatively high level with the class %
 	\class{gist:Event}\foottt{gist:Event rdfs:comment: \enquote{Something happening over some period of time, often characterized as some kind of activity being carried out by some person, organization, or software application.}} %
@@ -854,19 +854,19 @@ that uses \class{gist:Time\_Instant} to specify start and end of the event.
 	\class{gist:Project} is \relation{subclassOf} \class{gist:Task} is \relation{subclassOf} \class{gist:Event}. We share this understanding of projects and tasks and can therefore link it in our ontology: \class{Project} \relation{rdfs:seeAlso: \enquote{gist:Project}}.
 \end{mdframed} 
 
-\gls{fibo} also does not offer a process model. The time related concepts it offers have a small overlap with \gls{gist} in the class \class{fibo:Time\_Instant}. Additionally it offers \class{fibo:Time\_Interval} and \class{fibo:Time\_Direction}. However, their sub-classes---for \class{fibo:Time\_Instant}: \class{fibo:Date}, \class{fibo:Date\_Time}, \class{fibo:Date\_Time\_Stamp}; for \class{fibo:Time\_Interval}: \class{fibo:Calendar\_Period}, \class{fibo:Duration}, \class{fibo:Date\_Time\_Stamp}, \class{fibo:Recurrence\_Interval}---make it clear, that it focuses more on accurately modeling calendar dates and operations, instead of procedures.
+\gls{fibo} also does not offer a process model. The time related concepts it exhibits have a small overlap with \gls{gist} in the class \class{fibo:Time\_Instant}. Additionally it offers \class{fibo:Time\_Interval} and \class{fibo:Time\_Direction}. However, their sub-classes---for \class{fibo:Time\_Instant}: \class{fibo:Date}, \class{fibo:Date\_Time}, \class{fibo:Date\_Time\_Stamp}; for \class{fibo:Time\_Interval}: \class{fibo:Calendar\_Period}, \class{fibo:Duration}, \class{fibo:Date\_Time\_Stamp}, \class{fibo:Recurrence\_Interval}---make it clear that it focuses more on accurately modeling calendar dates and operations instead of procedures.
 
-\gls{doap} does not reference processes at all.
+\gls{doap} does not mention processes at all.
 
 \subsection{Structure of the Class Hierarchy}
 \label{process-subclass}
 Since none of the related works offer a model to make it applicable in our ontology, we have to develop the structure for processes according to the general ideas and principles we outlined before.
 
-Processes need special attention when implementing them in a domain ontology, since their nature is quite different from other classes that represent physical, \eg \class{Document}, or intuitive concepts, \eg \class{Person}. As mentioned in \ref{classes}, the built in \relation{subclassOf} relation of the class hierarchy already carries semantic meaning, that is generally not applicable to processes. For example: a \class{Delivery\_Process} may involve a \class{Food\_Preperation\_Process} as a procedural step. However, it is easy to see and understand that a \class{Food\_Preperation\_Process} is $\underline{not}$ \relation{subclassOf} a \class{Delivery\_Process} and therefore should not inherit its properties.
+Processes need special attention when implementing them in a domain ontology, since their nature is quite different from other classes that represent physical, \eg \class{Document}, or intuitive concepts, \eg \class{Person}. As mentioned in \autoref{classes}, the built-in \relation{subclassOf} relation of the class hierarchy already carries semantic meaning. For example: a \class{Delivery\_Process} may involve a \class{Food\_Preparation\_Process} as a procedural step. However, it is easy to see and understand that a \class{Food\_Preparation\_Process} is $\underline{not}$ \relation{subclassOf} a \class{Delivery\_Process} and therefore should not inherit its properties.
 
 To model processes correctly, one could consider introducing a class like \class{*\_Process\_Part} (in the given example: \class{Delivery\_Process\_Part}) and use it to collect and connect sub-processes to their parent process. However, this results in many additional \textit{helper} classes in the class hierarchy, since every level of sub-processes requires another \class{*\_Process\_Part} class. This makes the class hierarchy harder to read and understand, since the process structure is encoded in these helper classes.
 
-Another solution is the use of a root \class{Process} class to collect all processes and a relation to connect a sub-process to its parent process. This method utilizes the core concepts of ontologies, classes and relations, and avoids encoding extra information in unconventional ways. This, however, results in a loss of readability because of a completely flat structure of the class hierarchy: every process is directly \relation{subclassOf} \class{Process}, independent from its level of abstraction.
+Another solution is the use of a root \class{Process} class to collect all processes and a relation to connect a sub-process to its parent process. This method utilizes the core concepts of ontologies, classes and relations, and avoids encoding extra information in unconventional ways. This, however, can result in a loss of readability because of a completely flat structure of the class hierarchy: every process is directly \relation{subclassOf} \class{Process}, independent from its level of abstraction.
 
 We make use of the second approach. To compensate for the resulting reduced readability, we add diagrams to describe the processes and their relationships graphically (see appendix \ref{process-diagrams}).
 
@@ -1152,7 +1152,7 @@ This section contains all classes present in the \gls{owl} file. We use color co
 		\begin{compactitem}
 			\item \textbf{rdfs:comment}@en: The lowest rank within the career 
 			process of a student consulting organization. Does not yet have a 
-			formal membership (\eg is not allowed to vote in the membership 
+			full membership (\eg is not allowed to vote in the membership 
 			assembly).
 			\item \textbf{disjointWith}: Junior Consultant, Consultant, Senior 
 			Consultant, Alumna
@@ -1165,7 +1165,7 @@ This section contains all classes present in the \gls{owl} file. We use color co
 		\begin{compactitem}
 			\item \textbf{rdfs:comment}@en: A rank within the career process of 
 			a student consulting organization. Represents the first rank that has a 
-			formal membership within the student consulting organization. 
+			full membership within the student consulting organization. 
 			Represents a low amount of experience within the organization and 
 			with project work.
 			\item \textbf{disjointWith}: Trainee, Consultant, Senior Consultant, 
