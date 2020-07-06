@@ -231,6 +231,8 @@
 	This work develops a domain ontology for \glspl{sco}. The model declares the domain knowledge and defines its vocabulary. It is a primer to be a starting point to establish or run such an organization in a university context. Additionally it allows for optimization in existing organizations and contributes to cooperation between \glspl{sco} by organizing existing knowledge. It maximizes the use of vocabularies, relations, and classes from established ontologies to link the domain knowledge into a bigger context. The main resource of the developed ontology are \glspl{sco} from Germany, but the concepts can be transferred and made applicable in a wider area.
 	
 	The primary classes of the domain are: \class{Agent}, \class{Document}, \class{Process}, \class{Project}, and \class{Role}. At the core of the domain are processes and projects, while agents are their actors playing certain roles. The core processes are the \class{Project Process} and the \class{Human Resource Process}.
+	
+	%TODO: Add numbers (how many classes, axioms etc)
 
 \chapter*{Formatting}
 \begin{itemize}
@@ -1615,6 +1617,8 @@ This section provides an overview by displaying all ontology classes as a tree. 
 \end{compactitem}
 
 \section{Relations}
+This section lists all relations that are defined in the ontology. Each box contains a row titled \textit{Uses} that lists all \gls{owl} axioms in which the corresponding relation occurs. As such, this section provides a complete overview for all axioms that contain at least one relation.
+
 \begin{mdframed}[style=onto, frametitle={has customer}]
 	{% Begin box content
 		\textbf{Uses:}
@@ -1663,15 +1667,12 @@ This section provides an overview by displaying all ontology classes as a tree. 
 		\textbf{Uses:}
 		\begin{compactitem}
 			\item member SubClassOf 'is member of' some 'student consulting organization'
-			\item trainee SubClassOf 'is member of' some 'student consulting organization'
-			\item 'junior consultant' SubClassOf 'is member of' some 'student consulting organization'
-			\item consultant SubClassOf 'is member of' some 'student consulting organization'
-			\item 'senior consultant' SubClassOf 'is member of' some 'student consulting organization'
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
 
 \begin{mdframed}[style=onto, frametitle={is part of}]
+	%TODO: Explain is part of (iVm document, process, project team, usw)
 	{% Begin box content
 		\textbf{Uses:}
 		\begin{compactitem}
@@ -1752,8 +1753,8 @@ This section provides an overview by displaying all ontology classes as a tree. 
 		\hrulefill\\
 		\textbf{Uses:}
 		\begin{compactitem}
-			\item 'project contract' SubClassOf 'is signed by' some 
-			('project customer' and 'project team')
+			\item 'is signed by' some 'project customer'
+			\item 'is signed by' some 'project team'
 		\end{compactitem}
 	} % End box content
 \end{mdframed}
@@ -1852,27 +1853,42 @@ This section provides an overview by displaying all ontology classes as a tree. 
 
 \chapter{Conclusion}
 \markright{5. Conclusion}
-\paragraph{Retrospection}
-In this work, we developed an ontology for the \gls{sco} domain. We declared the most important classes and their properties as well as relations between these classes. 
+The goal of this work was to develop a domain ontology for \glspl{sco} using \gls{owl} and document the whole process in form of a thesis. Both goals have been reached. The documents are publicly hosted and are available on \link{https://github.com}{GitHub} at the following URL: \url{https://github.com/felixfoertsch/student-consulting-organization}.
 
-To achieve this goal, we used a customized version of a methodology previously developed by the Protégé team. It is a very pragmatic approach that starts with collecting data, step by step giving it more structure, and 
+In this final section we reflect on a few aspects encountered during this project and propose potential follow-up research and development directions.
 
-\paragraph{Evaluation}
-The most challenging aspects of modeling this domain were 
-\begin{inparaenum}
-	\item data collection and
-	\item identifiying and justifying the correct level ob astraction.
-\end{inparaenum}
+\paragraph{Data Collection}
+Our focus was on the German \gls{sco} domain. Since \glspl{sco} are a specialized version of consulting companies, the initial thought was to research ontologies concerned with consulting and modify them accordingly to fit our domain. However, it turned out to be quite hard to find ontologies concerned with this specific profession. Not only that, but we had the impression that there is no convenient way of identifying smaller domain ontology projects.
 
-Add more competency questions
-define -> progress -> evaluate -> define... 
+Since the goals of our project were rather narrow and our use cases highly individual, we decided to not invest further time into extensive domain ontology research. Instead, we focused on the extraction of information from well-known ontologies such as \gls{fibo} and \gls{foaf} to link them with our model. This approach comes with its own challenges, since it requires working through and understanding these---sometimes enormous---industry data models.
 
+However, we ultimately believe that this is the more successful way, because general search engines struggle with identifying quality niche ontologies. And the few specialized tools for ontology research we could find (\eg on the \link{https://www.w3.org/wiki/Search_engines}{\gls{w3c} website}) were not functional or did not turn up useful results.
+
+\paragraph{Methodology}
+To develop the domain ontology, we used a customized version of a methodology previously developed by the Protégé team (see \autoref{methodology}). Even though the guidelines were intended for an earlier version of Protégé, we found it applicable to our situation. The approach is very pragmatic and builds on the idea of iteration. It only had to be adapted in minor ways (see \autoref{methodology}). It begins with collecting data and resources, continues on with giving the data more and more structure, and then tries to identify and evaluate potential problems that can be fixed. These steps are more or less repeated until the desired outcome is achieved.
+
+We think this approach is very useful for domain ontology development and we recommend using it for further refinement of this particular ontology.
+
+\paragraph{Definitions}
+During the research phase it became clear quickly that various terms within ontology research have not yet been defined unanimously. Because of this and since correct usage of terminology is integral in the context of knowledge declaration, this discussion seems to be a necessary part for the development of any ontology. This also scales with the abstraction level of the ontology. The more general, the deeper this discussion has to be integrated.
+
+Therefore we shortly discuss the most important terms and develop working definitions for those of them that were needed in the context of our work.
+
+%\paragraph{Level of Abstraction}
+%Within this project we identified and declared the most important domain classes, their properties, and the relations between these classes and provide 
+%
+%Identifying and justifying the correct 
+%The target user group of this ontology are laymen. This limits the technical detail that can be put into the model. Fully modeling a domain is impossible.
+%
+%Furthermore we identified and integrated some general design principles and assumptions that guided the ontology development process and aim to contribute to the ease of use of our ontology in the future.
 
 \paragraph{Further Development}
-During our work we identified the following aspects that can be considered for subsequent versions of the ontology:
+The following aspects can be considered for subsequent versions of the ontology:
 \begin{enumerate}
-	\item The two contexts described in this work (\gls{pc} and \gls{oc}) are the most important ones within this domain. However, it is possible to drill down further and map out more detailed context spaces. For example: Considering the vast amount of available project concepts, it might be reasonable to identify a simple representation and adapt it for the domain. Since projects are such an important aspect of \glspl{sco}, offering a generalized project model as a high-level overview and blueprint could be useful for the use cases described in the introduction.
-	\item This work focuses on a high level view of the core processes to keep the core of the ontology small and focused. The next version could integrate a more general model for supporting processes. These processes, for example an IT or legal support process, might be deeply intertwined with the core processes and it would be necessary to model them in this highly connected manner. This would probably require a deeper understanding about the connection between the core and support processes as well as a maybe a remodel, since this work reduces the ordering of the processes to a relatively simple relation (\relation{next\_process}) that might not be sufficient when integrating support processes.
+	\item \textbf{Extend or crystallize the scope.} As already noted in \autoref{methodology}, the basic competency questions we used in \autoref{competency-questions} reference the ontology guide of the Protégé team. These questions are used to outline the scope of the domain. In this work we limited ourselves to the basic competency questions directly provided in the guide. However, the guide also allows for an extension of the competency questions. This provides an opportunity to further develop and shape the domain's scope by adding and answering additional questions. 
+	\item \textbf{Add additional contexts.} The two contexts described in this work (\gls{pc} and \gls{oc}) are the most important ones within this domain. However, it is possible to drill down further and map out more detailed context spaces. For example: Considering the vast amount of available project concepts, it might be reasonable to identify a simple representation and adapt it for the domain. Since projects are such an important aspect of \glspl{sco}, offering a generalized project model as a high-level overview and blueprint could be useful for the use cases described in the introduction.
+	\item \textbf{Further integrate processes.} This work focuses on a high level view of the core processes to keep the core of the ontology small and focused. The next version could integrate a more general model for supporting processes. These processes, for example an IT or legal support process, might be deeply intertwined with the core processes and it would be necessary to model them in this highly connected manner. This would probably require a deeper understanding about the connection between the core and support processes as well as a maybe a remodel, since this work reduces the ordering of the processes to a relatively simple relation (\relation{next\_process}) that might not be sufficient when integrating support processes.
+
 \end{enumerate}
 
 \appendix
