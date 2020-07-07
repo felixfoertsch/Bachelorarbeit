@@ -211,7 +211,11 @@
     <!-- https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_part_of -->
 
     <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_part_of">
+        <rdfs:comment xml:lang="en">The &quot;is part of&quot; relation is based on the natural language use of part of. It is intended to be non-technical and broad. To narrow its scope, we specialize it: This ontology contains a specialized version that limits the partiality to processes. See &quot;is process part of&quot;.</rdfs:comment>
         <rdfs:label xml:lang="en">is part of</rdfs:label>
+        <skos:example xml:lang="en">The city is part of our world.</skos:example>
+        <skos:example xml:lang="en">The processor is part of a computer.</skos:example>
+        <skos:example xml:lang="en">The team is part of this project.</skos:example>
     </owl:ObjectProperty>
     
 
@@ -1417,23 +1421,6 @@
         <rdfs:label xml:lang="en">university</rdfs:label>
         <skos:example>Leipzig University</skos:example>
     </owl:Class>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://www.felixfoertsch.de/ontologies/student-consulting-group#CEO -->
-
-    <owl:NamedIndividual rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#CEO"/>
     
 
 
