@@ -212,7 +212,7 @@
 \begin{document}
 
 \titlehead{
-	Document Version: v20 \\
+%	Document Version: v20 \\
 	Overall Progress: \progressbar[filledcolor=green]{0.95}
 }
 \subject{Bachelor's Thesis}
@@ -327,7 +327,7 @@ This work is concerned with the knowledge representation of one particular domai
 \section{Methodology for the Development of the Ontology}
 \label{methodology}
 The primary goal of this work (see \autoref{goal}) is the creation of a particular domain ontology. Our language of choice for this task is \gls{owl}. It is an ontology language developed by the consensus-driven and well respected \gls{w3c}. \cite[p.\,206]{baader2017introduction} It is widely used and offers very good tooling in the ontology editor \link{https://protege.stanford.edu}{\pn{Protégé}}, which is built and maintained by ontology researchers of \pn{Stanford University}. \cite{musen2015protege} Furthermore the research group provides an ontology development methodology \cite{guide-to-ontology} that we can build upon. It involves the following steps:
-\begin{compactenum}[(1)]
+\begin{compactenum}
 	\item Determine the domain and scope of the ontology,
 	\item consider reusing existing ontologies,
 	\item enumerate important terms in the ontology,
@@ -511,7 +511,7 @@ Projects management is a big part of the consulting domain. As such, it also pla
 
 
 \section{Principles and Assumptions}
-\label{general-aspects}
+\label{principles}
 Ontologies are a powerful tool, rooted in description logic. They build on this ancestry as well as its rigorous- and correctness to try to describe the world with a structured approach. But even though an ontology \textit{can} be correct, its development process is not a hard science. It is hard to describe the world and there exist underlying assumptions, principles, and various trade-offs that impact an ontology's design. \cite[p.\,383--394]{sowa1999knowledge}
 
 This poses the challenge to make good design decisions and select adequate abstractions of the world. But it also gives the ontology developer some room and flexibility to impose a design idea on the work. 
@@ -753,12 +753,12 @@ However, this approach leads to a conflict in one aspect encoded within the rank
 Because we are not modeling time in the context of ranks and this concept is important, we have to encode it. Since the member-like nature of the first rank outweighs the usefulness of reorganizing the class hierarchy and the subsequent loss of simplicity, we implement this by declaration in the \prop{rdfs:comment}.
 
 The exact terms for the ranks, their meaning, gradation, and organizational implications are highly specific to the \gls{sco} instance. We therefore introduce a rough and extensible skeleton representation:
-\begin{enumerate}
+\begin{compactenum}
 	\item \class{Trainee}: The entry level rank, without a full membership.
 	\item \class{Junior Consultant}: The first rank after someone acquires an official, full membership.
 	\item \class{Consultant}: The rank that implies someone has reached the required amount of knowledge and experience to fulfill all organizational functions.
 	\item \class{Senior Consultant}: The ultimate rank of the organization that can be reached after gathering a substantial amount of knowledge, experience, and organizational social status.
-\end{enumerate}
+\end{compactenum}
 
 \paragraph{Corporate Officers}
 The complete set of tasks and responsibilities for the organization's day-to-day leadership is associated with the group of people referred to as \glspl{co}. This set can be divided into sub-sets and each sub-set can be associated with a different role, to organize the work loads.
@@ -938,16 +938,16 @@ This ontology is a contribution to the knowledge management of \glspl{sco}. It c
 
 \paragraph{For what types of questions the information in the ontology should provide answers?}
 The ontology serves as an abstract description of the \gls{sco} domain. It defines all classes and relations that are typically present in this type of organization. Therefore it can answer questions like:
-\begin{itemize}
+\begin{compactitem}
 	\item Which processes exist and are required in an \gls{sco}?
 	\item What roles exist and have to be filled in an \gls{sco}?
-\end{itemize}
+\end{compactitem}
 
 \paragraph{Who will use and maintain the ontology?}
 The users of this ontology are the leadership of \glspl{sco} in Germany as well as the leadership of the \gls{sco} umbrella organizations. The release version coincides with the finalization and grading of this work. Access will be publicly provided on a GitHub repository. If the ontology sees use by the target group, it will be maintained in the GitHub repository and will be open for contributions. It is considered a living document, hence not necessarily complete until otherwise stated. Contributions and forks will be possible via the GitHub interface.
 
 \section{Classes Overview}
-This section provides an overview by displaying all ontology classes as a tree. The tree levels indicate the \relation{subclassOf} relation. We omit the root node \class{owl:Thing} and display the classes by their \gls{iri} stripped by the underscore.
+This section provides an overview by displaying all ontology classes as a tree. The tree levels indicate the \relation{subclassOf} relation. We omit the root node \class{owl:Thing} and display the classes by their \gls{iri} stripped by the underscore. The sorting on this page is for legibility and to prevent a page skip.
 
 \begin{multicols}{2}
 	\begin{compactitem}
@@ -976,18 +976,6 @@ This section provides an overview by displaying all ontology classes as a tree. 
 				\end{compactitem}
 			\end{compactitem}
 		\end{compactitem}
-		\item \textbf{Document}
-		\begin{compactitem}
-			\item Contract
-			\begin{compactitem}
-				\item Project Contract
-			\end{compactitem}
-		\end{compactitem}
-		\item \textbf{Project}
-		\begin{compactitem}
-			\item External Project
-			\item Internal Project
-		\end{compactitem}
 		\item \textbf{Role}
 		\begin{compactitem}
 			\item Organizational Role
@@ -1014,7 +1002,6 @@ This section provides an overview by displaying all ontology classes as a tree. 
 				\item Project Team Member
 			\end{compactitem}
 		\end{compactitem}
-		\columnbreak
 		\item \textbf{Process}
 		\begin{compactitem}
 			\item Advertising Process
@@ -1042,8 +1029,21 @@ This section provides an overview by displaying all ontology classes as a tree. 
 			\item Project Team Selection Process
 			\item Recruiting Process
 		\end{compactitem}
+		\item \textbf{Document}
+		\begin{compactitem}
+			\item Contract
+			\begin{compactitem}
+				\item Project Contract
+			\end{compactitem}
+		\end{compactitem}
+		\item \textbf{Project}
+		\begin{compactitem}
+			\item External Project
+			\item Internal Project
+		\end{compactitem}
 	\end{compactitem}
 \end{multicols}
+
 \section{Classes}
 %TODO: Kernstrukutur, weglassen labels -> siehe ontologie,  disjunktheit
 This section contains all classes present in the \gls{owl} file. We use color coding and indentation to give the section some structure. The indentation and colors are helpers and indicate the \relation{subclassOf} relation. The box header contains the \gls{iri}, stripped by the underscore used to bridge spaces. The box body contains the \prop{rdfs:comment}, \prop{rdfs:seeAlso}, and \prop{skos:example} of the class. If a class has multiple \relation{skos:example}, we condense them into a list and label it \relation{skos:examples}.
@@ -1674,6 +1674,12 @@ This section lists all relations that are defined in the ontology. Each box cont
 \begin{mdframed}[style=onto, frametitle={is part of}]
 	%TODO: Explain is part of (iVm document, process, project team, usw)
 	{% Begin box content
+		\begin{compactitem}
+			\item \textbf{rdfs:comment}@en: The \enquote{\relation{is part of}} relation is based on the natural language use of \textit{part of}. It is intended to be non-technical and broad. To narrow its scope, we specialize it: This ontology contains a specialized version that limits the partiality to processes. See \enquote{\relation{is process part of}}.
+			\item \textbf{skos:example}@en: The team is part of this project.
+			\item \textbf{skos:example}@en: The processor is part of a computer.
+			\item \textbf{skos:example}@en: The city is part of our world.
+		\end{compactitem}
 		\textbf{Uses:}
 		\begin{compactitem}
 			\item document SubClassOf 'is part of' some 
@@ -1862,25 +1868,33 @@ Our focus was on the German \gls{sco} domain. Since \glspl{sco} are a specialize
 
 Since the goals of our project were rather narrow and our use cases highly individual, we decided to not invest further time into extensive domain ontology research. Instead, we focused on the extraction of information from well-known ontologies such as \gls{fibo} and \gls{foaf} to link them with our model. This approach comes with its own challenges, since it requires working through and understanding these---sometimes enormous---industry data models.
 
-However, we ultimately believe that this is the more successful way, because general search engines struggle with identifying quality niche ontologies. And the few specialized tools for ontology research we could find (\eg on the \link{https://www.w3.org/wiki/Search_engines}{\gls{w3c} website}) were not functional or did not turn up useful results.
+We ultimately believe that this is the more successful way for domain ontologies, because general search engines struggle with identifying quality niche ontologies. The few specialized tools for ontology research we could find (\eg on the \link{https://www.w3.org/wiki/Search_engines}{\gls{w3c} website}) were often times not functional or did not turn up useful results.
 
 \paragraph{Methodology}
 To develop the domain ontology, we used a customized version of a methodology previously developed by the Protégé team (see \autoref{methodology}). Even though the guidelines were intended for an earlier version of Protégé, we found it applicable to our situation. The approach is very pragmatic and builds on the idea of iteration. It only had to be adapted in minor ways (see \autoref{methodology}). It begins with collecting data and resources, continues on with giving the data more and more structure, and then tries to identify and evaluate potential problems that can be fixed. These steps are more or less repeated until the desired outcome is achieved.
 
-We think this approach is very useful for domain ontology development and we recommend using it for further refinement of this particular ontology.
+We think that such an iterative approach is very useful for domain ontology development and we recommend using it for further refinement of this particular ontology.
 
 \paragraph{Definitions}
 During the research phase it became clear quickly that various terms within ontology research have not yet been defined unanimously. Because of this and since correct usage of terminology is integral in the context of knowledge declaration, this discussion seems to be a necessary part for the development of any ontology. This also scales with the abstraction level of the ontology. The more general, the deeper this discussion has to be integrated.
 
 Therefore we shortly discuss the most important terms and develop working definitions for those of them that were needed in the context of our work.
 
-%\paragraph{Level of Abstraction}
-%Within this project we identified and declared the most important domain classes, their properties, and the relations between these classes and provide 
-%
-%Identifying and justifying the correct 
-%The target user group of this ontology are laymen. This limits the technical detail that can be put into the model. Fully modeling a domain is impossible.
-%
-%Furthermore we identified and integrated some general design principles and assumptions that guided the ontology development process and aim to contribute to the ease of use of our ontology in the future.
+\paragraph{Level of Abstraction}
+As pointed out in \autoref{principles}, we integrated some general design principles and assumptions that guided the ontology development process. These also aim to contribute to the ease of use of our ontology in the future. However, they impose limitations on the technical depths that is possible.
+
+First off: There has to be a scope limiting factor to \textit{any} ontology. Fully modeling a domain from the highest level aspects down to the atom is impossible. However, this limit is not fixed. It changes depending on various attributes of a project.
+
+For our work, the most important limiting factor was the concept of simplicity, since the target user group are not experts. Our ontology has to strike the balance between being simple enough so that anyone can understand it and information dense enough so that it can be useful.
+
+This challenged us to decide and justifying the correct cut-off point depending on context. The result is different levels of abstraction within the different major classes: 
+\begin{inparaenum}
+	\item Our \class{Person} and its direct sub-classes are relatively high-level. Only the specialization of \class{Member} is really domain specific. 
+	\item The applied role concept is universal. Even though the \class{Roles} that occur in the class hierarchy are tailored for the domain, if one of them occurs in another domain, they could just be taken from our domain and \textit{plugged in} into the new domain.
+	\item And our \class{Process} model is very specialized. The provided set of processes describes an \gls{sco}.
+\end{inparaenum}
+
+We think that mixing and matching of abstractions were very useful in the context of our work. It helped with identifying and selecting the necessary information depth required to make a sufficiently dense statement about our described domain.
 
 \paragraph{Further Development}
 The following aspects can be considered for subsequent versions of the ontology:
