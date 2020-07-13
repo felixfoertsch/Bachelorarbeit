@@ -232,7 +232,6 @@
 
     <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_signed_by">
         <owl:inverseOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#signs_contract"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:label xml:lang="en">is signed by</rdfs:label>
     </owl:ObjectProperty>
     
