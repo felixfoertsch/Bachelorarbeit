@@ -211,28 +211,41 @@
 %*******************************************************************************
 \begin{document}
 
-\titlehead{
-	Document Version: v22 \\
-	Overall Progress: \progressbar[filledcolor=green]{0.99}
-}
+%\titlehead{
+%	Document Version: v22 \\
+%}
 \subject{Bachelor's Thesis}
 \title{Student Consulting Organizations}
 \subtitle{A Domain Ontology}
 \author{Felix Förtsch \\ 3708438 }
 \date{13.07.2020}
-\publishers{Leipzig University \vspace{1cm} \\
+\publishers{Leipzig University \vspace{8cm} \\
 	Supervised by: \\
 	Prof. Dr. Heinrich Herre \\
-	Dr. Frank Loebe \vspace{0.5cm}}
+	Dr. Frank Loebe}
 \maketitle
 
 \frontmatter
 \chapter*{Abstract}
-	This work develops a domain ontology for Student Consulting Organizations. The model declares the domain knowledge and defines its vocabulary. It is a primer to be a starting point to establish or run such an organization in a university context. Additionally it allows for optimization in existing organizations and contributes to cooperation between SCO by organizing existing knowledge. It maximizes the use of vocabularies, relations, and classes from established ontologies to link the domain knowledge into a bigger context. The main resource of the developed ontology are SCOs from Germany, but the concepts can be transferred and made applicable in a wider area.
-	
-	The primary classes of the domain are: \class{Agent}, \class{Document}, \class{Process}, \class{Project}, and \class{Role}. At the core of the domain are processes and projects, while agents are their actors playing certain roles. The core processes are the \class{Project Process} and the \class{Human Resource Process}.
-	
-	%TODO: Add numbers (how many classes, axioms etc)
+This work develops a domain ontology for Student Consulting Organizations. The model declares the domain knowledge and defines its vocabulary. It is a primer to be a starting point to establish or run such an organization in a university context. Additionally it allows for optimization in existing organizations and contributes to cooperation between SCO by organizing existing knowledge. It makes use of vocabularies, relations, and classes from established ontologies to link the domain knowledge into a bigger context. The main resource of the developed ontology are SCOs from Germany, but the concepts can be transferred and made applicable in a wider area.
+
+The top-level classes of the domain are: \class{Agent}, \class{Document}, \class{Process}, \class{Project}, and \class{Role}. At the core of the domain are processes and projects, while agents are their actors playing certain roles. The core processes are the \class{Project Process} and the \class{Human Resource Process}.
+
+\textbf{Metrics of the developed ontology:}
+\begin{compactitem}
+	\item Axiom: 458
+	\item Logical axiom count: 123
+	\item Declaration axioms count: 89
+	\item Class count: 62
+	\item Object property count: 14
+	\item Annotation Property count: 17
+	\item SubClassOf: 115
+	\item DisjointClasses: 3
+	\item InverseObjectProperties: 5
+\end{compactitem}
+
+GitHub: \url{https://github.com/felixfoertsch/student-consulting-organization}
+
 
 \chapter*{Formatting}
 \begin{itemize}
@@ -289,7 +302,6 @@ The deliverable output of this work are two documents:
 \end{enumerate}
 
 Both documents will be publicly hosted and freely available to any interested parties, such as umbrella organizations, \glspl{sco}, or students.
-%TODO: Host the document publicly
 
 \paragraph{Out of Scope}
 \begin{itemize}
@@ -308,7 +320,7 @@ We identified the following additional use cases from our personal experience an
 
 \begin{enumerate}
 	\item \textbf{Founding of a \gls{sco}.} Founding an business is hard. It becomes even more challenging, if there are no available learning materials for the domain, the learning materials are hidden away, or the materials offer low quality. And even though many of the \glspl{sco} in Germany have produced a lot of material and each figured out their own way of doing things, and even though there are umbrella organizations to help organize all the sub-organizations, it is still hard for the target audience to get sufficient information to easily found such an organization. This work can support this process by providing basic insight into the inner workings the domain. It sheds light on its most important processes and actors. It can provide the new founders with knowledge and a guideline on what to focus on. The public availability further supports this idea.
-	\item \textbf{Optimization.} Many \gls{sco} are already adapt at looking critically at their workflows and getting better at what they do. But there is always room for improvement. Process analysis and management are tools to contribute to this path of optimization. This works provides the fundamental perspective on this topic and focuses on the two core processes that have to be dealt with in the \gls{sco} context: The Project Process and the Human Resources Process. Furthermore, other structural elements (\eg leadership elementary roles) are provided. Any \gls{sco} can use this work as an anchor for comparison.
+	\item \textbf{Optimization.} Many \glspl{sco} are already adapt at looking critically at their workflows and getting better at what they do. But there is always room for improvement. Process analysis and management are tools to contribute to this path of optimization. This works provides the fundamental perspective on this topic and focuses on the two core processes that have to be dealt with in the \gls{sco} context: The Project Process and the Human Resources Process. Furthermore, other structural elements (\eg leadership elementary roles) are provided. Any \gls{sco} can use this work as an anchor for comparison.
 	\item \textbf{Backbone for Domain Specific Software Projects.} This work provides a high-level conceptual model of the \gls{sco} domain. Furthermore, it provides concept descriptions and context while being computer-readable. Hence, this work can be used as a backbone and starting point for software projects that want to target the domain.
 \end{enumerate}
 
@@ -347,8 +359,6 @@ The phases of the methodology are discussed in more detail in the following two 
 \end{compactenum}
 
 The last step, (7) the creation of instances, is omitted in this work. It is only really relevant if the ontology is used to describe one specific \gls{sco}. However, this ontology is operating on a higher level of abstraction, trying to describe a more general case.
-
-%TODO: Onto-Axiomatische Methode von Herrn Herder Abschnitt 2
 
 \subsection{Research Phase}
 To our understanding, the main goal of the first part of the methodology is the creation of a foundation for the ontology: It needs to have a clearly defined scope. Additionally the recommended reuse of other ontologies helps creating a web of linked knowledge and reduces the amount of duplicate work.
@@ -533,9 +543,6 @@ Another example are IT systems. They are an essential and often integral part of
 The classic example for inherent polysemy is the book. It can be viewed from two different perspectives: The physical object and its contents\footnote{\enquote{physical object reading} and \enquote{abstract informational reading}. \cite[Section 2.1]{arapinis2015plea}}. Another example from our domain is the contract: It is a document that captures a business agreement. The term \textit{contract} can refer to the immaterial agreement between the parties, but it can also refer to the physical document.
 
 Even though it's \textit{possible} to decompose these objects, it's not \textit{necessary}. The usefulness of such a decomposition depends on the use case. In our case, with the focus on simplicity, it is enough to describe most classes on a high level, since the exact design is up to the user. \textit{Arapinis} argues in \cite{arapinis2015plea} to allow the use of complex classes to avoid introducing incoherence and inconsistency.
-
-%\paragraph{Fourth: Model a Specific Snapshot}
-%TODO: Jmd könnte zum Zeitpuntk T trainee sein und dann t+1 Alumna. Das wird nicht modelliert.
 
 \chapter[Ontological Aspects in the SCO Domain \\\textcolor{gray}{
 	{\footnotesize \textsl{Discusses the three major concepts and their implementation in the context of related work.}}
@@ -1045,8 +1052,7 @@ This section provides an overview by displaying all ontology classes as a tree. 
 \end{multicols}
 
 \section{Classes}
-%TODO: Kernstrukutur, weglassen labels -> siehe ontologie,  disjunktheit
-This section contains all classes present in the \gls{owl} file. We use color coding and indentation to give the section some structure. The indentation and colors are helpers and indicate the \relation{subclassOf} relation. The box header contains the \gls{iri}, stripped by the underscore used to bridge spaces. The box body contains the \prop{rdfs:comment}, \prop{rdfs:seeAlso}, and \prop{skos:example} of the class. If a class has multiple \relation{skos:example}, we condense them into a list and label it \relation{skos:examples}.
+This section contains all classes present in the \gls{owl} file. We use color coding and indentation to give the section some structure. The indentation and colors are helpers and indicate the \relation{subclassOf} relation. The box header contains the \gls{iri}, stripped by the underscore used to bridge spaces. The \gls{owl} file contains additional labels in English and German. The box body contains the \prop{rdfs:comment}, \prop{rdfs:seeAlso}, and \prop{skos:example} of the class. If a class has multiple \relation{skos:example}, we condense them into a list and label it \relation{skos:examples}.
 
 \subsection{Agent}
 \begin{mdframed}[style=onto, frametitle={Agent}]
