@@ -1,14 +1,44 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="https://www.felixfoertsch.de/ontologies/student-consulting-group#"
-     xml:base="https://www.felixfoertsch.de/ontologies/student-consulting-group"
+<rdf:RDF xmlns="https://github.com/felixfoertsch/student-consulting-organization/ontology#"
+     xml:base="https://github.com/felixfoertsch/student-consulting-organization/ontology"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:sco="https://github.com/felixfoertsch/student-consulting-organization/ontology"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-     xmlns:AnnotationVocabulary="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/">
-    <owl:Ontology rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-organization"/>
+     xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:AnnotationVocabulary="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"
+     xmlns:student-consulting-group="https://www.felixfoertsch.de/ontologies/student-consulting-group#">
+    <owl:Ontology rdf:about="https://github.com/felixfoertsch/student-consulting-organization/ontology">
+        <dcterms:creator>Felix Förtsch
+felixfoertsch.de</dcterms:creator>
+        <dcterms:date>2020-07-13</dcterms:date>
+        <dcterms:description xml:lang="en">This ontology describes the domain of a Student Consulting Organization. The focus lies on SCO in Germany. An associated thesis that documents the development is available on GitHub: https://github.com/felixfoertsch/student-consulting-organization</dcterms:description>
+        <dcterms:license xml:lang="en">MIT License
+
+Copyright (c) 2020 Felix Förtsch
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</dcterms:license>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:versionInfo>
+    </owl:Ontology>
     
 
 
@@ -20,6 +50,30 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/date -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/date"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
     
 
 
@@ -124,6 +178,51 @@
     
 
 
+    <!-- https://github.com/felixfoertsch/student-consulting-organization/ontology#is_defined_by -->
+
+    <owl:ObjectProperty rdf:about="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_defined_by">
+        <rdfs:label xml:lang="en">is defined by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://github.com/felixfoertsch/student-consulting-organization/ontology#is_part_of -->
+
+    <owl:ObjectProperty rdf:about="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_part_of">
+        <rdfs:comment xml:lang="en">The &quot;is part of&quot; relation is based on the natural language use of part of. It is intended to be non-technical and broad. To narrow its scope, we specialize it: This ontology contains a specialized version that limits the partiality to processes. See &quot;is process part of&quot;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is part of</rdfs:label>
+        <skos:example xml:lang="en">The city is part of our world.</skos:example>
+        <skos:example xml:lang="en">The processor is part of a computer.</skos:example>
+        <skos:example xml:lang="en">The team is part of this project.</skos:example>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of -->
+
+    <owl:ObjectProperty rdf:about="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of">
+        <rdfs:label xml:lang="en">is process part of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://github.com/felixfoertsch/student-consulting-organization/ontology#is_signed_by -->
+
+    <owl:ObjectProperty rdf:about="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_signed_by">
+        <owl:inverseOf rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#signs_contract"/>
+        <rdfs:label xml:lang="en">is signed by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://github.com/felixfoertsch/student-consulting-organization/ontology#signs_contract -->
+
+    <owl:ObjectProperty rdf:about="https://github.com/felixfoertsch/student-consulting-organization/ontology#signs_contract">
+        <rdfs:label xml:lang="en">signs contract</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://www.felixfoertsch.de/ontologies/student-consulting-group#has_customer -->
 
     <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#has_customer">
@@ -200,51 +299,6 @@
     
 
 
-    <!-- https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_defined_by -->
-
-    <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_defined_by">
-        <rdfs:label xml:lang="en">is defined by</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_part_of -->
-
-    <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_part_of">
-        <rdfs:comment xml:lang="en">The &quot;is part of&quot; relation is based on the natural language use of part of. It is intended to be non-technical and broad. To narrow its scope, we specialize it: This ontology contains a specialized version that limits the partiality to processes. See &quot;is process part of&quot;.</rdfs:comment>
-        <rdfs:label xml:lang="en">is part of</rdfs:label>
-        <skos:example xml:lang="en">The city is part of our world.</skos:example>
-        <skos:example xml:lang="en">The processor is part of a computer.</skos:example>
-        <skos:example xml:lang="en">The team is part of this project.</skos:example>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of -->
-
-    <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of">
-        <rdfs:label xml:lang="en">is process part of</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_signed_by -->
-
-    <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_signed_by">
-        <owl:inverseOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#signs_contract"/>
-        <rdfs:label xml:lang="en">is signed by</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://www.felixfoertsch.de/ontologies/student-consulting-organization#signs_contract -->
-
-    <owl:ObjectProperty rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-organization#signs_contract">
-        <rdfs:label xml:lang="en">signs contract</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -256,13 +310,24 @@
     
 
 
+    <!-- https://github.com/felixfoertsch/student-consulting-organization/ontology#Agent -->
+
+    <owl:Class rdf:about="https://github.com/felixfoertsch/student-consulting-organization/ontology#Agent">
+        <rdfs:comment xml:lang="en">The actors of the domain.</rdfs:comment>
+        <rdfs:label xml:lang="de">Agent</rdfs:label>
+        <rdfs:label xml:lang="en">agent</rdfs:label>
+        <rdfs:seeAlso>dcterms:Agent, fibo:AutonomousAgent, foaf:Agent</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
     <!-- https://www.felixfoertsch.de/ontologies/student-consulting-group#Advertising_Process -->
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Advertising_Process">
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Recruiting_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -291,17 +356,6 @@
     
 
 
-    <!-- https://www.felixfoertsch.de/ontologies/student-consulting-group#Agent -->
-
-    <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Agent">
-        <rdfs:comment xml:lang="en">The actors of the domain.</rdfs:comment>
-        <rdfs:label xml:lang="de">Agent</rdfs:label>
-        <rdfs:label xml:lang="en">agent</rdfs:label>
-        <rdfs:seeAlso>dcterms:Agent, fibo:AutonomousAgent, foaf:Agent</rdfs:seeAlso>
-    </owl:Class>
-    
-
-
     <!-- https://www.felixfoertsch.de/ontologies/student-consulting-group#Alumna -->
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Alumna">
@@ -325,14 +379,14 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#next_process"/>
-                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Offboarding_Process"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
+                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Human_Resources_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
-                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Human_Resources_Process"/>
+                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#next_process"/>
+                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Offboarding_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A process that models the career system of a student consulting organization.</rdfs:comment>
@@ -443,7 +497,7 @@
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Document">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_part_of"/>
                 <owl:someValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -475,7 +529,7 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Career_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -522,7 +576,7 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Education_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -560,7 +614,7 @@
     <!-- https://www.felixfoertsch.de/ontologies/student-consulting-group#Group -->
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Group">
-        <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Agent"/>
+        <rdfs:subClassOf rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#Agent"/>
         <rdfs:comment xml:lang="en">A collection of agents that is itself an agent.</rdfs:comment>
         <rdfs:label xml:lang="de">Gruppe</rdfs:label>
         <rdfs:label xml:lang="en">group</rdfs:label>
@@ -597,7 +651,7 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Education_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -696,7 +750,7 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Human_Resources_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -713,14 +767,14 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#next_process"/>
-                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Career_Process"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
+                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Human_Resources_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
-                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Human_Resources_Process"/>
+                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#next_process"/>
+                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Career_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A process that models how a student consulting organization prepares new members for the work within the organization. Typically involves educating the new member about the internal and external processes, documenting personal data, etc.</rdfs:comment>
@@ -733,7 +787,7 @@
     <!-- https://www.felixfoertsch.de/ontologies/student-consulting-group#Organization -->
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Organization">
-        <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Agent"/>
+        <rdfs:subClassOf rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#Agent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#plays_role"/>
@@ -794,7 +848,7 @@
     <!-- https://www.felixfoertsch.de/ontologies/student-consulting-group#Person -->
 
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Person">
-        <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Agent"/>
+        <rdfs:subClassOf rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#Agent"/>
         <rdfs:comment xml:lang="en">A person. A human being/homo sapiens.</rdfs:comment>
         <rdfs:label xml:lang="de">Person</rdfs:label>
         <rdfs:label xml:lang="en">person</rdfs:label>
@@ -819,16 +873,16 @@
     <owl:Class rdf:about="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#has_customer"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_defined_by"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Customer"/>
+                <owl:onClass rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Contract"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_defined_by"/>
+                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#has_customer"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Contract"/>
+                <owl:onClass rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Customer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A project is a unique process, consisting of a set of coordinated and controlled activities with start and finish dates, undertaken to achieve an objective conforming to specific requirements, including the constraints of time, cost and resources. (ISO 9000-2015 definition)</rdfs:comment>
@@ -845,13 +899,13 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Contract"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_signed_by"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_signed_by"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Customer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_signed_by"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_signed_by"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Team"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -868,7 +922,7 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Role"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -910,14 +964,14 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Role"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#is_played_by"/>
-                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Agent"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#signs_contract"/>
+                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Contract"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#signs_contract"/>
-                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Contract"/>
+                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#is_played_by"/>
+                <owl:someValuesFrom rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#Agent"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">The (paying) customer of a project that receives the project&apos;s services.</rdfs:comment>
@@ -934,7 +988,7 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Finalization_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -951,7 +1005,7 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Finalization_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -968,14 +1022,14 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#next_process"/>
-                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Finalization_Process"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
+                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
-                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Process"/>
+                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#next_process"/>
+                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Finalization_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A process that models how a project is executed within a student consulting organization.</rdfs:comment>
@@ -991,7 +1045,7 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1008,7 +1062,7 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Initiation_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1025,14 +1079,14 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#next_process"/>
-                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Execution_Process"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
+                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
-                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Process"/>
+                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#next_process"/>
+                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Execution_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A process that models how the initiation of a project happens within a student consulting organization.</rdfs:comment>
@@ -1048,7 +1102,7 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Finalization_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1065,7 +1119,7 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Initiation_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1093,7 +1147,7 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Initiation_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1121,14 +1175,14 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#next_process"/>
-                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Initiation_Process"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
+                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
-                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Process"/>
+                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#next_process"/>
+                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Initiation_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A process that models how projects are sold to customers by a student consulting organization.</rdfs:comment>
@@ -1144,7 +1198,7 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Finalization_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1161,13 +1215,13 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Group"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#signs_contract"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#signs_contract"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Contract"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1207,7 +1261,7 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Team_Making_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1250,7 +1304,7 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Initiation_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1294,7 +1348,7 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
                 <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Project_Team_Making_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1311,14 +1365,14 @@
         <rdfs:subClassOf rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Process"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#next_process"/>
-                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Onboarding_Process"/>
+                <owl:onProperty rdf:resource="https://github.com/felixfoertsch/student-consulting-organization/ontology#is_process_part_of"/>
+                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Human_Resources_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-organization#is_process_part_of"/>
-                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Human_Resources_Process"/>
+                <owl:onProperty rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#next_process"/>
+                <owl:someValuesFrom rdf:resource="https://www.felixfoertsch.de/ontologies/student-consulting-group#Onboarding_Process"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A process that models how the recruiting is done by a student consulting organization.</rdfs:comment>
