@@ -10,7 +10,7 @@
 - **Mentor**: Frank Loebe
 - **Examination Body**: University of Leipzig
 - **Desired Degree**: Bachelor of Science Computer Science
-- **Grade**: TBD
+- **Grade**: 1.0
 
 ### Dates
 - **Starting Date**: 23.01.2020
